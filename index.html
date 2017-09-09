@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Captain Logger</title>
+	<link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/style-index.css" type="text/css" media="all" />
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div>
+		<div class="index-page dark-style">
+			<!----------------left1 begin----------------->
+			<!--div class="main-menu">
+				<div class="main-menu-scroller main-menu-wrapper">
+					<div class="flex-vertical">
+						<div class="logo-index"></div>
+					
+						<div class="flex-grow1">
+							<div class="sight-bar">
+								<div class="main-menu-separate-line"></div>
+							
+								<div class="file-sight"></div>
+								<div class="topo-sight"></div>
+								<div class="time-sight"></div>
+						
+								<div class="main-menu-separate-short-line"></div>
+							</div>
+					
+							<div class="operation-bar">
+								<div class="main-menu-icon-search"></div>
+								<div class="main-menu-separate-line"></div>
+							</div>
+						</div>
+						
+						<div class="system-bar">
+							<div class="main-menu-icon-setting"></div> ——源代码中注释掉
+							<div class="main-menu-separate-line"></div>——源代码中注释掉
+							<div class="main-menu-icon-user"></div>
+						</div>
+					</div>
+				</div>
+			</div-->
+			<!----------------left1 end----------------->
+			
+			
+			<!----------------left1 begin----------------->
+			<div class="main-menu main-menu-wrapper">
+				<div class="main-menu-bar">
+					<div class="flex-vertical">
+						<div class="logo-index"></div>
+					
+						<div class="flex-grow1">
+							<div class="sight-bar">
+								<div class="main-menu-separate-line"></div>
+							
+								<div class="file-sight"></div>
+								<div class="topo-sight"></div>
+								<div class="time-sight"></div>
+						
+								<div class="main-menu-separate-line"></div>
+							</div>
+					
+							<div class="operation-bar">
+								<div class="main-menu-icon-search"></div>
+								<div class="main-menu-separate-line"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+				<div class="main-menu-system-bar">
+					<div class="main-menu-icon-user"></div>
+				</div>
+	
+ 			</div>
+			<!----------------left1 end----------------->
+			
+			<!----------------left2 begin----------------->
+			<div class="index-widgets">
+				<div class="widgets-main flex-grow1">
+			
+					<div class="widgets-btns-bar">
+						<div class="widgets-btns">
+							<div class="widgets-btn-topo widgets-btn-selected"></div>
+							<div class="widgets-btn-usual"></div>
+							<div class="widgets-btn-todo"></div>
+							<div class="widgets-btn-chart"></div>
+						</div>
+					</div>
+					
+					<div class="widgets-content-btns-bar">
+						<div class="widgets-content-btn-zoom small-grey-plus"></div>
+						<div class="widgets-content-btns-separateline"></div>
+						<div class="widgets-content-btn-zoom0"></div>
+						<div class="widgets-content-btns-separateline"></div>
+						<div class="widgets-content-btn-zoom small-grey-minus"></div>
+					</div>
+					<div class="widgets-content-main">
+						<div style="width: 100%;TEXT-ALIGN: center;">
+							<!--思维导图-->
+							<img src="images/topo.png" alt="思维导图" style="margin:20px auto 0;" ／>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="widgets-foot">
+					<div class="widgets-foot-line"></div>
+					<div class="widgets-foot-btn-stretch"></div>
+				</div>
+				
+			</div>
+			<!----------------left2 end----------------->
+			
+			<!----------------main begin----------------->
+			<div class="index-content">
+				<div class="content-title-wrapper">
+					<div class="title-forward-back-btns-bar">
+						<div class="title-back-btn"></div>
+						<div class="title-forward-btn"></div>
+					</div>
+					<div class="title-nav">
+						<div class="title-nav-back-name">
+							<span>#</span><span>olivepop</span><span>#</span>
+						</div>
+						<div class="title-nav-arrow"></div>
+						<div class="title-nav-back-name"><span>#</span><span>creative</span><span>#</span></div>
+						<div class="title-nav-arrow"></div>
+						<div class="title-nav-current-name"><span>#</span><span>hard work</span><span>#</span></div>
+					</div>
+				</div>
+				<!--div class="content-main"-->
+					<div class="content-logs-btns-wrapper">
+						<div class="logs-btns-bar">
+							<div class="logs-save-btn content-logs-btn"></div>
+							<div class="logs-btn-separate-line"></div>
+							<div class="logs-picture-btn content-logs-btn"></div>
+							<div class="logs-single-tag-btn content-logs-btn"></div>
+							<div class="logs-double-tag-btn content-logs-btn"></div>
+							<div class="logs-btn-separate-line"></div>
+							<div class="logs-delete-btn content-logs-btn"></div>
+						</div>
+						<div class="logs-status-bar">
+							<!--div class="logs-btn-separate-line"></div-->
+							<div class="logs-status-icon"></div>
+						</div>
+					</div>
+					<div class="content-log-inputbox-wrapper">
+						<div class="content-log-inputbox" contenteditable="true" data-placeholder="write down your words here."></div>
+					</div>
+					<div class="content-logs-wrapper">
+					
+						<div class="content-log-item">
+							<div class="log-item-title">
+								This is a <p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></p>
+							</div>
+							<div class="log-item-detail">
+								I don’t known how can I make a perfect work.
+								That sad moment you lease an earbud one day 
+								before <p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></p> starts..
+								Because of their annoyance and <p class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></p>       
+								to find a way to say "please do us all a favor and “FUCKING STOP” nicely<img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/> 
+								I held in all my rage and ended up yelling at my <p class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></p> 
+							</div>
+						</div>
+						
+						<div class="content-log-item">
+							<div class="log-item-title">
+								这条日志用<p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>中文</span><span>#</span></p>写
+							</div>
+							<div class="log-item-detail">
+								还有就是中文的显示，也<p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>还好</span><span>#</span></p>
+								通过CSS3的transition<p class="log-item-tag-words" style="color: rgb(121,178,234);background-color:rgba(121,178,234,0.1);"><span>#</span><span>模仿制作<span>#</span></p><img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/>jQuery的slideshow效果，
+								当然这种效果跟js和jQ制作出来的是没得比，但有时还是可以用一用的，以前腾讯就使用过这样的一个效果。著作权归作者所有。
+								“如何在<p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>画展<span>#</span></p> 上表现自然？”
+								“怎么看画才好像自己看懂了？” 
+								每逢大展，大家的关注点就如此的一致。 
+								“伦勃朗和他的时代”展览亮相国家博物馆，这消息提前几个月就刷爆了大家的朋友圈，
+								这是荷兰黄金时代画作在中
+							</div>
+						</div>
+						
+						<div class="content-log-item">
+							<div class="log-item-title">
+								This is a <p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></p>
+							</div>
+							<div class="log-item-detail">
+								I don’t known how can I make a perfect work.
+								That sad moment you lease an earbud one day 
+								before <p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></p> starts..
+								Because of their annoyance and <p class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></p>       
+								to find a way to say "please do us all a favor and “FUCKING STOP” nicely 
+								I held in all my rage and ended up yelling at my <p class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></p>
+							</div>
+							
+							<div class="log-item-files-wrapper">
+								<!--div class="log-item-files-row">dfdf
+									<div class="log-item-file-img"--><img src="images/example1-temp.png" alt="file name" /><!--/div>
+								</div"-->
+							</div>
+						</div>
+						
+						<div class="content-log-item">
+							<div class="log-item-title">
+								This is a <p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></p>
+							</div>
+							<div class="log-item-detail">
+								I don’t known how can I make a perfect work.
+								That sad moment you lease an earbud one day 
+								before <p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></p> starts..
+								Because of their annoyance and <p class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></p>       
+								to find a way to say "please do us all a favor and “FUCKING STOP” nicely 
+								I held in all my rage and ended up yelling at my <p class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></p> 
+							</div>
+						</div>
+					</div><!--content-logs-wrapper end-->
+				<!--/div-->
+			</div>
+			<!----------------main end----------------->
+		</div>
+	</div>
+</body>
+</html>

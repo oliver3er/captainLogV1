@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px"
+	 height="9px" viewBox="0 0 9 9" enable-background="new 0 0 9 9" xml:space="preserve">
+<g id="图层_2" display="none">
+	<polygon display="inline" fill="#FFFFFF" stroke="#DCF7FF" stroke-miterlimit="10" points="-78.45,-2.526 -72.535,9.459 
+		-59.309,11.381 -68.88,20.71 -66.62,33.883 -78.45,27.665 -90.28,33.883 -88.021,20.71 -97.592,11.381 -84.365,9.459 	"/>
+</g>
+<g id="图层_3" display="none">
+	<polygon display="inline" fill="#AAABAE" points="-43.234,-3.656 -40.453,1.979 -34.234,2.883 -38.734,7.269 -37.671,13.463 
+		-43.234,10.539 -48.798,13.463 -47.734,7.269 -52.234,2.883 -46.016,1.979 	"/>
+</g>
+<g id="图层_6" display="none">
+	<polyline display="inline" fill="#AAABAE" stroke="#AAABAE" stroke-width="3" stroke-miterlimit="10" points="-51.556,42.293 
+		-54.497,43.641 -54.497,49.269 -51.528,50.557 	"/>
+	<polyline display="inline" fill="#AAABAE" stroke="#AAABAE" stroke-width="3" stroke-miterlimit="10" points="-50.285,50.523 
+		-47.369,49.186 -47.369,43.606 -50.312,42.331 	"/>
+	<polyline display="inline" fill="#AAABAE" stroke="#AAABAE" stroke-width="3" stroke-miterlimit="10" points="-69.159,56.075 
+		-72.923,57.798 -72.923,64.998 -69.123,66.647 	"/>
+	<polyline display="inline" fill="#AAABAE" stroke="#AAABAE" stroke-width="3" stroke-miterlimit="10" points="-67.535,66.601 
+		-63.805,64.892 -63.805,57.753 -67.57,56.12 	"/>
+	<polyline display="inline" fill="#AAABAE" stroke="#AAABAE" stroke-width="3" stroke-miterlimit="10" points="-49.046,65.592 
+		-51.987,66.942 -51.987,72.568 -49.018,73.856 	"/>
+	<polyline display="inline" fill="#AAABAE" stroke="#AAABAE" stroke-width="3" stroke-miterlimit="10" points="-47.774,73.822 
+		-44.859,72.485 -44.859,66.906 -47.805,65.627 	"/>
+	<path display="inline" fill="none" stroke="#AAABAE" stroke-width="3" stroke-miterlimit="10" d="M-63.02,61.362
+		c5.582-0.033,2.75-14.945,7.762-14.938"/>
+	<path display="inline" fill="none" stroke="#AAABAE" stroke-width="3" stroke-miterlimit="10" d="M-63.02,61.446
+		c6.735-0.021,4.426,8.349,10.775,8.363"/>
+</g>
+<g id="图层_5" display="none">
+	<path display="inline" fill="#AAABAE" d="M-81.666,55.908c0,1.044-0.846,1.889-1.889,1.889h-13.222
+		c-1.043,0-1.889-0.845-1.889-1.889V42.686c0-1.044,0.846-1.889,1.889-1.889h13.222c1.043,0,1.889,0.845,1.889,1.889V55.908z"/>
+	
+		<polyline display="inline" fill="none" stroke="#2F3136" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		-94.845,49.343 -90.771,52.497 -85.005,44.933 	"/>
+</g>
+<g id="图层_4" display="none">
+	<circle display="inline" fill="#AAABAE" cx="-20.292" cy="6.398" r="7.943"/>
+	<circle fill="none" stroke="#2452C6" stroke-miterlimit="10" cx="64.665" cy="-10.451" r="17.3"/>
+	<path display="inline" fill="#2F3136" stroke="#D7D9DD" stroke-miterlimit="10" d="M-20.292,6.398l1.419-9.486
+		c4.029,0.599,6.845,3.448,7.881,6.766L-20.292,6.398z"/>
+</g>
+<g id="图层_7">
+	<path fill="#AAABAE" d="M9,4.5C9,5,8.595,5.405,8.095,5.405H0.905C0.405,5.405,0,5,0,4.5l0,0C0,4,0.405,3.595,0.905,3.595h7.189
+		C8.595,3.595,9,4,9,4.5L9,4.5z"/>
+	<path fill="#AAABAE" d="M4.499,0c0.5,0,0.905,0.405,0.905,0.905v7.189C5.404,8.595,4.999,9,4.499,9l0,0
+		c-0.5,0-0.904-0.405-0.904-0.905V0.905C3.595,0.405,3.999,0,4.499,0L4.499,0z"/>
+</g>
+<g id="图层_8" display="none">
+	<path display="inline" fill="#AAABAE" d="M33.914,4.839c0,0.552-0.447,1-1,1h-8c-0.553,0-1-0.448-1-1l0,0c0-0.552,0.447-1,1-1h8
+		C33.467,3.839,33.914,4.287,33.914,4.839L33.914,4.839z"/>
+</g>
+</svg>
