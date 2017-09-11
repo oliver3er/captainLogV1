@@ -339,6 +339,16 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	box-shadow: 0 1px 0 rgba(0,0,0,.06);
 }
 
+/*added by dean: add a div above widgets-content-btns-bar and widgets-content-main */
+.widgets-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	flex: 1 1 auto;
+	min-height: 0px;
+}
+
 .widgets-content-btns-bar {
 	display: flex;
 	justify-content: flex-end;
@@ -391,6 +401,9 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	margin-right: 5px;
 	overflow-y: auto;
     overflow-x: hidden;
+	/*added by dean: for svg text style */
+	font-size : 1.4rem;
+	fill : rgba(233,69,69,1);
 }
 
 .widgets-content-main::-webkit-scrollbar {
@@ -485,6 +498,11 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .title-nav-current-name {
 	font-size: 2.0rem;
 	font-weight: 600;
+}
+
+.title-nav-item {
+	display : flex;
+	align-items : center;
 }
 
 .title-nav-current-name span:first-child, .title-nav-current-name span:last-child, 
@@ -645,25 +663,13 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	padding-top: 18px;
 	letter-spacing: 1px;
 	border-top: 1px solid hsla(0,0%,100%,.04);
-}
-
-.log-item-title {
-	font-size: 1.6rem;
+	/* added by dean : move from log-item-detail*/
+	font-size: 1.4rem;
 	font-weight: 400;
-	color: #ececec;
-	line-height: 1.6rem;
+	line-height: 1.8rem;
+	color: #b8b8b8;
 }
 
-.log-item-title .log-item-tag-words {
-	font-size: 1.6rem;
-	line-height: 1.6rem;
-	font-weight: 400;
-}
-
-.log-item-title p {
-	display: inline-block;
-	line-height: 1.6rem;
-}
 
 .log-item-tag-img {
 	max-width: 1.6rem;
@@ -696,16 +702,37 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	color: #b8b8b8;
 }
 
-.log-item-detail .log-item-tag-words {
+/* change: from log-item-detail to content-log-item */
+.content-log-item .log-item-tag-words {
 	font-size: 1.4rem;
 	line-height: 1.5rem;
+	color : rgba(233,69,69,1);
+	background : rgba(233,69,69,.1);
 }
 
-.log-item-detail p {
+/* change: from log-item-detail to content-log-item */
+.content-log-item p {
 	display: inline-block;
 	line-height: 1.4rem;
 }
 
+.log-item-title {
+	font-size: 1.6rem;
+	font-weight: 400;
+	color: #ececec;
+	line-height: 1.6rem;
+}
+
+.log-item-title .log-item-tag-words {
+	font-size: 1.6rem;
+	line-height: 1.6rem;
+	font-weight: 400;
+}
+
+.log-item-title p {
+	display: inline-block;
+	line-height: 1.6rem;
+}
 
 .log-item-files-wrapper {
 	margin: 8px 1px 0;
