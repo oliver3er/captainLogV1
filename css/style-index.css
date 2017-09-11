@@ -219,11 +219,12 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .sight-bar .time-sight {
 	width: 50px;
 	height: 50px;
+	overflow: hidden;
 	border: 1px dashed rgba(170,171,174,0.8);
 	##background-color: rgba(47,49,54,0.8);
 	##background-image: url(../images/time-sight-icon.svg);
-	background-image: url(../images/flash-star.svg);
-	background-size: 48px;
+	##background-image: url(../images/flash-star.svg);
+	##background-size: 48px;
 }
 
 .main-menu .main-menu-separate-line {
