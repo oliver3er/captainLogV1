@@ -1,0 +1,10 @@
+/*
+ * the additional css file , all css created by dean will be write down here
+ * */
+
+/* the css for new log input editor's place holder */
+.new-editor .public-DraftEditorPlaceholder-root {
+	color : gray;
+	position : absolute;
+}
+
