@@ -8,3 +8,30 @@
 	position : absolute;
 }
 
+/***************mindmap widget style *************/
+/* the reference style ,can use to control the display of reference lines */
+.mindmap-widget-reference {
+	display : none;
+}
+
+/* the line style connect the hashtag nodes */
+.mindmap-widget-line {
+	fill : none;
+	stroke : #565656;
+	stroke-width : 6;
+	stroke-linejoin : round;
+}
+
+.mindmap-widget-header {
+	fill : none;
+	stroke : #565657;
+	stroke-width :  2;
+	stroke-linecap : round;
+	stroke-linejoin : round;
+	stroke-miterlimit : 10;
+}
+
+.mindmap-widget-text {
+	fill: rgb(221, 46, 68);
+	font-size: 18px;
+}
