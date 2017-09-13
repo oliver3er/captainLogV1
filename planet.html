@@ -1,0 +1,142 @@
+<html>
+<style>
+	body {
+		background : black;
+		display : flex;
+		justify-content: center;
+			align-items: center;
+		width : 100%;
+		height : 100%;
+	}
+
+	.container {
+		border-radius: 50%;
+		border : 1px dashed white;
+		padding: 5px;
+		overflow: hidden;
+		##background-image : url( http://www.14denoviembre.es/img/stars_5.png );
+	}
+
+	.gstyle {
+		transition : all 1s linear;
+	}
+</style>
+	<script>
+		var timeId;
+		function run (){
+			if(!timeId){
+				document.getElementById('planet').setAttribute('transform','translate(25 25)');
+				document.getElementById('ballAnimation').setAttribute('attributeName','transform');
+				document.getElementById('moonAnimation').setAttribute('attributeName','transform');
+				document.getElementById('shadow').setAttribute('style','opacity : 0');
+				document.getElementById('shadowBalls').setAttribute('style','opacity : 1');
+				document.getElementById('sky').setAttribute('style','opacity : 1');
+				timeId = setTimeout(appendShootingStar,1000);
+			}
+		}
+
+		function stop () {
+			if(timeId){
+				document.getElementById('planet').setAttribute('transform','translate(0 0)');
+				document.getElementById('ballAnimation').setAttribute('attributeName','');
+				document.getElementById('moonAnimation').setAttribute('attributeName','');
+				document.getElementById('shadow').setAttribute('style','opacity : 1');
+				document.getElementById('shadowBalls').setAttribute('style','opacity : 0');
+				document.getElementById('sky').setAttribute('style','opacity : 0');
+				clearTimeout(timeId);
+				timeId = undefined;
+				console.info('stop timer and go back');
+			}else{
+				console.info('no need to stop , the timeId',timeId);
+			}
+		}
+
+
+		function appendShootingStar(){
+			{
+				//remove frist
+				var star = document.getElementById('star1');
+				if(star){
+					star.parentNode.removeChild(star);
+				}
+			}
+			var sky = document.getElementById('sky');
+			var line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+			line.setAttribute('id','star1');
+			line.setAttribute('fill','none');
+			line.setAttribute('stroke','#ECECEC');
+			var x = Math.random() * 30 + 20;
+			var y = Math.random() * 30;
+			line.setAttribute('x1',x);
+			line.setAttribute('y1',y);
+			line.setAttribute('x2',x-60);
+			line.setAttribute('y2',y+150);
+			line.setAttribute('style','transition: all .5s linear;stroke-dasharray : 100;stroke-dashoffset:100;');
+			sky.appendChild(line);
+			timeId = setTimeout(runShootingStar,10);
+			console.info('append a new one , x:',x,'y:',y);
+		}
+
+		function runShootingStar() {
+			var star = document.getElementById('star1');
+			star.setAttribute('style','transition: all .5s linear;stroke-dasharray : 100;stroke-dashoffset:-100;');
+			console.info('start star...');
+			timeId = setTimeout(appendShootingStar,Math.round(Math.random() * 1000) + 500);
+		}
+
+
+		function handleLoad () {
+			//<circle fill="#ECECEC" cx="0.2" cy="20.045" r="1"/>
+			var sky = document.getElementById('sky');
+			for(var i = 0 ; i < 40 ; i++){
+				var circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+				circle.setAttribute('fill','#ECECEC');
+				circle.setAttribute('cx',Math.round(Math.random() * 80));
+				circle.setAttribute('cy',Math.round(Math.random() * 80));
+				circle.setAttribute('r',Math.random() * 1.5);
+				sky.appendChild(circle);
+			}
+			console.info('loaded');
+		}
+	</script>
+	<body onLoad='handleLoad()' >
+		<div class='container' onMouseEnter='run()' onMouseLeave='stop()' >			
+			<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80.637px" height="82.705px" viewBox="0 0 80.637 82.705" enable-background="new 0 0 80.637 82.705" xml:space="preserve">
+				<g id='sky' class='gstyle' style='opacity : 0;'>
+				</g>
+				<g class='gstyle' id='planet' transform='translate(0 0)' >
+					<g id='ball' class='gstyle' >
+						<circle fill="black" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" cx="40.194" cy="50.955" r="30.25"/>
+						<circle fill="#ECECEC" cx="18.319" cy="42.045" r="8.375"/>
+						<circle fill="#ECECEC" cx="46.165" cy="36.37" r="4.12"/>
+						<g id='shadowBalls' class='gstyle' style='opacity  : 0;'  >
+							<circle fill="#ECECEC" cx="66.165" cy="46.37" r="3.12"/>
+							<circle fill="#ECECEC" cx="50.165" cy="70.37" r="5.12"/>
+							<circle fill="#ECECEC" cx="22.165" cy="68.37" r="3.12"/>
+							<circle fill="#ECECEC" cx="40.165" cy="56.37" r="6.5"/>
+						</g>
+						<path fill="#ECECEC" d="M35.08,61.55c-1.058-1.218-1.698-2.808-1.698-4.548c0-3.831,3.106-6.938,6.938-6.938 c3.1,0,5.725,2.032,6.614,4.838C45.559,57.75,38.219,61.419,35.08,61.55z"/>
+						<animateTransform id='ballAnimation' attributeName=""
+							attributeType="XML"
+							type="rotate"
+							from="0 40.194 50.955"
+							to="3600 40.194 50.955"
+							dur="100s"
+							repeatCount="indefinite"/>
+					</g>
+					<path class='gstyle' style='opacity : 1;' id='shadow' fill="#ECECEC" d="M70.554,51.916c-0.508,16.263-13.85,29.289-30.235,29.289c-4.98,0-9.679-1.203-13.822-3.335 C41.06,75.916,60.383,62.53,70.554,51.916z"/>
+					<path id='bend' fill="#ECECEC" d="M66.182,25.11c6.934-0.751,11.865,0.299,13.951,3.182c3.801,6.208-14.449,27.583-36.335,37.891 c-16.239,9.066-38.864,15.021-43.25,6.75c-1.39-2.385-0.112-6.922,3.527-12.338l1.282,0.309c-2.138,3.495-2.991,6.651-2.348,9.197 c1.657,6.562,22.804,1.287,42.496-10.096c19.692-11.381,33.349-24.705,29.779-30.881c-1.227-2.121-4.325-3.124-8.664-3.063 L66.182,25.11z"/>
+				</g>
+				<circle id='moon' fill="none" stroke="#ECECEC" stroke-width="2.5" stroke-miterlimit="10" cx="60.127" cy="8.75" r="7.5">
+						<animateTransform id='moonAnimation' attributeName=""
+							attributeType="XML"
+							type="rotate"
+							from="0 60.194 80.955"
+							to="360 60.194 80.955"
+							dur="3s"
+							repeatCount="indefinite"/>
+				</circle>
+			</svg>
+		</div>
+	</body>
+</html>
