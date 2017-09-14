@@ -779,6 +779,11 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
     box-shadow: 0 1px 0 rgba(0,0,0,.06);
 }
 
+/* added by Dean, add a div above : title-forward-back-bar and title-nav div */
+.title-navigation-container {
+	display: flex;
+}
+
 .title-forward-back-btns-bar {
 	display: flex;
 	align-items: center;
