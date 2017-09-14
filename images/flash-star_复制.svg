@@ -41,7 +41,8 @@
 <g id="图层_2">
 	<path id="leftpath-for-animate-old" display="none" fill="none" d="M1.129,67.063c0.646-6.674,3.769-13.139,9.397-17.997
 		L52.68,6.909"/>
-	<path fill="none" d="M100.331,37.356l-8.603,8.6L49.573,88.111c-3.505,3.885-7.701,6.627-12.172,8.167"/>
+	<path id="rightpath-for-animate" fill="none" d="M100.331,37.356l-8.603,8.6L49.573,88.111
+		c-3.505,3.885-14.086,13.214-29.755,7.988"/>
 	<line display="none" fill="none" x1="52.961" y1="23.319" x2="66.983" y2="9.297"/>
 	<line display="none" fill="none" x1="71.326" y1="23.414" x2="85.661" y2="9.078"/>
 	<line display="none" fill="none" x1="73.362" y1="38.325" x2="90.581" y2="21.106"/>
@@ -89,7 +90,7 @@
 		c-1.258-1.26-3.332-1.227-4.631,0.072L42.384,34.695 M37.572,29.882L37.572,29.882c-1.301,1.301-1.274,3.434,0.058,4.766l0,0
 		c1.332,1.332,3.465,1.357,4.764,0.059l11.689-11.72"/>
 	<path id="leftpath-for-animate" fill="none" stroke="#ECECEC" stroke-width="2" d="M50.69,8.903c0,0-40.86,40.81-42.407,42.429
-		c-2.547,2.703-2.965,3.699-2.965,3.699"/>
+		C-3.638,63.45,2.866,79.698,2.866,79.698"/>
 	<line id="line1-long-for-animate" display="none" fill="none" stroke="#DB1616" x1="66.969" y1="0.707" x2="50.557" y2="17.12"/>
 	<line id="line1-short-for-animate" display="none" fill="none" stroke="#DB1616" x1="56.168" y1="11.508" x2="50.556" y2="17.12"/>
 	<path display="none" fill="none" stroke="#ECECEC" stroke-width="2" d="M66.969,0.707l-8.197,8.196c0,0-5.483,5.433-8.44,8.44"/>

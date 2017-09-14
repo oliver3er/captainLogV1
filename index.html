@@ -8,63 +8,80 @@
 	<link rel="stylesheet" href="css/style-index.css" type="text/css" media="all" />
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript">
+		var timeId;
+		function run (){
+			if(!timeId){
+				document.getElementById('planet').setAttribute('transform','translate(25 25)');
+				document.getElementById('ballAnimation').setAttribute('attributeName','transform');
+				document.getElementById('moonAnimation').setAttribute('attributeName','transform');
+				document.getElementById('shadow').setAttribute('style','opacity : 0');
+				document.getElementById('shadowBalls').setAttribute('style','opacity : 1');
+				document.getElementById('sky').setAttribute('style','opacity : 1');
+				timeId = setTimeout(appendShootingStar,1000);
+			}
+		}
+		function stop () {
+			if(timeId){
+				document.getElementById('planet').setAttribute('transform','translate(0 0)');
+				document.getElementById('ballAnimation').setAttribute('attributeName','');
+				document.getElementById('moonAnimation').setAttribute('attributeName','');
+				document.getElementById('shadow').setAttribute('style','opacity : 1');
+				document.getElementById('shadowBalls').setAttribute('style','opacity : 0');
+				document.getElementById('sky').setAttribute('style','opacity : 0');
+				clearTimeout(timeId);
+				timeId = undefined;
+				console.info('stop timer and go back');
+			}else{
+				console.info('no need to stop , the timeId',timeId);
+			}
+		}
+		function appendShootingStar(){
+			{
+				//remove frist
+				var star = document.getElementById('star1');
+				if(star){
+					star.parentNode.removeChild(star);
+				}
+			}
+			var sky = document.getElementById('sky');
+			var line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+			line.setAttribute('id','star1');
+			line.setAttribute('fill','none');
+			line.setAttribute('stroke','#ECECEC');
+			var x = Math.random() * 30 + 20;
+			var y = Math.random() * 30;
+			line.setAttribute('x1',x);
+			line.setAttribute('y1',y);
+			line.setAttribute('x2',x-60);
+			line.setAttribute('y2',y+150);
+			line.setAttribute('style','transition: all .5s linear;stroke-dasharray : 100;stroke-dashoffset:100;');
+			sky.appendChild(line);
+			timeId = setTimeout(runShootingStar,10);
+			console.info('append a new one , x:',x,'y:',y);
+		}
+		function runShootingStar() {
+			var star = document.getElementById('star1');
+			star.setAttribute('style','transition: all .5s linear;stroke-dasharray : 100;stroke-dashoffset:-100;');
+			console.info('start star...');
+			timeId = setTimeout(appendShootingStar,Math.round(Math.random() * 1000) + 500);
+		}
 		$(function (){
-			$('#time-sight-svg').hover(function(){
-				$('.time-sight-static').hide();
-				$('#time-sight-path1').show();
-				$('#time-sight-path2').show();
-				$('.time-sight-short-path').show();
-				
-				$('.time-sight-icon-core').css('animation', 'flash-star-buzz 0.5s linear');
-				$('.time-sight-icon-core').css('animation-iteration-count','infinite');
-				
-				/*$('#time-sight-wave').append('<animate attributeType="XML" attributeName="d" '+
-				'values="M31.702,35.764l12.355-12.405c1.014-1.016,3.17-1.157,4.41,0.059l0,0'+
-				'c1.338,1.315,1.195,3.135,0,4.331 M48.455,46.56L55,39.164c1.299-1.3,1.365-3.341,0.146-4.559l0,0'+
-				'c-1.219-1.219-3.26-1.153-4.559,0.147 M48.467,27.749L37.004,39.377c-1.299,1.299-1.363,3.342-0.145,4.561l0,0'+
-				'c1.221,1.22,3.262,1.155,4.561-0.145l9.247-9.112 M48.697,46.292c-1.299,1.299-1.357,3.35-0.127,4.578l0,0'+
-				'c1.229,1.229,3.121,1.454,4.422,0.155 M55.258,56.796L71.38,40.962c1.299-1.3,1.342-3.365,0.092-4.613l0,0'+
-				'c-1.248-1.249-3.314-1.208-4.613,0.092L52.836,51.018 M55.258,56.796c-1.301,1.299-1.334,3.373-0.074,4.631l0,0'+
-				'c1.258,1.26,3.332,1.227,4.631-0.072l11.687-11.718 M64.417,66.372l20.887-20.911c1.301-1.301,1.273-3.434-0.059-4.766l0,0'+
-				'c-1.332-1.332-3.465-1.357-4.764-0.059L59.803,61.345;'+
-				'M31.6,35.764l6.295-6.345c1.014-1.016,3.17-1.157,4.41,0.059l0,0'+
-				'c1.338,1.315,1.195,3.135,0,4.331 M54.663,39.379l6.897-6.877c1.299-1.3,1.365-3.341,0.146-4.559l0,0'+
-				'c-1.219-1.219-3.26-1.153-4.559,0.147 M42.305,33.809l-5.403,5.568c-1.299,1.299-1.363,3.342-0.145,4.561l0,0'+
-				'c1.221,1.22,3.262,1.155,4.562-0.145L57.227,28.02 M54.663,39.379c-1.299,1.299-1.357,3.35-0.127,4.578l0,0'+
-				'c1.229,1.229,3.277,1.172,4.578-0.127 M55.157,56.796l21.846-21.557c1.299-1.3,1.342-3.365,0.092-4.613l0,0'+
-				'c-1.248-1.249-3.314-1.208-4.613,0.092L58.772,44.137 M55.157,56.796c-1.301,1.299-1.334,3.373-0.074,4.631l0,0'+
-				'c1.258,1.26,3.332,1.227,4.631-0.072L71.4,49.637 M64.315,66.372L76.212,54.45c1.301-1.301,1.273-3.434-0.059-4.766l0,0'+
-				'c-1.332-1.332-3.465-1.357-4.764-0.059l-11.688,11.72;'+
-				'M34.441,33.045l6.295-6.345c1.196-1.196,3.213-1.137,4.41,0.059l0,0'+
-				'c1.196,1.196,1.196,3.135,0,4.331 M54.697,39.412l11.342-11.341c1.299-1.3,1.365-3.341,0.146-4.559l0,0v
-				'c-1.219-1.219-3.26-1.153-4.559,0.147 M45.167,31.113l-8.264,8.264c-1.299,1.299-1.364,3.342-0.145,4.561l0,0'+
-				'c1.22,1.22,3.262,1.155,4.561-0.145l20.307-20.134 M54.664,39.379c-1.3,1.299-1.357,3.35-0.128,4.578l0,0v
-				'c1.229,1.229,3.278,1.172,4.578-0.127 M55.167,56.808l12.355-12.355c1.299-1.3,1.341-3.365,0.092-4.613l0,0'+
-				'c-1.248-1.249-3.314-1.208-4.613,0.092l-3.894,3.894 M55.157,56.796c-1.3,1.299-1.333,3.373-0.074,4.631l0,0'+
-				'c1.259,1.26,3.333,1.227,4.632-0.072l5.047-5.047 M64.315,66.372l5.259-5.251c1.3-1.301,1.273-3.434-0.059-4.766l0,0'+
-				'c-1.332-1.332-3.465-1.357-4.764-0.059l-5.05,5.049;'+
-				'M31.702,35.764l12.355-12.405c1.014-1.016,3.17-1.157,4.41,0.059l0,0v
-				'c1.338,1.315,1.195,3.135,0,4.331 M48.455,46.56L55,39.164c1.299-1.3,1.365-3.341,0.146-4.559l0,0'+
-				'c-1.219-1.219-3.26-1.153-4.559,0.147 M48.467,27.749L37.004,39.377c-1.299,1.299-1.363,3.342-0.145,4.561l0,0'+
-				'c1.221,1.22,3.262,1.155,4.561-0.145l9.247-9.112 M48.697,46.292c-1.299,1.299-1.357,3.35-0.127,4.578l0,0'+
-				'c1.229,1.229,3.121,1.454,4.422,0.155 M55.258,56.796L71.38,40.962c1.299-1.3,1.342-3.365,0.092-4.613l0,0'+
-				'c-1.248-1.249-3.314-1.208-4.613,0.092L52.836,51.018 M55.258,56.796c-1.301,1.299-1.334,3.373-0.074,4.631l0,0'+
-				'c1.258,1.26,3.332,1.227,4.631-0.072l11.687-11.718 M64.417,66.372l20.887-20.911c1.301-1.301,1.273-3.434-0.059-4.766l0,0'+
-				'c-1.332-1.332-3.465-1.357-4.764-0.059L59.803,61.345"'+
-					   'dur="1.5s"'+
-					   'fill="freeze"'+
-					   'keyTimes="0;.3;.8;1"'+
-					   'calcMode="spline"  keySplines=".5 0 .5 1;.5 0 .5 1;.5 0 .5 1"'+
-					   'repeatCount="indefinite"'+
-					   '></animate>');*/
-				  
+			//<circle fill="#ECECEC" cx="0.2" cy="20.045" r="1"/>
+			var sky = document.getElementById('sky');
+			for(var i = 0 ; i < 40 ; i++){
+				var circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+				circle.setAttribute('fill','#ECECEC');
+				circle.setAttribute('cx',Math.round(Math.random() * 80));
+				circle.setAttribute('cy',Math.round(Math.random() * 80));
+				circle.setAttribute('r',Math.random() * 1.5);
+				sky.appendChild(circle);
+			}
+			console.info('loaded');
+			
+			$('.topo-sight').hover(function(){
+				run();
 			},function(){
-        		$('.time-sight-static').show();
-        		$('#time-sight-path1').hide();
-				$('#time-sight-path2').hide();
-				$('.time-sight-short-path').hide();
-				$('.time-sight-icon-core').css('animation', 'none');
-				$('.time-sight-icon-core').css('animation-iteration-count',0);
+				stop();
 			});
 	    });
 	</script>
@@ -116,8 +133,66 @@
 							<div class="sight-bar">
 								<div class="main-menu-separate-line"></div>
 							
-								<div class="file-sight"></div>
-								<div class="topo-sight"></div>
+								<div class="file-sight">
+								
+									<svg version="1.1" id="file-sight-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 width="72.759px" height="82.005px" viewBox="0 0 72.759 82.005" enable-background="new 0 0 72.759 82.005" xml:space="preserve">
+										<path fill="none" stroke="#ECECEC" stroke-width="3.5" stroke-miterlimit="10" d="M69.875,31.457
+											c-19.25,0-34.125,9.625-34.125,9.625s-15.125-9.625-34-9.625c0,0,0,36.125,0,39.375c18.875,0,34,9.125,34,9.125
+											s14.875-9.125,34.125-9.125C69.875,64.332,69.875,35.207,69.875,31.457z"/>
+										<path id="file-sight-movepath" fill="none" stroke="#ECECEC" stroke-width="2" stroke-miterlimit="10" d="M6,18.154c12.285,0.178,29.812,8.875,29.812,8.875
+											s17.938-8.875,29.312-8.867"/> 
+										<path fill="none" stroke="#ECECEC" stroke-width="2" stroke-miterlimit="10" d="M2.938,24.457c15.25,0,32.875,8.875,32.875,8.875
+											s17.75-8.875,32.875-8.875"/>
+										<rect x="8.428" y="44.706" fill="none" width="64.331" height="23.252"/>
+										<text transform="matrix(1 0 0 1 8.4277 62.9648)" fill="#ECECEC" font-family="'NuevaStd-Bold'" font-size="22">E=MC</text>
+										<text transform="matrix(0.583 0 0 0.583 59.1592 55.6387)" fill="#ECECEC" font-family="'NuevaStd-Bold'" font-size="22">2</text>
+									</svg>
+								
+								</div>
+								
+								<div class="topo-sight">
+								<svg version="1.1" id="topo-sight-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80.637px" height="82.705px" viewBox="0 0 80.637 82.705" enable-background="new 0 0 80.637 82.705" xml:space="preserve">
+									<g id='sky' class='gstyle' style='opacity : 0;'>
+									</g>
+									<g class='gstyle' id='planet' transform='translate(0 0)' >
+										<g id='ball' class='gstyle' >
+											<circle fill="black" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" cx="40.194" cy="50.955" r="30.25"/>
+											<circle fill="#ECECEC" cx="18.319" cy="42.045" r="8.375"/>
+											<circle fill="#ECECEC" cx="46.165" cy="36.37" r="4.12"/>
+											<g id='shadowBalls' class='gstyle' style='opacity  : 0;'  >
+												<circle fill="#ECECEC" cx="66.165" cy="46.37" r="3.12"/>
+												<circle fill="#ECECEC" cx="50.165" cy="70.37" r="5.12"/>
+												<circle fill="#ECECEC" cx="22.165" cy="68.37" r="3.12"/>
+												<circle fill="#ECECEC" cx="40.165" cy="56.37" r="6.5"/>
+											</g>
+											<path fill="#ECECEC" d="M35.08,61.55c-1.058-1.218-1.698-2.808-1.698-4.548c0-3.831,3.106-6.938,6.938-6.938 c3.1,0,5.725,2.032,6.614,4.838C45.559,57.75,38.219,61.419,35.08,61.55z"/>
+											<animateTransform id='ballAnimation' attributeName=""
+												attributeType="XML"
+												type="rotate"
+												from="0 40.194 50.955"
+												to="3600 40.194 50.955"
+												dur="100s"
+												repeatCount="indefinite"/>
+										</g>
+										<path class='gstyle' style='opacity : 1;' id='shadow' fill="#ECECEC" d="M70.554,51.916c-0.508,16.263-13.85,29.289-30.235,29.289c-4.98,0-9.679-1.203-13.822-3.335 C41.06,75.916,60.383,62.53,70.554,51.916z"/>
+										<path id='bend' fill="#ECECEC" d="M66.182,25.11c6.934-0.751,11.865,0.299,13.951,3.182c3.801,6.208-14.449,27.583-36.335,37.891 c-16.239,9.066-38.864,15.021-43.25,6.75c-1.39-2.385-0.112-6.922,3.527-12.338l1.282,0.309c-2.138,3.495-2.991,6.651-2.348,9.197 c1.657,6.562,22.804,1.287,42.496-10.096c19.692-11.381,33.349-24.705,29.779-30.881c-1.227-2.121-4.325-3.124-8.664-3.063 L66.182,25.11z"/>
+									</g>
+									<circle id='moon' fill="none" stroke="#ECECEC" stroke-width="2.5" stroke-miterlimit="10" cx="60.127" cy="8.75" r="7.5">
+											<animateTransform id='moonAnimation' attributeName=""
+												attributeType="XML"
+												type="rotate"
+												from="0 60.194 80.955"
+												to="360 60.194 80.955"
+												dur="3s"
+												repeatCount="indefinite"/>
+									</circle>
+									<style>
+										transition : all 1s linear;
+									</style>
+								</svg>
+								</div>
+								
 								<div class="time-sight">
 									<svg id="time-sight-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									 viewBox="0 0 100.52 98.611" enable-background="new 0 0 100.52 98.611" xml:space="preserve">
@@ -155,9 +230,8 @@
 									<line id="time-sight-short-path4" class="time-sight-short-path" fill="none" stroke="#ECECEC" stroke-width="2" x1="89.237" y1="40.059" x2="95.854" y2="33.442"/>
 									</g>
 									<g id="time-sight-layer2">
-										<path id="time-sight-path1" fill="none" stroke="#ECECEC" stroke-width="2" d="M50.69,8.903c0,0-40.86,40.81-42.407,42.429
-											c-2.547,2.703-2.965,3.699-2.965,3.699"/>
-										<path id="time-sight-path2" fill="none" stroke="#ECECEC" stroke-width="2" d="M100.331,37.356l-8.603,8.6L49.573,88.111c-3.505,3.885-7.701,6.627-12.172,8.167"/>
+										<path id="time-sight-path1" fill="none" stroke="#ECECEC" stroke-width="2" d="M1.129,67.063c0.646-6.674,3.769-13.139,9.397-17.997L52.68,6.909"/>
+										<path id="time-sight-path2" fill="none" stroke="#ECECEC" stroke-width="2" d="M100.331,37.356l-8.603,8.6L49.573,88.111c-3.505,3.885-14.086,13.214-29.755,7.988"/>
 									<path id="time-sight-wave" fill="none" stroke="#ECECEC" stroke-width="3" d="M69.437,52.458c1.197-1.194,3.136-1.195,4.331,0l0,0
 										c1.197,1.197,1.257,3.215,0.06,4.41l-6.346,6.295 M76.869,35.979c1.3-1.298,1.365-3.34,0.147-4.559l0,0
 										c-1.219-1.219-3.26-1.152-4.56,0.146L61.115,42.909 M76.869,35.979L56.734,56.285c-1.298,1.301-1.363,3.344-0.145,4.562l0,0
@@ -166,139 +240,8 @@
 										c-1.248-1.249-3.312-1.207-4.613,0.092L43.719,42.439 M44.219,32.844l-5.047,5.047c-1.299,1.299-1.332,3.373-0.072,4.633l0,0
 										c1.257,1.259,3.332,1.226,4.63-0.075 M39.183,37.904l5.048-5.05c1.299-1.299,1.273-3.432-0.059-4.764l0,0
 										c-1.332-1.332-3.464-1.358-4.766-0.059l-5.25,5.259">
-										<!--animate attributeType="XML"
-											   attributeName="d"
-											   values="M31.702,35.764l12.355-12.405c1.014-1.016,3.17-1.157,4.41,0.059l0,0
-										c1.338,1.315,1.195,3.135,0,4.331 M48.455,46.56L55,39.164c1.299-1.3,1.365-3.341,0.146-4.559l0,0
-										c-1.219-1.219-3.26-1.153-4.559,0.147 M48.467,27.749L37.004,39.377c-1.299,1.299-1.363,3.342-0.145,4.561l0,0
-										c1.221,1.22,3.262,1.155,4.561-0.145l9.247-9.112 M48.697,46.292c-1.299,1.299-1.357,3.35-0.127,4.578l0,0
-										c1.229,1.229,3.121,1.454,4.422,0.155 M55.258,56.796L71.38,40.962c1.299-1.3,1.342-3.365,0.092-4.613l0,0
-										c-1.248-1.249-3.314-1.208-4.613,0.092L52.836,51.018 M55.258,56.796c-1.301,1.299-1.334,3.373-0.074,4.631l0,0
-										c1.258,1.26,3.332,1.227,4.631-0.072l11.687-11.718 M64.417,66.372l20.887-20.911c1.301-1.301,1.273-3.434-0.059-4.766l0,0
-										c-1.332-1.332-3.465-1.357-4.764-0.059L59.803,61.345;
-										M31.6,35.764l6.295-6.345c1.014-1.016,3.17-1.157,4.41,0.059l0,0
-										c1.338,1.315,1.195,3.135,0,4.331 M54.663,39.379l6.897-6.877c1.299-1.3,1.365-3.341,0.146-4.559l0,0
-										c-1.219-1.219-3.26-1.153-4.559,0.147 M42.305,33.809l-5.403,5.568c-1.299,1.299-1.363,3.342-0.145,4.561l0,0
-										c1.221,1.22,3.262,1.155,4.562-0.145L57.227,28.02 M54.663,39.379c-1.299,1.299-1.357,3.35-0.127,4.578l0,0
-										c1.229,1.229,3.277,1.172,4.578-0.127 M55.157,56.796l21.846-21.557c1.299-1.3,1.342-3.365,0.092-4.613l0,0
-										c-1.248-1.249-3.314-1.208-4.613,0.092L58.772,44.137 M55.157,56.796c-1.301,1.299-1.334,3.373-0.074,4.631l0,0
-										c1.258,1.26,3.332,1.227,4.631-0.072L71.4,49.637 M64.315,66.372L76.212,54.45c1.301-1.301,1.273-3.434-0.059-4.766l0,0
-										c-1.332-1.332-3.465-1.357-4.764-0.059l-11.688,11.72;
-										M34.441,33.045l6.295-6.345c1.196-1.196,3.213-1.137,4.41,0.059l0,0
-										c1.196,1.196,1.196,3.135,0,4.331 M54.697,39.412l11.342-11.341c1.299-1.3,1.365-3.341,0.146-4.559l0,0
-										c-1.219-1.219-3.26-1.153-4.559,0.147 M45.167,31.113l-8.264,8.264c-1.299,1.299-1.364,3.342-0.145,4.561l0,0
-										c1.22,1.22,3.262,1.155,4.561-0.145l20.307-20.134 M54.664,39.379c-1.3,1.299-1.357,3.35-0.128,4.578l0,0
-										c1.229,1.229,3.278,1.172,4.578-0.127 M55.167,56.808l12.355-12.355c1.299-1.3,1.341-3.365,0.092-4.613l0,0
-										c-1.248-1.249-3.314-1.208-4.613,0.092l-3.894,3.894 M55.157,56.796c-1.3,1.299-1.333,3.373-0.074,4.631l0,0
-										c1.259,1.26,3.333,1.227,4.632-0.072l5.047-5.047 M64.315,66.372l5.259-5.251c1.3-1.301,1.273-3.434-0.059-4.766l0,0
-										c-1.332-1.332-3.465-1.357-4.764-0.059l-5.05,5.049;
-										M31.702,35.764l12.355-12.405c1.014-1.016,3.17-1.157,4.41,0.059l0,0
-										c1.338,1.315,1.195,3.135,0,4.331 M48.455,46.56L55,39.164c1.299-1.3,1.365-3.341,0.146-4.559l0,0
-										c-1.219-1.219-3.26-1.153-4.559,0.147 M48.467,27.749L37.004,39.377c-1.299,1.299-1.363,3.342-0.145,4.561l0,0
-										c1.221,1.22,3.262,1.155,4.561-0.145l9.247-9.112 M48.697,46.292c-1.299,1.299-1.357,3.35-0.127,4.578l0,0
-										c1.229,1.229,3.121,1.454,4.422,0.155 M55.258,56.796L71.38,40.962c1.299-1.3,1.342-3.365,0.092-4.613l0,0
-										c-1.248-1.249-3.314-1.208-4.613,0.092L52.836,51.018 M55.258,56.796c-1.301,1.299-1.334,3.373-0.074,4.631l0,0
-										c1.258,1.26,3.332,1.227,4.631-0.072l11.687-11.718 M64.417,66.372l20.887-20.911c1.301-1.301,1.273-3.434-0.059-4.766l0,0
-										c-1.332-1.332-3.465-1.357-4.764-0.059L59.803,61.345"
-											   dur="1.5s"
-											   fill="freeze"
-											   keyTimes="0;.3;.8;1"
-											   calcMode="spline"  keySplines=".5 0 .5 1;.5 0 .5 1;.5 0 .5 1"
-											   repeatCount="indefinite"
-											   >
-										</animate-->
 									</path>
 									</g>
-									<style>
-									#time-sight-path1 {
-										display: none;
-										stroke-dasharray: 60;
-										animation: time-sight-dash 1.8s linear;
-										animation-iteration-count: infinite;
-									}
-
-									#time-sight-path2 {
-										display: none;
-										stroke-dasharray: 40;
-										animation: time-sight-dash 1s linear;
-										animation-iteration-count: infinite;
-									}
-
-									#time-sight-short-path1 {
-										display: none;
-										stroke-dasharray: 15 50;
-										animation: time-sight-dash 3s linear reverse;
-										animation-iteration-count: infinite;
-									}
-
-									#time-sight-short-path2 {
-										display: none;
-										stroke-dasharray: 30 50;
-										animation: time-sight-dash 3s linear reverse;
-										animation-iteration-count: infinite;
-									}
-
-									#time-sight-short-path3 {
-										display: none;
-										stroke-dasharray: 10 50;
-										animation: time-sight-dash 4s linear reverse;
-										animation-iteration-count: infinite;
-									}
-
-									#time-sight-short-path4 {
-										display: none;
-										stroke-dasharray: 8 50;
-										animation: time-sight-dash 3s linear reverse;
-										animation-iteration-count: infinite;
-									}
-
-
-									@keyframes time-sight-dash {
-										to {
-										stroke-dashoffset: 300;
-										}
-									}
-									
-									
-									/*.time-sight-icon-core {
-										animation: flash-star-buzz 0.5s linear;
-										animation-iteration-count: infinite;
-									}*/
-									
-									@keyframes flash-star-buzz {
-										10% {
-											transform: translateX(3px) rotate(2deg);
-										}
-										20% {
-											transform: translateX(-3px) rotate(-2deg);
-										}
-										30% {
-											transform: translateX(3px) rotate(2deg);
-										}
-										40% {
-											transform: translateX(-3px) rotate(-2deg);
-										}
-										50% {
-											transform: translateX(2px) rotate(1deg);
-										}
-										60% {
-											transform: translateX(-2px) rotate(-1deg);
-										}
-										70% {
-											transform: translateX(2px) rotate(1deg);
-										}
-										80% {
-											transform: translateX(-2px) rotate(-1deg);
-										}
-										90% {
-											transform: translateX(1px) rotate(0deg);
-										}
-										100% {
-											transform: translateX(-1px) rotate(0deg);
-										}
-									}
-
-									</style>
 									</svg>
 								
 								</div>
@@ -307,7 +250,59 @@
 							</div>
 					
 							<div class="operation-bar">
-								<div class="main-menu-icon-search"></div>
+								<div class="main-menu-icon-search">
+									<svg version="1.1" id="search-sight-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 width="90.642px" height="98.009px" viewBox="0 0 90.642 98.009" enable-background="new 0 0 90.642 98.009" xml:space="preserve">
+										<g id="search-telescope">
+										<g id="search-telescope-top">
+										<polyline fill="none" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" points="63.448,21.787 30.896,32.024 
+											36.78,59.634 70.634,52.937 	"/>
+										<polyline fill="none" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" points="31.872,36.608 4.568,45.589 8.579,62.128 
+											35.972,55.838 	"/>
+										<line fill="none" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" x1="45.837" y1="35.496" x2="61.308" y2="31.069"/>
+										<line fill="none" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" x1="35.972" y1="38.319" x2="41.786" y2="36.655"/>
+										<path fill="none" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" d="M7.7,58.507l-1.397,0.37
+											c-1.936,0.513-4.006-0.971-4.627-3.313l0,0c-0.619-2.342,0.448-4.656,2.384-5.168l1.573-0.417L7.7,58.507z"/>
+										<path fill="none" stroke="#ECECEC" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" d="M82.481,55.241
+											c-0.195,2.202-1.785,4.124-4.061,4.643l0,0c-2.818,0.643-5.625-1.121-6.268-3.938l-9.145-40.181
+											c-0.639-2.816,1.129-5.618,3.949-6.263l0,0c2.307-0.524,4.607,0.561,5.719,2.517"/>
+										<path fill="#ECECEC" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" d="M72.673,12.025
+											c9.697,4.27,16.469,13.965,16.469,25.24c0,6.866-2.512,13.146-6.664,17.972L72.673,12.025z"/>
+										</g>	
+										<polyline fill="none" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" points="38.308,59.634 38.308,64.319 
+											40.058,64.319 40.058,69.319 48.64,69.319 48.64,64.476 50.765,64.476 50.765,57.819 	"/>
+										<line fill="none" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" x1="40.058" y1="69.319" x2="4.558" y2="104.819"/>
+										<line fill="none" stroke="#ECECEC" stroke-width="3" stroke-miterlimit="10" x1="48.64" y1="69.319" x2="84.14" y2="104.819"/>
+										<line fill="none" stroke="#ECECEC" stroke-width="4" stroke-miterlimit="10" x1="44.536" y1="69.319" x2="44.536" y2="104.819"/>
+										</g>
+										<g id="search-telescope-stars">
+											<circle fill="#ECECEC" cx="10.241" cy="21.592" r="0.821"/>
+											<circle id="search-telescope-stars2" fill="#ECECEC" cx="17.099" cy="16.043" r="2.301"/>
+											<circle fill="#ECECEC" cx="4.653" cy="32.246" r="1.027"/>
+											<circle fill="#ECECEC" cx="86.02" cy="45.027" r="1.495"/>
+											<circle fill="#ECECEC" cx="29.563" cy="4.292" r="0.688"/>
+											<circle fill="#ECECEC" cx="49.232" cy="1.666" r="1.054"/>
+											<circle fill="#ECECEC" cx="3.564" cy="14.463" r="1.089"/>
+											<circle fill="#ECECEC" cx="74.176" cy="50.668" r="1.181"/>
+											<circle fill="#ECECEC" cx="66.263" cy="70.054" r="1.228"/>
+											<circle id="search-telescope-stars1" fill="#ECECEC" cx="83.638" cy="57.261" r="1.775"/>
+											<circle fill="#ECECEC" cx="71.998" cy="14.463" r="2.178"/>
+											<circle fill="#ECECEC" cx="89.461" cy="23.593" r="1.181"/>
+										</g>
+										<g id="search-telescope-ship">
+											<path fill="#ECECEC" d="M10.786,11.309c0.485-4.623,3.686-8.848,8.537-10.554l0,0c4.956-1.745,10.223-0.36,13.483,3.106
+												C26.297,4.622,16.914,7.554,10.786,11.309z"/>
+											<path fill="none" stroke="#ECECEC" stroke-miterlimit="10" d="M45.529,3.791c2.848,1.352-7.422,9.675-19.727,14.008
+												c-12.308,4.333-25.427,4.849-24.423,1.863c1.155-3.425,7.877-8.876,20.39-13.227C34.347,2.06,42.328,2.271,45.529,3.791z"/>
+	
+												<ellipse transform="matrix(0.9433 -0.3321 0.3321 0.9433 -4.161 9.1816)" fill="none" stroke="#ECECEC" stroke-miterlimit="10" cx="24.785" cy="16.766" rx="13.835" ry="2.533"/>
+											<circle fill="#ECECEC" stroke="#ECECEC" stroke-miterlimit="10" cx="12.241" cy="15.497" r="2.098"/>
+											<path fill="#ECECEC" stroke="#ECECEC" stroke-miterlimit="10" d="M25.301,8.899c0.385,1.093-0.188,2.292-1.283,2.675
+												c-1.093,0.386-2.291-0.19-2.677-1.282c-0.382-1.093,0.19-2.291,1.282-2.675C23.718,7.231,24.915,7.807,25.301,8.899z"/>
+											<path fill="#ECECEC" stroke="#ECECEC" stroke-miterlimit="10" d="M36.163,7.079c0.383,1.093-0.189,2.291-1.283,2.676
+												c-1.093,0.383-2.289-0.191-2.675-1.283c-0.384-1.093,0.188-2.291,1.281-2.675C34.582,5.411,35.779,5.985,36.163,7.079z"/>
+										</svg>
+								</div>
 								<div class="main-menu-separate-line"></div>
 							</div>
 						</div>
@@ -416,7 +411,7 @@
 							<div class="log-item-title">
 								这条日志用<p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>中文</span><span>#</span></p>写
 							</div>
-							<div class="log-item-detail">
+							<div >
 								还有就是中文的显示，也<p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>还好</span><span>#</span></p>
 								通过CSS3的transition<p class="log-item-tag-words" style="color: rgb(121,178,234);background-color:rgba(121,178,234,0.1);"><span>#</span><span>模仿制作<span>#</span></p><img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/>jQuery的slideshow效果，
 								当然这种效果跟js和jQ制作出来的是没得比，但有时还是可以用一用的，以前腾讯就使用过这样的一个效果。著作权归作者所有。
@@ -432,14 +427,14 @@
 							<div class="log-item-title">
 								This is a <p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></p>
 							</div>
-							<div class="log-item-detail">
+							
 								I don’t known how can I make a perfect work.
 								That sad moment you lease an earbud one day 
 								before <p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></p> starts..
 								Because of their annoyance and <p class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></p>       
 								to find a way to say "please do us all a favor and “FUCKING STOP” nicely 
 								I held in all my rage and ended up yelling at my <p class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></p>
-							</div>
+							
 							
 							<div class="log-item-files-wrapper">
 								<!--div class="log-item-files-row">dfdf
