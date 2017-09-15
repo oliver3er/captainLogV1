@@ -377,8 +377,8 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .sight-bar .time-sight:hover #time-sight-wave {
 	animation: time-sight-wave-move 1.5s ease-in-out;
 	animation-iteration-count: infinite;
-	##keyTimes="0;.3;.8;1"
-	##calcMode="spline"  keySplines=".5 0 .5 1;.5 0 .5 1;.5 0 .5 1"
+	/*keyTimes="0;.3;.8;1"*/
+	/*calcMode="spline"  keySplines=".5 0 .5 1;.5 0 .5 1;.5 0 .5 1"*/
 }
 
 
@@ -396,12 +396,12 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .main-menu-icon-search {
 	border: 1px dashed rgba(170,171,174,0.8);
-	##background-color: rgba(47,49,54,0.8);
+	/*##background-color: rgba(47,49,54,0.8);*/
 	margin-top: 0;
-	##background-image: url(../images/search-icon.svg);
-	##background-position: center center;
-	##background-image: url(../images/search-telescope.svg);
-	##background-size: 40px;
+	/*##background-image: url(../images/search-icon.svg);*/
+	/*##background-position: center center;*/
+	/*##background-image: url(../images/search-telescope.svg);*/
+	/*##background-size: 40px;*/
 	overflow: hidden;
 }
 
@@ -528,7 +528,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	animation-delay:1.5s;
 	animation-iteration-count: infinite; 
 	animation-fill-mode: forwards;
-	##infinite
+	/*infinite*/
 }
 
 #search-telescope-stars {
