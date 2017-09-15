@@ -1086,6 +1086,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	font-weight: 400;
 	color: #ececec;
 	line-height: 1.6rem;
+	margin-bottom: 8px;
 }
 
 .log-item-title .log-item-tag-words {
