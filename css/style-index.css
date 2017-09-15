@@ -209,7 +209,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .sight-bar .file-sight:hover {
-	background-color: rgba(9,9,198,0.6);
+	background-color: #000;/*rgba(9,9,198,0.6);*/
 	border: 0;
 	border-radius: 12px;
 }
@@ -253,7 +253,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .sight-bar .topo-sight:hover {
-	background-color: rgba(9,9,198,0.6);
+	background-color: #000;/*rgba(9,9,198,0.6);*/
 	border: 0;
 	border-radius: 12px;
 }
@@ -263,6 +263,50 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	height: auto;
 	padding-top: 2px;
 }
+
+@keyframes topo-sight-move {
+	65% {
+		transform: rotateZ(50deg) translateX(30px) translateY(-40px) scale(0.6,0.6);
+	}
+	70% {
+		transform: rotateZ(50deg) translateX(35px) translateY(-40px) scale(0.6,0.6);
+	}
+	80% {
+		transform: rotateZ(30deg) translateX(-20px) translateY(-60px) scale(0.5,0.5);
+	}
+	85% {
+		transform: rotateZ(10deg) translateX(-50px) translateY(-80px) scale(0.4,0.4);
+	}
+		
+}
+
+.sight-bar .topo-sight:hover #topo-sight-svg-planet { 
+	animation: topo-sight-move 3.5s linear;
+	animation-iteration-count: infinite;
+}
+
+@keyframes topo-sight-planet-star-move {
+	
+    100% {
+    	offset-distance: 100%;
+    	transform: scale(0.6,0.6);
+    }
+}
+.sight-bar .topo-sight:hover #topo-sight-planet-star { 
+	cx: 0;
+	cy: 0;
+  	offset-path: path('M43.642,3.58c22.139,0,40.084,17.377,40.084,38.812c0,21.436-17.945,38.813-40.084,38.813c-22.137,0-40.083-17.377-40.083-38.813c0-15.721,18.667-89.637,5.667-99.972');
+  	animation: topo-sight-planet-star-move 3.5s linear infinite;
+}
+
+
+@keyframes topo-sight-planet-path1-move {
+	transform: rotate(-20deg);
+}
+.sight-bar .topo-sight:hover #topo-sight-planet-path1 {
+	animation: topo-sight-planet-path1-move 4s linear infinite;
+}
+
 
 .sight-bar .time-sight {
 	width: 50px;
@@ -276,7 +320,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .sight-bar .time-sight:hover {
-	background-color: rgba(9,9,198,0.6);
+	background-color: #000;/*rgba(9,9,198,0.6);*/
 	border: 0;
 	border-radius: 12px;
 }
@@ -403,36 +447,42 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	##background-image: url(../images/search-telescope.svg);
 	##background-size: 40px;
 	overflow: hidden;
+	text-align: center;
 }
 
 .main-menu-icon-search:hover {
-	background-color: rgba(9,9,198,0.6);
+	background-color: #000;/*rgba(9,9,198,0.6);*/
 	border: 0;
 	border-radius: 12px;
 }
 
 #search-sight-svg {
-	width: 40px;
+	width: 38px;
 	height: auto;
 	margin-top: 4px;
-	margin-left: 3px;
 }
 
 @keyframes search-telescope-move {
-	50% {
-		transform: rotateY(-30deg) translateX(8px);
-	}
+	/*50% {
+		transform:rotateY(-30deg)  translateX(8px);
+	}*/
 	100% {
-		transform: rotateZ(-15deg) rotateY(-30deg) translateX(-8px) translateY(10px);
+		transform: rotateZ(-15deg) translateX(-10px) translateY(10px);
 	}
 }
 
 @keyframes search-telescope-top-scale {
-	50% {
+	/*50% {
 		transform: scale(0.8,0.8) translateX(-8px) translateY(25px);
 	}
 	100% {
 		transform: scale(0.65,0.65) translateX(-6px) translateY(45px);
+	}*/
+	/*50% {
+		transform: scale(1.1,1.1) translateX(-30px) translateY(10px);
+	}*/
+	100% {
+		transform: scale(1.3,1.3) translateX(-55px) translateY(25px);
 	}
 }
 
@@ -451,13 +501,13 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 @keyframes search-telescope-flash2 {
 	30% {
-		opacity: 0.9;
-	}
-	50% {
 		opacity: 0.8;
 	}
+	50% {
+		opacity: 0.6;
+	}
 	100% {
-		opacity: 0;
+		opacity: 0.1;
 	}
 }
 
@@ -469,51 +519,36 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 		opacity: 0.8;
 		transform: translateX(30px) translateY(-10px) rotateZ(30deg);
 	}
-	30% {
+	25% {
 		opacity: 1;
-		transform: translateX(60px) translateY(-4px) rotateZ(50deg);
+		transform: translateX(40px) translateY(-4px) rotateZ(35deg) scale(1.2,1.2);
 	}
-	45% {
+	35% {
 		opacity: 1;
-		transform: translateX(62px) translateY(-7px) rotateZ(50deg) rotate(-3deg);
-	}
-	/*50% {
-		opacity: 1;
-		transform: translateX(58px) translateY(-2px) rotateZ(50deg) rotate(3deg);
-	}
-	55% {
-		opacity: 1;
-		transform: translateX(62px) translateY(-7px) rotateZ(30deg) rotate(3deg);
-	}
-	60% {
-		opacity: 1;
-		transform: translateX(58px) translateY(-2px) rotateZ(30deg) rotate(-3deg);
-	}
-	65% {
-		opacity: 1;
-		transform: translateX(63px) translateY(-7px) rotateZ(60deg) rotate(3deg);
-	}
-	70% {
-		opacity: 1;
-		transform: translateX(58px) translateY(-2px) rotateZ(30deg) rotate(-3deg);
-	}
-	75% {
-		opacity: 1;
-		transform: translateX(63px) translateY(-7px) rotateZ(60deg) rotate(3deg);
+		transform: translateX(45px) translateY(-7px) rotateZ(35deg) scale(1.3,1.3);
 	}
 	80% {
 		opacity: 1;
-		transform: translateX(58px) translateY(-2px) rotateZ(50deg) rotate(3deg);
-	}*/
+		transform: rotate(30deg) translateX(30px) translateY(-30px) scale(1.5,1.5);
+	}
 	100% {
 		opacity: 1;
 		transform: translateX(150px) translateY(-20px) rotateZ(30deg) rotate(-3deg) scale(3,3);
 	}
 }
 
+@keyframes search-telescope-ship-light-flash {
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .main-menu-icon-search:hover #search-telescope {
 	animation: search-telescope-top-scale 0.6s linear;
-	animation-delay:0.5s;
+	/*animation-delay:0.5s;*/
 	animation-iteration-count: 1; 
 	animation-fill-mode: forwards;
 }
@@ -524,11 +559,26 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .main-menu-icon-search:hover #search-telescope-ship {
-	animation: search-telescope-ship-move 3s linear;
-	animation-delay:1.5s;
+	animation: search-telescope-ship-move 3.5s linear;
+	animation-delay: 1s;
 	animation-iteration-count: infinite; 
 	animation-fill-mode: forwards;
 	##infinite
+}
+.main-menu-icon-search:hover #search-telescope-ship-light1 {
+	animation: search-telescope-ship-light-flash 0.8s linear;
+	animation-delay: 0.5s;
+	animation-iteration-count: infinite; 
+}
+.main-menu-icon-search:hover #search-telescope-ship-light2 {
+	animation: search-telescope-ship-light-flash 0.8s linear;
+	animation-delay: 1s;
+	animation-iteration-count: infinite; 
+}
+.main-menu-icon-search:hover #search-telescope-ship-light3 {
+	animation: search-telescope-ship-light-flash 0.5s linear;
+	animation-delay: 1.5s;
+	animation-iteration-count: infinite; 
 }
 
 #search-telescope-stars {
@@ -541,20 +591,20 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .main-menu-icon-search:hover #search-telescope-stars{
 	animation: search-telescope-sky 2s linear;
-	animation-delay:1s;
+	/*animation-delay:1s;*/
 	animation-iteration-count: 1; 
 	animation-fill-mode: forwards;
 }
 
 .main-menu-icon-search:hover #search-telescope-stars1{
 	animation: search-telescope-flash 2.5s linear;
-	animation-delay:1.5s;
+	/*animation-delay:1.5s;*/
 	animation-iteration-count: infinite; 
 }
 
 .main-menu-icon-search:hover #search-telescope-stars2{
 	animation: search-telescope-flash2 2s linear;
-	animation-delay:2s;
+	/*animation-delay:2s;*/
 	animation-iteration-count: infinite; 
 }
 
