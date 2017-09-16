@@ -216,20 +216,20 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .sight-bar .file-sight:hover #file-sight-movepath {
 	animation-delay:1s;
-	animation: path 1.3s infinite;
+	animation: path 1.3s infinite ease-in;
 }
 
 @keyframes path {
 	20% {
 		d:path('M6,18.154c12.285,0.178,29.812,8.875,29.812,8.875S49.875,11.164,60.875,9.748');
 	}
-	45% {
+	50% {
 		d:path('M6,18.154c12.285,0.178,29.812,8.875,29.812,8.875S43.458,6.496,51.041,3.081');
 	}
-	50% {
+	55% {
 		d:path('M35.812,0.553v26.112c0,0-20.188-8.511-29.812-8.875');
 	}
-	70% {
+	65% {
 		d:path('M6,18.154c12.285,0.178,28.458,8.011,28.458,8.011S27.625,5.413,20.375,3.081');
 	}
 	80% {
@@ -281,7 +281,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .sight-bar .topo-sight:hover #topo-sight-svg-planet { 
-	animation: topo-sight-move 3.5s linear;
+	animation: topo-sight-move 3.5s cubic-bezier(.5,.1,.32,1);
 	animation-iteration-count: infinite;
 }
 
@@ -296,7 +296,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	cx: 0;
 	cy: 0;
   	offset-path: path('M43.642,3.58c22.139,0,40.084,17.377,40.084,38.812c0,21.436-17.945,38.813-40.084,38.813c-22.137,0-40.083-17.377-40.083-38.813c0-15.721,18.667-89.637,5.667-99.972');
-  	animation: topo-sight-planet-star-move 3.5s linear infinite;
+  	animation: topo-sight-planet-star-move 3.5s cubic-bezier(1,.1,.32,.5) infinite;
 }
 
 
@@ -472,15 +472,6 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 @keyframes search-telescope-top-scale {
-	/*50% {
-		transform: scale(0.8,0.8) translateX(-8px) translateY(25px);
-	}
-	100% {
-		transform: scale(0.65,0.65) translateX(-6px) translateY(45px);
-	}*/
-	/*50% {
-		transform: scale(1.1,1.1) translateX(-30px) translateY(10px);
-	}*/
 	100% {
 		transform: scale(1.3,1.3) translateX(-55px) translateY(25px);
 	}
@@ -512,8 +503,8 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 @keyframes search-telescope-ship-move {
-	5% {
-		opacity: 0;
+	/*5% {
+		opacity: 0.6;
 	}
 	15% {
 		opacity: 0.8;
@@ -522,7 +513,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	25% {
 		opacity: 1;
 		transform: translateX(40px) translateY(-4px) rotateZ(35deg) scale(1.2,1.2);
-	}
+	}*/
 	35% {
 		opacity: 1;
 		transform: translateX(45px) translateY(-7px) rotateZ(35deg) scale(1.3,1.3);
@@ -559,11 +550,10 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .main-menu-icon-search:hover #search-telescope-ship {
-	animation: search-telescope-ship-move 3.5s linear;
-	animation-delay: 1s;
+	animation: search-telescope-ship-move 3.5s cubic-bezier(.94,-0.25,.32,1.31);
+	animation-delay: 0.5s;
 	animation-iteration-count: infinite; 
 	animation-fill-mode: forwards;
-	##infinite
 }
 .main-menu-icon-search:hover #search-telescope-ship-light1 {
 	animation: search-telescope-ship-light-flash 0.8s linear;
