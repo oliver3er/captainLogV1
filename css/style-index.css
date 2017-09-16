@@ -196,10 +196,10 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .sight-bar .file-sight {
 	border: 1px dashed rgba(170,171,174,0.8);
-	##background-color: rgba(47,49,54,0.8);
-	##background-image: url(../images/file-sight-icon.svg);
-	##background-image: url(../images/book.svg);
-	##background-size: 38px;
+	/*background-color: rgba(47,49,54,0.8);
+	background-image: url(../images/file-sight-icon.svg);*/
+	/*background-image: url(../images/book.svg);
+	background-size: 38px;*/
 	text-align: center;
 }
 
@@ -215,7 +215,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .sight-bar .file-sight:hover #file-sight-movepath {
-	animation-delay:1s;
+	animation-delay: 2s;
 	animation: path 1.3s infinite ease-in;
 }
 
@@ -245,9 +245,9 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .sight-bar .topo-sight {
 	border: 1px dashed rgba(170,171,174,0.8);
-	##background-color: rgba(47,49,54,0.8);
-	##background-image: url(../images/planet.svg);
-	##background-size: 42px;
+	/*background-color: rgba(47,49,54,0.8);
+	background-image: url(../images/planet.svg);
+	background-size: 42px;*/
 	overflow: hidden;
 	text-align: center;
 }
@@ -313,10 +313,10 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	height: 50px;
 	overflow: hidden;
 	border: 1px dashed rgba(170,171,174,0.8);
-	##background-color: rgba(47,49,54,0.8);
-	##background-image: url(../images/time-sight-icon.svg);
-	##background-image: url(../images/flash-star.svg);
-	##background-size: 48px;
+	/*background-color: rgba(47,49,54,0.8);
+	background-image: url(../images/time-sight-icon.svg);
+	background-image: url(../images/flash-star.svg);
+	background-size: 48px;*/
 }
 
 .sight-bar .time-sight:hover {
@@ -346,7 +346,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	stroke-dasharray: 60;
 	animation: time-sight-dash 1.5s linear reverse;
 	animation-iteration-count: infinite;
-	transition-delay:0.5s;
+	transition-delay: 0.5s;
 }
 
 #time-sight-path2 {
@@ -421,8 +421,8 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .sight-bar .time-sight:hover #time-sight-wave {
 	animation: time-sight-wave-move 1.5s ease-in-out;
 	animation-iteration-count: infinite;
-	##keyTimes="0;.3;.8;1"
-	##calcMode="spline"  keySplines=".5 0 .5 1;.5 0 .5 1;.5 0 .5 1"
+	/*keyTimes="0;.3;.8;1"
+	calcMode="spline"  keySplines=".5 0 .5 1;.5 0 .5 1;.5 0 .5 1"*/
 }
 
 
@@ -440,12 +440,11 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .main-menu-icon-search {
 	border: 1px dashed rgba(170,171,174,0.8);
-	##background-color: rgba(47,49,54,0.8);
 	margin-top: 0;
-	##background-image: url(../images/search-icon.svg);
-	##background-position: center center;
-	##background-image: url(../images/search-telescope.svg);
-	##background-size: 40px;
+	/*background-image: url(../images/search-icon.svg);
+	background-position: center center;
+	background-image: url(../images/search-telescope.svg);
+	background-size: 40px;*/
 	overflow: hidden;
 	text-align: center;
 }
@@ -605,7 +604,6 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .main-menu-icon-user {
 	background-image: url(../images/portrait.png),radial-gradient(circle at center, #929292 0, #d9d9d9 70%, #eeeeee 100%);
-	##background-color: rgba(184,184,184,0.8);
 	border: 1px solid rgba(21,25,28,0.8);
 	margin-bottom: 20px;
 }
@@ -782,7 +780,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .widgets-foot-btn-stretch {
-	##margin-top: 8px;
+	/*margin-top: 8px;*/
 	margin-right: 6px;
 	width: 16px;
 	height: 33px;
