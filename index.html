@@ -8,81 +8,29 @@
 	<link rel="stylesheet" href="css/style-index.css" type="text/css" media="all" />
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript">
-		/*var timeId;
-		function run (){
-			if(!timeId){
-				document.getElementById('planet').setAttribute('transform','translate(25 25)');
-				document.getElementById('ballAnimation').setAttribute('attributeName','transform');
-				document.getElementById('moonAnimation').setAttribute('attributeName','transform');
-				document.getElementById('shadow').setAttribute('style','opacity : 0');
-				document.getElementById('shadowBalls').setAttribute('style','opacity : 1');
-				document.getElementById('sky').setAttribute('style','opacity : 1');
-				timeId = setTimeout(appendShootingStar,1000);
-			}
-		}
-		function stop () {
-			if(timeId){
-				document.getElementById('planet').setAttribute('transform','translate(0 0)');
-				document.getElementById('ballAnimation').setAttribute('attributeName','');
-				document.getElementById('moonAnimation').setAttribute('attributeName','');
-				document.getElementById('shadow').setAttribute('style','opacity : 1');
-				document.getElementById('shadowBalls').setAttribute('style','opacity : 0');
-				document.getElementById('sky').setAttribute('style','opacity : 0');
-				clearTimeout(timeId);
-				timeId = undefined;
-				console.info('stop timer and go back');
-			}else{
-				console.info('no need to stop , the timeId',timeId);
-			}
-		}
-		function appendShootingStar(){
-			{
-				//remove frist
-				var star = document.getElementById('star1');
-				if(star){
-					star.parentNode.removeChild(star);
-				}
-			}
-			var sky = document.getElementById('sky');
-			var line = document.createElementNS("http://www.w3.org/2000/svg", 'line');
-			line.setAttribute('id','star1');
-			line.setAttribute('fill','none');
-			line.setAttribute('stroke','#ECECEC');
-			var x = Math.random() * 30 + 20;
-			var y = Math.random() * 30;
-			line.setAttribute('x1',x);
-			line.setAttribute('y1',y);
-			line.setAttribute('x2',x-60);
-			line.setAttribute('y2',y+150);
-			line.setAttribute('style','transition: all .5s linear;stroke-dasharray : 100;stroke-dashoffset:100;');
-			sky.appendChild(line);
-			timeId = setTimeout(runShootingStar,10);
-			console.info('append a new one , x:',x,'y:',y);
-		}
-		function runShootingStar() {
-			var star = document.getElementById('star1');
-			star.setAttribute('style','transition: all .5s linear;stroke-dasharray : 100;stroke-dashoffset:-100;');
-			console.info('start star...');
-			timeId = setTimeout(appendShootingStar,Math.round(Math.random() * 1000) + 500);
-		}
+	
 		$(function (){
-			var sky = document.getElementById('sky');
-			for(var i = 0 ; i < 40 ; i++){
-				var circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
-				circle.setAttribute('fill','#ECECEC');
-				circle.setAttribute('cx',Math.round(Math.random() * 80));
-				circle.setAttribute('cy',Math.round(Math.random() * 80));
-				circle.setAttribute('r',Math.random() * 1.5);
-				sky.appendChild(circle);
-			}
-			console.info('loaded');
-			
-			$('.topo-sight').hover(function(){
-				run();
-			},function(){
-				stop();
+			$('.widgets-btns').find('div[class^="widgets-btn-"]').bind('click',function(){
+				var widgetsBtn = $(this);
+				var btnName = $(this).attr('class');
+				var btnPartName = btnName.substring(btnName.lastIndexOf('-')+1,btnName.length);
+				if(btnPartName != "selected"){			
+					var preSelectedBtn = $(".widgets-btns").find("div[class$='-selected']");
+					var preSelectedBtnName = preSelectedBtn.attr('class');
+					var preSelectedBtnPartName = preSelectedBtnName.substring(0,preSelectedBtnName.lastIndexOf('-'));
+					preSelectedBtn.removeClass().addClass(preSelectedBtnPartName);
+					
+					widgetsBtn.removeClass().addClass(btnName+"-selected");
+				}
 			});
-	    });*/
+			
+			$(".widgets-foot-btn-stretch").bind("click",function(){
+				$(".widgets-main").hide();
+				$(".widgets-main-mix").show();
+				$(".index-widgets").css("width","20px");
+				$("#btn-stretch-svg").css("transform","rotate(180deg)");
+			});
+	    });
 	</script>
 </head>
 <body>
@@ -237,7 +185,8 @@
 												c-1.093,0.386-2.291-0.19-2.677-1.282c-0.382-1.093,0.19-2.291,1.282-2.675C23.718,7.231,24.915,7.807,25.301,8.899z"/>
 											<path id="search-telescope-ship-light3" fill="#ECECEC" stroke="#ECECEC" stroke-miterlimit="10" d="M36.163,7.079c0.383,1.093-0.189,2.291-1.283,2.676
 												c-1.093,0.383-2.289-0.191-2.675-1.283c-0.384-1.093,0.188-2.291,1.281-2.675C34.582,5.411,35.779,5.985,36.163,7.079z"/>
-										</svg>
+										</g>
+									</svg>
 								</div>
 								<div class="main-menu-separate-line"></div>
 							</div>
@@ -258,7 +207,7 @@
 			
 					<div class="widgets-btns-bar">
 						<div class="widgets-btns">
-							<div class="widgets-btn-topo widgets-btn-selected"></div>
+							<div class="widgets-btn-topo-selected"></div>
 							<div class="widgets-btn-usual"></div>
 							<div class="widgets-btn-todo"></div>
 							<div class="widgets-btn-chart"></div>
@@ -282,10 +231,15 @@
 					</div>
 					
 				</div>
-				
+				<div class="widgets-main-mix" style="display:none;height: 100%;"></div>
 				<div class="widgets-foot">
 					<div class="widgets-foot-line"></div>
-					<div class="widgets-foot-btn-stretch"></div>
+					<div class="widgets-foot-btn-stretch">
+						<svg id="btn-stretch-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
+	 height="15.353px" viewBox="0 0 16 15.353" enable-background="new 0 0 16 15.353" xml:space="preserve">
+							<path id="btn-stretch-svg-path" fill="#91969B" d="M0,7.677L16,0l-4.923,7.677L16,15.353L0,7.677z"/>
+	 					</svg>
+					</div>
 				</div>
 				
 			</div>
@@ -331,15 +285,15 @@
 					
 						<div class="content-log-item">
 							<div class="log-item-title">
-								This is a <p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></p>
+								This is a <div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></div>
 							</div>
 							<div >
 								I don’t known how can I make a perfect work.
 								That sad moment you lease an earbud one day 
-								before <p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></p> starts..
-								Because of their annoyance and <p class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></p>       
+								before <div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></div> starts..
+								Because of their annoyance and <div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></div>       
 								to find a way to say "please do us all a favor and “FUCKING STOP” nicely<img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/> 
-								I held in all my rage and ended up yelling at my <p class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></p> 
+								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div> 
 							</div>
 						</div>
 						

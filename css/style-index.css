@@ -296,7 +296,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	cx: 0;
 	cy: 0;
   	offset-path: path('M43.642,3.58c22.139,0,40.084,17.377,40.084,38.812c0,21.436-17.945,38.813-40.084,38.813c-22.137,0-40.083-17.377-40.083-38.813c0-15.721,18.667-89.637,5.667-99.972');
-  	animation: topo-sight-planet-star-move 3.5s cubic-bezier(1,.1,.32,.5) infinite;
+  	animation: topo-sight-planet-star-move 3.5s cubic-bezier(.5,-.1,.4,.5) infinite;/*cubic-bezier(1,.1,.32,.5)*/
 }
 
 
@@ -304,7 +304,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	transform: rotate(-20deg);
 }
 .sight-bar .topo-sight:hover #topo-sight-planet-path1 {
-	animation: topo-sight-planet-path1-move 4s linear infinite;
+	animation: topo-sight-planet-path1-move 3.5s linear infinite;
 }
 
 
@@ -613,7 +613,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 /*****left2 begin*****/
 
 .index-widgets {
-	flex-shrink: 0;
+	/*flex-shrink: 0;*/
 	display: flex;
 	flex-direction: column;
 	width: 310px;
@@ -655,26 +655,120 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-position: center center;
 }
 
-.widgets-btn-selected {
+/*.widgets-btn-selected {
 	background-color: rgba(37,39,42,0.5);
 	border: 1px solid rgba(170,171,174,0.4);
 	border-radius: 8px;
-}
+}*/
 
 .widgets-btn-topo {	
-	background-image: url(../images/topo-btn-selected-temp.svg);
+	background-image: url(../images/topo-btn.svg);
+	background-position: center center;
+}
+
+.widgets-btn-topo:hover {
+	background-color: rgba(66,70,77,0.5);/*rgba(37,39,42,0.5);*/
+	border-radius: 8px;
+	background-image: url(../images/topo-btn-selected.svg);
+	background-position: center center;
+}
+
+.widgets-btn-topo:active {
+	background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
+	border: 1px solid rgba(170,171,174,0.4);
+	border-radius: 8px;
+	box-shadow: inset 0 1px 2px rgba(34,37,41,0.8);
+	background-image: url(../images/topo-btn-selected.svg);
+	background-position: center center;
+}
+
+.widgets-btn-topo-selected {
+	/*background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
+	border: 1px solid rgba(170,171,174,0.4);
+	border-radius: 8px;
+	background-image: url(../images/topo-btn-selected.svg);
+	background-position: center center;
 }
 
 .widgets-btn-usual {
 	background-image: url(../images/usual-btn.svg);
+	background-position: center center;
+}
+
+.widgets-btn-usual:hover {
+	background-color: rgba(66,70,77,0.5);/*rgba(37,39,42,0.5);*/
+	border-radius: 8px;
+	background-image: url(../images/usual-btn-selected.svg);
+	background-position: center center;
+}
+
+.widgets-btn-usual:active {
+	background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
+	border: 1px solid rgba(170,171,174,0.4);
+	border-radius: 8px;
+	box-shadow: inset 0 1px 2px rgba(34,37,41,0.8);
+	background-image: url(../images/usual-btn-selected.svg);
+	background-position: center center;
+}
+
+.widgets-btn-usual-selected  {
+	border: 1px solid rgba(170,171,174,0.4);
+	border-radius: 8px;
+	background-image: url(../images/usual-btn-selected.svg);
+	background-position: center center;
 }
 
 .widgets-btn-todo {
 	background-image: url(../images/todo-btn.svg);
+	background-position: center center;
+}
+
+.widgets-btn-todo:hover {
+	background-color: rgba(66,70,77,0.5);/*rgba(37,39,42,0.5);*/
+	border-radius: 8px;
+	background-image: url(../images/todo-btn-selected.svg);
+	background-position: center center;
+}
+
+.widgets-btn-todo:active {
+	background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
+	border: 1px solid rgba(170,171,174,0.4);
+	border-radius: 8px;
+	box-shadow: inset 0 1px 2px rgba(34,37,41,0.8);
+	background-image: url(../images/todo-btn-selected.svg);
+	background-position: center center;
+}
+
+.widgets-btn-todo-selected {
+	border: 1px solid rgba(170,171,174,0.4);
+	border-radius: 8px;
+	background-image: url(../images/todo-btn-selected.svg);
+	background-position: center center;
 }
 
 .widgets-btn-chart {
 	background-image: url(../images/chart-btn.svg);
+}
+
+.widgets-btn-chart:hover {
+	background-color: rgba(66,70,77,0.5);/*rgba(37,39,42,0.5);*/
+	border-radius: 8px;
+	background-image: url(../images/chart-btn-selected.svg);
+}
+
+.widgets-btn-chart:active {
+	background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
+	border: 1px solid rgba(170,171,174,0.4);
+	border-radius: 8px;
+	box-shadow: inset 0 1px 2px rgba(34,37,41,0.8);
+	background-image: url(../images/chart-btn-selected.svg);
+}
+
+.widgets-btn-chart-selected {
+	border: 1px solid rgba(170,171,174,0.4);
+	border-radius: 8px;
+	background-image: url(../images/chart-btn-selected.svg);
+	background-position: center center;
 }
 
 .widgets-btns-bar-bottom {
@@ -770,6 +864,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	display: flex;
 	align-items: center;
 	margin-bottom: 6px;
+	height: 33px;
 }
 
 .widgets-foot-line {
@@ -780,14 +875,51 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .widgets-foot-btn-stretch {
-	/*margin-top: 8px;*/
 	margin-right: 6px;
-	width: 16px;
-	height: 33px;
-	background-image: url(../images/stretch-btn.svg);
+	height: 15px;
+	/*background-image: url(../images/stretch-btn.svg);
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: center center;*/
+	text-align: center;
 }
+
+@keyframes btn-stretch-change {
+	20% {
+		d:path("M0.089,7.681l16.02-5.292l-2.364,5.282l2.228,5.593L0.089,7.681z");
+		transform: translateX(-5px);
+	}
+	50% {
+		d: path("M15.954,11.608L0.089,7.681l15.884-3.697");
+		transform: translateX(-10px);
+	}
+	70% {
+		d: path("M15.954,11.608L0.089,7.681l15.884-3.697");
+		transform: translateX(-12px);
+	}
+}
+
+.widgets-foot-btn-stretch:hover #btn-stretch-svg-path {
+	animation: btn-stretch-change 1s cubic-bezier(0,.45,1,.2);
+	animation-iteration-count: 1;
+}
+
+@keyframes btn-stretch-svg-wide {
+	20% {
+		width: 30px;
+	}
+	50% {
+		width: 35px;
+	}
+	70% {
+		width: 50px;
+	}
+}
+
+.widgets-foot-btn-stretch:hover #btn-stretch-svg {
+	animation: btn-stretch-svg-wide 1s cubic-bezier(0,.45,1,.2);
+	animation-iteration-count: 1;
+}
+
 
 /*****left2 end*****/
 
@@ -1032,6 +1164,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .log-item-tag-words {
+	display: inline-block;
 	margin-left: 2px;
 	margin-right: 2px;
 	font-weight: 400;
