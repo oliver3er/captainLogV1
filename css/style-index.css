@@ -851,6 +851,10 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .title-nav-current-name {
 	font-size: 2.0rem;
 	font-weight: 600;
+	/* add by dean , for title image display*/
+	display : flex;
+	align-items: center;
+	justify-content : center;
 }
 
 .title-nav-item {
