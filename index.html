@@ -52,6 +52,22 @@
 					$(".widgets-stretch-arrow1").addClass("widgets-stretch-arrow").removeClass("widgets-stretch-arrow1");
 				}
 			});
+			
+			$(".log-item-tag-words").hover(function(){
+				var tag = $(this);
+				var tagColor = tag.css("color");
+				tagColor = tagColor.substring(tagColor.indexOf('(')+1,tagColor.indexOf(')'));
+				var colorArr = tagColor.split(",");
+				tag.css("background-color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",.7)");
+				tag.css("color","rgba(236,236,236,1)");
+			},function(){
+        		var tag = $(this);
+				var tagBgColor = tag.css("background-color");
+				tagBgColor = tagBgColor.substring(tagBgColor.indexOf('(')+1,tagBgColor.indexOf(')'));
+				var colorArr = tagBgColor.split(",");
+				tag.css("color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",1)");		
+				tag.css("background-color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",.1)");
+			});
 	    });
 	</script>
 </head>
@@ -282,11 +298,11 @@
 						<div class="title-forward-btn"></div>
 					</div>
 					<div class="title-nav">
-						<div class="title-nav-back-name">
+						<div class="title-nav-name">
 							<span>#</span><span>olivepop</span><span>#</span>
 						</div>
 						<div class="title-nav-arrow"></div>
-						<div class="title-nav-back-name"><span>#</span><span>creative</span><span>#</span></div>
+						<div class="title-nav-name"><span>#</span><span>creative</span><span>#</span></div>
 						<div class="title-nav-arrow"></div>
 						<div class="title-nav-current-name"><span>#</span><span>hard work</span><span>#</span></div>
 					</div>
@@ -316,13 +332,13 @@
 							<div class="log-item-title">
 								This is a <div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></div>
 							</div>
-							<div >
+							<div class="log-item-detail">
 								I don’t known how can I make a perfect work.
 								That sad moment you lease an earbud one day 
 								before <div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></div> starts..
 								Because of their annoyance and <div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></div>       
-								to find a way to say "please do us all a favor and “FUCKING STOP” nicely<img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/> 
-								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div> 
+								to find a way to say "please do us all a favor and “FUCKING STOP” nicely<div class="log-item-tag-img"><img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/></div>
+								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgba(176,199,66,1);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div> 
 							</div>
 						</div>
 						
@@ -330,9 +346,9 @@
 							<div class="log-item-title">
 								这条日志用<div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>中文</span><span>#</span></div>写
 							</div>
-							<div >
+							<div class="log-item-detail">
 								还有就是中文的显示，也<div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>还好</span><span>#</span></div>
-								通过CSS3的transition<div class="log-item-tag-words" style="color: rgb(121,178,234);background-color:rgba(121,178,234,0.1);"><span>#</span><span>模仿制作<span>#</span></div><img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/>jQuery的slideshow效果，
+								通过CSS3的transition<div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>模仿制作<span>#</span></div><div class="log-item-tag-img"><img src="images/laugh-face.png" alt="laugh"/></div> jQuery的slideshow效果，
 								当然这种效果跟js和jQ制作出来的是没得比，但有时还是可以用一用的，以前腾讯就使用过这样的一个效果。著作权归作者所有。
 								“如何在<div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>画展<span>#</span></div> 上表现自然？”
 								“怎么看画才好像自己看懂了？” 
@@ -346,14 +362,14 @@
 							<div class="log-item-title">
 								This is a <div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></div>
 							</div>
-							
+							<div class="log-item-detail">
 								I don’t known how can I make a perfect work.
 								That sad moment you lease an earbud one day 
 								before <div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></div> starts..
 								Because of their annoyance and <div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></div>       
 								to find a way to say "please do us all a favor and “FUCKING STOP” nicely 
-								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div>
-							
+								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgba(176,199,66,1);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div>
+							</div>
 							
 							<div class="log-item-files-wrapper">
 								<!--div class="log-item-files-row">dfdf
@@ -372,7 +388,7 @@
 								before <div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></div> starts..
 								Because of their annoyance and <div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></div>       
 								to find a way to say "please do us all a favor and “FUCKING STOP” nicely 
-								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div> 
+								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgba(176,199,66,1);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div> 
 							</div>
 						</div>
 					</div><!--content-logs-wrapper end-->

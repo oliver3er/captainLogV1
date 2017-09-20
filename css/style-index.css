@@ -1049,9 +1049,18 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .title-nav-current-name span:first-child, .title-nav-current-name span:last-child, 
-.title-nav-back-name span:first-child, .title-nav-back-name span:last-child {
+.title-nav-name span:first-child, .title-nav-name span:last-child {
 	margin-left: 2px;
 	margin-right: 2px;
+}
+
+/*.title-nav-name-wrapper {
+	position: absolute;
+	top: 0.4rem;
+}*/
+
+.title-nav-name:hover {
+	color: rgba(255,255,255,1);
 }
 
 .title-nav-arrow {
@@ -1213,12 +1222,27 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	color: #b8b8b8;
 }
 
-
 .log-item-tag-img {
-	max-width: 1.6rem;
-	max-height: 1.6rem;
-	margin: 0px 2px;
-	vertical-align: top;
+	position: relative;
+	display: inline-block;
+	width: 2rem;
+	height: 1.4rem;
+}
+
+.log-item-tag-img>img {
+	position: absolute;
+	top: 0.1rem;
+	left: 0.3rem;
+	width: 1.6rem;
+	height: 1.6rem;
+}
+
+.log-item-tag-img>img:hover {
+	position: absolute;
+	top: -0.1rem;
+	left: 0.1rem;
+	width: 2.1rem;
+	height: 2.1rem;
 }
 
 .log-item-tag-words {
@@ -1226,6 +1250,8 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	margin-left: 2px;
 	margin-right: 2px;
 	font-weight: 400;
+	
+	transition: background-color .1s ,color .1s ;
 }
 
 .log-item-tag-words span:first-child {
