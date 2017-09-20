@@ -38,6 +38,7 @@
 
 
 .log-item-title .log-item-tag-words {
+	display: inline-block;
 	font-size: 1.6rem;
 	line-height: 1.6rem;
 	color : rgba(233,69,69,1);
@@ -45,6 +46,7 @@
 }
 
 .content-log-item .log-item-tag-words-temp {
+	display: inline-block;
 	font-size: 1.4rem;
 	line-height: 1.5rem;
 	color : rgba(233,69,69,1);
@@ -53,6 +55,7 @@
 }
 
 .log-item-title .log-item-tag-words-temp {
+	display: inline-block;
 	font-size: 1.6rem;
 	line-height: 1.6rem;
 	color : rgba(233,69,69,1);
