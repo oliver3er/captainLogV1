@@ -24,11 +24,49 @@
 				}
 			});
 			
-			$(".widgets-foot-btn-stretch").bind("click",function(){
-				$(".widgets-main").hide();
-				$(".widgets-main-mix").show();
-				$(".index-widgets").css("width","20px");
-				$("#btn-stretch-svg").css("transform","rotate(180deg)");
+			$("#widgets-foot-btn-stretch-id").bind("click",function(){
+				console.log('the stretch1',$(".widgets-foot-btn-stretch1"));
+				if($(".widgets-foot-btn-stretch1").length==0){
+					$(".index-widgets").css("width","30px");
+					$(".widgets-main").css("margin-left","30px");
+					$(".widgets-main").css("transition","margin-left .2s ease-in .55s");
+					
+					$(".widgets-foot-btn-stretch").addClass("widgets-foot-btn-stretch1").removeClass("widgets-foot-btn-stretch");
+					$(".btn-stretch-svg").css("transform","rotate(180deg)");
+					$(".btn-stretch-svg").css("transition","all .2s cubic-bezier(.23,1,.32,1) .55s");
+					$(".widgets-foot-line").css("width","10px");
+					$(".widgets-foot-line").css("margin-left","0");
+				
+					$(".widgets-stretch-arrow").addClass("widgets-stretch-arrow1").removeClass("widgets-stretch-arrow");
+					
+				}else{
+					$(".index-widgets").css("width","310px");
+					$(".widgets-main").css("margin-left","0");
+					$(".widgets-main").css("transition","none");
+					$(".widgets-foot-btn-stretch1").addClass("widgets-foot-btn-stretch").removeClass("widgets-foot-btn-stretch1");
+					$(".btn-stretch-svg").css("transform","rotate(0deg)");
+					$(".btn-stretch-svg").css("transition","all .2s cubic-bezier(.23,1,.32,1) .55s");
+					$(".widgets-foot-line").css("width","90%");
+					$(".widgets-foot-line").css("margin-left","5%");
+		
+					$(".widgets-stretch-arrow1").addClass("widgets-stretch-arrow").removeClass("widgets-stretch-arrow1");
+				}
+			});
+			
+			$(".log-item-tag-words").hover(function(){
+				var tag = $(this);
+				var tagColor = tag.css("color");
+				tagColor = tagColor.substring(tagColor.indexOf('(')+1,tagColor.indexOf(')'));
+				var colorArr = tagColor.split(",");
+				tag.css("background-color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",.7)");
+				tag.css("color","rgba(236,236,236,1)");
+			},function(){
+        		var tag = $(this);
+				var tagBgColor = tag.css("background-color");
+				tagBgColor = tagBgColor.substring(tagBgColor.indexOf('(')+1,tagBgColor.indexOf(')'));
+				var colorArr = tagBgColor.split(",");
+				tag.css("color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",1)");		
+				tag.css("background-color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",.1)");
 			});
 	    });
 	</script>
@@ -231,14 +269,21 @@
 					</div>
 					
 				</div>
-				<div class="widgets-main-mix" style="display:none;height: 100%;"></div>
 				<div class="widgets-foot">
 					<div class="widgets-foot-line"></div>
-					<div class="widgets-foot-btn-stretch">
-						<svg id="btn-stretch-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
-	 height="15.353px" viewBox="0 0 16 15.353" enable-background="new 0 0 16 15.353" xml:space="preserve">
-							<path id="btn-stretch-svg-path" fill="#91969B" d="M0,7.677L16,0l-4.923,7.677L16,15.353L0,7.677z"/>
-	 					</svg>
+					<div id="widgets-foot-btn-stretch-id" class="widgets-foot-btn-stretch">
+						<div class="widgets-stretch-arrow">
+							<svg class="btn-stretch-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
+								height="15.353px" viewBox="0 0 16 15.353" enable-background="new 0 0 16 15.353" xml:space="preserve">
+								<path class="btn-stretch-svg-path" fill="#91969B" d="M0,7.677L16,0l-4.923,7.677L16,15.353L0,7.677z"/>
+							</svg>
+	 					</div>
+	 					<div class="widgets-stretch-arrow" style="width:16px;position:absolute; top:0;left:0;">
+	 						<svg class="btn-stretch-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
+	 							height="15.353px" viewBox="0 0 16 15.353" enable-background="new 0 0 16 15.353" xml:space="preserve">
+								<path class="btn-stretch-svg-path" fill="#91969B" d="M0,7.677L16,0l-4.923,7.677L16,15.353L0,7.677z"/>
+	 						</svg>
+	 					</div>
 					</div>
 				</div>
 				
@@ -253,11 +298,11 @@
 						<div class="title-forward-btn"></div>
 					</div>
 					<div class="title-nav">
-						<div class="title-nav-back-name">
+						<div class="title-nav-name">
 							<span>#</span><span>olivepop</span><span>#</span>
 						</div>
 						<div class="title-nav-arrow"></div>
-						<div class="title-nav-back-name"><span>#</span><span>creative</span><span>#</span></div>
+						<div class="title-nav-name"><span>#</span><span>creative</span><span>#</span></div>
 						<div class="title-nav-arrow"></div>
 						<div class="title-nav-current-name"><span>#</span><span>hard work</span><span>#</span></div>
 					</div>
@@ -287,25 +332,25 @@
 							<div class="log-item-title">
 								This is a <div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></div>
 							</div>
-							<div >
+							<div class="log-item-detail">
 								I don’t known how can I make a perfect work.
 								That sad moment you lease an earbud one day 
 								before <div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></div> starts..
 								Because of their annoyance and <div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></div>       
-								to find a way to say "please do us all a favor and “FUCKING STOP” nicely<img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/> 
-								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div> 
+								to find a way to say "please do us all a favor and “FUCKING STOP” nicely<div class="log-item-tag-img"><img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/></div>
+								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgba(176,199,66,1);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div> 
 							</div>
 						</div>
 						
 						<div class="content-log-item">
 							<div class="log-item-title">
-								这条日志用<p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>中文</span><span>#</span></p>写
+								这条日志用<div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>中文</span><span>#</span></div>写
 							</div>
-							<div >
-								还有就是中文的显示，也<p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>还好</span><span>#</span></p>
-								通过CSS3的transition<p class="log-item-tag-words" style="color: rgb(121,178,234);background-color:rgba(121,178,234,0.1);"><span>#</span><span>模仿制作<span>#</span></p><img class="log-item-tag-img" src="images/laugh-face.png" alt="laugh"/>jQuery的slideshow效果，
+							<div class="log-item-detail">
+								还有就是中文的显示，也<div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>还好</span><span>#</span></div>
+								通过CSS3的transition<div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>模仿制作<span>#</span></div><div class="log-item-tag-img"><img src="images/laugh-face.png" alt="laugh"/></div> jQuery的slideshow效果，
 								当然这种效果跟js和jQ制作出来的是没得比，但有时还是可以用一用的，以前腾讯就使用过这样的一个效果。著作权归作者所有。
-								“如何在<p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>画展<span>#</span></p> 上表现自然？”
+								“如何在<div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>画展<span>#</span></div> 上表现自然？”
 								“怎么看画才好像自己看懂了？” 
 								每逢大展，大家的关注点就如此的一致。 
 								“伦勃朗和他的时代”展览亮相国家博物馆，这消息提前几个月就刷爆了大家的朋友圈，
@@ -315,16 +360,16 @@
 						
 						<div class="content-log-item">
 							<div class="log-item-title">
-								This is a <p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></p>
+								This is a <div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></div>
 							</div>
-							
+							<div class="log-item-detail">
 								I don’t known how can I make a perfect work.
 								That sad moment you lease an earbud one day 
-								before <p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></p> starts..
-								Because of their annoyance and <p class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></p>       
+								before <div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></div> starts..
+								Because of their annoyance and <div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></div>       
 								to find a way to say "please do us all a favor and “FUCKING STOP” nicely 
-								I held in all my rage and ended up yelling at my <p class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></p>
-							
+								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgba(176,199,66,1);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div>
+							</div>
 							
 							<div class="log-item-files-wrapper">
 								<!--div class="log-item-files-row">dfdf
@@ -335,15 +380,15 @@
 						
 						<div class="content-log-item">
 							<div class="log-item-title">
-								This is a <p class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></p>
+								This is a <div class="log-item-tag-words" style="color: #e94545;background-color:rgba(233,69,69,0.1);"><span>#</span><span>title</span><span>#</span></div>
 							</div>
 							<div class="log-item-detail">
 								I don’t known how can I make a perfect work.
 								That sad moment you lease an earbud one day 
-								before <p class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></p> starts..
-								Because of their annoyance and <p class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></p>       
+								before <div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></div> starts..
+								Because of their annoyance and <div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></div>       
 								to find a way to say "please do us all a favor and “FUCKING STOP” nicely 
-								I held in all my rage and ended up yelling at my <p class="log-item-tag-words" style="color: rgb(176,199,66);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></p> 
+								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgba(176,199,66,1);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister<span>#</span></div> 
 							</div>
 						</div>
 					</div><!--content-logs-wrapper end-->
