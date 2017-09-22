@@ -199,6 +199,10 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	transition: all 0.5s ease-in;
 }
 
+.sight-bar>div[class$="-sight"] {
+	cursor: pointer;
+}
+
 .sight-bar .file-sight {
 	border: 1px dashed rgba(170,171,174,0.8);
 	/*background-color: rgba(47,49,54,0.8);
@@ -452,6 +456,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-size: 40px;*/
 	overflow: hidden;
 	text-align: center;
+	cursor: pointer;
 }
 
 .main-menu-icon-search:hover {
@@ -611,6 +616,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-image: url(../images/portrait.png),radial-gradient(circle at center, #929292 0, #d9d9d9 70%, #eeeeee 100%);
 	border: 1px solid rgba(21,25,28,0.8);
 	margin-bottom: 20px;
+	cursor: pointer;
 }
 
 /****left1 end****/
@@ -659,6 +665,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	margin-right: 3px;
 	background-repeat: no-repeat;
 	background-position: center center;
+	cursor: pointer;
 }
 
 /*.widgets-btn-selected {
@@ -1304,6 +1311,11 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	transition: background-color .1s ,color .1s ;
 }
 
+.log-item-tag-words:hover{
+	background-color: rgba(233,69,69,0.7)!important;
+	color: rgba(236,236,236,1)!important;
+}
+
 .log-item-tag-words span:first-child {
 	margin-left: 1px;
 	margin-right: 1px;
@@ -1322,12 +1334,12 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 /* change: from log-item-detail to content-log-item */
-.content-log-item .log-item-tag-words {
+/*.content-log-item .log-item-tag-words {
 	font-size: 1.4rem;
 	line-height: 1.5rem;
 	color : rgba(233,69,69,1);
 	background : rgba(233,69,69,.1);
-}
+}*/
 
 /* change: from log-item-detail to content-log-item */
 .content-log-item p {
