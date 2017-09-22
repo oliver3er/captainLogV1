@@ -674,7 +674,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .widgets-btn-topo:hover {
 	background-color: rgba(66,70,77,0.5);/*rgba(37,39,42,0.5);*/
-	border-radius: 8px;
+	border-radius: 3px;
 	background-image: url(../images/topo-btn-selected.svg);
 	background-position: center center;
 }
@@ -682,7 +682,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .widgets-btn-topo:active {
 	background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
 	border: 1px solid rgba(170,171,174,0.4);
-	border-radius: 8px;
+	border-radius: 3px;
 	box-shadow: inset 0 1px 2px rgba(34,37,41,0.8);
 	background-image: url(../images/topo-btn-selected.svg);
 	background-position: center center;
@@ -691,7 +691,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .widgets-btn-topo-selected {
 	/*background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
 	border: 1px solid rgba(170,171,174,0.4);
-	border-radius: 8px;
+	border-radius: 3px;
 	background-image: url(../images/topo-btn-selected.svg);
 	background-position: center center;
 }
@@ -703,7 +703,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .widgets-btn-usual:hover {
 	background-color: rgba(66,70,77,0.5);/*rgba(37,39,42,0.5);*/
-	border-radius: 8px;
+	border-radius: 3px;
 	background-image: url(../images/usual-btn-selected.svg);
 	background-position: center center;
 }
@@ -711,7 +711,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .widgets-btn-usual:active {
 	background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
 	border: 1px solid rgba(170,171,174,0.4);
-	border-radius: 8px;
+	border-radius: 3px;
 	box-shadow: inset 0 1px 2px rgba(34,37,41,0.8);
 	background-image: url(../images/usual-btn-selected.svg);
 	background-position: center center;
@@ -719,7 +719,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .widgets-btn-usual-selected  {
 	border: 1px solid rgba(170,171,174,0.4);
-	border-radius: 8px;
+	border-radius: 3px;
 	background-image: url(../images/usual-btn-selected.svg);
 	background-position: center center;
 }
@@ -731,7 +731,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .widgets-btn-todo:hover {
 	background-color: rgba(66,70,77,0.5);/*rgba(37,39,42,0.5);*/
-	border-radius: 8px;
+	border-radius: 3px;
 	background-image: url(../images/todo-btn-selected.svg);
 	background-position: center center;
 }
@@ -739,7 +739,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .widgets-btn-todo:active {
 	background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
 	border: 1px solid rgba(170,171,174,0.4);
-	border-radius: 8px;
+	border-radius: 3px;
 	box-shadow: inset 0 1px 2px rgba(34,37,41,0.8);
 	background-image: url(../images/todo-btn-selected.svg);
 	background-position: center center;
@@ -747,7 +747,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .widgets-btn-todo-selected {
 	border: 1px solid rgba(170,171,174,0.4);
-	border-radius: 8px;
+	border-radius: 3px;
 	background-image: url(../images/todo-btn-selected.svg);
 	background-position: center center;
 }
@@ -758,21 +758,21 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .widgets-btn-chart:hover {
 	background-color: rgba(66,70,77,0.5);/*rgba(37,39,42,0.5);*/
-	border-radius: 8px;
+	border-radius: 3px;
 	background-image: url(../images/chart-btn-selected.svg);
 }
 
 .widgets-btn-chart:active {
 	background-color: rgba(66,70,77,1);/*rgba(37,39,42,0.5);*/
 	border: 1px solid rgba(170,171,174,0.4);
-	border-radius: 8px;
+	border-radius: 3px;
 	box-shadow: inset 0 1px 2px rgba(34,37,41,0.8);
 	background-image: url(../images/chart-btn-selected.svg);
 }
 
 .widgets-btn-chart-selected {
 	border: 1px solid rgba(170,171,174,0.4);
-	border-radius: 8px;
+	border-radius: 3px;
 	background-image: url(../images/chart-btn-selected.svg);
 	background-position: center center;
 }
@@ -1048,19 +1048,31 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	align-items : center;
 }
 
-.title-nav-current-name span:first-child, .title-nav-current-name span:last-child, 
-.title-nav-name span:first-child, .title-nav-name span:last-child {
-	margin-left: 2px;
-	margin-right: 2px;
+.title-nav-name {
+	position: relative;
+	top: 0;
+	left: 0;
+	text-align: center;
+	/*color: rgba(170,171,174,1);*/
+	transition: all .55s cubic-bezier(.23,1,.32,1) 0s;
 }
 
-/*.title-nav-name-wrapper {
-	position: absolute;
-	top: 0.4rem;
-}*/
-
 .title-nav-name:hover {
-	color: rgba(255,255,255,1);
+	position: relative;
+	top: -2px;
+	/*color: rgba(236,236,236,1);*/
+	/*font-size: 1.8rem;*/
+}
+
+.title-nav-name-wrapper {
+	
+	display: inline-block;
+}
+
+.title-nav-current-name span:first-child, 
+.title-nav-name span:first-child {
+	margin-left: 2px;
+	margin-right: 2px;
 }
 
 .title-nav-arrow {
@@ -1095,34 +1107,69 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	height: 26px;
 	width: 26px;
 	margin: 0 4px;
-	background-repeat: no-repeat;
-	background-position: center center;
+	/*background-repeat: no-repeat;
+	background-position: center center;*/
 }
 
-.logs-save-btn {
+.content-logs-btn svg * {
+	stroke: inherit;
+}
+
+/*.logs-save-btn {
 	margin-left: 2px;
 	background-image: url(../images/log-save-btn.svg);
-	background-size: 21px;
+	background-size: 22px;
+}*/
+
+.logs-save-btn, .logs-delete-btn, .logs-single-tag-btn {
+	width: 22px;
+	height: 22px;
+	margin: 2px;
+} 
+
+.logs-edit-btn-invalid {
+	stroke: #707070;
 }
 
-.logs-delete-btn {
-	background-image: url(../images/log-delete-btn.svg);
-	background-size: 22px;
+.logs-edit-btn-valid {
+	stroke: #8dafcc;
 }
+
+
+/*.logs-delete-btn {
+	background-image: url(../images/log-delete-btn-invalid.svg);
+	background-size: 22px;
+}*?
+
+/*.logs-delete-btn:hover {
+	background-image: url(../images/log-delete-btn-hover.svg);
+}*/
+
+/*.logs-picture-btn {
+	background-image: url(../images/log-pic-btn.svg);
+	background-size: 24px;
+}*/
 
 .logs-picture-btn {
-	background-image: url(../images/log-pic-btn.svg);
-	background-size: 23px;
+	width: 24px;
+	height: 18px;
+	margin: 4px 1px;
 }
 
-.logs-single-tag-btn {
+/*.logs-single-tag-btn {
 	background-image: url(../images/log-single-tag-btn.svg);
-	background-size: 21px;
+	background-size: 22px;
 }
 
 .logs-double-tag-btn {
 	background-image: url(../images/log-double-tag-btn.svg);
 	background-size: 26px;
+}*/
+
+.logs-double-tag-btn {
+	width: 26px;
+	height: 20px;
+	margin: 3px 0;
 }
 
 .logs-btn-separate-line {
@@ -1251,6 +1298,9 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	margin-right: 2px;
 	font-weight: 400;
 	
+	background-color: rgba(233,69,69,0.1);
+	color: rgba(233,69,69,1);
+	
 	transition: background-color .1s ,color .1s ;
 }
 
@@ -1261,7 +1311,6 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .log-item-tag-words span:last-child {
 	margin-left: 1px;
-	##margin-right: 1px;
 }
 
 .log-item-detail {

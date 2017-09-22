@@ -25,31 +25,35 @@
 			});
 			
 			$("#widgets-foot-btn-stretch-id").bind("click",function(){
-				console.log('the stretch1',$(".widgets-foot-btn-stretch1"));
 				if($(".widgets-foot-btn-stretch1").length==0){
+				
 					$(".index-widgets").css("width","30px");
 					$(".widgets-main").css("margin-left","30px");
 					$(".widgets-main").css("transition","margin-left .2s ease-in .55s");
 					
-					$(".widgets-foot-btn-stretch").addClass("widgets-foot-btn-stretch1").removeClass("widgets-foot-btn-stretch");
 					$(".btn-stretch-svg").css("transform","rotate(180deg)");
 					$(".btn-stretch-svg").css("transition","all .2s cubic-bezier(.23,1,.32,1) .55s");
 					$(".widgets-foot-line").css("width","10px");
 					$(".widgets-foot-line").css("margin-left","0");
-				
-					$(".widgets-stretch-arrow").addClass("widgets-stretch-arrow1").removeClass("widgets-stretch-arrow");
 					
+					setTimeout(function(){
+						$(".widgets-foot-btn-stretch").addClass("widgets-foot-btn-stretch1").removeClass("widgets-foot-btn-stretch");
+						$(".widgets-stretch-arrow").addClass("widgets-stretch-arrow1").removeClass("widgets-stretch-arrow");
+					},600);
 				}else{
 					$(".index-widgets").css("width","310px");
 					$(".widgets-main").css("margin-left","0");
 					$(".widgets-main").css("transition","none");
-					$(".widgets-foot-btn-stretch1").addClass("widgets-foot-btn-stretch").removeClass("widgets-foot-btn-stretch1");
+					
 					$(".btn-stretch-svg").css("transform","rotate(0deg)");
 					$(".btn-stretch-svg").css("transition","all .2s cubic-bezier(.23,1,.32,1) .55s");
 					$(".widgets-foot-line").css("width","90%");
 					$(".widgets-foot-line").css("margin-left","5%");
 		
-					$(".widgets-stretch-arrow1").addClass("widgets-stretch-arrow").removeClass("widgets-stretch-arrow1");
+					setTimeout(function(){
+						$(".widgets-foot-btn-stretch1").addClass("widgets-foot-btn-stretch").removeClass("widgets-foot-btn-stretch1");
+						$(".widgets-stretch-arrow1").addClass("widgets-stretch-arrow").removeClass("widgets-stretch-arrow1");
+					},600);
 				}
 			});
 			
@@ -70,6 +74,17 @@
 			});
 	    });
 	</script>
+	
+	<style>
+	/*.hashtag-box-icon-container {
+		transition: all .8s cubic-bezier(.23,1,.32,1) .2s;
+	}
+	.hashtag-box-icon-container:hover{
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-size: 110% 110%;
+	}*/
+	</style>
 </head>
 <body>
 	<div>
@@ -299,24 +314,82 @@
 					</div>
 					<div class="title-nav">
 						<div class="title-nav-name">
-							<span>#</span><span>olivepop</span><span>#</span>
+							<span>#</span><span>olivepop</span>
 						</div>
 						<div class="title-nav-arrow"></div>
-						<div class="title-nav-name"><span>#</span><span>creative</span><span>#</span></div>
+						<div class="title-nav-name"><div class="title-nav-name-wrapper"><span>#</span><span>creative</span></div></div>
 						<div class="title-nav-arrow"></div>
-						<div class="title-nav-current-name"><span>#</span><span>hard work</span><span>#</span></div>
+						<div class="title-nav-current-name"><span>#</span><span>hard work</span></div>
 					</div>
 				</div>
 				<!--div class="content-main"-->
 					<div class="content-logs-btns-wrapper">
 						<div class="logs-btns-bar">
-							<div class="logs-save-btn content-logs-btn"></div>
+							<div class="content-logs-btn logs-edit-btn-valid">
+								<svg version="1.1" class="logs-save-btn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 width="22px" height="22px" viewBox="0 0 22 22" enable-background="new 0 0 22 22" xml:space="preserve">
+									<path fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M14.649,3.018
+										l-0.006,3.394c-0.012,0.632-0.448,1.106-1.094,1.106c-0.645,0-7.284-0.028-7.936-0.036C4.961,7.473,4.56,6.971,4.527,6.384
+										c0-0.499-0.006-5.884-0.006-5.884s-2.329,0-2.888,0C0.936,0.5,0.5,1.018,0.5,1.568c0,0.553,0.017,18.387,0,18.835
+										c-0.018,0.447,0.331,1.033,1.082,1.075c0.661,0,2.926,0.021,2.926,0.021s0-6.66,0-7.108c0-0.449,0.541-0.967,1.1-0.967
+										c0.481,0,10.239,0,10.781,0c0.627,0,1.116,0.501,1.116,1.104c0,0.603,0,4.132,0,4.132"/>
+									<path fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.817,21.477
+										c0,0,12.073,0.025,12.655,0.012c0.585-0.014,1.029-0.469,1.028-1.045c-0.001-0.578-0.031-12.972-0.016-15.251
+										c0.016-2.28-2.41-4.698-4.654-4.688c-2.243,0.012-9.013,0-9.013,0"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="7.5" y1="3.001" x2="7.5" y2="4.764"/>
+								</svg>
+							</div>
+							
 							<div class="logs-btn-separate-line"></div>
-							<div class="logs-picture-btn content-logs-btn"></div>
-							<div class="logs-single-tag-btn content-logs-btn"></div>
-							<div class="logs-double-tag-btn content-logs-btn"></div>
+							<div class="content-logs-btn">
+								<svg version="1.1" class="logs-picture-btn logs-edit-btn-valid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 width="24px" height="18px" viewBox="0 0 24 18" enable-background="new 0 0 24 18" xml:space="preserve">
+									<path fill="none" stroke="#8DAFCC" stroke-miterlimit="10" d="M23.5,15.663c0,1.015-0.858,1.837-1.916,1.837H2.414
+										c-1.056,0-1.914-0.822-1.914-1.837V2.337C0.5,1.322,1.358,0.5,2.414,0.5h19.17c1.058,0,1.916,0.822,1.916,1.837V15.663z"/>
+									<polyline fill="none" stroke="#8DAFCC" stroke-miterlimit="10" points="23.371,12.129 19.186,9.079 13.259,13.578 11.009,11.268 
+										2.018,17.472 "/>
+									<path fill="none" stroke="#8DAFCC" stroke-miterlimit="10" d="M9.568,6.051c0,1.381-1.121,2.502-2.505,2.502
+										c-1.377,0-2.495-1.121-2.495-2.502c0-1.377,1.118-2.498,2.495-2.498C8.447,3.553,9.568,4.673,9.568,6.051z"/>
+								</svg>
+							</div>
+							<div class="content-logs-btn">
+								<svg version="1.1" class="logs-single-tag-btn logs-edit-btn-valid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 width="21.894px" height="21.959px" viewBox="0 0 21.894 21.959" enable-background="new 0 0 21.894 21.959" xml:space="preserve">
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="8.735" y1="0.5" x2="7.964" y2="4"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="12.156" y1="6.475" x2="0.5" y2="6.475"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="21.393" y1="14.473" x2="9.531" y2="14.471"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="0.5" y1="14.475" x2="5.172" y2="14.475"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="6.73" y1="9.727" x2="4.383" y2="21.46"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="16.581" y1="6.475" x2="21.393" y2="6.475"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="17.356" y1="0.5" x2="15.008" y2="11.793"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="13.888" y1="17.532" x2="13.116" y2="21.407"/>
+								</svg>
+							</div>
+							<div class="content-logs-btn">
+								<svg version="1.1" class="logs-double-tag-btn  logs-edit-btn-valid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 width="26px" height="20px" viewBox="0 0 26 20" enable-background="new 0 0 26 20" xml:space="preserve">
+									<polyline fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+										17.526,2.167 25.5,10.008 17.545,17.833 "/>
+									<polyline fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+										8.475,2.167 0.5,10.008 8.457,17.833 "/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="15.293" y1="0.5" x2="10.749" y2="19.499"/>
+								</svg>
+							</div>
 							<div class="logs-btn-separate-line"></div>
-							<div class="logs-delete-btn content-logs-btn"></div>
+							
+							<div class="content-logs-btn logs-edit-btn-valid">
+								<svg version="1.1" class="logs-delete-btn" id="log-delete-btn-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 width="21.961px" height="21.966px" viewBox="0 0 21.961 21.966" enable-background="new 0 0 21.961 21.966" xml:space="preserve">
+									<path fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" d="M8.68,3.479c0-1.211,0.594-2.979,2.339-2.979
+										l0,0c1.655,0,2.226,1.769,2.226,2.979H8.68z"/>
+									<path fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M19.459,11.745v7.381
+										c0,1.107-0.895,2.006-1.938,2.34H5.506c-1.166-0.334-2.062-1.232-2.062-2.34V8.747H3.018c-1.393,0-2.518-1.18-2.518-2.633l0,0
+										c0-1.455,1.125-2.635,2.518-2.635h15.928c1.393,0,2.518,1.18,2.518,2.635l0,0c0,1.453-1.072,2.373-2.447,2.311"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="7.432" y1="7.519" x2="7.432" y2="17.839"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="11.479" y1="7.519" x2="11.479" y2="17.839"/>
+									<line fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" x1="15.434" y1="7.519" x2="15.434" y2="17.839"/>
+								</svg>
+							</div>
 						</div>
 						<div class="logs-status-bar">
 							<!--div class="logs-btn-separate-line"></div-->
@@ -334,6 +407,11 @@
 							</div>
 							<div class="log-item-detail">
 								I don’t known how can I make a perfect work.
+								<div class="log-item-tag-words">
+									<span class="hashtag-box-icon-container" style="background-position:right center;background-image: url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0ODEuODgyIDQ4MS44ODIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ4MS44ODIgNDgxLjg4MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxjaXJjbGUgc3R5bGU9ImZpbGw6I0ZDRDQ2MjsiIGN4PSIyNDAuOTQxIiBjeT0iMjQwLjk0MSIgcj0iMTM4LjU0MSIvPjxnPjxwYXRoIHN0eWxlPSJmaWxsOiNGNkMzNTg7IiBkPSJNMzA2LjU5OCwxMTguNjY0YzYuMDI0LDE5LjI3NSwxMC4yNCwzOS43NTUsMTAuODQyLDYwLjgzOGMzLjYxNCw4My43MjctNTMuMDA3LDE1Ny44MTYtMTI2LjQ5NCwxOTAuMzQ0YzE1LjY2MSw2LjAyNCwzMi41MjcsOS42MzgsNDkuOTk1LDkuNjM4Yzc2LjQ5OSwwLDEzOC41NDEtNjIuMDQyLDEzOC41NDEtMTM4LjU0MUMzNzkuNDgyLDE4Ny45MzQsMzQ5Ljk2NywxNDIuMTU1LDMwNi41OTgsMTE4LjY2NHoiLz48cGF0aCBzdHlsZT0iZmlsbDojRjZDMzU4OyIgZD0iTTI0MC45NDEsMGMtMTEuNDQ1LDAtMjAuNDgsOS4wMzUtMjAuNDgsMjAuNDh2MzMuNzMyYzAsMTEuNDQ1LDkuMDM1LDIwLjQ4LDIwLjQ4LDIwLjQ4czIwLjQ4LTkuMDM1LDIwLjQ4LTIwLjQ4VjIwLjQ4QzI2MS40MjEsOS4wMzUsMjUyLjM4NiwwLDI0MC45NDEsMHoiLz48cGF0aCBzdHlsZT0iZmlsbDojRjZDMzU4OyIgZD0iTTI0MC45NDEsNDA3LjE5MWMtMTEuNDQ1LDAtMjAuNDgsOS4wMzUtMjAuNDgsMjAuNDh2MzMuNzMyYzAsMTEuNDQ1LDkuMDM1LDIwLjQ4LDIwLjQ4LDIwLjQ4czIwLjQ4LTkuMDM1LDIwLjQ4LTIwLjQ4di0zMy43MzJDMjYxLjQyMSw0MTYuMjI2LDI1Mi4zODYsNDA3LjE5MSwyNDAuOTQxLDQwNy4xOTF6Ii8+PHBhdGggc3R5bGU9ImZpbGw6I0Y2QzM1ODsiIGQ9Ik00ODEuODgyLDI0MC45NDFjMC0xMS40NDUtOS4wMzUtMjAuNDgtMjAuNDgtMjAuNDhoLTMzLjczMmMtMTEuNDQ1LDAtMjAuNDgsOS4wMzUtMjAuNDgsMjAuNDhzOS4wMzUsMjAuNDgsMjAuNDgsMjAuNDhoMzMuNzMyQzQ3Mi44NDcsMjYxLjQyMSw0ODEuODgyLDI1Mi4zODYsNDgxLjg4MiwyNDAuOTQxeiIvPjxwYXRoIHN0eWxlPSJmaWxsOiNGNkMzNTg7IiBkPSJNNzQuNjkyLDI0MC45NDFjMC0xMS40NDUtOS4wMzUtMjAuNDgtMjAuNDgtMjAuNDhIMjAuNDhjLTExLjQ0NSwwLTIwLjQ4LDkuMDM1LTIwLjQ4LDIwLjQ4czkuMDM1LDIwLjQ4LDIwLjQ4LDIwLjQ4aDMzLjczMkM2NS42NTYsMjYxLjQyMSw3NC42OTIsMjUyLjM4Niw3NC42OTIsMjQwLjk0MXoiLz48cGF0aCBzdHlsZT0iZmlsbDojRjZDMzU4OyIgZD0iTTQxMS40MDcsNzAuNDc1Yy03LjgzMS03LjgzMS0yMS4wODItNy44MzEtMjguOTEzLDBMMzU4LjQsOTQuNTY5Yy03LjgzMSw3LjgzMS03LjgzMSwyMS4wODIsMCwyOC45MTNjNy44MzEsNy44MzEsMjEuMDgyLDcuODMxLDI4LjkxMywwbDI0LjA5NC0yNC4wOTRDNDE5LjIzOCw5MS41NTgsNDE5LjIzOCw3OC4zMDYsNDExLjQwNyw3MC40NzV6Ii8+PHBhdGggc3R5bGU9ImZpbGw6I0Y2QzM1ODsiIGQ9Ik0xMjMuNDgyLDM1OC40Yy03LjgzMS03LjgzMS0yMS4wODItNy44MzEtMjguOTEzLDBsLTI0LjA5NCwyNC4wOTRjLTcuODMxLDcuODMxLTcuODMxLDIxLjA4MiwwLDI4LjkxM2M3LjgzMSw3LjgzMSwyMS4wODIsNy44MzEsMjguOTEzLDBsMjQuMDk0LTI0LjA5NEMxMzEuMzEzLDM3OS40ODIsMTMxLjMxMywzNjYuODMzLDEyMy40ODIsMzU4LjR6Ii8+PHBhdGggc3R5bGU9ImZpbGw6I0Y2QzM1ODsiIGQ9Ik00MTEuNDA3LDQxMS40MDdjNy44MzEtNy44MzEsNy44MzEtMjEuMDgyLDAtMjguOTEzTDM4Ny4zMTMsMzU4LjRjLTcuODMxLTcuODMxLTIxLjA4Mi03LjgzMS0yOC45MTMsMGMtNy44MzEsNy44MzEtNy44MzEsMjEuMDgyLDAsMjguOTEzbDI0LjA5NCwyNC4wOTRDMzkwLjMyNSw0MTkuMjM4LDQwMy41NzYsNDE5LjIzOCw0MTEuNDA3LDQxMS40MDd6Ii8+PHBhdGggc3R5bGU9ImZpbGw6I0Y2QzM1ODsiIGQ9Ik0xMjMuNDgyLDEyMy40ODJjNy44MzEtNy44MzEsNy44MzEtMjEuMDgyLDAtMjguOTEzTDk5LjM4OCw3MC40NzVjLTcuODMxLTcuODMxLTIxLjA4Mi03LjgzMS0yOC45MTMsMHMtNy44MzEsMjEuMDgyLDAsMjguOTEzbDI0LjA5NCwyNC4wOTRDMTAyLjQsMTMxLjMxMywxMTUuMDQ5LDEzMS4zMTMsMTIzLjQ4MiwxMjMuNDgyeiIvPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48L3N2Zz4=&quot;);background-repeat: no-repeat;">
+										<span data-offset-key="abdfc-1-0"><span data-text="true" style="padding-right: 15px;">#v1.0</span></span>
+									</span>
+								</div>
 								That sad moment you lease an earbud one day 
 								before <div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></div> starts..
 								Because of their annoyance and <div class="log-item-tag-words" style="color: rgba(121,178,234,1);background-color:rgba(121,178,234,0.1);"><span>#</span><span>my inability<span>#</span></div>       
