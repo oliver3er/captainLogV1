@@ -702,6 +702,9 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-image: url(../images/topo-btn-selected.svg);
 	background-position: center center;
 }
+.widgets-btn-topo-selected:hover{
+	cursor: auto;
+}
 
 .widgets-btn-usual {
 	background-image: url(../images/usual-btn.svg);
@@ -729,6 +732,9 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	border-radius: 3px;
 	background-image: url(../images/usual-btn-selected.svg);
 	background-position: center center;
+}
+.widgets-btn-usual-selected:hover{
+	cursor: auto;
 }
 
 .widgets-btn-todo {
@@ -758,6 +764,9 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-image: url(../images/todo-btn-selected.svg);
 	background-position: center center;
 }
+.widgets-btn-todo-selected:hover{
+	cursor: auto;
+}
 
 .widgets-btn-chart {
 	background-image: url(../images/chart-btn.svg);
@@ -782,6 +791,9 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	border-radius: 3px;
 	background-image: url(../images/chart-btn-selected.svg);
 	background-position: center center;
+}
+.widgets-btn-chart-selected:hover{
+	cursor: auto;
 }
 
 .widgets-btns-bar-bottom {
@@ -887,6 +899,10 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-color: rgba(62,65,70, 0.8);
 	
 	transition: width .55s ease-in .1s;
+}
+
+#widgets-foot-btn-stretch-id {
+	cursor: pointer;
 }
 
 .widgets-foot-btn-stretch {
@@ -1140,9 +1156,15 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .logs-edit-btn-invalid {
 	stroke: #707070;
+	cursor: auto;
 }
 
 .logs-edit-btn-valid {
+	cursor: pointer;
+	stroke: #8dafcc;
+}
+
+.logs-edit-btn-valid:hover{
 	stroke: #8dafcc;
 }
 
@@ -1311,13 +1333,13 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	
 	background-color: rgba(233,69,69,0.1);
 	color: rgba(233,69,69,1);
-	
+	cursor: pointer;
 	transition: background-color .1s ,color .1s ;
 }
 
 .log-item-tag-words:hover{
-	background-color: rgba(233,69,69,0.7)!important;
-	color: rgba(236,236,236,1)!important;
+	background-color: rgba(233,69,69,0.7);
+	color: rgba(236,236,236,1);
 }
 
 .log-item-tag-words span:first-child {
