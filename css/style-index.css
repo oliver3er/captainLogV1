@@ -1036,9 +1036,80 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	margin: 0 10px;
 }
 
-.title-back-btn {	
-	width: 20px;
-	height: 20px;
+.title-back-btn, .title-forward-btn {
+	width: 15px;
+	height: 15px;
+	
+	display: inline-block;
+	position:relative;
+	overflow: hidden;
+}
+
+.title-back-btn {
+	margin-right: 6px;
+}
+
+.title-forward-back-btns-bar svg * {
+	fill: inherit;
+}
+
+.title-btn-invalid {
+	fill: rgba(170,171,174,.2);/*#707070;*/
+}
+.title-btn-valid {
+	fill: #aaabae;
+	cursor: pointer;
+}
+
+/**left arrow(back-btn) hover**/
+.title-btn-left-arrow:first-child {
+    transform: translateX(0) translateZ(0);
+}
+
+.title-btn-left-arrow:nth-child(2) {
+	width:15px;
+	position:absolute; 
+	top:0;
+	left:0;
+    transform: translateX(100%) translateZ(0);
+}
+
+.title-back-btn.title-btn-valid:hover .title-btn-left-arrow:first-child {
+    transform: translateX(-100%) translateZ(0);
+    transition: all .55s cubic-bezier(.23,1,.32,1) 0s;
+}
+
+.title-back-btn.title-btn-valid:hover .title-btn-left-arrow:nth-child(2) {
+    transform: translateX(0) translateZ(0);
+    transition: transform .55s cubic-bezier(.23,1,.32,1) .1s;
+}
+/**right arrow(forward-btn) hover**/
+.title-btn-right-arrow:first-child {
+    transform: translateX(0) translateZ(0);
+}
+
+.title-btn-right-arrow:nth-child(2) {
+	width:15px;
+	position:absolute; 
+	top:0;
+	left:0;
+    transform: translateX(-100%) translateZ(0);
+}
+
+.title-forward-btn.title-btn-valid:hover .title-btn-right-arrow:first-child {
+    transform: translateX(100%) translateZ(0);
+    transition: all .55s cubic-bezier(.23,1,.32,1) 0s;
+}
+
+.title-forward-btn.title-btn-valid:hover .title-btn-right-arrow:nth-child(2) {
+    transform: translateX(0) translateZ(0);
+    transition: transform .55s cubic-bezier(.23,1,.32,1) .1s;
+}
+
+
+/*.title-back-btn {	
+	width: 15px;
+	height: 15px;
 	background-image: url(../images/title-back-btn3.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -1051,7 +1122,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-image: url(../images/title-forward-btn3.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
-}
+}*/
 
 .title-nav {
 	display: flex;
@@ -1064,10 +1135,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .title-nav-current-name {
 	font-size: 2.0rem;
 	font-weight: 600;
-	/* add by dean , for title image display*/
-	display : flex;
-	align-items: center;
-	justify-content : center;
+	cursor: auto;
 }
 
 .title-nav-item {
@@ -1076,24 +1144,15 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .title-nav-name {
-	position: relative;
-	top: 0;
-	left: 0;
+	padding: 2px 2px 3px 0;
 	text-align: center;
-	/*color: rgba(170,171,174,1);*/
-	transition: all .55s cubic-bezier(.23,1,.32,1) 0s;
+	transition: background-color .1s ,color .1s ;
+	cursor: pointer;
 }
 
 .title-nav-name:hover {
-	position: relative;
-	top: -2px;
-	/*color: rgba(236,236,236,1);*/
-	/*font-size: 1.8rem;*/
-}
-
-.title-nav-name-wrapper {
-	
-	display: inline-block;
+	background-color: rgba(236,236,236,1);
+	color: #2f3136;
 }
 
 .title-nav-current-name span:first-child, 
@@ -1155,17 +1214,17 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 } 
 
 .logs-edit-btn-invalid {
-	stroke: #707070;
+	stroke: rgba(91,101,109,.6);
 	cursor: auto;
 }
 
 .logs-edit-btn-valid {
 	cursor: pointer;
-	stroke: #8dafcc;
+	stroke: rgba(141,175,204,1);
 }
 
 .logs-edit-btn-valid:hover{
-	stroke: #8dafcc;
+	stroke: rgba(121,178,234,.8);
 }
 
 
@@ -1393,7 +1452,49 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .log-item-files-wrapper {
-	margin: 8px 1px 0;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.log-item-files-wrapper > div {
+	flex-shrink: 0;
+	margin-right: 15px;
+	margin-top: 15px;
+	
+	background-image: -webkit-radial-gradient(150px circle,transparent,rgba(36,38,41,.8));
+	background-image: radial-gradient(150px circle,transparent,rgba(36,38,41,.8));
+}
+
+.log-item-files-wrapper > div:first-child {
+	margin-left: 0;
+}
+
+.log-item-file-img {
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	height: 120px;
+	max-width: 210px;
+	min-width: 120px;
+	overflow: hidden;
+}
+
+.log-item-file-img img {
+	max-height: 120px;
+	max-width: 210px;
+}
+
+.log-item-file-attach {
+	display: flex; 
+	justify-content:center;
+	align-items:center;
+	padding: 0 5px 0 8px;
+	height: 120px;
+	width: 120px;
+	border: 1px solid #ececec;
+	font-size: 1.2rem;
+	line-height: 1.8rem;
 }
 
 
