@@ -72,18 +72,40 @@
 				tag.css("color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",1)");		
 				tag.css("background-color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",.1)");
 			});
+			
+			$(".logs-saved-status-icon-svg").bind("click",function(){
+				var savedIcon = $(this);
+				savedIcon.hide();
+				
+				var savingIcon = $(".logs-saving-status-icon-svg");
+				savingIcon.show();
+				var savingPath = $(".log-saving-status-icon");
+				
+				setTimeout(function(){
+					setTimeout(function(){
+						savingIcon.hide();
+					},50);
+					
+					savedIcon.css("stroke-dasharray","27,27");
+					savedIcon.css("stroke-dashoffset","27");
+					savedIcon.css("animation","log-saved-status-dash .4s ease-in 1");
+					savedIcon.css("stroke-linecap","round");
+					savedIcon.css("animation-fill-mode","forwards");
+					savedIcon.show();
+				},2000);
+			});
+			
+			//前进后退按钮hover方法
+			$(".title-back-btn.title-btn-valid,.title-forward-btn.title-btn-valid").hover(function(){
+				$(".title-back-forward-menu").show();
+			}, function(){
+				//$(".title-back-forward-menu").hide();
+			});
 	    });
 	</script>
 	
 	<style>
-	/*.hashtag-box-icon-container {
-		transition: all .8s cubic-bezier(.23,1,.32,1) .2s;
-	}
-	.hashtag-box-icon-container:hover{
-		background-position: right center;
-		background-repeat: no-repeat;
-		background-size: 110% 110%;
-	}*/
+
 	</style>
 </head>
 <body>
@@ -309,7 +331,7 @@
 			<div class="index-content">
 				<div class="content-title-wrapper">
 					<div class="title-forward-back-btns-bar">
-						<div class="title-back-btn title-btn-invalid">
+						<div class="title-back-btn title-btn-valid">
 							<svg version="1.1" class="title-btn-left-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									 width="14.5px" height="15.282px" viewBox="0 0 14.5 15.282" enable-background="new 0 0 14.5 15.282" xml:space="preserve">
 								<path fill="#707070" d="M2.882,6.642c1.328,0.007,10.617,0,10.617,0c0.552,0,1,0.448,1,1s-0.448,1-1,1c0,0-10.335,0-10.615,0
@@ -317,7 +339,7 @@
 									C0.237,8.824,0,8.251,0,7.642s0.237-1.182,0.668-1.613l5.734-5.735c0.391-0.391,1.023-0.391,1.414,0
 									c0.391,0.39,0.391,1.023,0,1.414L2.879,6.645"/>
 							</svg>
-							<div class="title-btn-left-arrow title-btn-invalid">
+							<div class="title-btn-left-arrow title-btn-valid">
 								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 										 width="14.5px" height="15.282px" viewBox="0 0 14.5 15.282" enable-background="new 0 0 14.5 15.282" xml:space="preserve">
 									<path fill="#707070" d="M2.882,6.642c1.328,0.007,10.617,0,10.617,0c0.552,0,1,0.448,1,1s-0.448,1-1,1c0,0-10.335,0-10.615,0
@@ -356,6 +378,18 @@
 						<div class="title-nav-current-name"><span>#</span><span>hard work</span></div>
 					</div>
 				</div>
+				
+				<!--title-back-forward menu begin-->
+				<div class="title-back-forward-menu" style="display:none;">
+					<div class="title-back-forward-menu-tags">
+						<li><div class="title-back-forward-menu-tag-img"><img src="images/laugh-face.png" alt="tag name"/></div>
+						<div>#11111</div></li>
+						<li><div>#如果说我要放中文呢</div></li>
+						<li><div>#33333</div></li>
+					</div>
+				</div>
+				<!--title-back-forward menu end-->
+				
 				<!--div class="content-main"-->
 					<div class="content-logs-btns-wrapper">
 						<div class="logs-btns-bar">
@@ -427,7 +461,20 @@
 						</div>
 						<div class="logs-status-bar">
 							<!--div class="logs-btn-separate-line"></div-->
-							<div class="logs-status-icon"></div>
+							<div class="logs-status-icon">
+								<div style="position:relative;">
+									<svg version="1.1" class="logs-saved-status-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 width="26.25px" height="26.25px" viewBox="0 0 26.25 26.25" enable-background="new 0 0 26.25 26.25" xml:space="preserve">
+										<path class="log-saved-status-icon" fill="none" stroke="#20C05C" stroke-width="3" stroke-linecap="round" stroke-linejoin="bevel" stroke-miterlimit="10" d="
+											M1.5,14.2c0,0,6.78,5.929,6.871,5.998s0.208,0.071,0.275,0S20.292,7.956,20.292,7.956"/>
+									</svg>
+									
+									<svg version="1.1" class="logs-saving-status-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 width="26.25px" height="26.25px" viewBox="0 0 26.25 26.25" enable-background="new 0 0 26.25 26.25" xml:space="preserve">
+										<circle class="log-saving-status-icon" fill="none" stroke="#20C05C" stroke-width="3" stroke-miterlimit="10" cx="13.125" cy="13.125" r="11.625"/>
+									</svg>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="content-log-inputbox-wrapper">
@@ -507,6 +554,36 @@
 							</div>
 						</div>
 					</div><!--content-logs-wrapper end-->
+					
+					<!--tag menu begin-->
+					
+					<div class="content-tag-dialog">
+						<div class="content-tag-dialog-head">
+							<div class="content-tag-dialog-head-icon"></div>
+							<div class="content-tag-dialog-head-name">#my inability</div>
+						</div>
+						<div class="content-tag-dialog-btns">
+							<div>日志</div>
+							<div>设置</div>
+						</div>
+						<div class="content-tag-dialog-detail">
+							<div class="content-tag-dialog-detail-row clearfix">
+								<div>日志数:</div><div>28</div>
+							</div>
+							<div class="content-tag-dialog-detail-row clearfix">
+								<div>访问次数:</div><div>36</div>
+							</div>
+							<div class="content-tag-dialog-detail-row clearfix">
+								<div>创建时间:</div><div>2017-9-28</div>
+							</div>
+							<div class="content-tag-dialog-detail-describe">
+								<div><span style="margin-right: 20px;">描述:</span><span style="">这是一个例子，随便写点东西。看看换行的样子</span></div>
+							</div>
+						</div>
+					</div>
+					
+					
+					<!--tag menu end-->
 				<!--/div-->
 			</div>
 			<!----------------main end----------------->

@@ -25,6 +25,15 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: "";
+}
+
 /** index page begin**/
 
 .position-relative {
@@ -1008,6 +1017,8 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 /******main begin******/
 
 .index-content {
+	position: relative;
+	
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -1076,12 +1087,12 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .title-back-btn.title-btn-valid:hover .title-btn-left-arrow:first-child {
     transform: translateX(-100%) translateZ(0);
-    transition: all .55s cubic-bezier(.23,1,.32,1) 0s;
+    transition: all .55s cubic-bezier(.23,1,.32,1) 0.1s;
 }
 
 .title-back-btn.title-btn-valid:hover .title-btn-left-arrow:nth-child(2) {
     transform: translateX(0) translateZ(0);
-    transition: transform .55s cubic-bezier(.23,1,.32,1) .1s;
+    transition: transform .55s cubic-bezier(.23,1,.32,1) .2s;
 }
 /**right arrow(forward-btn) hover**/
 .title-btn-right-arrow:first-child {
@@ -1098,12 +1109,12 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .title-forward-btn.title-btn-valid:hover .title-btn-right-arrow:first-child {
     transform: translateX(100%) translateZ(0);
-    transition: all .55s cubic-bezier(.23,1,.32,1) 0s;
+    transition: all .55s cubic-bezier(.23,1,.32,1) 0.1s;
 }
 
 .title-forward-btn.title-btn-valid:hover .title-btn-right-arrow:nth-child(2) {
     transform: translateX(0) translateZ(0);
-    transition: transform .55s cubic-bezier(.23,1,.32,1) .1s;
+    transition: transform .55s cubic-bezier(.23,1,.32,1) .2s;
 }
 
 
@@ -1123,6 +1134,70 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-repeat: no-repeat;
 	background-position: center center;
 }*/
+
+/*title-back-forward-menu begin*/
+.title-back-forward-menu {
+	position: absolute;
+	top: 54px;
+	left: 15px;
+	min-width: 160px;
+	max-width: 80%;
+	max-height: 650px;
+	border: 1px solid rgba(28,36,43,.6);
+	border-radius: 4px;
+	background-color: #282b30;
+	color: #b8b8b8;
+	letter-spacing: 1px;
+	font-size: 1.4rem;
+	font-weight: 400; 	
+	z-index: 10;
+}
+
+.title-back-forward-menu-tags {
+	box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+}
+.title-back-forward-menu-tags li {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 20px;
+	cursor: pointer;
+	list-style-type: none;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	border-bottom: 1px solid rgba(100,100,100,.2);
+	white-space: nowrap;
+	text-overflow:ellipsis; 
+ 	-o-text-overflow:ellipsis; 
+	overflow: hidden;
+}
+
+.title-back-forward-menu-tags li:last-child {
+	border: 0;
+}
+
+.title-back-forward-menu-tags li:hover {
+	background-color: #25282d;
+	color: #ececec;
+}
+
+.title-back-forward-menu-tag-img {
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 100%;
+}
+
+.title-back-forward-menu-tag-img img {
+	position: absolute;
+	left: 0;
+	top: 5px;
+	max-width: 23px;
+	max-height: 23px;
+	margin: auto;
+}
+
+/*title-back-forward-menu end*/
 
 .title-nav {
 	display: flex;
@@ -1283,12 +1358,68 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 .logs-status-icon {
-	width: 25px;
-	height: 25px;
-	margin: 0 8px;
-	background-image: url(../images/log-status-saved.svg);
+	width: 26px;
+	height: 26px;
+	margin: 0 5px;
+	
+	/*background-image: url(../images/log-status-saved1.svg);
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: center center;*/ 
+}
+
+.logs-saved-status-icon-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.logs-saving-status-icon-svg {
+	display: none;
+		
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	animation: log-saving-status-rotate 2s linear infinite;
+	transform-origin: center center;
+	width: 26px;
+	height: 26px;
+	margin: auto;
+}
+
+.log-saving-status-icon {	
+    stroke-dasharray: 1, 180;
+    stroke-dashoffset: 0;
+    animation: log-saving-status-dash 1.5s ease-in-out infinite;
+    stroke-linecap: round;
+
+}
+
+@keyframes log-saving-status-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes log-saving-status-dash {
+  0% {
+    stroke-dasharray: 1, 180;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 36, 180;
+    stroke-dashoffset: -18px;
+  }
+  100% {
+    stroke-dasharray: 36, 180;
+    stroke-dashoffset: -70px;
+  }
+}
+
+@keyframes log-saved-status-dash {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .content-log-inputbox-wrapper {
@@ -1462,8 +1593,8 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	margin-right: 15px;
 	margin-top: 15px;
 	
-	background-image: -webkit-radial-gradient(150px circle,transparent,rgba(36,38,41,.8));
-	background-image: radial-gradient(150px circle,transparent,rgba(36,38,41,.8));
+	background-image: -webkit-radial-gradient(120px circle,transparent,rgba(36,38,41,.8));
+	background-image: radial-gradient(120px circle,transparent,rgba(36,38,41,.8));
 }
 
 .log-item-files-wrapper > div:first-child {
@@ -1487,16 +1618,79 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 .log-item-file-attach {
 	display: flex; 
-	justify-content:center;
-	align-items:center;
+	justify-content: center;
+	align-items: center;
 	padding: 0 5px 0 8px;
 	height: 120px;
 	width: 120px;
-	border: 1px solid #ececec;
+	border: 1px solid rgba(149,149,150,.6);
 	font-size: 1.2rem;
 	line-height: 1.8rem;
 }
 
+/*tag menu in content begin*/
+.content-tag-dialog {
+	display: none;
+	position: absolute;
+	top: 200px;
+	left: 200px;
+	width: 220px;
+	background-color: #f9f9f9;
+	border-radius: 5px;
+}
+
+.content-tag-dialog-head {
+	background-color: rgb(121, 178, 234);
+	color: #ececec;
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+.content-tag-dialog-head-name {
+	padding-bottom: 15px;
+	font-size: 1.6rem;
+	font-weight: 400;
+	letter-spacing: 1px;
+	text-align: center;
+}
+.content-tag-dialog-head-icon {
+	height: 70px;
+	background-image: url(../images/flower.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.content-tag-dialog-btns {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 10px;
+	height: 40px;
+	background-color: #ffffff;
+}
+
+.content-tag-dialog-detail {
+	height: 200px;
+	margin: 20px 30px;
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
+
+.content-tag-dialog-detail-row {
+	margin-bottom: 15px;
+}
+.content-tag-dialog-detail-row div:nth-child(1) {
+	float: left;
+	width: 50%;
+}
+.content-tag-dialog-detail-row div:nth-child(2) {
+	float: right;
+}
+.content-tag-dialog-detail-describe {
+	line-height: 1.6rem;
+	margin-top: -3px;
+	margin-bottom: 15px;
+}
+/*tag menu in content end*/
 
 
 /******main end******/
