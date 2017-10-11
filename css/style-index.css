@@ -1137,7 +1137,8 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 /*title-back-forward-menu begin*/
 .title-back-forward-menu {
-	position: absolute;
+	/* modify by dean : from absolute to fixed */
+	position: fixed;
 	top: 54px;
 	left: 15px;
 	min-width: 160px;
