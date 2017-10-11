@@ -639,7 +639,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	width: 310px;
 	height: 100vh;
 	background-color: #2f3136;
-	transition: width .55s ease-in .1s;
+	transition: width .3s ease-in .1s;
 } 
 
 .widgets-main {
