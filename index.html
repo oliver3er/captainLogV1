@@ -96,10 +96,85 @@
 			});
 			
 			//前进后退按钮hover方法
-			$(".title-back-btn.title-btn-valid,.title-forward-btn.title-btn-valid").hover(function(){
+			$(".title-back-btn.title-btn-valid").hover(function(){
+				var menu = $(".title-back-forward-menu");
+				menu.css("left",$(this).position().left);
 				$(".title-back-forward-menu").show();
+				$(".title-back-forward-menu").removeClass("title-back-forward-menu-close");
+				$(".title-back-forward-menu").addClass("title-back-forward-menu-open");
 			}, function(){
-				//$(".title-back-forward-menu").hide();
+				$(".title-back-forward-menu").removeClass("title-back-forward-menu-open");
+				$(".title-back-forward-menu").addClass("title-back-forward-menu-close");
+			});
+			$(".title-forward-btn.title-btn-valid").hover(function(){
+				var menu = $(".title-back-forward-menu");
+				menu.css("left",$(this).position().left);
+				$(".title-back-forward-menu").show();
+				$(".title-back-forward-menu").removeClass("title-back-forward-menu-close");
+				$(".title-back-forward-menu").addClass("title-back-forward-menu-open");
+			}, function(){
+				$(".title-back-forward-menu").removeClass("title-back-forward-menu-open");
+				$(".title-back-forward-menu").addClass("title-back-forward-menu-close");
+			});
+			
+			//点击标签菜单显示
+			$('.log-item-tag-words').bind('click',function(){   		
+				var currentTag = $(this);
+				currentPositon = currentTag.position();
+				var tagDialog = $(".content-tag-dialog");
+				
+				var currentY = currentTag.offset().top;
+				var currentX = currentTag.offset().left;
+				
+				var wholeWidth = $(document).width();
+				var tagWidth = currentTag.outerWidth(true);
+				var tagDialogWidth = tagDialog.outerWidth(true);
+				if((currentX+tagDialogWidth+200) > wholeWidth){
+					tagDialog.css("left",(currentPositon.left-tagDialogWidth+3));
+				}else{
+					tagDialog.css("left",(currentPositon.left+tagWidth-3));
+				}
+				
+				var wholeHeight = $(document).height();
+				var tagDialogHeight = tagDialog.outerHeight(true);
+				if((currentY+tagDialogHeight)>wholeHeight) {
+					tagDialog.css("top",(wholeHeight-tagDialogHeight-20));
+				}else{
+					tagDialog.css("top",(currentPositon.top+20));
+				}
+				tagDialog.show();
+			});
+			
+			//点击除标签菜单的位置，关闭菜单窗口
+			$(document).bind("click",function(event){
+				var e=window.event || event;
+				if($(e.target).closest(".content-tag-dialog").length == 0 &&
+					$(e.target).closest(".log-item-tag-words").length == 0){
+					$(".content-tag-dialog").hide();
+				}
+			});
+			
+			$(".tag-setting-describe-textarea").bind('input propertychange','textarea',function(){
+				var tagSettingText = $(".tag-setting-describe-textarea");
+				var tagScrollH = tagSettingText.prop("scrollHeight");
+				var tagHeight = parseInt(tagSettingText.css("height").replace("px",""));
+
+				if(tagScrollH>(30+(tagHeight/26-1)*26)){
+					tagSettingText.css("height",(tagHeight+26));
+				}
+				
+			});
+			
+			$(".content-tag-dialog-setting").bind('click',function(){
+				$(".content-tag-dialog").hide();
+				$(".tag-setting-wrapper").css("display","flex");
+				$(".callout-backdrop").show();
+			});
+			
+			
+			$(".tag-setting-btn-cancle").bind('click',function(){
+				$(".tag-setting-wrapper").hide();
+				$(".callout-backdrop").hide();
 			});
 	    });
 	</script>
@@ -556,7 +631,6 @@
 					</div><!--content-logs-wrapper end-->
 					
 					<!--tag menu begin-->
-					
 					<div class="content-tag-dialog">
 						<div class="content-tag-dialog-head">
 							<div class="content-tag-dialog-head-icon"></div>
@@ -564,7 +638,7 @@
 						</div>
 						<div class="content-tag-dialog-btns">
 							<div>日志</div>
-							<div>设置</div>
+							<div class="content-tag-dialog-setting"><a href="javascript://;">设置</a></div>
 						</div>
 						<div class="content-tag-dialog-detail">
 							<div class="content-tag-dialog-detail-row clearfix">
@@ -577,16 +651,51 @@
 								<div>创建时间:</div><div>2017-9-28</div>
 							</div>
 							<div class="content-tag-dialog-detail-describe">
-								<div><span style="margin-right: 20px;">描述:</span><span style="">这是一个例子，随便写点东西。看看换行的样子</span></div>
+								<div><span style="margin-right: 12px;">描述:</span><span>这是一个例子，随便写点东西。看看换行的样子</span></div>
 							</div>
 						</div>
 					</div>
-					
-					
 					<!--tag menu end-->
 				<!--/div-->
 			</div>
 			<!----------------main end----------------->
+			
+			<!--tag setting begin-->
+			<div class="callout-backdrop"></div>
+			<div class="tag-setting-wrapper">
+				<div class="tag-setting-dialog">
+					<div class="tag-setting-head">
+						<div class="tag-setting-head-icon"><img src="images/flower.png" alt="icon" ／></div>
+						<div class="tag-setting-head-name">#my inability</div>
+						<div class="tag-setting-head-color"></div>
+					</div>
+					<div class="tag-setting-content">
+						<div class="tag-setting-showway">
+							<div class="tag-setting-content-label">显示方式:</div>
+							<div class="tag-setting-content-value">
+								<input name="showway-1" type="checkbox" value="on"/><span style="color:rgba(121, 178, 234, 1);">#my inability</span>
+							</div>
+							<div class="tag-setting-content-value">
+								<input name="showway-1" type="checkbox" value=""/><img src="images/flower.png" alt="icon" ／>
+							</div>
+							<div class="tag-setting-content-value">
+								<input name="showway-1" type="checkbox" value=""/><span style="color:rgba(121, 178, 234, 1);">#my inability</span><img src="images/flower.png" alt="icon" ／>
+							</div>
+						</div>
+						<div class="tag-setting-describe">
+							<div class="tag-setting-content-label">说明:</div>
+							<div>
+								<textarea placeholder="click to add a note" spellcheck="false" maxlength="256" class="tag-setting-describe-textarea" onchange="if(this.scrollHeight>26){this.style.height=this.scrollHeight+26;}"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="tag-setting-btns">
+						<div class="tag-setting-btn-save btn-ok">保存</div>
+						<div class="tag-setting-btn-cancle btn-cancle"><span>取消</span></div>
+					</div>
+				</div>
+			</div>
+			<!--tag setting end-->
 		</div>
 	</div>
 </body>
