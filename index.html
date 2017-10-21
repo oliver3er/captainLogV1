@@ -194,37 +194,59 @@
 				tagDialog.show();
 			});
 			
-			//点击除标签菜单的位置，关闭菜单窗口
+			
 			$(document).bind("click",function(event){
 				var e=window.event || event;
+				//点击除标签菜单的位置，关闭菜单窗口
 				if($(e.target).closest(".content-tag-dialog").length == 0 &&
 					$(e.target).closest(".log-item-tag-words").length == 0){
-					$(".content-tag-dialog").removeClass("content-tag-dialog-open").addClass("content-tag-dialog-close");
-					//$(".content-tag-dialog").hide();
-				}
-			});
-			
-			$(".tag-setting-describe-textarea").bind('input propertychange','textarea',function(){
-				var tagSettingText = $(".tag-setting-describe-textarea");
-				var tagScrollH = tagSettingText.prop("scrollHeight");
-				var tagHeight = parseInt(tagSettingText.css("height").replace("px",""));
-
-				if(tagScrollH>(30+(tagHeight/26-1)*26)){
-					tagSettingText.css("height",(tagHeight+26));
+					if($(".content-tag-dialog").css("visibility")!="hidden"){
+						$(".content-tag-dialog").removeClass("content-tag-dialog-open").addClass("content-tag-dialog-close");
+						backdropClose();
+					}
 				}
 				
+				//点击除标签设置窗以外的位置，关闭设置窗口
+				if($(e.target).closest(".content-tag-dialog-setting").length == 0 &&
+					$(e.target).closest(".log-item-tag-words").length == 0 &&
+					$(e.target).closest(".tag-setting-dialog").length == 0 ){
+					if($(".tag-setting-wrapper").css("visibility")!="hidden"){
+						var settingDialog = $(".tag-setting-wrapper");
+						settingDialog.removeClass("tag-setting-wrapper-close").removeClass("tag-setting-wrapper-open");
+						settingDialog.addClass("tag-setting-wrapper-close");
+						backdropClose();
+					}
+				}
+				
+				//点击除消息提示窗的位置，关闭消息提示窗口
+				if($(e.target).closest(".message-dialog-wrapper").length == 0 &&
+					$(e.target).closest(".logs-delete-btn.logs-edit-btn-valid").length == 0){
+					if($(".message-dialog").css("visibility")!="hidden"){
+						var msDialog = $(".message-dialog");
+						msDialog.removeClass("message-dialog-close").removeClass("message-dialog-open");
+						msDialog.addClass("message-dialog-close").removeClass("message-dialog-open");
+				
+						backdropClose();
+					}
+				}
 			});
 			
 			$(".content-tag-dialog-setting").bind('click',function(){
 				$(".content-tag-dialog").hide();
-				$(".tag-setting-wrapper").css("display","flex");
-				$(".callout-backdrop").show();
+				var settingDialogWr = $(".tag-setting-wrapper");
+				settingDialogWr.removeClass("tag-setting-wrapper-close").removeClass("tag-setting-wrapper-open");
+				settingDialogWr.addClass("tag-setting-wrapper-open");
+				
+				backdropOpen();
 			});
 			
 			
 			$(".tag-setting-btn-cancle").bind('click',function(){
-				$(".tag-setting-wrapper").hide();
-				$(".callout-backdrop").hide();
+				var settingDialogWr = $(".tag-setting-wrapper");
+				settingDialogWr.removeClass("tag-setting-wrapper-open");
+				settingDialogWr.addClass("tag-setting-wrapper-close");
+				
+				backdropClose();
 			});
 			
 			
@@ -251,6 +273,38 @@
 				}
 				
 			});
+			
+			
+			//弹出消息提示窗
+			$(".logs-delete-btn.logs-edit-btn-valid").bind('click',function(){
+				var msDialog = $(".message-dialog");
+				msDialog.removeClass("message-dialog-close").removeClass("message-dialog-open");
+				msDialog.addClass("message-dialog-open");
+				
+				backdropOpen();
+			});
+			
+			//关闭消息提示窗
+			$(".message-dialog-btn-cancle").bind('click',function(){
+				var msDialog = $(".message-dialog");
+				msDialog.removeClass("message-dialog-close").removeClass("message-dialog-open");
+				msDialog.addClass("message-dialog-close");
+				
+				backdropClose();
+			});
+			
+			function backdropClose(){
+				var backdrop = $(".callout-backdrop");
+				backdrop.removeClass("--close").removeClass("--open");
+				backdrop.addClass("--close");
+			}
+			
+			function backdropOpen(){
+				var backdrop = $(".callout-backdrop");
+				backdrop.removeClass("--close").removeClass("--open");
+				backdrop.addClass("--open");
+			}
+			
 	    });
 	</script>
 	
@@ -590,7 +644,7 @@
 								</svg>
 							</div>
 							<div class="content-logs-btn">
-								<svg version="1.1" class="logs-double-tag-btn  logs-edit-btn-valid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								<svg version="1.1" class="logs-double-tag-btn  logs-edit-btn-invalid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 										 width="26px" height="20px" viewBox="0 0 26 20" enable-background="new 0 0 26 20" xml:space="preserve">
 									<polyline fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
 										17.526,2.167 25.5,10.008 17.545,17.833 "/>
@@ -602,7 +656,7 @@
 							<div class="logs-btn-separate-line"></div>
 							
 							<div class="content-logs-btn">
-								<svg version="1.1" class="logs-delete-btn logs-edit-btn-invalid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								<svg version="1.1" class="logs-delete-btn logs-edit-btn-valid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 										 width="21.961px" height="21.966px" viewBox="0 0 21.961 21.966" enable-background="new 0 0 21.961 21.966" xml:space="preserve">
 									<path fill="none" stroke="#8DAFCC" stroke-linecap="round" stroke-miterlimit="10" d="M8.68,3.479c0-1.211,0.594-2.979,2.339-2.979
 										l0,0c1.655,0,2.226,1.769,2.226,2.979H8.68z"/>
@@ -834,7 +888,7 @@
 							
 								<div class="tag-setting-item">
 									<div class="tag-setting-label">SHOW WAY</div>
-									<div class="tag-setting-show-value">
+									<div class="tag-setting-show-value edit-value">
 										<div class="checkbox">
 											<div class="checkbox-inner">
 												<input type="checkbox" value="on"/>
@@ -843,7 +897,7 @@
 											<span>words</span>
 										</div>
 									</div>
-									<div class="tag-setting-show-value">
+									<div class="tag-setting-show-value edit-value">
 										<div class="checkbox">
 											<div class="checkbox-inner">
 												<input type="checkbox" value="on"/>
@@ -852,7 +906,7 @@
 											<span>icon</span>
 										</div>
 									</div>
-									<div class="tag-setting-show-value">
+									<div class="tag-setting-show-value edit-value">
 										<div class="checkbox">
 											<div class="checkbox-inner">
 												<input type="checkbox" value="on"/>
@@ -909,7 +963,7 @@
 								<div class="tag-setting-item">
 									<div class="tag-setting-label">DESCRIPTION</div>
 									<div class="tag-setting-textarea">
-										<textarea placeholder="click to add a note" spellcheck="false" maxlength="256" class="tag-setting-describe-textarea"></textarea>
+										<textarea placeholder="click to add a note" spellcheck="false" maxlength="256" class="tag-setting-describe-textarea edit-value"></textarea>
 									</div>
 								</div>
 							</div><!--content end-->
@@ -918,8 +972,8 @@
 					</div><!--main end-->
 					
 					<div class="tag-setting-btns">
-						<div class="tag-setting-btn-cancle btn-cancle"><span>cancle</span></div>
-						<div class="tag-setting-btn-save btn-ok">save</div>
+						<div class="tag-setting-btn-cancle btn-cancle"><span>Cancle</span></div>
+						<div class="tag-setting-btn-save btn-ok">Save</div>
 					</div>
 					</div>  <!--dialog-wrapper end -->
 				</div>
@@ -977,6 +1031,40 @@
 					<div class="tag-icon-selection-btns">ICON SELECTION</div>
 				</div>
 			<!--tag-icon-selection-dialog end-->
+			
+			
+			
+			<!--message-dialog-delete begin-->
+			<div class="message-dialog">
+				<div class="message-dialog-wrapper">
+					<div class="message-dialog-title">DELETE LOG</div>
+					<div class="message-dialog-main">
+						<div class="message-dialog-content">Are you sure you want to delete this log?</div>
+						<div class="message-dialog-main-info">
+							<div class="message-dialog-tag-info">
+								<div class="log-item-title">
+									This is a <div class="log-item-tag-words"><span>#</span><span>title</span></div>
+								</div>
+								<div class="log-item-detail">
+									I don’t known how can I make a perfect work.
+									<div class="log-item-tag-words">
+										<span class="hashtag-box-icon-container" style="background-position:right center;background-image: url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0ODEuODgyIDQ4MS44ODIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ4MS44ODIgNDgxLjg4MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxjaXJjbGUgc3R5bGU9ImZpbGw6I0ZDRDQ2MjsiIGN4PSIyNDAuOTQxIiBjeT0iMjQwLjk0MSIgcj0iMTM4LjU0MSIvPjxnPjxwYXRoIHN0eWxlPSJmaWxsOiNGNkMzNTg7IiBkPSJNMzA2LjU5OCwxMTguNjY0YzYuMDI0LDE5LjI3NSwxMC4yNCwzOS43NTUsMTAuODQyLDYwLjgzOGMzLjYxNCw4My43MjctNTMuMDA3LDE1Ny44MTYtMTI2LjQ5NCwxOTAuMzQ0YzE1LjY2MSw2LjAyNCwzMi41MjcsOS42MzgsNDkuOTk1LDkuNjM4Yzc2LjQ5OSwwLDEzOC41NDEtNjIuMDQyLDEzOC41NDEtMTM4LjU0MUMzNzkuNDgyLDE4Ny45MzQsMzQ5Ljk2NywxNDIuMTU1LDMwNi41OTgsMTE4LjY2NHoiLz48cGF0aCBzdHlsZT0iZmlsbDojRjZDMzU4OyIgZD0iTTI0MC45NDEsMGMtMTEuNDQ1LDAtMjAuNDgsOS4wMzUtMjAuNDgsMjAuNDh2MzMuNzMyYzAsMTEuNDQ1LDkuMDM1LDIwLjQ4LDIwLjQ4LDIwLjQ4czIwLjQ4LTkuMDM1LDIwLjQ4LTIwLjQ4VjIwLjQ4QzI2MS40MjEsOS4wMzUsMjUyLjM4NiwwLDI0MC45NDEsMHoiLz48cGF0aCBzdHlsZT0iZmlsbDojRjZDMzU4OyIgZD0iTTI0MC45NDEsNDA3LjE5MWMtMTEuNDQ1LDAtMjAuNDgsOS4wMzUtMjAuNDgsMjAuNDh2MzMuNzMyYzAsMTEuNDQ1LDkuMDM1LDIwLjQ4LDIwLjQ4LDIwLjQ4czIwLjQ4LTkuMDM1LDIwLjQ4LTIwLjQ4di0zMy43MzJDMjYxLjQyMSw0MTYuMjI2LDI1Mi4zODYsNDA3LjE5MSwyNDAuOTQxLDQwNy4xOTF6Ii8+PHBhdGggc3R5bGU9ImZpbGw6I0Y2QzM1ODsiIGQ9Ik00ODEuODgyLDI0MC45NDFjMC0xMS40NDUtOS4wMzUtMjAuNDgtMjAuNDgtMjAuNDhoLTMzLjczMmMtMTEuNDQ1LDAtMjAuNDgsOS4wMzUtMjAuNDgsMjAuNDhzOS4wMzUsMjAuNDgsMjAuNDgsMjAuNDhoMzMuNzMyQzQ3Mi44NDcsMjYxLjQyMSw0ODEuODgyLDI1Mi4zODYsNDgxLjg4MiwyNDAuOTQxeiIvPjxwYXRoIHN0eWxlPSJmaWxsOiNGNkMzNTg7IiBkPSJNNzQuNjkyLDI0MC45NDFjMC0xMS40NDUtOS4wMzUtMjAuNDgtMjAuNDgtMjAuNDhIMjAuNDhjLTExLjQ0NSwwLTIwLjQ4LDkuMDM1LTIwLjQ4LDIwLjQ4czkuMDM1LDIwLjQ4LDIwLjQ4LDIwLjQ4aDMzLjczMkM2NS42NTYsMjYxLjQyMSw3NC42OTIsMjUyLjM4Niw3NC42OTIsMjQwLjk0MXoiLz48cGF0aCBzdHlsZT0iZmlsbDojRjZDMzU4OyIgZD0iTTQxMS40MDcsNzAuNDc1Yy03LjgzMS03LjgzMS0yMS4wODItNy44MzEtMjguOTEzLDBMMzU4LjQsOTQuNTY5Yy03LjgzMSw3LjgzMS03LjgzMSwyMS4wODIsMCwyOC45MTNjNy44MzEsNy44MzEsMjEuMDgyLDcuODMxLDI4LjkxMywwbDI0LjA5NC0yNC4wOTRDNDE5LjIzOCw5MS41NTgsNDE5LjIzOCw3OC4zMDYsNDExLjQwNyw3MC40NzV6Ii8+PHBhdGggc3R5bGU9ImZpbGw6I0Y2QzM1ODsiIGQ9Ik0xMjMuNDgyLDM1OC40Yy03LjgzMS03LjgzMS0yMS4wODItNy44MzEtMjguOTEzLDBsLTI0LjA5NCwyNC4wOTRjLTcuODMxLDcuODMxLTcuODMxLDIxLjA4MiwwLDI4LjkxM2M3LjgzMSw3LjgzMSwyMS4wODIsNy44MzEsMjguOTEzLDBsMjQuMDk0LTI0LjA5NEMxMzEuMzEzLDM3OS40ODIsMTMxLjMxMywzNjYuODMzLDEyMy40ODIsMzU4LjR6Ii8+PHBhdGggc3R5bGU9ImZpbGw6I0Y2QzM1ODsiIGQ9Ik00MTEuNDA3LDQxMS40MDdjNy44MzEtNy44MzEsNy44MzEtMjEuMDgyLDAtMjguOTEzTDM4Ny4zMTMsMzU4LjRjLTcuODMxLTcuODMxLTIxLjA4Mi03LjgzMS0yOC45MTMsMGMtNy44MzEsNy44MzEtNy44MzEsMjEuMDgyLDAsMjguOTEzbDI0LjA5NCwyNC4wOTRDMzkwLjMyNSw0MTkuMjM4LDQwMy41NzYsNDE5LjIzOCw0MTEuNDA3LDQxMS40MDd6Ii8+PHBhdGggc3R5bGU9ImZpbGw6I0Y2QzM1ODsiIGQ9Ik0xMjMuNDgyLDEyMy40ODJjNy44MzEtNy44MzEsNy44MzEtMjEuMDgyLDAtMjguOTEzTDk5LjM4OCw3MC40NzVjLTcuODMxLTcuODMxLTIxLjA4Mi03LjgzMS0yOC45MTMsMHMtNy44MzEsMjEuMDgyLDAsMjguOTEzbDI0LjA5NCwyNC4wOTRDMTAyLjQsMTMxLjMxMywxMTUuMDQ5LDEzMS4zMTMsMTIzLjQ4MiwxMjMuNDgyeiIvPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48L3N2Zz4=&quot;);background-repeat: no-repeat;">
+											<span data-offset-key="abdfc-1-0"><span data-text="true" style="padding-right: 15px;">#v1.0</span></span>
+										</span>
+									</div>
+									That sad moment you
+									before <div class="log-item-tag-words" style="color: rgba(225,41,119,1);background-color:rgba(225,41,119,0.1);"><span>#</span><span>school</span><span>#</span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="message-dialog-btns">
+						<div class="message-dialog-btn-cancle btn-cancle"><span>Cancle</span></div>
+						<div class="message-dialog-btn-delete btn-delete">Delete</div>
+					</div>
+				</div>
+			</div>
+			<!--operation-tip-delete end-->
 		</div>
 	</div>
 </body>
