@@ -1216,13 +1216,13 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 @-webkit-keyframes dialog-anim-open {
-	0% { opacity: 0; -webkit-transform: scale3d(0, 0, 1); }
-	100% { opacity: 1; -webkit-transform: scale3d(1, 1, 1); }
+	0% { opacity: 0;  visibility: hidden; -webkit-transform: scale3d(0, 0, 1); }
+	100% { opacity: 1; visibility: visible; -webkit-transform: scale3d(1, 1, 1); }
 }
 
 @keyframes dialog-anim-open {
-	0% { opacity: 0; -webkit-transform: scale3d(0, 0, 1); transform: scale3d(0, 0, 1); }
-	100% { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+	0% { opacity: 0; visibility: hidden; -webkit-transform: scale3d(0, 0, 1); transform: scale3d(0, 0, 1); }
+	100% { opacity: 1; visibility: visible; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
 }
 
 .title-back-forward-menu-close.title-back-forward-menu {
@@ -1234,13 +1234,13 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 }
 
 @-webkit-keyframes dialog-anim-close {
-	0% { opacity: 1; }
-	100% { opacity: 0; -webkit-transform: scale3d(0.5, 0.5, 1); }
+	0% { opacity: 1; visibility: visible;}
+	100% { opacity: 0; visibility: hidden; -webkit-transform: scale3d(0.5, 0.5, 1); }
 }
 
 @keyframes dialog-anim-close {
-	0% { opacity: 1; }
-	100% { opacity: 0; -webkit-transform: scale3d(0.5, 0.5, 1); transform: scale3d(0.5, 0.5, 1); }
+	0% { opacity: 1; visibility: visible; }
+	100% { opacity: 0; visibility: hidden; -webkit-transform: scale3d(0.5, 0.5, 1); transform: scale3d(0.5, 0.5, 1); }
 }
 
 .title-back-forward-menu-tags {
@@ -1721,7 +1721,6 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 /*tag menu in content begin*/
 .content-tag-dialog {
-	display: none;
 	position: absolute;
 	top: 200px;
 	left: 200px;
@@ -1729,6 +1728,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-color: #f9f9f9;
 	border-radius: 5px;
 	font-size: 1.2rem;
+	visibility: hidden;
 	
 	-webkit-animation-duration: 0.4s;
 	animation-duration: 0.4s;
@@ -1809,7 +1809,6 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 /*tag setting in content begin*/
 .callout-backdrop {
-	display: none;
 	position: absolute;
 	left: 0;
     right: 0;
@@ -1817,14 +1816,27 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	bottom: 0;
     contain: strict;
     opacity: 0;
-    opacity: 0.8;
     background-color: rgb(0, 0, 0);
     transform: translateZ(0px);
     z-index: 1000;
+    transition: all .25s ease;
+    pointer-events: none;
+}
+
+.callout-backdrop.--open{
+	opacity: 0.85;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.callout-backdrop.--close{
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
 }
 
 .tag-setting-wrapper {
-	display: none;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -1834,8 +1846,32 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	z-index: 1000;
 	width: 100%;
 	height: 100%;
-	opacity: 1; transform: scale(1) translateZ(0px);
+	transform: scale(1) translateZ(0px);
+	visibility: hidden;
+	
+	-webkit-animation-duration: 0.4s;
+	animation-duration: 0.4s;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
 }
+
+.tag-setting-wrapper-open.tag-setting-wrapper {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+	animation-duration: .35s;
+	pointer-events: auto;
+}
+
+.tag-setting-wrapper-close.tag-setting-wrapper {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.2s;
+	animation-duration: 0.2s;
+	pointer-events: none;
+}
+
 .tag-setting-dialog {
 	position: absolute;
 	width: 700px;
@@ -1846,6 +1882,15 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	font-weight: 400;
 	color: #8a8f99;
 }
+
+/*.tag-setting-dialog.tag-setting-dialog-close {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.2s;
+	animation-duration: 0.2s;
+	pointer-events: none;
+}*/
+
 .tag-setting-dialog-wrapper {
 	display: flex;
 	flex-direction: column;
@@ -1873,8 +1918,6 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	border-top-left-radius: 3px;
 	overflow: hidden;
 	background-color: #36393f;
-	box-shadow: 1px 5px 1px red;
-	color: #;
 }
 
 .tag-setting-dialog-scroll {
@@ -1914,7 +1957,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-color: #d7d7d7;/*#f9f9f9;*/
 	transition: all .24s ease;
 }
-.tag-setting-value:hover, .tag-setting-show-value:hover {
+.tag-setting-value.edit-value:hover, .tag-setting-show-value.edit-value:hover {
 	/*background-color: #f9f9f9;*/
 	border: 1px solid rgba(47,49,54, .7);
 }
@@ -1954,6 +1997,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 24px 24px;
+	cursor: pointer;
 	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4Ii8+CiAgICA8cGF0aCBmaWxsPSIjNEY1NDVDIiBkPSJNMTMuNSw4LjI1IEwxMy41LDEyLjc1IEMxMy41LDEzLjU3ODQyNzEgMTIuODI4NDI3MSwxNC4yNSAxMiwxNC4yNSBMMS41LDE0LjI1IEMwLjY3MTU3Mjg3NSwxNC4yNSAwLDEzLjU3ODQyNzEgMCwxMi43NSBMMCwyLjI1IEMwLDEuNDIxNTcyODggMC42NzE1NzI4NzUsMC43NSAxLjUsMC43NSBMOSwwLjc1IEw2LDAuNzUgTDYsMi4yNSBMMS41LDIuMjUgTDEuNSwxMi43NSBMMTIsMTIuNzUgTDEyLDguMjUgTDEzLjUsOC4yNSBaIE04LjIyLDcuNzE3NSBMMTAuODc1LDExLjI1IEwyLjYyNSwxMS4yNSBMNC42ODc1LDguNjAyNSBMNi4xNTc1LDEwLjM3MjUgTDguMjIsNy43MTc1IFogTTEyLDIuMjUgTDE0LjI1LDIuMjUgTDE0LjI1LDMuNzUgTDEyLDMuNzUgTDEyLDYgTDEwLjUsNiBMMTAuNSwzLjc1IEw4LjI1LDMuNzUgTDguMjUsMi4yNSBMMTAuNSwyLjI1IEwxMC41LDAgTDEyLDAgTDEyLDIuMjUgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi4yNSAxLjUpIi8+CiAgPC9nPgo8L3N2Zz4K);
 }
 .tag-setting-head-right:hover .tag-setting-icon-backdrop {
@@ -1976,6 +2020,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	opacity: 0;
 	pointer-events: none;
 	transition: all .35s ease;
+	cursor: pointer;
 }
 
 .tag-setting-head-icon {
@@ -1988,6 +2033,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	margin-top: 12px;
 	width: 138px;
 	height: 138px;
+	cursor: pointer;
 }
 
 .tag-setting-head-icon img {
@@ -2154,7 +2200,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	border-radius: 3px;
 	transition: all .24s ease;
 }
-.tag-setting-describe-textarea:hover {
+.tag-setting-describe-textarea.edit-value:hover {
 	/*background-color: #f9f9f9;*/
 	border: 1px solid rgba(47,49,54, .7);
 }
@@ -2310,6 +2356,124 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 } 
 
 /*tag setting in content end*/
+
+
+/*message-dialog begin*/
+
+.message-dialog {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #ececec;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	transform: scale(1) translateZ(0px);
+	visibility: hidden;
+	
+	-webkit-animation-duration: 0.4s;
+	animation-duration: 0.4s;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.message-dialog-open.message-dialog {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+	pointer-events: auto;
+}
+
+.message-dialog-close.message-dialog {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.2s;
+	animation-duration: 0.2s;
+	pointer-events: none;
+}
+
+.message-dialog-wrapper {
+	position: absolute;
+	width: 440px;
+	border-radius: 3px;
+	overflow: hidden;
+	z-index: 1000;
+	font-size: 1.4rem;
+	font-weight: 400;
+	background-color: #36393e;
+}
+
+.message-dialog-title {
+	padding-left: 20px;
+	height: 60px;
+	line-height: 60px;
+	font-weight: 600;
+	font-size: 1.6rem;
+	overflow: hidden;
+}
+
+.message-dialog-main {
+	padding: 0 20px;
+	margin-bottom: 20px;
+}
+
+.message-dialog-content {
+	margin: 5px 0 20px;
+	font-size: 1.6rem;
+	font-weight: 400;
+}
+
+.message-dialog-main-info {
+	-webkit-box-shadow: 0 0 0 1px rgba(32,34,37,.6), 0 2px 10px 0 rgba(0,0,0,.2);
+    background-color: #36393f;
+    box-shadow: 0 0 0 1px rgba(32,34,37,.6), 0 2px 10px 0 rgba(0,0,0,.2);
+    border-radius: 3px;
+}
+
+.message-dialog-tag-info {
+	padding: 12px 4px 15px 10px;
+}
+
+.message-dialog-btns {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 2px;
+	height: 60px;
+	background-color: #2f3136;
+    border: 1px solid rgba(60,60,60, 1);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.message-dialog-btn-delete {
+	margin-left: 10px;
+}
+
+.btn-delete {
+	padding: 10px 22px;
+	background-color: #f04747;
+	color: #fff;
+	border-radius:2px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	
+	transition: background-color .17s ease;
+}
+.btn-delete:hover {
+	background-color: #d84040;
+}
+
+/*-message-dialog end*/
+
+
 
 /******main end******/
 
