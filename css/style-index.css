@@ -892,12 +892,14 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-image: url(../images/small-grey-plus.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
+	cursor : pointer;
 }
 
 .small-grey-minus {
 	background-image: url(../images/small-grey-minus.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
+	cursor : pointer;
 }
 
 .widgets-content-btns-separateline {
@@ -914,6 +916,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	background-image: url(../images/btn-zoom0.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
+	cursor : pointer;
 }
 
 .widgets-content-main {
