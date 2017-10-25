@@ -1723,14 +1723,14 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	position: absolute;
 	top: 200px;
 	left: 200px;
-	width: 220px;
-	background-color: #f9f9f9;
+	width: 260px;
+	background-color: #f4f4f4;
 	border-radius: 5px;
 	font-size: 1.2rem;
 	visibility: hidden;
 	
-	-webkit-animation-duration: 0.4s;
-	animation-duration: 0.4s;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: 0.1s;
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 }
@@ -1738,70 +1738,188 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .content-tag-dialog-open.content-tag-dialog {
 	-webkit-animation-name: dialog-anim-open;
 	animation-name: dialog-anim-open;
-	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+	/*-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+	animation-timing-function: cubic-bezier(0.6,0,0.4,1);*/
+	animation-timing-function: ease-out;
 	pointer-events: auto;
 }
 .content-tag-dialog-close.content-tag-dialog {
 	-webkit-animation-name: dialog-anim-close;
 	animation-name: dialog-anim-close;
-	-webkit-animation-duration: 0.2s;
-	animation-duration: 0.2s;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: 0.1s;
 	pointer-events: none;
 }
 
 .content-tag-dialog-head {
-	background-color: rgb(121, 178, 234);
 	color: #ececec;
 	border-top-left-radius: inherit;
 	border-top-right-radius: inherit;
+	padding: 6px 15px 8px;
+	border-bottom: 1px solid rgba(0,0,0,.6);
+	box-shadow: 0 1px 0 rgba(0,0,0,.3);
 }
+
+.conteng-tag-dialog-nav {
+	display: flex;
+	font-size: 1.4rem;
+	fong-weight: 400;
+}
+.conteng-tag-dialog-nav-item {
+	display : flex;
+	align-items : center;
+}
+.conteng-tag-dialog-nav-arrow {
+	width: 16px;
+	height: 16px;
+	background-image: url(../images/arrow2.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
 .content-tag-dialog-head-name {
-	padding-bottom: 15px;
 	font-size: 1.6rem;
 	font-weight: 500;
 	letter-spacing: 1px;
 	text-align: center;
 }
 .content-tag-dialog-head-icon {
-	height: 70px;
-	background-image: url(../images/flower.png);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 106px;
+}
+
+.content-tag-dialog-head-icon-bd {
+	border: 1px solid rgba(236,236,236,.35);
+	border-radius: 3px;
+	height: 90px;
+	width: 90px;
 	background-position: center center;
 	background-repeat: no-repeat;
+	background-size: 70px;
 }
 
 .content-tag-dialog-btns {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
-	padding: 10px;
-	height: 40px;
-	/*background-color: #ffffff;*/
+	padding: 5px 15px;
+	height: 44px;
+	border-bottom: 1px solid rgba(183,183,183,.8);
+	font-size: 1.4rem;
+	font-weight: 500;
+	color: #009cf5;
 }
 
-.content-tag-dialog-detail {
-	height: 140px;
-	margin: 20px 30px;
+.content-dialog-logs, .content-tag-dialog-setting {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	cursor: pointer;
+}
+
+.content-dialog-logs:hover .content-dialog-link-name, 
+.content-tag-dialog-setting:hover .content-dialog-link-name {
+	text-decoration: underline;
+}
+
+.content-dialog-link-name {
+	transition: .05s;
+	text-decoration: none;
+}
+
+.content-dialog-link-icon {
+	width: 18px;
+	height: 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	margin-right: 3px;
+}
+
+.content-dialog-logs .content-dialog-link-icon {
+	background-image: url("../images/logs.svg");
+	background-size: 20px;
+}
+.content-tag-dialog-setting .content-dialog-link-icon {
+	background-image: url("../images/setting.svg");
+	background-size: 18px;
+}
+
+.content-tag-dialog-info {
+	margin: 10px 15px 0;
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
 	font-weight: 400;
-	color: #63686f;
+	color: #767b83;
 }
 
-.content-tag-dialog-detail-row {
-	margin-bottom: 15px;
+.content-tag-dialog-info-title {
+	display: flex;
+	align-items: center;
+	font-size: 1.4rem;
+	font-weight: 500;
+	color: rgba(79,83,91,.9);
+	margin: 13px 0 15px;
 }
-.content-tag-dialog-detail-row div:nth-child(1) {
-	float: left;
-	width: 50%;
+
+.content-tag-dialog-info-title div {
+	width: 17px;
+	height: 24px;
+	margin-right: 3px;
+	background-image: url("../images/info.svg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 15px auto;
 }
-.content-tag-dialog-detail-row div:nth-child(2) {
-	float: right;
+
+.content-tag-dialog-info-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 4px;
+	padding-top: 15px;
 }
-.content-tag-dialog-detail-describe {
-	line-height: 1.6rem;
-	margin-top: -3px;
-	margin-bottom: 15px;
+
+.content-tag-dialog-info-value {
+	color: #494d53;
+}
+
+.content-tag-dialog-info-content div:first-child {
+	padding-top: 0px;
+}
+.content-tag-dialog-info-septline {
+	height: 1px;
+	border-bottom: 1px solid rgba(101,106,115,.6);
+}
+
+.content-tag-dialog-info-textarea {
+	margin: 0 12px 25px 15px;
+}
+
+.content-tag-dialog-info-textarea div:last-child {
+	margin-right: 3px;
+}
+
+.content-tag-dialog-info-text {
+	margin-bottom: 4px;
+	margin-top: 2px;
+	height: 50px;
+	color: #494d53;
+	overflow-y: auto;
+	overflow-x: hidden;
+	line-height: 1.4rem;
+}
+
+.content-tag-dialog-info-text::-webkit-scrollbar {
+	width: 4px;
+	background-color: #f4f4f4;
+	border-radius: 1px;
+} 
+
+.content-tag-dialog-info-text::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #4f535b;
 }
 
 /*tag menu in content end*/
@@ -1818,7 +1936,7 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
     background-color: rgb(0, 0, 0);
     transform: translateZ(0px);
     z-index: 1000;
-    transition: all .25s ease;
+    transition: all .1s ease-out;
     pointer-events: none;
 }
 
@@ -1848,8 +1966,8 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	transform: scale(1) translateZ(0px);
 	visibility: hidden;
 	
-	-webkit-animation-duration: 0.4s;
-	animation-duration: 0.4s;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: 0.1s;
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 }
@@ -1857,17 +1975,18 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .tag-setting-wrapper-open.tag-setting-wrapper {
 	-webkit-animation-name: dialog-anim-open;
 	animation-name: dialog-anim-open;
-	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-	animation-duration: .35s;
+	/*-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+	animation-timing-function: cubic-bezier(0.6,0,0.4,1);*/
+	animation-timing-function: ease-out;
+	animation-duration: .1s;
 	pointer-events: auto;
 }
 
 .tag-setting-wrapper-close.tag-setting-wrapper {
 	-webkit-animation-name: dialog-anim-close;
 	animation-name: dialog-anim-close;
-	-webkit-animation-duration: 0.2s;
-	animation-duration: 0.2s;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: 0.1s;
 	pointer-events: none;
 }
 
@@ -1881,14 +2000,6 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	font-weight: 400;
 	color: #8a8f99;
 }
-
-/*.tag-setting-dialog.tag-setting-dialog-close {
-	-webkit-animation-name: dialog-anim-close;
-	animation-name: dialog-anim-close;
-	-webkit-animation-duration: 0.2s;
-	animation-duration: 0.2s;
-	pointer-events: none;
-}*/
 
 .tag-setting-dialog-wrapper {
 	display: flex;
@@ -2374,8 +2485,8 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 	transform: scale(1) translateZ(0px);
 	visibility: hidden;
 	
-	-webkit-animation-duration: 0.4s;
-	animation-duration: 0.4s;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: 0.1s;
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 }
@@ -2383,8 +2494,10 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 .message-dialog-open.message-dialog {
 	-webkit-animation-name: dialog-anim-open;
 	animation-name: dialog-anim-open;
-	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
-	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+	/*-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+	animation-timing-function: cubic-bezier(0.6,0,0.4,1);*/
+	animation-timing-function: ease-out;
+	animation-duration: .1s;
 	pointer-events: auto;
 }
 
@@ -2472,6 +2585,42 @@ a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del
 
 /*-message-dialog end*/
 
+
+/*message-bar begin*/
+
+.message-bar {
+   -webkit-transition: background-color .2s;
+    background-color: rgba(110,157,245,.8);/*rgba(91,144,241,.9);*/
+    border-radius: 0 0 3px 3px;
+    color: #ececec;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+	align-items: center;
+	padding: 0 30px;
+	font-size: 1.4rem;
+    font-weight: 400;
+    height: 56px;
+    left: 88px;
+    position: absolute;
+    right: 20px;
+    text-transform: capitalize;
+    top: 2px;
+    transition: background-color .2s;
+    z-index: 2;
+}
+
+.message-bar-content {
+	font-size: 1.6rem;
+}
+.message-bar-status {
+	opacity: 0.7;
+}
+
+
+/*message-bar end*/
 
 
 /******main end******/
