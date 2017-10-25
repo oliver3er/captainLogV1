@@ -5,8 +5,7 @@
 	 height="12px" viewBox="0 0 7.024 12" enable-background="new 0 0 7.024 12" xml:space="preserve">
 <g id="arrow2">
 	
-		<polyline fill="none" stroke="#91969B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		<polyline fill="none" stroke="rgba(235,235,235,.6)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
 		1,1 6.024,6.025 1.049,11 	"/>
 </g>
-
 </svg>
