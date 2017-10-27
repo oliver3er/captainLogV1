@@ -305,6 +305,21 @@
 				backdrop.addClass("--open");
 			}
 			
+			//警告等窗口消息 begin
+			//点击新日志输入框
+			$(".content-log-inputbox").bind('click',function(){
+				$(".ns-effect-slide").removeClass("ns-show").removeClass("ns-hide");
+				$(".ns-effect-slide").addClass("ns-show"); 
+			});
+			
+			
+			//关闭该窗口
+			$(".message-bar-close").bind('click',function(){
+				$(".ns-effect-slide").removeClass("ns-show");
+				$(".ns-effect-slide").addClass("ns-hide"); 
+			});
+			//警告等窗口消息 end
+			
 	    });
 	</script>
 	
@@ -1106,13 +1121,13 @@
 			
 			
 			<!--message bar begin-->
-			<div class="message-bar">
-				<div class="message-bar-content">
-					The log must inlude the current hashtag: #hardwork
-				</div>
-				
-				<div class="message-bar-status">
-					MARK AS READ
+			<div class="message-bar message-info-bar ns-effect-slide">
+				<div class="position-relative">
+					<div class="message-bar-icon"></div>
+					<div class="message-bar-content">
+						The log must inlude the current hashtag: #hardwork
+					</div>
+					<div class="message-bar-close ns-close"></div>
 				</div>
 			</div>
 			<!--message bar end-->
