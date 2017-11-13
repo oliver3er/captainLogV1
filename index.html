@@ -320,6 +320,166 @@
 			});
 			//警告等窗口消息 end
 			
+			
+			
+			//特殊标签表单控制-------------begin
+			$("#baseform").bind('click',function(){
+				var formWr = $(".tag-form-wrapper");
+				formWr.removeClass("tag-form-close").removeClass("tag-form-open");
+				formWr.addClass("tag-form-open");
+				
+				backdropOpen();
+			});
+			
+			
+			$(".tag-form-btn-cancle").bind('click',function(){
+				var formWr = $(".tag-form-wrapper");
+				formWr.removeClass("tag-form-open");
+				formWr.addClass("tag-form-close");
+				
+				backdropClose();
+			});
+			//特殊标签表单控制-------------end
+			
+			//特殊标签-----代码标签 begin
+			$("#tagcode").bind('click',function(){
+				var containerDiv = $(this).parents('.log-item-detail');
+				$("<div class='tag-code-textarea tag-code-textarea-saved'>"+
+				"<div class='tag-code-textarea-rownum'>11</br>12</br>13</br>14</br>15</div>"+
+				"<div class='tag-code-textarea-text'>$('.content-tag-dialog-setting').bind('click',function(){</br>"+
+				"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('.content-tag-dialog').hide();"+
+				"</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var settingDialogWr = $('.tag-setting');</br>"+
+				"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;settingDialogWr.removeClass('tag-setting-close').removeClass('tag-setting-open');"+
+				"</br>});</div>"+
+				"<div class='tag-code-textarea-btns tag-textarea-btns-close'>"+
+				"<div class='tag-code-textarea-save'>"+
+				"<svg class='tag-textarea-save-svg' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'"+
+	 "width='65.211px' height='45.778px' viewBox='-2.606 5.808 65.211 45.778' enable-background='new -2.606 5.808 65.211 45.778'xml:space='preserve'>"+
+		"<polyline fill='none' stroke='#b8b8b8' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points='"+
+			"1.394,26.634 21.25,45.25 58.605,9.808 	'/>"+
+		"</svg></div>"+
+				"<div class='tag-code-textarea-del'>"+
+				"<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'"+
+	 "width='65.211px' height='45.778px' viewBox='-2.606 5.808 65.211 45.778' enable-background='new -2.606 5.808 65.211 45.778'"+
+	 "xml:space='preserve'>"+
+	"<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='12.278' y1='45.318' x2='47.721' y2='9.866'/>"+
+	"<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='12.278' y1='9.867' x2='47.721' y2='45.318'/>"+
+"</svg>"+
+				"</div>"+
+				"</div></div>").appendTo(containerDiv);
+				
+				$(".tag-code-textarea").bind('click',function(){
+					var tagcode = $(this);
+					if(tagcode.hasClass("tag-code-textarea-saved")){
+						tagcode.removeClass("tag-code-textarea-saved").addClass("tag-code-textarea-unsaved");
+						$(".tag-code-textarea-btns").removeClass("tag-textarea-btns-close").addClass("tag-textarea-btns-open");
+					}else if(tagcode.hasClass("tag-code-textarea-unsaved")){
+						tagcode.removeClass("tag-code-textarea-unsaved").addClass("tag-code-textarea-saved");
+						$(".tag-code-textarea-btns").removeClass("tag-textarea-btns-open").addClass("tag-textarea-btns-close");
+					}
+				});
+			});
+
+			//特殊标签-----代码标签 end
+			
+			//特殊标签-----命令行标签 begin
+				$("#tagcommand").bind('click',function(){
+					var containerDiv = $(this).parents(".log-item-detail");
+					$("<div class='tag-command-textarea tag-command-textarea-unsaved'>"+
+				"<div class='tag-command-textarea-text'>cd Document/mywork/project/Log/Html</br>"+
+				"pwd"+
+				"</br>/Users/olivepop/Documents/mywork/projects/log/html</br>On branch master"+
+				"</br>Your branch is up-to-date with 'origin/master'.</div>"+
+				"<div class='tag-command-textarea-btns tag-textarea-btns-open'>"+
+				"<div class='tag-command-textarea-save'>"+
+				"<svg class='tag-textarea-save-svg' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'"+
+	 "width='65.211px' height='45.778px' viewBox='-2.606 5.808 65.211 45.778' enable-background='new -2.606 5.808 65.211 45.778'xml:space='preserve'>"+
+		"<polyline fill='none' stroke='#b8b8b8' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points='"+
+			"1.394,26.634 21.25,45.25 58.605,9.808 	'/>"+
+		"</svg></div>"+
+				"<div class='tag-command-textarea-del'>"+
+				"<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'"+
+	 "width='65.211px' height='45.778px' viewBox='-2.606 5.808 65.211 45.778' enable-background='new -2.606 5.808 65.211 45.778'"+
+	 "xml:space='preserve'>"+
+	"<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='12.278' y1='45.318' x2='47.721' y2='9.866'/>"+
+	"<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='12.278' y1='9.867' x2='47.721' y2='45.318'/>"+
+"</svg>"+
+				"</div>"+
+				
+				"</div></div>").appendTo(containerDiv);
+					$(".tag-command-textarea").bind('click',function(){
+						var tagcode = $(this);
+						if(tagcode.hasClass("tag-command-textarea-saved")){
+							tagcode.removeClass("tag-command-textarea-saved").addClass("tag-command-textarea-unsaved");
+							$(".tag-command-textarea-btns").removeClass("tag-textarea-btns-close").addClass("tag-textarea-btns-open");
+						}else if(tagcode.hasClass("tag-command-textarea-unsaved")){
+							tagcode.removeClass("tag-command-textarea-unsaved").addClass("tag-command-textarea-saved");
+							$(".tag-command-textarea-btns").removeClass("tag-textarea-btns-open").addClass("tag-textarea-btns-close");
+						}
+					});
+				});
+			//特殊标签-----命令行标签 end
+			
+			//特殊标签-----添加图片标签begin
+			$("#addpic").bind('click',function(){
+				var containerDiv = $(this).parents(".log-item-detail");
+				$("<div class='tag-image-area'>"+
+				"<img src='images/example1.jpg' alt='picture'/>"+
+				"<div class='tag-image-backdrop'>"+
+				"<div class='tag-image-backdrop-bg'></div>"+
+				"<div class='tag-image-backdrop-btn'><svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'"+
+	 "width='43.443px' height='43.451px' viewBox='0 0 43.443 43.451' enable-background='new 0 0 43.443 43.451'"+
+	 "xml:space='preserve'>"+
+	"<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='4' y1='39.451' x2='39.443' y2='4'/>"+
+	"<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='4' y1='4.001' x2='39.443' y2='39.451'/>"+
+"</svg></div>"+
+				"</div>"+
+				"</div>").appendTo(containerDiv);
+				
+				
+				//显示更大图片
+				$(".tag-image-backdrop-bg").bind('click',function(){
+					var imgDialog = $(".tag-image-dialog");
+					$(".tag-image-dialog .tag-image-dialog-image img").attr("src","images/example1.jpg")
+					imgDialog.removeClass("tag-image-dialog-close").removeClass("tag-image-dialog-open");
+					imgDialog.addClass("tag-image-dialog-open");
+				
+					backdropOpen();
+				});
+				//关闭更大图片页
+				$(".tag-image-dialog").bind('click',function(event){
+					var imgBg = $(this);
+					if(imgBg.hasClass("tag-image-dialog-open")){
+						var e=window.event || event;
+						if($(e.target).closest(".tag-image-dialog-wrapper").length == 0){
+							imgBg.removeClass("tag-image-dialog-open").removeClass("tag-image-dialog-close");
+							imgBg.addClass("tag-image-dialog-close");
+				
+							backdropClose();
+						}
+					}
+				});
+			});
+			
+			//todo标签 点击事件
+			$(".log-tag-checkbox-bd").bind('click',function(){
+				var chbox = $(this);
+				var chedSpan = chbox.parents(".log-tag-checkbox").find(".log-tag-checkbox-checked");
+				if(chedSpan.css("visibility")=='hidden'){
+					chedSpan.addClass('log-tag-checkbox-checked-dash');
+					chbox.removeClass("unchecked").addClass("checked");
+				}
+			});
+			
+			$(".log-tag-checkbox-checked").bind('click',function(){
+				var chbox = $(this);
+				chbox.removeClass("log-tag-checkbox-checked-dash");
+				chbox.css("visibility","hidden");
+				var bdSpan = chbox.parents(".log-tag-checkbox").find(".log-tag-checkbox-bd");
+				bdSpan.removeClass("checked").addClass("unchecked");
+				
+			});
+			//特殊标签-----添加图片标签end
 	    });
 	</script>
 	
@@ -706,6 +866,64 @@
 						<div class="content-log-inputbox" contenteditable="true" data-placeholder="write down your words here."></div>
 					</div>
 					<div class="content-logs-wrapper">
+					
+					<!-------------------------显示标签表单，及特殊标签效果 begin------------------------->
+						<div class="content-log-item">
+							<div class="log-item-title">
+								For the special <div style="display: inline-block;
+															margin-left: 2px;
+															margin-right: 2px;
+															font-weight: 400;
+															font-size: 1.6rem;
+															line-height: 1.6rem;
+															background-color: rgba(233,69,69,0.1);
+															color: rgba(233,69,69,1);cursor: pointer;">Tag</div>
+							</div>
+							<div class="log-item-detail">
+								This is the <div style="display: inline-block;
+															margin-left: 2px;
+															margin-right: 2px;
+															font-weight: 400;
+															background-color: rgba(233,69,69,0.1);
+															color: rgba(233,69,69,1);cursor: pointer;" id="baseform">Form</div> that include all form elements.
+								This is the <div style="display: inline-block;
+															margin-left: 2px;
+															margin-right: 2px;
+															font-weight: 400;
+															background-color: rgba(233,69,69,0.1);
+															color: rgba(233,69,69,1);cursor: pointer;" id="tagcode">Code</div> effect.
+								And,here is the <div style="display: inline-block;
+															margin-left: 2px;
+															margin-right: 2px;
+															font-weight: 400;
+															background-color: rgba(233,69,69,0.1);
+															color: rgba(233,69,69,1);cursor: pointer;" id="tagcommand">CommandLine</div> effect.
+								</br>pretend this is a button for <div style="display: inline-block;
+															margin-left: 2px;
+															margin-right: 2px;
+															font-weight: 400;
+															background-color: rgba(51,232,183,0.1);
+															color: rgba(51,232,183,1);cursor: pointer;" id="addpic">AddPicture</div>.
+								Let's see the running tag --> <div class="log-tag-running">
+									<span class="log-tag-running-amount">5</span><span class="log-tag-running-range">km</span></div> 
+								Now see the timer tag --> <div class="log-tag-timer">
+									<span class="log-tag-timer-amount">1.5</span><span class="log-tag-timer-range">hour</span></div>
+								</br> The checkbox tag is coming 
+								<div class="log-tag-checkbox">
+									<span class="log-tag-checkbox-checked">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 width="65.211px" height="43.442px" viewBox="-2.606 5.808 65.211 43.442" enable-background="new -2.606 5.808 65.211 43.442"
+											 xml:space="preserve">
+										<path fill="none" stroke="#42BA83" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+											M1.394,26.634L21.25,45.25L58.605,9.808"/>
+										</svg>
+									</span>
+									<span class="log-tag-checkbox-bd unchecked"></span>
+								</div>
+								what are you want to check?
+							</div>
+						</div>
+					<!-------------------------显示标签表单，及特殊标签效果 end------------------------->
 					
 						<div class="content-log-item">
 							<div class="log-item-title">
@@ -1131,6 +1349,242 @@
 				</div>
 			</div>
 			<!--message bar end-->
+			
+			
+			<!--tag form begin-->
+			<div class="tag-form-wrapper">
+				<div class="tag-form-dialog">
+					<div class="tag-form-dialog-wrapper">
+					<div class="tag-form-dialog-main">
+						<div class="tag-form-title">
+							<div>HASHTAG VALUE SETTING</div>
+						</div>
+
+						<div class="tag-form-dialog-scroll">
+							<div class="tag-form-head">
+								<div class="tag-form-head-name">#recipe</div>
+								<div class="tag-form-head-disc">
+									if you enjoy cooking and eating different kinds of food,like a foodie,maybee need a set of instructions for cooking a particular type of food.
+								</div>
+							</div>
+
+							<div class="tag-form-content">
+								<div class="tag-form-item">
+									<div class="tag-form-label">DISH NAME</div>
+									<div class="tag-form-input">
+										<input type="text" class="form-input" name="dishName" value="Kongpao Chicken" placeholder="" maxlength="999" />
+									</div>
+								</div>
+		
+								<div class="tag-form-item">
+									<div class="tag-form-label">DATE</div>
+									<div class="tag-form-date">
+										<div class="form-date">
+											<div class="form-date-icon"></div>
+											<input type="text" class="form-date-input" name="date" value="2017-10-28" placeholder="" maxlength="100" />
+										</div>
+									</div>
+								</div>
+		
+								<div class="tag-form-item">
+									<div class="tag-form-label">STYLE</div>
+									<div class="tag-form-select">
+										<div class="form-select">
+										<script type="text/javascript">
+										$(function (){
+											$(".form-select .select-list-box .select-list-option").mouseover(function(){
+												$(".form-select .select-list-box .select-list-option").each(function(){
+													$(this).removeClass("is-focus");
+												});
+												$(this).addClass("is-focus");
+											});
+											
+											$(".form-select .form-select-control").bind("click",function(){
+												if($(".form-select-outer").length==0){
+													$(".form-select-control .select-arrow").css("opacity","0");
+												
+													$(".form-select").append("<div class='form-select-outer'>"+
+													"<div class='select-list-box'><div class='select-list-option is-selected'>Chinese</div>"+
+													"<div class='select-list-option'>USA</div>"+
+													"<div class='select-list-option'>UK</div>"+
+													"<div class='select-list-option'>Italy</div></div></div>");
+													
+													$(".form-select .select-list-box .select-list-option").mouseover(function(){
+														$(".form-select .select-list-box .select-list-option").each(function(){
+															$(this).removeClass("is-focus");
+														});
+														$(this).addClass("is-focus");
+													});
+												}else {
+													$(".form-select-control .select-arrow").css("opacity","1");
+													$(".form-select .form-select-outer").remove();
+												}
+											});
+										});
+										</script>
+										
+											<div class="form-select-control">
+												<div class="form-select-value">
+													<div class="select-value-label">Chinese</div>
+												</div>
+												<div class="form-select-arrow">
+													<div class="select-arrow"></div>
+												</div>
+											</div>
+											<!--div class="form-select-outer">
+												<div class="select-list-box">
+													<div class="select-list-option is-selected">Chinese</div>
+													<div class="select-list-option">USA</div>
+													<div class="select-list-option">UK</div>
+													<div class="select-list-option">Italy</div>
+												</div>
+											</div-->
+										</div>
+									</div>
+								</div>
+
+								<div class="tag-form-item">
+									<div class="tag-form-label">COVER</div>
+									<div class="tag-form-upload">
+										<div class="form-upload-bg">
+											<div class="upload-disc">You can upload your dish’s photos,they will tell how tasty your dish is.</div>
+										</div>
+										<div class="form-upload-image-bg">
+											<div class="form-upload-image-bgcolor"></div>
+										</div>
+										<div class="form-upload-image">
+											<div class="form-upload-image-bd"></div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="tag-form-item">
+									<div class="tag-form-label">CHECKBOX EXAMPLE</div>
+									<script type="text/javascript">
+										$(function (){
+											$(".form-checkbox").bind('click',function(){
+												var showValue = $(this);
+												var checkedItem = $(this).find(".checkbox-inner [type='checkbox']");
+												var checkedSpan = $(this).find(".checkbox-inner span");
+				
+												if(checkedItem.attr("checked")){
+													showValue.css("background-color","#d7d7d7");
+													showValue.css("color","#5d6068");
+													checkedItem.attr("checked", false);
+													checkedSpan.css("background-color","#d7d7d7");
+													checkedSpan.css("border-color","#8a8f99");
+													checkedSpan.find("svg").remove();
+												}else {
+													showValue.css("background-color","#709cee");
+													showValue.css("color","#fff");
+													checkedItem.attr("checked", true);
+													checkedSpan.css("background-color","#f9f9f9");
+													checkedSpan.css("border-color","#709cee");
+													checkedSpan.append('<svg name="Checkmark" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><polyline stroke="#709cee" stroke-width="2" points="3.5 9.5 7 13 15 5"></polyline></g></svg>');
+												}
+				
+											});
+										});
+										</script>
+									
+									<div class="tag-form-checkbox">
+										<div class="form-checkbox">
+											<div class="checkbox">
+												<div class="checkbox-inner">
+													<input type="checkbox" value="on"/>
+													<span></span>
+												</div>
+												<span>option1</span>
+											</div>
+										</div>
+										
+										<div class="form-checkbox">
+											<div class="checkbox">
+												<div class="checkbox-inner">
+													<input type="checkbox" value="on"/>
+													<span></span>
+												</div>
+												<span>option2</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="tag-form-item">
+									<div class="tag-form-label">IS BREAKFAST</div>
+									<div class="tag-form-label-disc">This dish is good for your dinner or breakfast,recording the answer is helpful.</div>
+									
+									
+									<script type="text/javascript">
+										$(function (){
+											$(".form-radiobox .form-radiobox-control").bind('click',function(){
+												var contrl = $(this);
+												if(contrl.hasClass("form-radiobox-checked")){
+													contrl.removeClass("form-radiobox-checked").addClass("form-radiobox-unchecked");
+													return -1;
+												}
+												if(contrl.hasClass("form-radiobox-unchecked")){
+													contrl.removeClass("form-radiobox-unchecked").addClass("form-radiobox-checked");
+													return -1;
+												}
+											});
+										});
+										</script>
+									
+									<div class="tag-form-radiobox">
+										<div class="form-radiobox">
+											<div class="form-radiobox-label">Breakfast</div>
+											<div class="form-radiobox-control form-radiobox-unchecked">
+												<input type="checkbox" class="form-radiobox-value" value="off" />
+											</div>
+										</div>
+										<div class="form-radiobox-disc">if there is nothing,never mind.</div>
+									</div>
+									
+									<div class="tag-form-radiobox">
+										<div class="form-radiobox">
+											<div class="form-radiobox-label">Dinner</div>
+											<div class="form-radiobox-control form-radiobox-checked">
+												<input type="checkbox" class="form-radiobox-value" value="on" />
+											</div>
+										</div>
+										<div class="form-radiobox-disc"></div>
+									</div>
+								</div>
+								
+								
+								<div class="tag-form-item">
+									<div class="tag-form-label">PROCESS</div>
+									<div class="tag-form-textarea">
+										<textarea placeholder="click to add a note" spellcheck="false" maxlength="256" class="form-textarea edit-value"></textarea>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+	
+					</div>
+
+					<div class="tag-form-footer">
+						<div class="tag-form-btn-cancle btn-cancle"><span>Cancle</span></div>
+						<div class="tag-form-btn-save btn-ok">Save</div>
+					</div>
+					</div>  <!--dialog-wrapper end -->
+				</div>
+			</div>
+			<!--tag form end-->
+			
+			
+			<!--   tag image dialog begin  -->
+			<div class="tag-image-dialog">
+				<div class="tag-image-dialog-wrapper">
+					<div class="tag-image-dialog-image"><img src="" alt=""/></div>
+					<div class="tag-image-dialog-link"><a href="images/example1.jpg" target="_blank">Open original</a></div>
+				</div>
+			</div>
+			
+			<!--   tag image dialog end  -->
+			
 		</div>
 	</div>
 </body>
