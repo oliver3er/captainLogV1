@@ -342,7 +342,25 @@
 			//特殊标签表单控制-------------end
 			
 			//特殊标签-----代码标签 begin
-			$("#tagcode").bind('click',function(){
+			$(".tag-code-textarea-div0").bind('click',function(){
+				var tagdiv0 = $(this);
+				var tagdiv1 = tagdiv0.parents(".tag-code-textarea-wrapper").find(".tag-code-textarea-div1");
+				if(tagdiv0.hasClass("tag-code-textarea-show")){
+					tagdiv0.removeClass("tag-code-textarea-show");
+					tagdiv1.addClass("tag-code-textarea-show");
+				}
+			});
+			$(".tag-code-textarea-btns div").bind('click',function(){
+				var tagdiv1 = $(this);
+				var tagdiv0 = tagdiv1.parents(".tag-code-textarea-btns").parents(".tag-code-textarea-div1").parents(".tag-code-textarea-wrapper").find(".tag-code-textarea-div0");
+				
+				if(tagdiv1.parents(".tag-code-textarea-btns").parents(".tag-code-textarea-div1").hasClass("tag-code-textarea-show")){
+					tagdiv1.parents(".tag-code-textarea-btns").parents(".tag-code-textarea-div1").removeClass("tag-code-textarea-show");
+					tagdiv0.addClass("tag-code-textarea-show");
+				}
+			});
+			
+			/*$("#tagcode").bind('click',function(){
 				var containerDiv = $(this).parents('.log-item-detail');
 				$("<div class='tag-code-textarea tag-code-textarea-saved'>"+
 				"<div class='tag-code-textarea-rownum'>11</br>12</br>13</br>14</br>15</div>"+
@@ -378,15 +396,32 @@
 						$(".tag-code-textarea-btns").removeClass("tag-textarea-btns-open").addClass("tag-textarea-btns-close");
 					}
 				});
-			});
+			});*/
 
 			//特殊标签-----代码标签 end
 			
 			//特殊标签-----命令行标签 begin
-				$("#tagcommand").bind('click',function(){
+			$(".tag-command-textarea-div0").bind('click',function(){
+				var tagdiv0 = $(this);
+				var tagdiv1 = tagdiv0.parents(".tag-command-textarea-wrapper").find(".tag-command-textarea-div1");
+				if(tagdiv0.hasClass("tag-command-textarea-show")){
+					tagdiv0.removeClass("tag-command-textarea-show");
+					tagdiv1.addClass("tag-command-textarea-show");
+				}
+			});
+			$(".tag-command-textarea-btns div").bind('click',function(){
+				var tagdiv1 = $(this);
+				var tagdiv0 = tagdiv1.parents(".tag-command-textarea-btns").parents(".tag-command-textarea-div1").parents(".tag-command-textarea-wrapper").find(".tag-command-textarea-div0");
+				if(tagdiv1.parents(".tag-command-textarea-btns").parents(".tag-command-textarea-div1").hasClass("tag-command-textarea-show")){
+					tagdiv1.parents(".tag-command-textarea-btns").parents(".tag-command-textarea-div1").removeClass("tag-command-textarea-show");
+					tagdiv0.addClass("tag-command-textarea-show");
+				}
+			});
+			
+				/*$("#tagcommand").bind('click',function(){
 					var containerDiv = $(this).parents(".log-item-detail");
 					$("<div class='tag-command-textarea tag-command-textarea-unsaved'>"+
-				"<div class='tag-command-textarea-text'>cd Document/mywork/project/Log/Html</br>"+
+				"<div class='tag-command-textarea-text' contenteditable='true'>cd Document/mywork/project/Log/Html</br>"+
 				"pwd"+
 				"</br>/Users/olivepop/Documents/mywork/projects/log/html</br>On branch master"+
 				"</br>Your branch is up-to-date with 'origin/master'.</div>"+
@@ -417,7 +452,7 @@
 							$(".tag-command-textarea-btns").removeClass("tag-textarea-btns-open").addClass("tag-textarea-btns-close");
 						}
 					});
-				});
+				});*/
 			//特殊标签-----命令行标签 end
 			
 			//特殊标签-----添加图片标签begin
@@ -921,6 +956,86 @@
 									<span class="log-tag-checkbox-bd unchecked"></span>
 								</div>
 								what are you want to check?
+								
+								<!--command textarea-->
+								<div class='tag-command-textarea-wrapper'>
+									<div class="tag-command-textarea-div0">
+										cd Document/mywork/project/Log/Html</br>pwd</br>pwd</br>/Users/olivepop/Documents/mywork/projects/log/html</br>On branch master</br>Your branch is up-to-date with 'origin/master'.
+									</div>
+									<div class="tag-command-textarea-div1 tag-command-textarea-show">
+									<textarea class="tag-command-textarea" spellcheck="false" maxlength="9999">
+cd Document/mywork/project/Log/Html
+pwd
+/Users/olivepop/Documents/mywork/projects/log/html
+On branch master
+Your branch is up-to-date with 'origin/master'.
+dfsdasdf</textarea>
+									
+									<div class='tag-command-textarea-btns'>
+										<div class='tag-textarea-save'>
+											<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+											 width='65.211px' height='45.778px' viewBox='-2.606 5.808 65.211 45.778' enable-background='new -2.606 5.808 65.211 45.778'xml:space='preserve'>
+												<polyline fill='none' stroke='#b8b8b8' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points='1.394,26.634 21.25,45.25 58.605,9.808 	'/>
+											</svg>
+										</div>
+										<div class='tag-textarea-del'>
+											<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+												 width='65.211px' height='45.778px' viewBox='-2.606 5.808 65.211 45.778' enable-background='new -2.606 5.808 65.211 45.778'
+												 xml:space='preserve'>
+												<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='12.278' y1='45.318' x2='47.721' y2='9.866'/>
+												<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='12.278' y1='9.867' x2='47.721' y2='45.318'/>
+											</svg>
+										</div>
+									</div>
+									</div> <!--end div1-->
+									
+								</div>
+								<!--command textarea end-->
+								
+								<!--code textarea-->
+								<div class='tag-code-textarea-wrapper'>
+									<div class="tag-code-textarea-div0">
+										<div class='tag-code-textarea-rownum'>11</br>12</br>13</br>14</br>15</br>16</div>
+										<div class='tag-code-textarea-text'>
+											<pre>$('.content-tag-dialog-setting').bind('click',function(){
+	$('.content-tag-dialog').hide();
+	var settingDialogWr = $('.tag-setting');
+	settingDialogWr.removeClass('tag-setting-close').removeClass('tag-setting-open');
+});
+test--</pre>
+										</div>
+									</div>
+									
+									<div class="tag-code-textarea-div1 tag-code-textarea-show">
+									<div class="tag-code-textarea-div1-sub0"></div><div class="tag-code-textarea-div1-sub1"></div>
+									<textarea class="tag-code-textarea" spellcheck="false" maxlength="9999">$('.content-tag-dialog-setting').bind('click',function(){
+	$('.content-tag-dialog').hide();
+	var settingDialogWr = $('.tag-setting');
+	settingDialogWr.removeClass('tag-setting-close').removeClass('tag-setting-open');
+});
+test--
+									</textarea>
+									
+									<div class='tag-code-textarea-btns'>
+										<div class='tag-textarea-save'>
+											<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+											 width='65.211px' height='45.778px' viewBox='-2.606 5.808 65.211 45.778' enable-background='new -2.606 5.808 65.211 45.778'xml:space='preserve'>
+												<polyline fill='none' stroke='#b8b8b8' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' points='1.394,26.634 21.25,45.25 58.605,9.808 	'/>
+											</svg>
+										</div>
+										<div class='tag-textarea-del'>
+											<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+												 width='65.211px' height='45.778px' viewBox='-2.606 5.808 65.211 45.778' enable-background='new -2.606 5.808 65.211 45.778'
+												 xml:space='preserve'>
+												<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='12.278' y1='45.318' x2='47.721' y2='9.866'/>
+												<line fill='none' stroke='#23272b' stroke-width='9' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' x1='12.278' y1='9.867' x2='47.721' y2='45.318'/>
+											</svg>
+										</div>
+									</div>
+									</div> <!--end div1-->
+									
+								</div>
+								<!--code textarea end-->
 							</div>
 						</div>
 					<!-------------------------显示标签表单，及特殊标签效果 end------------------------->

@@ -1678,7 +1678,192 @@ a {
 }
 
 /****************tag code/command begin****************/
-.tag-code-textarea, .tag-command-textarea {
+.tag-command-textarea-wrapper {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	width: 90%;
+	font-family: Monaco;
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 2rem;
+	white-space:nowrap;
+}
+
+.tag-command-textarea-div0 {
+	display: none;
+	padding: 4px 10px 4px 25px;
+	color: rgba(120,247,80,1);
+	width: 100%;
+	max-height: 130px;
+	height: 130px;
+	overflow-y: auto;
+	overflow-x: auto;
+	border-radius: 3px;
+}
+
+.tag-command-textarea-div1 {
+	display: none;
+	position: relative;
+}
+
+.tag-command-textarea {
+	padding: 4px 10px 4px 25px;
+	color: rgba(120,247,80,1);
+	width: 100%;
+	max-height: 130px;
+	height: 130px;
+	overflow-y: auto;
+	overflow-x: auto;
+	border-radius: 3px;
+	border: 1px solid #2a2e32;
+	background-color: #3a3d44;
+	box-shadow: 0px 1px 1px #272a2e;
+	letter-spacing: 1px;
+	resize: none;
+}
+
+.tag-command-textarea:focus {
+	outline: none;
+}
+
+.tag-command-textarea-div0.tag-command-textarea-show{
+	display: block;
+	border: 1px solid rgba(42,46,50,.8);
+	background-color: #33363c;
+}
+
+.tag-command-textarea-div1.tag-command-textarea-show{
+	display: block;
+}
+
+.tag-code-textarea-div0::-webkit-scrollbar, .tag-code-textarea::-webkit-scrollbar, .tag-command-textarea-div0::-webkit-scrollbar, .tag-command-textarea::-webkit-scrollbar {	
+	width: 12px;
+	height: 12px;
+	background-color: rgba(47,49,54,1);
+} 
+
+.tag-code-textarea-div0::-webkit-scrollbar-thumb, .tag-code-textarea::-webkit-scrollbar-thumb, .tag-command-textarea-div0::-webkit-scrollbar-thumb, .tag-command-textarea::-webkit-scrollbar-thumb {
+	border-radius: 6px;
+	border-top-width: 3px;
+	border-bottom-width: 2px;
+	border-left-width: 3px;
+	border-right-width: 2px;
+	border-color: rgba(47,49,54,1);
+	border-style: solid;
+	background-color: rgba(30,33,36,0.6);
+}
+.tag-code-textarea-div0::-webkit-scrollbar-corner, .tag-code-textarea::-webkit-scrollbar-corner, .tag-command-textarea-div0::-webkit-scrollbar-corner, .tag-command-textarea::-webkit-scrollbar-corner {
+	background-color: rgba(47,49,54,1);
+}
+
+.tag-command-textarea-btns, .tag-code-textarea-btns {
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	position: absolute;
+	right: 15px;
+	left: auto;
+	top: 2px;
+	transition: all .3s ease;
+}
+
+
+.tag-code-textarea-wrapper {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	width: 90%;
+	font-family: inherit;
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 2rem;
+	white-space:nowrap;
+}
+
+.tag-code-textarea-div0 {
+	display: none;
+	align-items: stretch;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	color: #b8b8b8;
+	width: 100%;
+	max-height: 130px;
+	overflow-y: auto;
+	overflow-x: auto;
+	border-radius: 3px;
+	box-sizing: border-box;
+}
+
+.tag-code-textarea-div0.tag-code-textarea-show{
+	display: flex;
+	border: 1px solid rgba(42,46,50,.8);
+	background-color: #33363c;
+}
+
+.tag-code-textarea-rownum {
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #a4a5a5;
+	text-align: right;
+	height: 100%;
+}
+
+.tag-code-textarea-text {
+	padding-left: 20px;
+	padding-right: 10px;
+	height: 100%;
+	border-left: 1px solid #7b7b7b;
+}
+
+.tag-code-textarea-div1 {
+	display: none;
+	align-items: stretch;
+	position: relative;
+	max-height: 135px;
+	border-radius: 3px;
+	border: 1px solid #2a2e32;
+	box-shadow: 0px 1px 1px #272a2e;
+	background-color: #3a3d44;
+}
+
+.tag-code-textarea-div1-sub0 {
+	width: 59px;
+	height: 100%;
+}
+.tag-code-textarea-div1-sub1 {
+	position: absolute;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	width: 59px;
+	height: 120px;
+	border-right: 1px solid #7b7b7b;
+}
+
+.tag-code-textarea {
+	padding: 4px 10px 4px 24px;
+	color: #b8b8b8;
+	width: 100%;
+	max-height: 130px;
+	height: 130px;
+	overflow-y: auto;
+	overflow-x: auto;
+	border: 0;
+	/*border-radius: 3px;
+	border: 1px solid #2a2e32;
+	box-shadow: 0px 1px 1px #272a2e;*/
+	background-color: #3a3d44;
+	letter-spacing: 1px;
+	resize: none;
+}
+
+.tag-code-textarea:focus {
+	outline: none;
+}
+
+.tag-code-textarea-div1.tag-code-textarea-show {
+	display: flex;
+}
+
+/*.tag-code-textarea, .tag-command-textarea {
 	display: flex;
 	width: 90%;
 	max-height: 130px;
@@ -1697,6 +1882,8 @@ a {
 	transition: background-color .15s ease,border .15s ease;
 	position: relative;
 }
+
+
 
 .tag-code-textarea::-webkit-scrollbar, .tag-command-textarea::-webkit-scrollbar {	
 	width: 12px;
@@ -1771,23 +1958,23 @@ a {
 	opacity: 0;
 	visibility: hidden;
 }
+*/
 
-
-.tag-code-textarea-save , .tag-command-textarea-save {
+.tag-textarea-save {
 	margin-right: 8px;
 	cursor: pointer;
 	
 }
 
-.tag-code-textarea-save:hover svg *, .tag-command-textarea-save:hover svg * {
+.tag-textarea-save:hover svg *{
 	stroke: #42BA83;
 }
 
-.tag-code-textarea-del , .tag-command-textarea-del {
+.tag-textarea-del {
 	cursor: pointer;
 }
 
-.tag-code-textarea-del:hover svg * , .tag-command-textarea-del:hover svg * {
+.tag-textarea-del:hover svg * {
 	stroke: rgba(233,69,69,.8);
 }
 
@@ -1946,6 +2133,13 @@ a {
 	background-color: rgba(31,183,88,.1);
 	line-height: 1.7rem;
 	cursor: pointer;
+	transition: background-color .1s ,color .1s ;
+}
+
+.log-tag-running:hover {
+	background-image: url('../images/running1.png');
+	color: rgb(236,236,236);
+	background-color: rgba(31,183,88,1);
 }
 
 .log-tag-running-amount {
@@ -1970,10 +2164,17 @@ a {
 	background-position: 2px 0px;
 	padding-left: 22px;
 	padding-right: 1px;
-	color: rgb(156,235,255);
-	background-color: rgba(156,235,255,.1);
+	color: rgb(60,205,242);
+	background-color: rgba(60,205,242,.1);/*rgba(156,235,255,.1);*/
 	line-height: 1.7rem;
 	cursor: pointer;
+	transition: background-color .1s ,color .1s ;
+}
+
+.log-tag-timer:hover {
+	background-image: url('../images/timer1.png');
+	color: rgb(236,236,236);
+	background-color: rgba(60,205,242,1);
 }
 
 .log-tag-timer-amount {
