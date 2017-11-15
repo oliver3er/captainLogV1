@@ -1360,6 +1360,9 @@ a {
 }
 
 .content-logs-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	height: 26px;
 	width: 26px;
 	margin: 0 4px;
@@ -1380,7 +1383,7 @@ a {
 .logs-save-btn, .logs-delete-btn, .logs-single-tag-btn {
 	width: 22px;
 	height: 22px;
-	margin: 2px;
+	/*margin: 2px;*/
 } 
 
 .logs-edit-btn-invalid {
@@ -1415,7 +1418,24 @@ a {
 .logs-picture-btn {
 	width: 24px;
 	height: 18px;
-	margin: 4px 1px;
+	/*margin: 4px 1px;*/
+	margin-right: 4px;
+}
+
+.logs-todo-btn {
+	/*margin: 3px;*/
+}
+
+.logs-timer-btn {
+	margin-top: -1px;
+}
+
+.logs-running-btn {
+	width: 28px;
+}
+
+.logs-command-btn, .logs-code-btn {
+	width: 24px;
 }
 
 /*.logs-single-tag-btn {
@@ -1431,7 +1451,7 @@ a {
 .logs-double-tag-btn {
 	width: 26px;
 	height: 20px;
-	margin: 3px 0;
+	/*margin: 3px 0;*/
 }
 
 .logs-btn-separate-line {
@@ -2124,10 +2144,11 @@ a {
 
 .log-tag-running {
 	display: inline-block;
-	background-image: url('../images/running.png');
+	background-image: url('../images/running.svg');
 	background-repeat: no-repeat;
 	background-position: 2px 0px;
-	padding-left: 32px;
+	background-size: auto 20px;
+	padding-left: 35px;
 	padding-right: 1px;
 	color: rgb(31,183,88);
 	background-color: rgba(31,183,88,.1);
@@ -2137,7 +2158,7 @@ a {
 }
 
 .log-tag-running:hover {
-	background-image: url('../images/running1.png');
+	background-image: url('../images/running1.svg');
 	color: rgb(236,236,236);
 	background-color: rgba(31,183,88,1);
 }
@@ -2159,22 +2180,23 @@ a {
 
 .log-tag-timer {
 	display: inline-block;
-	background-image: url('../images/timer.png');
+	background-image: url('../images/timer.svg');
 	background-repeat: no-repeat;
-	background-position: 2px 0px;
+	background-position: 3px 0px;
+	background-size: auto 21px;
 	padding-left: 22px;
 	padding-right: 1px;
-	color: rgb(60,205,242);
-	background-color: rgba(60,205,242,.1);/*rgba(156,235,255,.1);*/
+	color: rgb(25,186,249);
+	background-color: rgba(25,186,249,.1);/*rgba(156,235,255,.1);*/
 	line-height: 1.7rem;
 	cursor: pointer;
 	transition: background-color .1s ,color .1s ;
 }
 
 .log-tag-timer:hover {
-	background-image: url('../images/timer1.png');
+	background-image: url('../images/timer1.svg');
 	color: rgb(236,236,236);
-	background-color: rgba(60,205,242,1);
+	background-color: rgba(25,186,249,1);
 }
 
 .log-tag-timer-amount {
