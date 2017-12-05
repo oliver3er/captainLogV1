@@ -124,8 +124,9 @@ svg:not(:root) {
 	overflow: hidden;
 }
 
+/* dean,set figure margin to 0,for editor view */
 figure {
-	margin: 1em 40px;
+	margin: 0;
 }
 
 button,

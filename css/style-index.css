@@ -2063,10 +2063,10 @@ a {
 	cursor: pointer;
 }
 
+/* change max-width/height to real px, not 100% */
 .tag-image-area img {
-	max-width: 100%;
-	height: auto;
-	max-height: 100%;
+	max-width: 540px;
+	max-height: 290px;
 	border-radius: 1px;
 	overflow: hidden;
 }
