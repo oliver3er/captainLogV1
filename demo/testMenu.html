@@ -1,0 +1,114 @@
+<html>
+  <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+  <style>
+    body {
+      background-color : #303137;
+    }
+    .dropdown-button {
+        -webkit-transform: translate3d(0,3px,0);
+        -webkit-transition: -webkit-transform .2s ease;
+        margin-left: 4px;
+        opacity: .6;
+        transform: translate3d(0,3px,0);
+        transition: -webkit-transform .2s ease;
+        transition: transform .2s ease;
+        transition: transform .2s ease,-webkit-transform .2s ease;
+        cursor : pointer;
+    }
+    .dropdown-button path {
+        -webkit-transition: stroke-dasharray .2s ease;
+        stroke-dasharray: 7;
+        stroke-dashoffset: 1;
+        stroke-width: 2px;
+        transition: stroke-dasharray .2s ease
+    }
+
+    .dropdown-button.open {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg)
+    }
+
+    .dropdown-button.open path {
+        stroke-dasharray: 14
+    }
+
+    .container {
+      width: 200px;
+      height : 20px;
+      display : flex;
+      margin : 5px;
+    }
+
+    .container > div{
+      color : white;
+      text-align: center;
+      width : 180px;
+    }
+
+    .menu {
+      position: absolute;
+      overflow: hidden;;
+      -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.16);
+      -webkit-filter: blur(0);
+      box-shadow: 0 2px 4px rgba(0,0,0,.16);
+    }
+    .menu > div{
+      border-radius: 5px;
+      background-color: white;
+      height: 231px;
+      width: 216px;
+    }
+  </style>
+  <body>
+    <div class='container' >
+      <div>test</div>
+      <svg width="18" height="18" class="dropdown-button">
+        <g fill="none" fill-rule="evenodd">
+          <path d="M0 0h18v18H0"></path>
+          <path stroke="#FFF" d="M4.5 4.5l9 9" stroke-linecap="round"></path>
+          <path stroke="#FFF" d="M13.5 4.5l-9 9" stroke-linecap="round"></path>
+        </g>
+      </svg>
+    </div>
+  </body>
+  <script>
+    //click svg
+    d3.select('.dropdown-button')
+      .on('click',function(d){
+        var isOpen = d3.select(this).classed('open');
+
+        //rotate the icon
+        d3.select(this).classed('open',!isOpen)
+
+        if(!isOpen){
+          //show the menu
+          var width = 216;
+          var height = 231;
+          var top = 32;
+          var left = 5;
+          var startRatio = 0.12;
+          //create menu container
+          var container = d3.select('.container')
+            .append('div')
+              .classed('menu',true)
+              .style('visibility','visible')
+              .style('top',`${top}px`)
+              .style('left',`${left + width}px`)
+              .style('width',`0px`)
+              .style('height',`${height*startRatio}px`)
+          //create menu div
+          container.append('div')
+
+          //animate the menu
+          container.transition()
+            .style('width',`${width}px`)
+            .style('height',`${height}px`)
+            .style('top',`${top}px`)
+            .style('left',`${left}px`)
+
+        }else{
+          d3.select('.menu').remove()
+        }
+      })
+  </script>
+</html>
