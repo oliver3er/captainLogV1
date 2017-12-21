@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>d3 test</title>
+<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<style type='text/css' >
+	body {
+		background : #303138;
+		color : white;
+	}
+	.program-node circle {
+		//fill: #999;
+	}
+
+	.program-node text {
+		font: 10px sans-serif;
+		cursor : pointer;
+	}
+
+	.program-node--internal circle {
+		fill: #555;
+	}
+
+	.program-node--internal text {
+		text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+		cursor : pointer;
+	}
+
+	.program-link {
+		fill: none;
+		stroke: #9a9898;
+		stroke-opacity: 0.4;
+		stroke-width: 1.5px;
+	}
+	.zoom-button-container{
+		display : flex;
+	}
+	.zoom-button-container > div{
+		margin : 3px;
+		cursor : pointer;
+	}
+</style>
+<script type='text/javascript' src='./data.js' charset='utf-8'></script>
+</head>
+<body>
+<h2>MINDMAP DEMO</h2>
+<div id='zoomButtonDiv' class='zoom-button-container' ></div>
+<script type='text/javascript' >
+	const width = 1024//311
+	const height = 645
+
+	console.debug(`load data,nodes number:${data && data.length};`)
+	console.debug(`w/ width:${width},height:${height};`)
+	//add svg container
+	const svg = d3.select('body').append('svg')
+		.attr('width',width)
+		.attr('height',height)
+	//this g(group) is for zoom & pan action
+	const panelG = svg.append('g');
+	const mainG = panelG.append('g')
+		.attr('id','mainG')
+		.attr('transform','translate(50,0)');
+	/* the group for divergent tree */
+	const divergentG = panelG.append('g')
+		.attr('id','divergentG');
+
+	const tree = d3.tree()
+		.size([450,311]);
+	const stratify = d3.stratify()
+		.parentId(function(d){return d.parentId })
+		.id(function(d){return d._id})
+	const root = stratify(data);
+
+	const link = mainG.selectAll('.program-link')
+		.data(tree(root).links())
+		.enter().append('path')
+			.attr('class','program-link')
+			.attr('d',d3.linkHorizontal()
+				.x(function(d) { return d.y;})
+				.y(function(d) { return d.x;}))
+
+	const node = mainG.selectAll('.program-node')
+		.data(root.descendants())
+		.enter().append('g')
+			.attr('id',function(d) { return 't-g-' + d.id})
+			.attr("class", function(d) { return "program-node" + (d.children ? " node--internal" : " node--leaf"); })
+			.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+
+	node.append("circle")
+		.attr('id',function(d) { return 't-c-' + d.id})
+		.attr("r", 4)
+		.attr('fill','rgb(233, 69, 69)')
+		.style('cursor','pointer')
+
+	node.append("text")
+		.attr('id',function(d) { return 't-t-' + d.id})
+		.attr("dy", 3)
+		.attr("x", function(d) { return d.children ? -8 : 8; })
+		.style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+		.style('fill',function(d) {return d.data.color ? d.data.color : 'rgba(233,69,69,1)'})
+		.text(function(d) { return d.data.name })
+		.on('click',function(d){
+			console.log('okook');
+			highlight(d.id);
+			onClick && onClick(d.data);
+		})
+	//zoom
+	function zoomed(){
+		const info = ['MindmapBox -> zoomed:'];
+		panelG.attr('transform',d3.event.transform);
+		console.debug(...info);
+	}
+	const zoomListener =d3.zoom().on('zoom',zoomed); 
+	svg.call(zoomListener);
+
+	//the zoom button
+	d3.select('.zoom-button-container').selectAll('div')
+		.data(['+','O','-'])
+		.enter()
+		.append('div')
+			.text(function(d){return d})
+			.on('click',function(d){
+				console.debug('click:',d)
+				switch(d){
+					case '+':{
+						zoomListener.scaleBy(svg && svg.transition().duration(750),1.1);
+						break;
+					}
+					case '-':{
+						zoomListener.scaleBy(svg && svg.transition().duration(750),0.9);
+						break;
+					}
+					case 'O':{
+						zoomListener.transform(svg && svg.transition().duration(750),d3.zoomIdentity);
+						break;
+					}
+					default : throw new Error(`can not support this mode:${mode};`);
+				}
+			})
+
+	//the animation
+	//first scale to zero
+	const showIn = d3.transition()
+		.duration(300)
+		.ease(d3.easeExpOut);
+	svg.style('transform','scale(0)')
+		.transition(showIn)
+		.style('transform','scale(1)');
+
+
+</script>
+</body>
+</html>
