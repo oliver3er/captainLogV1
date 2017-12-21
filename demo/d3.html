@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>d3 test</title>
+    <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+</head>
+<body>
+<h1>test d3</h1>
+</body>
+<script>
+    //draw svg element
+    d3.select('body')
+        .append('svg')
+        .attr('id','mysvg')
+        .style('position', 'absolute')
+        .style('top', '70px')
+        .style('left', '50px')
+        .style('width', '500px')
+        .style('height', '500px')
+        .style('background-color', 'gray');
+
+    //generate random data array [ {x,y,r} ... ]
+    var data = Array.from(new Array(20)).map(function(){
+        return {
+                x : Math.random()*500,
+                y : Math.random()*500,
+                r : Math.random()*20 + 10
+            }
+        });
+    console.log('the data:',data);
+
+
+    //draw circle
+    d3.select('#mysvg').selectAll('circle')
+        .data(data).enter().append('circle')
+        .attr('cx', function (d) {
+            return d.x
+        })
+        .attr('cy', function (d) {
+            return d.y
+        })
+        .attr('r', function (d) {
+            return d.r
+        })
+        .attr('fill', 'white');
+
+    var svg = d3.select('#mysvg');
+
+    //move circle
+    svg.selectAll('circle')
+        .transition()
+        .duration(2000)
+        .ease(d3.easeBackInOut)
+            .attr('cx','250')
+            .attr('cy','250')
+        .on('end',function() {
+            //move back
+            svg.selectAll('circle')
+                .transition()
+                .duration(2000)
+                .ease(d3.easeElasticIn) //ease function , document: https://github.com/d3/d3-ease
+                    .attr('cx',function(d){ return d.x})
+                    .attr('cy',function(d){ return d.y})
+                .on('end',function(){
+                    drawLine();
+                })
+        });
+
+    //draw line , all kinds of line style:https://github.com/d3/d3-shape/blob/master/README.md#curves
+    function drawLine() {
+        console.log('begin draw line');
+        //this is a way of how to draw a line
+        var line = d3.line()
+            .x(function (d) {
+                return d.x
+            })
+            .y(function (d) {
+                return d.y
+            })
+            .curve(d3.curveCatmullRomClosed);
+        //then , draw a svg 'path', using previous 'line' ,NOTE: the attribute 'd' means the really path of line
+        svg.append('path')
+            .style('opacity',0)
+            .attr('fill', 'none')
+            .attr('stroke', 'pink')
+            .attr('stroke-width', 2)
+            .attr('d', line(data))
+            .transition()
+            .duration(2000)
+                .style('opacity',1)
+                .on('end',function(){
+                    d3.select(this).remove();
+                    drawAnotherLine();
+                });
+
+
+    }
+
+    //another style of line
+    function drawAnotherLine(){
+        console.log('draw another line');
+        var line = d3.line()
+            .x(function(d){return d.x})
+            .y(function(d){return d.y})
+            .curve(d3.curveStepAfter);
+
+        svg.append('path')
+            .style('opacity',0)
+            .attr('fill','none')
+            .attr('stroke','pink')
+            .attr('stroke-width',2)
+            .attr('d',line(data))
+            .transition()
+            .duration(2000)
+            .style('opacity',1)
+            .on('end',function(){
+                d3.select(this).remove();
+                drawLink();
+            });
+    }
+
+
+    //link all circle, from a single point (0,250), with horizontal style
+    var link;
+    var hasBounced;
+    function drawLink(){
+        console.log('draw link');
+        link = d3.linkHorizontal()
+            .source(function(){return [0,250]})
+            .target(function(d){return [d.x,d.y]});
+        svg.selectAll('path').remove();
+        svg.selectAll('path')
+            .data(data)
+            .enter()
+            .append('path')
+                .style('opacity',0)
+                .attr('fill','none')
+                .attr('stroke','pink')
+                .attr('d',link)
+                .transition()
+                .duration(1000)
+                    .style('opacity',1)
+                    .on('end',function(){
+                        if(!hasBounced){
+                            bounceCircle();
+                            hasBounced = true;
+                        }
+                    });
+    }
+
+    //use 'force' to bounce all elements ; force document:
+    function bounceCircle(){
+        d3.forceSimulation(data)
+            .force('charge',d3.forceManyBody().strength(-30))
+            .on('tick',function(){
+                svg.selectAll('circle')
+                    .attr('cx',function(d){return d.x})
+                    .attr('cy',function(d){return d.y});
+                svg.selectAll('path')
+                    .attr('d',link)
+            })
+            .on('end',function(){
+                bounceBack()
+            });
+    }
+
+    function bounceBack(){
+        d3.forceSimulation(data)
+            .force('charge',d3.forceManyBody().strength(30))
+            .on('tick',function(){
+                svg.selectAll('circle')
+                    .attr('cx',function(d){return d.x})
+                    .attr('cy',function(d){return d.y});
+                svg.selectAll('path')
+                    .attr('d',link)
+            });
+
+    }
+
+</script>
+</html>
