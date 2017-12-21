@@ -21,14 +21,13 @@
         .style('background-color', 'gray');
 
     //generate random data array [ {x,y,r} ... ]
-    var data = Array.from(new Array(20)).map(e =>
-        (
-            {
+    var data = Array.from(new Array(20)).map(function(){
+        return {
                 x : Math.random()*500,
                 y : Math.random()*500,
-                r : Math.random()*20 + 10,
+                r : Math.random()*20 + 10
             }
-        ))
+        });
     console.log('the data:',data);
 
 
@@ -38,7 +37,7 @@
         .attr('cx',function(d){ return d.x})
         .attr('cy',function(d){ return d.y})
         .attr('r' , function(d) { return d.r})
-        .attr('fill','white')
+        .attr('fill','white');
 
     var svg = d3.select('#mysvg');
 
@@ -60,11 +59,11 @@
                 .on('end',function(){
                     drawLine();
                 })
-        })
+        });
 
     //draw line , all kinds of line style:https://github.com/d3/d3-shape/blob/master/README.md#curves
     function drawLine() {
-        console.log('begin draw line')
+        console.log('begin draw line');
         //this is a way of how to draw a line
         var line = d3.line()
             .x(function (d) {
@@ -73,7 +72,7 @@
             .y(function (d) {
                 return d.y
             })
-            .curve(d3.curveCatmullRomClosed)
+            .curve(d3.curveCatmullRomClosed);
         //then , draw a svg 'path', using previous 'line' ,NOTE: the attribute 'd' means the really path of line
         svg.append('path')
             .style('opacity',0)
@@ -85,20 +84,20 @@
             .duration(2000)
                 .style('opacity',1)
                 .on('end',function(){
-                    d3.select(this).remove()
-                    drawAnotherLine()
-                })
+                    d3.select(this).remove();
+                    drawAnotherLine();
+                });
 
 
     }
 
     //another style of line
     function drawAnotherLine(){
-        console.log('draw another line')
+        console.log('draw another line');
         var line = d3.line()
             .x(function(d){return d.x})
             .y(function(d){return d.y})
-            .curve(d3.curveStepAfter)
+            .curve(d3.curveStepAfter);
 
         svg.append('path')
             .style('opacity',0)
@@ -110,9 +109,9 @@
             .duration(2000)
             .style('opacity',1)
             .on('end',function(){
-                d3.select(this).remove()
-                drawLink()
-            })
+                d3.select(this).remove();
+                drawLink();
+            });
     }
 
 
@@ -120,11 +119,11 @@
     var link;
     var hasBounced;
     function drawLink(){
-        console.log('draw link')
+        console.log('draw link');
         link = d3.linkHorizontal()
-            .source(function(d){return [0,250]})
-            .target(function(d){return [d.x,d.y]})
-        svg.selectAll('path').remove()
+            .source(function(){return [0,250]})
+            .target(function(d){return [d.x,d.y]});
+        svg.selectAll('path').remove();
         svg.selectAll('path')
             .data(data)
             .enter()
@@ -138,38 +137,38 @@
                     .style('opacity',1)
                     .on('end',function(){
                         if(!hasBounced){
-                            bounceCircle()
-                            hasBounced = true
+                            bounceCircle();
+                            hasBounced = true;
                         }
-                    })
+                    });
     }
 
     //use 'force' to bounce all elements ; force document:
     function bounceCircle(){
-        var sim = d3.forceSimulation(data)
+        d3.forceSimulation(data)
             .force('charge',d3.forceManyBody().strength(-30))
             .on('tick',function(){
                 svg.selectAll('circle')
                     .attr('cx',function(d){return d.x})
-                    .attr('cy',function(d){return d.y})
+                    .attr('cy',function(d){return d.y});
                 svg.selectAll('path')
                     .attr('d',link)
             })
             .on('end',function(){
                 bounceBack()
-            })
+            });
     }
 
     function bounceBack(){
-        var sim = d3.forceSimulation(data)
+        d3.forceSimulation(data)
             .force('charge',d3.forceManyBody().strength(30))
             .on('tick',function(){
                 svg.selectAll('circle')
                     .attr('cx',function(d){return d.x})
-                    .attr('cy',function(d){return d.y})
+                    .attr('cy',function(d){return d.y});
                 svg.selectAll('path')
                     .attr('d',link)
-            })
+            });
 
     }
 
