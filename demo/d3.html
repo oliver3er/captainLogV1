@@ -34,10 +34,16 @@
     //draw circle
     d3.select('#mysvg').selectAll('circle')
         .data(data).enter().append('circle')
-        .attr('cx',function(d){ return d.x})
-        .attr('cy',function(d){ return d.y})
-        .attr('r' , function(d) { return d.r})
-        .attr('fill','white');
+        .attr('cx', function (d) {
+            return d.x
+        })
+        .attr('cy', function (d) {
+            return d.y
+        })
+        .attr('r', function (d) {
+            return d.r
+        })
+        .attr('fill', 'white');
 
     var svg = d3.select('#mysvg');
 
