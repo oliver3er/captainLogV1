@@ -1,0 +1,50 @@
+body {
+	background : #303138;
+	color : white;
+}
+.program-node circle {
+	//fill: #999;
+}
+
+.program-node text {
+	font: 10px sans-serif;
+	cursor : pointer;
+}
+
+.program-node--internal circle {
+	fill: #555;
+}
+
+.program-node--internal text {
+	text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+	cursor : pointer;
+}
+
+.program-link {
+	fill: none;
+	stroke: #9a9898;
+	stroke-opacity: 0.4;
+	stroke-width: 1.5px;
+}
+.zoom-button-container{
+	display : flex;
+}
+.zoom-button-container > div{
+	margin : 3px;
+	cursor : pointer;
+}
+
+
+.raindrop .program-link {
+	fill: none;
+	stroke: #9a9898;
+	stroke-opacity: 1;
+	stroke-width: 1px;
+}
+
+.raindrop .program-node {
+	fill: #9a9898;
+	stroke: none;
+	fill-opacity: 1;
+	cursor : pointer;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>d3 test</title>
+<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<link rel='stylesheet' href='./mindmap.css' />
+</head>
+<body>
+	<h2>MINDMAP DEMO(<span id='title'></span>)</h2>
+<div id='zoomButtonDiv' class='zoom-button-container' ></div>
+<div id='mindmapDiv' />
+</body>
+</html>
+<script type='text/javascript' src='./data.js' charset='utf-8'></script>
+<script type='text/javascript' src='./mindmap2.js' charset='utf-8'></script>
+<script>
+	const mindmap = new Mindmap(data,d3.select('#mindmapDiv'))
+	d3.select('#title').text(mindmap.name)
+</script>
