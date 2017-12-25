@@ -2,6 +2,14 @@ body {
 	background : #303138;
 	color : white;
 }
+
+button {
+	background : lightblue;
+	margin: 0 20px;
+	border-width : 0px;
+	border-radius : 3px;
+}
+
 .program-node circle {
 	//fill: #999;
 }
@@ -47,4 +55,34 @@ body {
 	stroke: none;
 	fill-opacity: 1;
 	cursor : pointer;
+}
+
+
+.class1 .program-link {
+	fill: none;
+	stroke: #9a9898;
+	stroke-opacity: 0.4;
+	stroke-width: 1.5px;
+}
+
+.class1 .program-node {
+	fill : rgb(233, 69, 69);
+	cursor : pointer;
+}
+
+
+.star-map {
+	background-color: #FFF;
+}
+
+.star-map .link {
+	fill: none;
+	stroke: #000;
+	stroke-width: 4px;
+	cursor: default;
+}
+
+.star-map .node {
+	stroke-width: 1.5px;
+	cursor: pointer;
 }
