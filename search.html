@@ -62,7 +62,20 @@
 				}
 			}
 		});
-		
+
+
+        //点击其他部分，关闭搜索tag选择窗口
+        $(document).bind("click",function(event){
+            var e=window.event || event;
+            //点击除tag选择窗口位置，关闭该窗口
+            if($(e.target).closest(".search-tag-select-dialog").length == 0 &&
+                $(e.target).closest(".search-inputbox-wrapper").length == 0){
+                if($(".search-tag-select-dialog").css("visibility")!="hidden"){
+                    $(".search-tag-select-dialog").removeClass("dialog-show");
+                }
+            }
+        });
+
 		
 		//点击搜索部分
 		$(".search-inputbox-wrapper").bind('click',function(){
@@ -72,13 +85,9 @@
 			$(".search-box-words").css("opacity","0");
 			
 			//搜索框点击后出现tag选择框
-			
+			//获取光标位置(略)
+			$(".search-tag-select-dialog").addClass("dialog-show");
 		});
-		//写入文字
-		
-		
-		
-		
 		
 		
 		//tag选择框hover
@@ -92,7 +101,20 @@
 			optionLi.removeClass();
 			optionLi.children("div:nth-child(2)").remove();
 		});
+
+		//tag选择窗口选择标签，即标签点击事件
+		$(".search-tag-select-tags li").bind('click',function(){
+            $(".search-tag-select-dialog").removeClass("dialog-show");
+            $(".search-setting-value-dialog").addClass("dialog-show");
+		});
+
+
+		//关闭设置标签值窗口
+		$(".setting-form-btn-cancle.btn-cancle-lightbg").bind('click',function(){
+            $(".search-setting-value-dialog").removeClass("dialog-show");
+		});
 	});
+
 	</script>
 </head>
 <body>
@@ -332,7 +354,8 @@
 								<div class="search-input-delete-btn-bd"></div>
 							</div>
 						</div>
-						
+
+
 						<!--tag selection dialog-->
 						<div class="search-tag-select-dialog">
 							<div class="search-tag-select-title">SEARCH OPTIONS</div>
@@ -345,15 +368,85 @@
 									<li><div class="search-tag-select-tag-info"><span>#Todo</span><span>todo list</span></div></li>
 									<li><div class="search-tag-select-tag-info"><span>#Code</span><span>code section</span></div></li>
 								</ul>
-								
+
 								<div class="search-tag-select-tag-type">FREQUENLY USED HASHTAG</div>
 								<ul class="search-tag-select-tags">
 									<li><div class="search-tag-select-tag-info"><span>#Logger</span><span>my first project that...</span></div></li>
 									<li><div class="search-tag-select-tag-info"><span>#projects</span><span>my design projects</span></div></li>
+									<li><div class="search-tag-select-tag-info"><span>#projects</span><span>my design projects</span></div></li>
 								</ul>
 							</div>
 						</div>
-						
+
+
+						<!--createtime tag setting dialog-->
+						<div class="search-setting-value-dialog">
+							<div class="search-setting-value-main">
+								<div class="search-setting-value-title">#createtime</div>
+								<div class="search-setting-value-content">
+									<div class="setting-value-item">
+									<div class="setting-value-form-radiobox">
+										<script type="text/javascript">
+											$(function (){
+												$(".form-radiobox .form-radiobox-control").bind('click',function(){
+													var contrl = $(this);
+													if(contrl.hasClass("form-radiobox-checked")){
+														contrl.removeClass("form-radiobox-checked").addClass("form-radiobox-unchecked");
+														return -1;
+													}
+													if(contrl.hasClass("form-radiobox-unchecked")){
+														contrl.removeClass("form-radiobox-unchecked").addClass("form-radiobox-checked");
+														return -1;
+													}
+												});
+											});
+										</script>
+
+										<div class="form-radiobox form-radiobox-small">
+											<div class="setting-value-form-radiobox-label">EXCLUDE</div>
+											<div class="form-radiobox-control form-radiobox-unchecked">
+												<input type="checkbox" class="form-radiobox-value" value="off" />
+											</div>
+										</div>
+									</div>
+
+									<div class="setting-value-disc">find all logs those exclude this tag.</div>
+								</div>
+
+									<div class="setting-value-item">
+									<div class="setting-value-label">VALUE</div>
+									<div class="setting-value-date-range">
+
+										<div class="date-range-part">
+											<div class="date-range-part-label">
+												<div>from:</div>
+												<div>
+													<input type="text" class="form-input form-input-small form-input-lightbg" name="dateFrom" value="2017-3-10" placeholder="" maxlength="10" />
+												</div>
+											</div>
+											<div class="date-range-selection"><img src="images/date-range1.png"/></div>
+										</div>
+
+										<div class="date-range-part">
+											<div class="date-range-part-label">
+												<div>to:</div>
+												<div>
+													<input type="text" class="form-input form-input-small form-input-lightbg" name="dateTo" value="2017-10-18" placeholder="" maxlength="10" />
+												</div>
+											</div>
+											<div class="date-range-selection"><img src="images/date-range2.png"/></div>
+										</div>
+									</div>
+								</div>
+
+								</div>
+							</div>
+							<div class="search-setting-value-footer">
+								<div class="setting-form-btn-cancle btn-cancle-lightbg"><span>Cancle</span></div>
+								<div class="setting-form-btn-save btn-ok">OK</div>
+							</div>
+						</div>
+						<!--createtime tag setting dialog end-->
 						
 					</div>
 					
