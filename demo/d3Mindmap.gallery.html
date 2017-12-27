@@ -20,9 +20,10 @@
 <script type='text/javascript' src='./data.js' charset='utf-8'></script>
 <script type='text/javascript' src='./mindmap2.js' charset='utf-8'></script>
 <script type='text/javascript' src='./starMap.js' charset='utf-8'></script>
+<script type='text/javascript' src='./flowerMap.js' charset='utf-8'></script>
 <script >
 	var mindmap
-	var defaultMindmap = 2
+	var defaultMindmap = 0
 	var galleries = [
 		{
 			name : 'raindrop',
@@ -36,6 +37,14 @@
 			name : 'star map',
 			Mindmap : StarMap,
 		},
+		{
+			name : 'flower map',
+			Mindmap : FlowerMap,
+		},
+		{
+			name : 'constellation',
+			Mindmap : 'constellation.html',
+		},
 	]
 	var select = d3.select('#galleryDiv').append('select')
 		.on('change',function(d){
@@ -43,18 +52,28 @@
 			console.debug(`selected:${name};`)
 			draw(name)
 		})
+
+	function drawMindmap(mindmapObj){
+		if(typeof mindmapObj === 'string'){
+			//is a html , jump to it
+			window.location = mindmapObj 
+		}else{
+			mindmap = new mindmapObj(data,d3.select('#mindmapDiv'))
+		}
+	}
+
 	function draw(name){
 		d3.selectAll('svg').remove()
 		galleries.forEach(gallery => {
 			if(gallery.name === name){
-				mindmap = new gallery.Mindmap(data,d3.select('#mindmapDiv'))
+				drawMindmap(gallery.Mindmap)
 			}
 		})
 	}
 	var options = select.selectAll('option').data(galleries).enter().append('option')
 				.text(function(d){return d.name})
 				.attr('value',function(d){return d.name})
-				.attr('selected',function(d,i){return i === defaultMindmap})
+				.attr('selected',function(d,i){return i === defaultMindmap ? '':undefined})
 
 	var button = d3.select('#galleryDiv').append('button')
 		.text('re-draw')
@@ -64,5 +83,5 @@
 			draw(name)
 		})
 			
-	mindmap = new galleries[defaultMindmap].Mindmap(data,d3.select('#mindmapDiv'))
+	drawMindmap(galleries[defaultMindmap].Mindmap)
 </script>
