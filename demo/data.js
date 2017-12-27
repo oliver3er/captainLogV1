@@ -55,3 +55,41 @@ const data = [
 	},
 
 ]
+
+
+const stratify = d3.stratify()
+	.parentId(function(d){return d.parentId })
+	.id(function(d){return d._id})
+var innerRoot = stratify(data)
+var innerNodes = (() => {
+	var nodes = [], i = 0;
+
+	function recurse(node) {
+		if (node.children) {
+			node.size = node.children.reduce(function(p, v) {
+				return p + recurse(v);
+			}, 0);
+		}
+		if (!node.id) node.id = ++i;
+		nodes.push(node);
+		return node.size;
+	}
+	innerRoot.size = recurse(innerRoot);
+	return nodes;
+})()
+
+const getRoot = () => {
+	return innerRoot
+}
+
+/* flat nodes array for root tree */
+const getNodes = () => {
+	return innerNodes
+}
+
+
+/* links array */
+const getLinks = () => {
+	return innerRoot.links()
+}
+
