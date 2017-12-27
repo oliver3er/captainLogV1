@@ -29,6 +29,9 @@ a {
 	font-size: inherit;
 }
 
+li {
+	list-style: none;
+}
 
 .clearfix:after {
 	clear: both;
@@ -1494,7 +1497,7 @@ a {
 .logs-separate-line {
 	width: 100%;
 	height: 1px;
-	background-color: #;
+	background-color: hsla(0,0%,100%,.04);
 }
 
 .logs-status-bar {
@@ -3017,6 +3020,28 @@ a {
 	color: rgba(196,200,209,1);
 	border-bottom: 2px solid rgba(196,200,209,.8);
 }
+
+.btn-cancle-light {
+	padding: 10px 22px;
+	color: rgba(84,84,84,.8);
+	font-weight: 500;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+
+.btn-cancle-light span {
+	padding-bottom: 3px;
+	border-bottom: 2px solid rgba(84,84,84,.4);
+	transition: all .17s ease;
+}
+
+.btn-cancle-light:hover span {
+	padding-bottom: 3px;
+	color: rgba(84,84,84,1);
+	border-bottom: 2px solid rgba(84,84,84,.9);
+}
+
+
 
 
 .tag-setting-base-info-backdrop {
