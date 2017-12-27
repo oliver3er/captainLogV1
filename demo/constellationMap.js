@@ -20,6 +20,31 @@ var similarityThresholdMin = 100;
 var similarityThresholdMax = 0;
 var similarityThreshold = 50;
 
+//draw select for data
+let nodesArray,linksArray
+function changeData(name){
+	if(name === 'deanchen'){
+		nodesArray = nodesArrayDeanchen
+		linksArray = linksArrayDeanchen
+	}else if(name === 'oliver'){
+		nodesArray = nodesArrayOliver
+		linksArray = linksArrayOliver
+	}
+}
+d3.select('#selectData').append('select')
+	.on('change',function(){
+		var name = d3.event.target.value
+		changeData(name)
+	})
+	.selectAll('option').data(['deanchen','oliver']).enter().append('option')
+		.text(function(d){return d})
+		.attr('value',function(d){return d})
+		.attr('selected',function(d,i){return i === 1 ? '':undefined})
+changeData('oliver')
+
+
+
+
 function restart() {
 
 	if( d3.select("#graph") != null ) {
