@@ -62,29 +62,50 @@
 				}
 			}
 		});
-		
+
+
+        //点击其他部分，关闭搜索tag选择窗口
+        $(document).bind("click",function(event){
+            var e=window.event || event;
+            //点击除tag选择窗口位置，关闭该窗口
+            /*if($(e.target).closest(".search-select-dialog").length == 0 &&
+                $(e.target).closest(".search-inputbox-wrapper").length == 0){
+                if($(".search-select-dialog").css("visibility")!="hidden"){
+                    $(".search-tag-select-dialog").removeClass("dialog-show");
+                }
+            }*/
+        });
+
 		
 		//点击搜索部分
-		$(".search-inputbox-wrapper").bind('click',function(){
+		$(".search-inputbox").bind('click',function(){
 			var inputbox = $(".search-inputbox-wrapper");
-			inputbox.find(".search-inputbox").addClass("search-input-box-used");
+			$(this).addClass("search-input-box-used");
 			$(".search-box-default").css("opacity",".85");
 			$(".search-box-words").css("opacity","0");
 			
 			//搜索框点击后出现tag选择框
-			
+			//获取光标位置(略)
+			$(".search-select-dialog").addClass("dialog-show");
 		});
-		//写入文字
-		
-		
-		
-		
+
+		//搜索框输入内容
+        $(".search-inputbox").bind('input propertychange',function(){
+            if($(".search-inputbox").text().length>0
+				&& $(".search-select-tag").length>0){
+                $(".search-select-word").show();
+                $(".search-select-tag").hide();
+			}else if($(".search-inputbox").text().length==0 && $(".search-select-word").length>0){
+                $(".search-select-word").hide();
+                $(".search-select-tag").show();
+			}
+		});
 		
 		
 		//tag选择框hover
-		$(".search-tag-select-tags li").hover(function(){
+		$(".search-select-tags li").hover(function(){
 			var optionLi = $(this);
-			optionLi.addClass("search-tag-select-li-hover");
+			optionLi.addClass("search-select-li-hover");
 			
 			optionLi.append("<div>+</div>");
 		},function(){
@@ -92,7 +113,79 @@
 			optionLi.removeClass();
 			optionLi.children("div:nth-child(2)").remove();
 		});
+
+		//关键字日志选择框hover
+        $(".search-select-words li").hover(function(){
+            var optionLi = $(this);
+            optionLi.addClass("search-select-li-hover");
+
+            optionLi.append("<div>+</div>");
+        },function(){
+            var optionLi = $(this);
+            optionLi.removeClass();
+            optionLi.children("div:nth-child(2)").remove();
+        });
+
+		//tag选择窗口选择标签，即标签点击事件
+		$(".search-select-tags li").bind('click',function(){
+            $(".search-select-dialog").removeClass("dialog-show");
+            $(".search-setting-value-dialog").addClass("dialog-show");
+		});
+
+
+		//返回标签选择窗口
+		$(".setting-form-btn-back.btn-back-light").bind('click',function(){
+            $(".search-select-dialog").addClass("dialog-show");
+            $(".search-setting-value-dialog").removeClass("dialog-show");
+		});
+		//提交标签设置值
+        $(".setting-form-btn-save.btn-ok").bind('click',function(){
+            $(".search-select-dialog").removeClass("dialog-show");
+            $(".search-setting-value-dialog").removeClass("dialog-show");
+
+            //搜索框写入值
+            $(".search-inputbox").text();
+			var tagStr = "<div class='search-tag search-tag-plus'  style='background-color:rgba(233,69,69,.75);'>" +
+				"<div class='search-tag-type'></div>" +
+            	"<div class='search-tag-content'>" +
+					"<div class='search-tag-name'>#Little-dean" +
+					"</div>" +
+
+				"</div>";
+			$(".search-inputbox").append(tagStr);
+
+            var tagStr1 = "<div class='search-tag search-tag-minus' style='background-color:rgba(15,130,230,.75);'>" +
+                "<div class='search-tag-type'></div>" +
+                "<div class='search-tag-content'>" +
+                "<div class='search-tag-name'>#createtime" +
+                "</div>" +
+                "<div class='search-tag-search-value'>3/10/2017—/18/10/2017" +
+                "</div>" +
+                "</div>";
+            $(".search-inputbox").append(tagStr1);
+
+            var wordStr = "<div class='search-key-words'>Logger</div>" ;
+			$(".search-inputbox").append(wordStr);
+
+
+			//搜索图标换为删除图标
+            $(".search-input-btn div").removeClass().addClass("search-inputbox-delete-btn");
+        });
+
+        //搜索框删除按钮点击事件
+        $(".search-input-btn div").bind('click',function(){
+			var delBtn = $(this);
+			if(delBtn.hasClass("search-inputbox-delete-btn")){
+                $(".search-inputbox").text("");
+                //$(".search-inputbox").focus();
+				$(".search-inputbox").removeClass("search-input-box-used");
+                $(".search-box-default").css("opacity",".65");
+                $(".search-box-words").css("opacity","1");
+                delBtn.removeClass().addClass("search-inputbox-search-icon");
+			}
+		});
 	});
+
 	</script>
 </head>
 <body>
@@ -323,42 +416,160 @@
 					<div class="search-box-area">
 						<div class="search-box-default">
 							<div class="search-box-words">SEARCH MY LOGS</div>
-							<div class="search-box-icon"></div>
 						</div>
 						
 						<div class="search-inputbox-wrapper">
 							<div class="search-inputbox" contenteditable="true"></div>
-							<div class="search-input-delete-btn">
-								<div class="search-input-delete-btn-bd"></div>
+							<div class="search-input-btn">
+								<!--div class="search-inputbox-delete-btn"></div-->
+								<div class="search-inputbox-search-icon"></div>
 							</div>
 						</div>
-						
-						<!--tag selection dialog-->
-						<div class="search-tag-select-dialog">
-							<div class="search-tag-select-title">SEARCH OPTIONS</div>
-							<div class="search-tag-select-content">
-								<div class="search-tag-select-tag-type">SYSTEM HASHTAG</div>
-								<ul class="search-tag-select-tags">
-									<li>
-										<div class="search-tag-select-tag-info"><span>#createtime</span><span>specific date</span></div>
-									</li>
-									<li><div class="search-tag-select-tag-info"><span>#Todo</span><span>todo list</span></div></li>
-									<li><div class="search-tag-select-tag-info"><span>#Code</span><span>code section</span></div></li>
-								</ul>
-								
-								<div class="search-tag-select-tag-type">FREQUENLY USED HASHTAG</div>
-								<ul class="search-tag-select-tags">
-									<li><div class="search-tag-select-tag-info"><span>#Logger</span><span>my first project that...</span></div></li>
-									<li><div class="search-tag-select-tag-info"><span>#projects</span><span>my design projects</span></div></li>
-								</ul>
+
+
+						<!--search selection dialog-->
+						<div class="search-select-dialog">
+							<div class="search-select-tag">
+								<div class="search-select-title">SEARCH OPTIONS</div>
+								<div class="search-select-content">
+									<div class="search-select-tag-type">SYSTEM HASHTAG</div>
+									<ul class="search-select-tags">
+										<li>
+											<div class="search-select-tag-info">
+												<div>#createtime</div><div>specific date</div>
+											</div>
+										</li>
+										<li><div class="search-select-tag-info"><div>#Todo</div><div>todo list</div></div></li>
+										<li><div class="search-select-tag-info"><div>#Code</div><div>code section</div></div></li>
+									</ul>
+
+									<div class="search-select-tag-type">FREQUENLY USED HASHTAG</div>
+									<ul class="search-select-tags">
+										<li><div class="search-select-tag-info"><div>#Logger</div><div>my first project that...</div></div></li>
+										<li><div class="search-select-tag-info"><div>#projects</div><div>my design projects</div></div></li>
+										<li><div class="search-select-tag-info"><div>#projects</div><div>my design projects</div></div></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="search-select-word">
+								<div class="search-select-title">SEARCH FOR:
+									<span class="search-select-title-value">logger</span>
+								</div>
+								<div class="search-select-content">
+									<ul class="search-select-words">
+										<li>
+											<div class="search-select-word-info">
+												<div class="search-select-word-tag">#LoggerRecords</div>
+												<div class="search-select-word-tag-des">my first project that kslakjd lajdlf ladjlf</div>
+											</div>
+										</li>
+										<li>
+											<div class="search-select-word-info">
+												<div class="search-select-word-log">This logger is important so much</div>
+											</div>
+										</li>
+										<li>
+											<div class="search-select-word-info">
+												<div class="search-select-word-tag">#Logger</div>
+												<div class="search-select-word-tag-des">designing </div>
+											</div>
+										</li>
+										<li>
+											<div class="search-select-word-info">
+												<div class="search-select-word-log">logger of my all</div>
+											</div>
+										</li>
+										<li>
+											<div class="search-select-word-info">
+												<div class="search-select-word-tag">#LoggerRecords</div>
+												<div class="search-select-word-tag-des">my first project </div>
+											</div>
+										</li>
+										<li>
+											<div class="search-select-word-info">
+												<div class="search-select-word-log">logger will online on this Thursday logger will online on this Thursday</div>
+											</div>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
-						
+
+
+						<!--createtime tag setting dialog-->
+						<div class="search-setting-value-dialog ">
+							<div class="search-setting-value-main">
+								<div class="search-setting-value-title">#createtime</div>
+								<div class="search-setting-value-content">
+									<div class="setting-value-item">
+									<div class="setting-value-form-radiobox">
+										<script type="text/javascript">
+											$(function (){
+												$(".form-radiobox .form-radiobox-control").bind('click',function(){
+													var contrl = $(this);
+													if(contrl.hasClass("form-radiobox-checked")){
+														contrl.removeClass("form-radiobox-checked").addClass("form-radiobox-unchecked");
+														return -1;
+													}
+													if(contrl.hasClass("form-radiobox-unchecked")){
+														contrl.removeClass("form-radiobox-unchecked").addClass("form-radiobox-checked");
+														return -1;
+													}
+												});
+											});
+										</script>
+
+										<div class="form-radiobox form-radiobox-small">
+											<div class="setting-value-form-radiobox-label">EXCLUDE</div>
+											<div class="form-radiobox-control form-radiobox-unchecked">
+												<input type="checkbox" class="form-radiobox-value" value="off" />
+											</div>
+										</div>
+									</div>
+
+									<div class="setting-value-disc">find all logs those exclude this tag.</div>
+								</div>
+
+									<div class="setting-value-item">
+									<div class="setting-value-label">VALUE</div>
+									<div class="setting-value-date-range">
+
+										<div class="date-range-part">
+											<div class="date-range-part-label">
+												<div>from:</div>
+												<div>
+													<input type="text" class="form-input form-input-small form-input-lightbg" name="dateFrom" value="2017-3-10" placeholder="" maxlength="10" />
+												</div>
+											</div>
+											<div class="date-range-selection"><img src="images/date-range1.png"/></div>
+										</div>
+
+										<div class="date-range-part">
+											<div class="date-range-part-label">
+												<div>to:</div>
+												<div>
+													<input type="text" class="form-input form-input-small form-input-lightbg" name="dateTo" value="2017-10-18" placeholder="" maxlength="10" />
+												</div>
+											</div>
+											<div class="date-range-selection"><img src="images/date-range2.png"/></div>
+										</div>
+									</div>
+								</div>
+
+								</div>
+							</div>
+							<div class="search-setting-value-footer">
+								<div class="setting-form-btn-back btn-back-light"><span>BACK</span></div>
+								<div class="setting-form-btn-save btn-ok">OK</div>
+							</div>
+						</div>
+						<!--createtime tag setting dialog end-->
 						
 					</div>
 					
 					<div class="search-results-wrapper">
-						<div class="search-results view-list">
+						<div class="search-results view-card">
 							<div class="search-result-item">
 								<div class="search-result-item-title">This is a Title</div>
 								<div class="search-result-item-detail">
