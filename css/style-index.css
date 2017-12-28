@@ -928,12 +928,14 @@ li {
 	background-image: url(../images/small-grey-plus.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
+	cursor : pointer;
 }
 
 .small-grey-minus {
 	background-image: url(../images/small-grey-minus.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
+	cursor : pointer;
 }
 
 .widgets-content-btns-separateline {
@@ -950,6 +952,7 @@ li {
 	background-image: url(../images/btn-zoom0.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
+	cursor : pointer;
 }
 
 .widgets-content-main {
@@ -1222,7 +1225,8 @@ li {
 
 /*title-back-forward-menu begin*/
 .title-back-forward-menu {
-	position: absolute;
+	/* modify by dean : from absolute to fixed */
+	position: fixed;
 	top: 54px;
 	left: 15px;
 	min-width: 160px;
@@ -2095,10 +2099,10 @@ li {
 	cursor: pointer;
 }
 
+/* change max-width/height to real px, not 100% */
 .tag-image-area img {
-	max-width: 100%;
-	height: auto;
-	max-height: 100%;
+	max-width: 540px;
+	max-height: 290px;
 	border-radius: 1px;
 	overflow: hidden;
 }

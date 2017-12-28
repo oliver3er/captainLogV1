@@ -1,0 +1,95 @@
+/* all these CSS just for override the old ones in style-index.css */
+
+
+.message-dialog-open.message-dialog {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	/*timing function change to easeInOutBack : http://easings.net/zh-cn#easeInOutBack*/
+	animation-timing-function: cubic-bezier(0.32, -0.26, 0.58, 1.24);
+	animation-duration: .3s;
+	pointer-events: auto;
+}
+
+.message-dialog-close.message-dialog {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.2s;
+	/* easeInQuad : http://easings.net/zh-cn#easeInQuad */
+	animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+	animation-duration: .1s;
+	pointer-events: none;
+}
+
+.callout-backdrop {
+	position: absolute;
+	left: 0;
+    right: 0;
+    top: 0;
+	bottom: 0;
+    contain: strict;
+    opacity: 0;
+    background-color: rgb(0, 0, 0);
+    transform: translateZ(0px);
+    z-index: 1000;
+	/* easeInOutCubic : http://easings.net/zh-cn#easeInOutCubic */
+    transition: all .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    pointer-events: none;
+}
+
+
+.tag-setting-wrapper-open.tag-setting-wrapper {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	/*timing function change to easeInOutBack : http://easings.net/zh-cn#easeInOutBack*/
+	animation-timing-function: cubic-bezier(0.32, -0.26, 0.58, 1.24);
+	animation-duration: .3s;
+	pointer-events: auto;
+}
+
+.tag-setting-wrapper-close.tag-setting-wrapper {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: .1s;
+	pointer-events: none;
+	/* easeInQuad : http://easings.net/zh-cn#easeInQuad */
+	animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.tag-image-dialog-open.tag-image-dialog {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	/*timing function change to easeInOutBack : http://easings.net/zh-cn#easeInOutBack*/
+	animation-timing-function: cubic-bezier(0.32, -0.26, 0.58, 1.24);
+	animation-duration: .3s;
+	pointer-events: auto;
+}
+
+.tag-image-dialog-close.tag-image-dialog {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: .1s;
+	animation-duration: .1s;
+	pointer-events: none;
+	/* easeInQuad : http://easings.net/zh-cn#easeInQuad */
+	animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.tag-form-open.tag-form-wrapper {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	/*timing function change to easeInOutBack : http://easings.net/zh-cn#easeInOutBack*/
+	animation-timing-function: cubic-bezier(0.32, -0.26, 0.58, 1.24);
+	animation-duration: .3s;
+	pointer-events: auto;
+}
+
+.tag-form-close.tag-form-wrapper {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: .1s;
+	pointer-events: none;
+	/* easeInQuad : http://easings.net/zh-cn#easeInQuad */
+	animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
