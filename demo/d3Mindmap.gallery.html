@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>d3 test</title>
+<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<link rel='stylesheet' href='./mindmap.css' />
+</head>
+<body>
+	<h2>MINDMAP DEMO(<span id='title'></span>)</h2>
+<div id='zoomButtonDiv' class='zoom-button-container' ></div>
+<div id='galleryDiv' >
+	<p>please select a demo:</p>
+</div>
+<div id='mindmapDiv' >
+	<p>demo:</p>
+</div>
+</body>
+</html>
+<script type='text/javascript' src='./data.js' charset='utf-8'></script>
+<script type='text/javascript' src='./mindmap2.js' charset='utf-8'></script>
+<script type='text/javascript' src='./starMap.js' charset='utf-8'></script>
+<script type='text/javascript' src='./flowerMap.js' charset='utf-8'></script>
+<script >
+	var mindmap
+	var defaultMindmap = 0
+	var galleries = [
+		{
+			name : 'raindrop',
+			Mindmap : MindmapRaindrop,
+		},
+		{
+			name : 'elastic transition',
+			Mindmap : MindmapElastic,
+		},
+		{
+			name : 'star map',
+			Mindmap : StarMap,
+		},
+		{
+			name : 'flower map',
+			Mindmap : FlowerMap,
+		},
+		{
+			name : 'constellation',
+			Mindmap : 'constellation.html',
+		},
+	]
+	var select = d3.select('#galleryDiv').append('select')
+		.on('change',function(d){
+			var name = d3.event.target.value
+			console.debug(`selected:${name};`)
+			draw(name)
+		})
+
+	function drawMindmap(mindmapObj){
+		if(typeof mindmapObj === 'string'){
+			//is a html , jump to it
+			window.location = mindmapObj 
+		}else{
+			mindmap = new mindmapObj(data,d3.select('#mindmapDiv'))
+		}
+	}
+
+	function draw(name){
+		d3.selectAll('svg').remove()
+		galleries.forEach(gallery => {
+			if(gallery.name === name){
+				drawMindmap(gallery.Mindmap)
+			}
+		})
+	}
+	var options = select.selectAll('option').data(galleries).enter().append('option')
+				.text(function(d){return d.name})
+				.attr('value',function(d){return d.name})
+				.attr('selected',function(d,i){return i === defaultMindmap ? '':undefined})
+
+	var button = d3.select('#galleryDiv').append('button')
+		.text('re-draw')
+		.on('click',function(d){
+			var name = d3.select('select').property('value')
+			console.debug(`selected:${name};`)
+			draw(name)
+		})
+			
+	drawMindmap(galleries[defaultMindmap].Mindmap)
+</script>

@@ -1,0 +1,113 @@
+body {
+	background : #303138;
+	color: white;
+}
+
+button {
+	background : lightblue;
+	margin: 0 20px;
+	border-width : 0px;
+	border-radius : 3px;
+}
+
+.program-node circle {
+	//fill: #999;
+}
+
+.program-node text {
+	font: 10px sans-serif;
+	cursor : pointer;
+}
+
+.program-node--internal circle {
+	fill: #555;
+}
+
+.program-node--internal text {
+	text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+	cursor : pointer;
+}
+
+.program-link {
+	fill: none;
+	stroke: #9a9898;
+	stroke-opacity: 0.4;
+	stroke-width: 1.5px;
+}
+.zoom-button-container{
+	display : flex;
+}
+.zoom-button-container > div{
+	margin : 3px;
+	cursor : pointer;
+}
+
+
+.raindrop .program-link {
+	fill: none;
+	stroke: #9a9898;
+	stroke-opacity: 1;
+	stroke-width: 1px;
+}
+
+.raindrop .program-node {
+	fill: #9a9898;
+	stroke: none;
+	fill-opacity: 1;
+	cursor : pointer;
+}
+
+
+.class1 .program-link {
+	fill: none;
+	stroke: #9a9898;
+	stroke-opacity: 0.4;
+	stroke-width: 1.5px;
+}
+
+.class1 .program-node {
+	fill : rgb(233, 69, 69);
+	cursor : pointer;
+}
+
+
+.star-map {
+	background-color: #FFF;
+}
+
+.star-map .link {
+	fill: none;
+	stroke: #000;
+	stroke-width: 4px;
+	cursor: default;
+}
+
+.star-map .node {
+	stroke-width: 1.5px;
+	cursor: pointer;
+}
+
+.flower-map circle.node {
+  cursor: pointer;
+  stroke: #000;
+  stroke-width: .5px;
+}
+
+.flower-map circle.node.directory {
+  stroke: #9ecae1;
+  stroke-width: 2px;
+}
+
+.flower-map circle.node.collapsed {
+  stroke: #555;
+}
+
+.flower-map .nodetext {
+  fill: lightblue;
+}
+
+.flower-map line.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
