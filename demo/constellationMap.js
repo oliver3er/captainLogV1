@@ -30,6 +30,9 @@ function changeData(name){
 		nodesArray = nodesArrayOliver
 		linksArray = linksArrayOliver
 	}
+	//OK , begin draw...
+	console.info('begin draw !')
+	restart()
 }
 d3.select('#selectData').append('select')
 	.on('change',function(){

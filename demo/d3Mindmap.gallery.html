@@ -21,9 +21,10 @@
 <script type='text/javascript' src='./mindmap2.js' charset='utf-8'></script>
 <script type='text/javascript' src='./starMap.js' charset='utf-8'></script>
 <script type='text/javascript' src='./flowerMap.js' charset='utf-8'></script>
+<script type='text/javascript' src='./sharpMap.js' charset='utf-8'></script>
 <script >
 	var mindmap
-	var defaultMindmap = 0
+	var defaultMindmap = 6
 	var galleries = [
 		{
 			name : 'raindrop',
@@ -45,6 +46,14 @@
 			name : 'constellation',
 			Mindmap : 'constellation.html',
 		},
+		{
+			name : 'collision',
+			Mindmap : 'collision.html',
+		},
+		{
+			name : 'sharp+直角连线',
+			Mindmap : SharpMap,
+		},
 	]
 	var select = d3.select('#galleryDiv').append('select')
 		.on('change',function(d){
@@ -63,7 +72,7 @@
 	}
 
 	function draw(name){
-		d3.selectAll('svg').remove()
+		d3.select('#mindmapDiv').selectAll('*').remove()
 		galleries.forEach(gallery => {
 			if(gallery.name === name){
 				drawMindmap(gallery.Mindmap)
