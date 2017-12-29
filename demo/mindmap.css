@@ -111,3 +111,27 @@ button {
   stroke: #9ecae1;
   stroke-width: 1.5px;
 }
+
+.sharp .program-link {
+	fill: none;
+	stroke: white;
+	stroke-opacity: 0.4;
+	stroke-width: 1.5;
+}
+
+.sharp .program-node {
+	fill : rgb(233, 69, 69);
+	cursor : pointer;
+}
+
+.sharp .sharp-text {
+	fill: #303139;
+	alignment-baseline:middle;
+	text-anchor:middle;
+	font-size:14px;
+}
+
+.sharp-style1 .program-link {
+	stroke-opacity: 1 !important;
+	stroke-width: 1;
+}

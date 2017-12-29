@@ -190,6 +190,11 @@ class MindmapElastic{
 	 * usage : new Mindmap([...],d3.select('#div'))
 	 * */
 	constructor(data,container){
+		container.append('p')
+			.text('参考网站：')
+			.append('a')
+			.attr('href','http://bl.ocks.org/robschmuecker/7880033')
+			.text('http://bl.ocks.org/robschmuecker/7880033')
 		console.debug(`construct mindmap with data:${data && data.length}`);
 		/* properties */
 		this.data = data

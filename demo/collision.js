@@ -8,6 +8,7 @@
 //draw select for data
 let nodesArray,linksArray
 function changeData(name){
+	console.groupCollapsed('changeData')
 	if(name === 'deanchen'){
 		nodesArray = nodesArrayDeanchen
 		linksArray = linksArrayDeanchen
@@ -20,6 +21,7 @@ function changeData(name){
 	//ok, begin draw here!
 	console.info(`begin draw...`)
 	draw()
+	console.groupEnd()
 }
 d3.select('#selectData').append('select')
 	.on('change',function(){
@@ -35,6 +37,9 @@ changeData('oliver')
 
 /* the main function to draw the whole graph */
 function draw(){
+	console.group('draw')
+	console.log('draw...')
+	console.groupEnd()
 	d3.select('#graphHolder').selectAll('*').remove()
 	const width = 1200,height = 700
 	const color = d3.scaleOrdinal(d3.schemeCategory10)
