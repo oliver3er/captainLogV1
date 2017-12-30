@@ -20,7 +20,7 @@ function drawLink(d){
 }
 
 
-///{{{
+/// SharpMap {{{
 class SharpMap{
 	/* constructor 
 	 * data : the data of mindmap nodes
@@ -57,6 +57,7 @@ class SharpMap{
 		const duration = 1000
 		//ease function ,document:https://github.com/d3/d3-ease 
 		const EASE = d3.easeElastic
+		const {data} = this
 
 		console.debug(`load data,nodes number:${data && data.length};`)
 		console.debug(`w/ width:${width},height:${height};`)
