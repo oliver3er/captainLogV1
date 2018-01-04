@@ -234,6 +234,22 @@
                 delBtn.removeClass().addClass("search-inputbox-search-icon");
 			}
 		});
+
+
+        //搜索记录列表中，鼠标移到列表项中的事件
+		$(".search-record-item-wrapper").hover(function(){
+			var item = $(this);
+            var closeIcon = item.find(".close-icon-right-top");
+            //item.append(closeIcon);
+        	closeIcon.css("top","-8px");
+            closeIcon.css("right","-8px");
+            closeIcon.addClass("close-icon-medium");
+            closeIcon.show();
+		},function(){
+            var closeIcon = $(".close-icon-right-top");
+            closeIcon.removeClass("close-icon-medium");
+            closeIcon.hide();
+		});
 	});
 
 	</script>
@@ -617,60 +633,72 @@
 						<!--createtime tag setting dialog end-->
 						
 					</div>
-					
-					<div class="search-results-wrapper search-no-result">
+
+
+					<!--搜索结果显示部分-->
+					<div class="search-results-wrapper"><!--search-no-result-->
 						<div class="search-results view-list">
-							<div class="search-result-item">
-								<div class="search-result-item-title">This is a Title</div>
-								<div class="search-result-item-detail">
-									I don’t known how can I make a perfect work.That sad moment you lease an earbud one day before #school starts..Because
-									of their annoyance and  #my inability  to find a way to say "please do us all a favor and “#FUCKING STOP”      nicely I held
-									in all my rage and ended up yelling at my #sister
+							<div class="search-result-item-wrapper">
+								<div class="search-result-item">
+									<div class="search-result-item-title">This is a Title</div>
+									<div class="search-result-item-detail">
+										I don’t known how can I make a perfect work.That sad moment you lease an earbud one day before #school starts..Because
+										of their annoyance and  #my inability  to find a way to say "please do us all a favor and “#FUCKING STOP”      nicely I held
+										in all my rage and ended up yelling at my #sister
+									</div>
+									<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 								</div>
-								<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 							</div>
 
-							<div class="search-result-item">
-								<div class="search-result-item-title">This is a Title</div>
-								<div class="search-result-item-detail">
-									<div><img src="images/img4search.png" /></div>
+							<div class="search-result-item-wrapper">
+								<div class="search-result-item">
+									<div class="search-result-item-title">This is a Title</div>
+									<div class="search-result-item-detail">
+										<div><img src="images/img4search.png" /></div>
+									</div>
+									<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 								</div>
-								<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 							</div>
 
-							<div class="search-result-item">
-								<div class="search-result-item-title">This is a Title</div>
-								<div class="search-result-item-detail">
-									I don’t known how can I make a perfect work.That sad moment you lease an earbud one day before #school starts..Because
-									of their annoyance and  #my inability  to find a way to say "please do us all a favor and “#FUCKING STOP”      nicely I held
-									in all my rage and ended up yelling at my #sister
+							<div class="search-result-item-wrapper">
+								<div class="search-result-item">
+									<div class="search-result-item-title">This is a Title</div>
+									<div class="search-result-item-detail">
+										I don’t known how can I make a perfect work.That sad moment you lease an earbud one day before #school starts..Because
+										of their annoyance and  #my inability  to find a way to say "please do us all a favor and “#FUCKING STOP”      nicely I held
+										in all my rage and ended up yelling at my #sister
+									</div>
+									<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 								</div>
-								<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 							</div>
 
-							<div class="search-result-item">
-								<div class="search-result-item-title">This is a Title</div>
-								<div class="search-result-item-detail">
-									I don’t known how can I make a perfect work.That sad moment you lease an earbud one day before #school starts..Because
-									of their annoyance and  #my inability  to find a way to say "please do us all a favor and “#FUCKING STOP”      nicely I held
-									in all my rage and ended up yelling at my #sister
+							<div class="search-result-item-wrapper">
+								<div class="search-result-item">
+									<div class="search-result-item-title">This is a Title</div>
+									<div class="search-result-item-detail">
+										I don’t known how can I make a perfect work.That sad moment you lease an earbud one day before #school starts..Because
+										of their annoyance and  #my inability  to find a way to say "please do us all a favor and “#FUCKING STOP”      nicely I held
+										in all my rage and ended up yelling at my #sister
+									</div>
+									<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 								</div>
-								<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 							</div>
 
-							<div class="search-result-item">
-								<div class="search-result-item-title">This is a Title</div>
-								<div class="search-result-item-detail">
-									I don’t known how can I make a perfect work.That sad moment you lease an earbud one day before #school starts..Because
-									of their annoyance and  #my inability  to find a way to say "please do us all a favor and “#FUCKING STOP”      nicely I held
-									in all my rage and ended up yelling at my #sister
+							<div class="search-result-item-wrapper">
+								<div class="search-result-item">
+									<div class="search-result-item-title">This is a Title</div>
+									<div class="search-result-item-detail">
+										I don’t known how can I make a perfect work.That sad moment you lease an earbud one day before #school starts..Because
+										of their annoyance and  #my inability  to find a way to say "please do us all a favor and “#FUCKING STOP”      nicely I held
+										in all my rage and ended up yelling at my #sister
+									</div>
+									<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 								</div>
-								<div class="search-result-item-date">2017-10-22 4:25 PM</div>
 							</div>
 
 						</div>
 
-						&lt;!&ndash;加载动画&ndash;&gt;
+						<!--加载动画-->
 						<div class="loading-animation">
 							<div>
 								<div class="loading-bar"></div>
@@ -678,19 +706,124 @@
 								<div class="loading-bar"></div>
 							</div>
 						</div>
-						<!--<div class="search-results-nothing">
-							<div class="search-results-nothing-pic">
 
-							</div>
+					</div>
+
+
+					<!--0 search result display part-->
+					<!--<div class="search-no-result-wrapper">
+						<div class="search-results-nothing">
+							<div class="search-results-nothing-pic"></div>
 							<p>We have searched the entire galaxy,
 								but sorry,we did’nt find what your want.</p>
-						</div>-->
-					</div>
+						</div>
+					</div>-->
+
+
+
+					<!--search records list display part-->
+					<!--<div class="search-records-wrapper">
+						<div class="search-records">
+							<div class="search-records-title">
+								<span>Saved search & History search</span>
+							</div>
+							<div class="search-records-list">
+
+								<div class="search-record-item-wrapper">
+									<div class="search-record-item">
+										<div class="search-record-item-icon search-record-saved-icon"></div>
+										<div class='search-tag-small search-tag-plus'  style='background-color:rgba(233,69,69,.75);'>
+											<div class='search-tag-type'></div>
+											<div class='search-tag-content'>
+												<div class='search-tag-name'>#Little-dean</div>
+											</div>
+										</div>
+
+										<div class='search-tag-small search-tag-minus'  style='background-color:rgba(246,200,0,.75);'>
+											<div class='search-tag-type'></div>
+											<div class='search-tag-content'>
+												<div class='search-tag-name'>#Little-dean</div>
+												<div class='search-tag-search-value'>3/10/2017—/18/10/2017</div>
+											</div>
+										</div>
+
+										<div class="search-record-item-word">Logger</div>
+									</div>
+									<div class="close-icon-right-top"></div>
+								</div>
+
+								<div class="search-record-item-wrapper">
+									<div class="search-record-item">
+									<div class="search-record-item-icon search-record-saved-icon"></div>
+									<div class="search-record-item-word">mywork</div>
+									<div class='search-tag-small search-tag-plus'  style='background-color:rgba(0,146,78,.75);'>
+										<div class='search-tag-type'></div>
+										<div class='search-tag-content'>
+											<div class='search-tag-name'>#my-projects</div>
+										</div>
+									</div>
+								</div>
+									<div class="close-icon-right-top"></div>
+								</div>
+
+								<div class="search-record-item-wrapper">
+									<div class="search-record-item">
+									<div class="search-record-item-icon search-record-saved-icon"></div>
+									<div class='search-tag-small search-tag-plus'  style='background-color:rgba(246,119,0,.75);'>
+										<div class='search-tag-type'></div>
+										<div class='search-tag-content'>
+											<div class='search-tag-name'>#WebsiteDesign</div>
+										</div>
+									</div>
+									<div class="search-record-item-word">workalso</div>
+								</div>
+									<div class="close-icon-right-top"></div>
+								</div>
+
+								<div class="search-record-item-wrapper">
+									<div class="search-record-item">
+									<div class="search-record-item-icon search-record-history-icon"></div>
+									<div class='search-tag-small search-tag-plus'  style='background-color:rgba(67,181,129,.75);'>
+										<div class='search-tag-type'></div>
+										<div class='search-tag-content'>
+											<div class='search-tag-name'>#PopcornTask</div>
+										</div>
+									</div>
+									<div class='search-tag-small search-tag-plus'  style='background-color:rgba(250,166,26,.75);'>
+										<div class='search-tag-type'></div>
+										<div class='search-tag-content'>
+											<div class='search-tag-name'>#Abandoned</div>
+										</div>
+									</div>
+									<div class='search-tag-small search-tag-plus'  style='background-color:rgba(206,27,251,.75);'>
+										<div class='search-tag-type'></div>
+										<div class='search-tag-content'>
+											<div class='search-tag-name'>#HOW?</div>
+										</div>
+									</div>
+								</div>
+									<div class="close-icon-right-top"></div>
+								</div>
+
+							</div>
+
+							<div class="search-records-pic"></div>
+						</div>
+					</div>-->
+
+					<!--search get start display part-->
+					<!--<div class="search-get-start-wrapper">
+						<div class="search-get-start">
+							<div class="search-get-start-pic"></div>
+							<p>Let's get started!</p>
+						</div>
+					</div>-->
+
 				</div>
 
 
-				<div class="search-foot-area-wrapper search-no-result">
-					<div class="search-foot-info">
+				<div class="search-foot-area-wrapper">
+					<div class="search-foot-info"><!--search-no-result-->
 						<div class="search-foot-results-info">Found logs :<span>18</span></div>
 						<div class="search-foot-options">
 							<div class="search-foot-save search-foot-btn with-top-tip" tip-message="Save search">
@@ -1048,6 +1181,9 @@
 		</div>
 
 	</div>
-	
+
+
+	<!--little close icon relate with list-item-->
+	<!--<div class="close-icon-right-top"></div>-->
 </body>
 </html>
