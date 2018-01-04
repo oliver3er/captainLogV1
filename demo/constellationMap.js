@@ -141,7 +141,6 @@ function drawNetwork() {
 				}).attr("y2", function(d) {
 					return d.target.y;
 				});
-			//TODO add anchor node display 
 			anchorNode.attr("transform", function(d) {
 				return "translate(" + d.x + "," + d.y + ")";
 			})

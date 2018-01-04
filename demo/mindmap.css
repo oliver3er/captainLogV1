@@ -156,6 +156,10 @@ button {
 	alignment-baseline : baseline;
 }
 
+.nothing-mindmap .relative-node text{
+	fill : gray;
+}
+
 .nothing-mindmap .relative-node circle{
 	fill : crimson;
 }
@@ -164,3 +168,47 @@ button {
 	fill : none;
 	stroke : gray;
 }
+
+.main-container {
+	display : flex;
+	flex-direction : row;
+	background-color : #37393e;
+}
+
+.left-bar {
+	width : 72px;
+	height : 700px;
+	background-color : #1f2125;
+	padding-top : 167px;
+	display : flex;
+	flex-direction : column;
+	align-items: center;
+}
+
+.left-bar button{
+	width : 50px;
+	height : 50px;
+	border-radius: 50%;
+	border : 1px dashed rgba(170,171,174,0.8);
+	color : white;
+	background-color : transparent;
+	cursor : pointer;
+	margin : 10px;
+}
+
+.left-bar button:focus{
+	outline : none;
+}
+
+.left-bar .selected {
+	border : 1px solid rgba(170,171,174,0.8);
+}
+
+.mindmap-bar {
+	width : 310px;
+	height : 700px;
+	background-color : #303137;
+	overflow : hidden;
+	transition : all 1s ease;
+}
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>d3 test</title>
+<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<link rel='stylesheet' href='./mindmap.css' />
+<style>
+body {
+	margin : 0px;
+}
+</style>
+</head>
+<body>
+	<div class='main-container'>
+		<div class='left-bar'>
+		</div>
+		<div class='mindmap-bar'>
+		</div>
+		<div class='document'>
+		</div>
+	</div>
+</body>
+</html>
+<script type='text/javascript' src='./data4constellation4deanchen.js' charset='utf-8'></script>
+<script type='text/javascript' src='./data4mindmap.js' charset='utf-8'></script>
+<script type='text/javascript' src='./nothingMap.js' charset='utf-8'></script>
+<script >
+	d3.select('.left-bar').selectAll('button')
+		.data(['Doc','Mindmap','Search']).enter().append('button')
+			.classed('selected',function(d,i){return i === 0})
+			.text(function(d){return d})
+			.on('click',function(d){
+				d3.select('.left-bar').selectAll('button').classed('selected',false)
+				d3.select(this).classed('selected',true)
+				if(d === 'Mindmap'){
+					//change to mindmap container
+					console.log('change to mindmap container')
+					d3.select('.mindmap-bar')
+						.style('width','100%')
+					mindmap.updateTwoSide()
+				}else if(d === 'Doc'){
+					//change to doc container
+					console.log('change to mindmap container')
+					d3.select('.mindmap-bar')
+						.style('width','310px')
+					mindmap.updateSingleSide()
+				}
+				})
+
+	var mindmap = new NothingMap(data4mindmap,d3.select('.mindmap-bar'))
+</script>

@@ -24,10 +24,9 @@
 <script type='text/javascript' src='./starMap.js' charset='utf-8'></script>
 <script type='text/javascript' src='./flowerMap.js' charset='utf-8'></script>
 <script type='text/javascript' src='./sharpMap.js' charset='utf-8'></script>
-<script type='text/javascript' src='./nothingMap.js' charset='utf-8'></script>
 <script >
 	var mindmap
-	var defaultMindmap = 7
+	var defaultMindmap = 0
 	var galleries = [
 		{
 			name : 'raindrop',
@@ -59,7 +58,7 @@
 		},
 		{
 			name : '无效果模型',
-			Mindmap : NothingMap,
+			Mindmap : 'nothing.html',
 		},
 	]
 	var select = d3.select('#galleryDiv').append('select')
