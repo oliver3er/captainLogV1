@@ -18,13 +18,16 @@
 </body>
 </html>
 <script type='text/javascript' src='./data.js' charset='utf-8'></script>
+<script type='text/javascript' src='./data4mindmap.js' charset='utf-8'></script>
+<script type='text/javascript' src='./data4constellation4deanchen.js' charset='utf-8'></script>
 <script type='text/javascript' src='./mindmap2.js' charset='utf-8'></script>
 <script type='text/javascript' src='./starMap.js' charset='utf-8'></script>
 <script type='text/javascript' src='./flowerMap.js' charset='utf-8'></script>
 <script type='text/javascript' src='./sharpMap.js' charset='utf-8'></script>
+<script type='text/javascript' src='./nothingMap.js' charset='utf-8'></script>
 <script >
 	var mindmap
-	var defaultMindmap = 6
+	var defaultMindmap = 7
 	var galleries = [
 		{
 			name : 'raindrop',
@@ -54,6 +57,10 @@
 			name : 'sharp+直角连线',
 			Mindmap : SharpMap,
 		},
+		{
+			name : '无效果模型',
+			Mindmap : NothingMap,
+		},
 	]
 	var select = d3.select('#galleryDiv').append('select')
 		.on('change',function(d){
@@ -67,7 +74,7 @@
 			//is a html , jump to it
 			window.location = mindmapObj 
 		}else{
-			mindmap = new mindmapObj(data,d3.select('#mindmapDiv'))
+			mindmap = new mindmapObj(data4mindmap,d3.select('#mindmapDiv'))
 		}
 	}
 
@@ -79,6 +86,7 @@
 			}
 		})
 	}
+
 	var options = select.selectAll('option').data(galleries).enter().append('option')
 				.text(function(d){return d.name})
 				.attr('value',function(d){return d.name})
