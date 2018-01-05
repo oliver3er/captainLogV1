@@ -28,7 +28,7 @@ body {
 <script >
 	d3.select('.left-bar').selectAll('button')
 		.data(['Doc','Mindmap','Search']).enter().append('button')
-			.classed('selected',function(d,i){return i === 0})
+			.classed('selected',function(d,i){return i === 1})
 			.text(function(d){return d})
 			.on('click',function(d){
 				d3.select('.left-bar').selectAll('button').classed('selected',false)

@@ -107,8 +107,8 @@ class NothingMap {
 
 		info.push(`build original shape,this nodes:${d3.selectAll('.node').size()};links:${d3.selectAll('.link').size()};`)
 		//this.update()
-		this.updateSingleSide()
-		//this.updateTwoSide()
+		//this.updateSingleSide()
+		this.updateTwoSide()
 
 		console.info(...info)
 	}
@@ -337,8 +337,26 @@ class NothingMap {
 		//}}}
 	}
 
+	/* switch tag display mode between: fold,collapse,relative collapse*/
+	toggleTag(d){
+		//this.toggleChildren(d)
+		this.collapseRelativeTagWithParent.bind(this)(d)		
+	}
+
+	/* fold/collapse the nodes children  */
+	toggleChildren(d){
+		if (d.children) {
+            d._children = d.children;
+            d.children = null;
+        } else if (d._children) {
+            d.children = d._children;
+            d._children = null;
+        }
+        return d;
+	}
+
 	/* expend/collapse the hashtag , when expend, display all hashtags relative to current tag*/
-	toggleTag(d){//{{{
+	collapseRelativeTag(d){//{{{
 		const info = ['NothingMap -> toggelTag:']
 		const {hasShowRelativeTags} = this
 		info.push(`hasShowRelativeTags :${hasShowRelativeTags}`)
@@ -347,7 +365,7 @@ class NothingMap {
 			this.simulation.stop()
 			this.svg.selectAll('.relative-node').remove()
 			this.svg.selectAll('.relative-link').remove()
-			console.debug(...info)
+			console.info(...info)
 			return
 		}else{
 			this.hasShowRelativeTags = true
@@ -436,4 +454,114 @@ class NothingMap {
 		//}}}
 	}
 	
+	/* expend/collapse the hashtag , when expend, display all hashtags relative to current tag
+	 * NOTE,consider about the parent node ,it will be included in the nodes, its fixed position, and make force strength to other nodes
+	 * */
+	collapseRelativeTagWithParent(d){//{{{
+		const info = ['NothingMap -> toggelTag:']
+		console.log(`the data:`,d)
+		const {hasShowRelativeTags} = d
+		info.push(`hasShowRelativeTags :${hasShowRelativeTags}`)
+		if(hasShowRelativeTags){
+			d.hasShowRelativeTags = false
+			d.simulation.stop()
+			this.svg.selectAll('.relative-node').remove()
+			this.svg.selectAll('.relative-link').remove()
+			console.debug(...info)
+			return
+		}else{
+			d.hasShowRelativeTags = true
+		}
+		const {x,y} = d
+		const {name} = d.data
+		info.push(`with data:`,d)
+		//find all reliatve tag
+		const relativeTagNames = []
+		this.linksArray.forEach(link => {
+			if(link.source === name && relativeTagNames.every(e => e !== link.target)){
+				relativeTagNames.push(link.target)
+			}else if(link.target === name && relativeTagNames.every(e => e !== link.source)){
+				relativeTagNames.push(link.source)
+			}
+		})
+		info.push(`found relatived tag :${relativeTagNames.length};`)
+
+		const relativeTags = [
+			{
+				id : name,
+				name,
+				fx:x,
+				fy:y,
+				x,
+				y,
+			},
+			//consider about parent
+			{
+				id : d.parent.data.name,
+				name : d.parent.data.name,
+				fx : d.parent.data.x,
+				fy : d.parent.data.y,
+			}
+			,...
+			relativeTagNames.map(n =>{
+			return {
+				id : n,
+				name : n,
+				x: x + Math.random()*10 - 5,
+				y: y + Math.random()*10 - 5,
+				color : 'crimson',
+			}})
+		]
+		const relativeLinks = relativeTags.slice(1).map(tag => {
+			return {
+				source : relativeTags[0],
+				target : tag,
+			}
+		})
+		info.push(`build relative link :${relativeLinks.length};`)
+
+		const relativeNode = this.g.selectAll('.relative-node')
+			.data(relativeTags.slice(2)).enter().append('g')
+				.classed('relative-node',true)
+				.attr('transform',function(d){return `translate(${d.y},${d.x})`})
+		relativeNode.append('circle')
+			.attr('r',4)
+			.attr('fill',function(d){return d.color})
+		relativeNode.append('text')
+			.text(function(d){return d.name})
+
+		const relativeLink = this.relativeG.selectAll('.relative-link')
+			.data(relativeLinks.slice(1)).enter().append('path')
+				.classed('relative-link',true)
+				.attr('d',function(d){
+					const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					return d3.line()(points)
+				})
+		
+		//disperse the nodes
+		d.simulation = d3.forceSimulation()
+			.force('charge',d3.forceManyBody().strength(-10))
+			.force('link',d3.forceLink(relativeLinks).distance(100))
+			//.force('center',d3.forceCenter([y,x]))
+		d.simulation
+			.nodes(relativeTags)
+			.on('tick',function(){
+				relativeNode.attr('transform',function(d){
+					console.debug(d)
+					//if(d.id !== name) debugger
+					return `translate(${d.y},${d.x})`})
+				relativeLink
+					.attr('d',function(d){
+						const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+						return d3.line()(points)
+					})
+			})
+			.stop()
+
+		setTimeout(()=> d.simulation.restart(),100)
+		
+			
+		console.info(...info)
+		//}}}
+	}
 }
