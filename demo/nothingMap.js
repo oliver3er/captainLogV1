@@ -1,28 +1,255 @@
 /* do not have any effect , just a basic data structure mindmap
  * */
 
-const EASE = d3.easeCubic
-//const EASE = d3.easeElastic
-const DURATION  = 1000
+//const EASE = d3.easeCubic
+let EASE = d3.easeElastic
+let DURATION  = 1000
 // the radius of nodes
-const RADIUS = 4
+let RADIUS = 4
 //the radius of root node
-const ROOT_RADIUS = 8
+let ROOT_RADIUS = 8
 //when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
-const RATIO_RADIUS = 2
+let RATIO_RADIUS = 2
 
+//{{{ node helper class 
+const NoderDefault = function(){
+	return {
+		init : function(selector){
+			selector.append('circle')
+				.attr('r',0)
+				.style('fill',function(d){
+					return d.data.color
+				})
+				.on('click',this.toggleTag.bind(this))
+				.on('contextmenu',function(d){
+					d3.event.preventDefault()
+					console.warn('click',this)
+					this.drawMenu(d)
+				}.bind(this))
+
+			selector.append('text')
+				.text(function(d){return d.data.name})
+				.classed('branch-text',function(d){
+					return d.children
+				})
+				.attr('x',8)
+				.attr('y',function(d){
+					return d.children ? -4 : undefined
+				})
+		}.bind(this),
+		transition : function(selector){
+			const {root} = this
+			selector.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+				})
+		}.bind(this),
+	}
+}
+
+const NoderTest1 = function(){
+	return {
+		init : function(selector){
+			selector.append('circle')
+				.classed('test-node-1-circle',true)
+				.attr('r',0)
+				.style('stroke',function(d){
+					return d.data.color
+				})
+				.on('click',this.toggleTag.bind(this))
+				.on('contextmenu',function(d){
+					d3.event.preventDefault()
+					console.warn('click',this)
+					this.drawMenu(d)
+				}.bind(this))
+
+			selector.append('text')
+				.classed('test-node-1-text',true)
+				.text(function(d){return d.data.name})
+				.classed('branch-text',function(d){
+					return d.children
+				})
+				.attr('x',8)
+				.attr('y',function(d){
+					return d.children ? -4 : undefined
+				})
+		}.bind(this),
+		transition : function(selector){
+			const {root} = this
+			selector.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+				})
+		}.bind(this),
+	}
+}
+const NoderTest2 = function(){
+	return {
+		init : function(selector){
+			selector.append('circle')
+				.classed('test-2-node-circle',true)
+				.attr('r',0)
+				.style('stroke',function(d){
+					return d.data.color
+				})
+				.on('click',this.toggleTag.bind(this))
+				.on('contextmenu',function(d){
+					d3.event.preventDefault()
+					console.warn('click',this)
+					this.drawMenu(d)
+				}.bind(this))
+
+			selector.append('text')
+				.classed('test-2-node-text',true)
+				.text(function(d){return d.data.name})
+				.classed('branch-text',function(d){
+					return d.children
+				})
+				.attr('x',8)
+				.attr('y',function(d){
+					return d.children ? -4 : undefined
+				})
+		}.bind(this),
+		transition : function(selector){
+			const {root} = this
+			selector.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+				})
+		}.bind(this),
+	}
+}
+//}}}
+
+//{{{ link helper class
+const LinkHelperDefault = function(){
+	return {
+		init : function(selector){
+			selector.append('path')
+				.classed('link',true)
+				.attr('d',function(d){
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					const points = [[0,0],[0,0]]
+					return d3.line()(points)
+				})
+		}.bind(this),
+		transition : function(selector){
+			selector
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('d',function(d){
+					const info = ['move links:']
+					const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					console.debug(...info)
+					return d3.line()(points)
+				})
+		}.bind(this),
+	}
+}
+
+const LinkHelperTest1 = function(){
+	return {
+		init : function(selector){
+			selector.append('path')
+				.classed('link',true)
+				.classed('test-1-link',true)
+				.attr('d',function(d){
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					const points = [[0,0],[0,0]]
+					return d3.line()(points)
+				})
+		}.bind(this),
+		transition : function(selector){
+			selector
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('d',function(d){
+					const info = ['move links:']
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					console.debug(...info)
+					return d3.linkHorizontal()({
+						source : [d.source.y,d.source.x],
+						target : [d.target.y,d.target.x],
+					})
+				})
+		}.bind(this),
+	}
+}
+const LinkHelperTest2 = function(){
+	return {
+		init : function(selector){
+			selector.append('path')
+				.classed('link',true)
+				.classed('test-2-link',true)
+				.attr('d',function(d){
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					const points = [[0,0],[0,0]]
+					return d3.line()(points)
+				})
+		}.bind(this),
+		transition : function(selector){
+			selector
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('d',function(d){
+					const info = ['move links:']
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					console.debug(...info)
+					return d3.linkHorizontal()({
+						source : [d.source.y,d.source.x],
+						target : [d.target.y,d.target.x],
+					})
+				})
+		}.bind(this),
+	}
+}
+//}}}
+
+/* class for draw mindmap,arguments:
+ * setting = {
+ * 		noder : //the object to draw node shape and text
+ * }
+ * */
 class NothingMap {
-	constructor(data,container){
+	constructor(data,container,setting){
 		const info = ['NothingMap -> constructor:']
 		/* properties */
 		this.data = data;
 		this.nodesArray = nodesArrayDeanchen
 		this.linksArray = linksArrayDeanchen
-		this.container = container;
+		this.container = container
 		this.width = 1200
 		this.height = 700
-		this.treeWidth = 300
-		this.treeHeight = 700
+		//this.treeWidth = 300
+		//this.treeHeight = 700
+		this.nodeWidth = 100
+		this.nodeHeight = 50
+		/* the context menu show or not */
+		this.hasMenuShown = false
+		/* function to draw the map */
+		if(setting && setting.noder){
+			this.noder = setting.noder.bind(this)()
+		}else{
+			this.noder = NoderDefault.bind(this)()
+		}
+		if(setting && setting.linkHelper){
+			this.linkHelper = setting.linkHelper.bind(this)()
+		}else{
+			this.linkHelper = LinkHelperDefault.bind(this)()
+		}
+
 		info.push(`load the nothingmap:`,this)
 		
 		//now , build the constructure of data, it is :
@@ -38,15 +265,50 @@ class NothingMap {
 		info.push(`found root ,with nodes:${this.root.descendants().length};links:${this.root.links().length};`)
 		//the whole tree for single side mindmap
 		this.singleSideData = data
+
+		//build the original shape , the svg , group, and node,link(with original position)
+		//build svg/group
+		this.svg = this.container.append('svg')
+			.attr('width',`${this.width}`)
+			.attr('height',`${this.height}`)
+			.classed('nothing-mindmap',true)
+			.on('click',function(d){
+				const info = ['svgClick:']
+				if(this.hasMenuShown){
+					d3.select('.menu').remove()
+					this.hasMenuShown = false
+				}
+				console.info(...info)
+			}.bind(this))
+			//.attr('transform','translate(20,0)')
+		this.g = this.svg.append('g')
+			//.attr('transform','translate(20,0)')
+		this.relativeG = this.g.append('g')
+		this.mountAndUnmountNode()
+
+		console.info(...info)
+	}
+
+	buildTwoSideData(){
+		const info = ['buildTwoSideData:']
 		//build two side mindmap ,left and right two way tree mindmap,NOTE,the array leading by root node
 		//right/leftSideData = [{name,_id,color,parentId}...]
+		info.push(`with total nodes:${this.root.descendants().length}`)
 		const rootChildren = this.root.children
 		const rightChildren = rootChildren.slice(0,Math.round(rootChildren.length / 2))
 		info.push(`deside right size:${rightChildren.length};`)
 		const leftChildren = rootChildren.slice(Math.round(rootChildren.length / 2))
 		info.push(`deside left size:${leftChildren.length};`)
+		const rootData = {
+			name : this.root.data.name,
+			_id : this.root.id,
+			color : this.root.data.color,
+		}
 		const reducer = (a,c) => {
 			return [...a,...c.descendants().map(n => {
+				if(!n.data){
+					throw new Error()
+				}
 				return {
 					name : n.data.name,
 					_id : n.id,
@@ -55,62 +317,81 @@ class NothingMap {
 				}
 			})]
 		}
-		this.rightSideData = rightChildren.reduce(reducer,[data[0]])
-		this.leftSideData = leftChildren.reduce(reducer,[data[0]])
+		this.rightSideData = rightChildren.reduce(reducer,[rootData])
+		this.leftSideData = leftChildren.reduce(reducer,[rootData])
 		info.push(`build right side data:${this.rightSideData.length};`)
 		info.push(`build left side data:${this.leftSideData.length};`)
+		console.info(...info)
+	}
+	
 
-		//build the original shape , the svg , group, and node,link(with original position)
-		//build svg/group
-		this.svg = this.container.append('svg')
-			.attr('width',`${this.width}`)
-			.attr('height',`${this.height}`)
-			.classed('nothing-mindmap',true)
-			//.attr('transform','translate(20,0)')
-		this.g = this.svg.append('g')
-			//.attr('transform','translate(20,0)')
-		this.relativeG = this.g.append('g')
-
+	mountAndUnmountNode(){
+		const info = ['mountAndUnmountNode:']
 		//links
+		const link = this.g.selectAll('.link')
+			.data(this.root.links(),function(d){
+				return `${d.source.id}_${d.target.id}`
+			})
+		const linkEnter = link.enter()
+		this.linkHelper.init(linkEnter)
+			
+		info.push(`link enter:${linkEnter.size()};`)
+		const linkExit = link.exit()
+		info.push(`link exit:${linkExit.size()};`)
+		linkExit.remove()
 		this.link = this.g.selectAll('.link')
-			.data(this.root.links()).enter().append('path')
-				.classed('link',true)
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+		info.push(`link :${this.link.size()};`)
 		//nodes
-		this.node = this.g.selectAll('.node')
-			.data(this.root.descendants()).enter().append('g')
+		const node = this.g.selectAll('.node')
+			.data(this.root.descendants(),function(d){return d.id})
+		
+		const nodeEnter = node
+			.enter().append('g')
+				.call(dragListener)
 				.classed('node',true)
 				.attr('transform',function(d){
 					return `translate(0,0)`
 					//return `translate(${d.y},${d.x})`
 				})
-		this.node.append('circle')
-			.attr('r',0)
-			.style('fill',function(d){
-				return d.data.color
-			})
-			.on('click',this.toggleTag.bind(this))
+		this.noder.init(nodeEnter)
+		info.push(`node enter:${nodeEnter.size()};`)
 
-		this.node.append('text')
-			.text(function(d){return d.data.name})
-			.classed('branch-text',function(d){
-				return d.children
+		const nodeExit = node.exit()
+		console.log(`node exit:`,nodeExit)
+		nodeExit.each(n => console.log(`data:`,n))
+		info.push(`node exit:${nodeExit.size()};`)
+		nodeExit.remove()
+
+		this.node = this.g.selectAll('.node')
+		info.push(`node:${this.node.size()};`)	
+		//change the style of folded node
+		const circle = this.node.selectAll('circle')
+		circle
+			.attr('stroke',function(d){
+				return d._children && !d.hasShowRelativeTags ? 'gray':undefined
 			})
-			.attr('x',8)
-			.attr('y',function(d){
-				return d.children ? -4 : undefined
+			.attr('stroke-width',function(d){
+				return d._children && !d.hasShowRelativeTags ? 4:undefined
 			})
 
 		info.push(`build original shape,this nodes:${d3.selectAll('.node').size()};links:${d3.selectAll('.link').size()};`)
-		//this.update()
-		//this.updateSingleSide()
-		this.updateTwoSide()
 
 		console.info(...info)
+	}
+
+	/* set the mode: single,twoSide */
+	setMode(mode){
+		this.mode = mode
+	}
+
+	update(){
+		if(this.mode === 'single'){
+			this.updateSingleSide()
+		}else if (this.mode === 'twoSide'){
+			this.updateTwoSide()
+		}else{
+			throw new Error()
+		}
 	}
 
 	updateSingleSide(){//{{{
@@ -118,8 +399,8 @@ class NothingMap {
 		info.push(`begin draw...`)
 
 		const tree = d3.tree()
-			.size([this.treeHeight,this.treeWidth])
-			//.nodeSize([100,200])
+			//.size([this.treeHeight,this.treeWidth])
+			.nodeSize([this.nodeHeight,this.nodeWidth])
 		info.push(`found a tree;`)
 
 		const stratify = d3.stratify()
@@ -209,7 +490,7 @@ class NothingMap {
 			.transition()
 			.duration(DURATION)
 			.ease(EASE)
-			.attr('transform',`translate(${translateY(20)},${-translateX(0)})`)
+			.attr('transform',`translate(${translateY(20)},${translateX(this.height/2)})`)
 
 		console.info(...info)
 		//}}}
@@ -219,9 +500,11 @@ class NothingMap {
 		const info = ['NothingMap -> updateTwoSide:']
 		info.push(`begin draw...`)
 
+		this.buildTwoSideData()
+
 		const tree = d3.tree()
-			.size([this.treeHeight,this.treeWidth])
-			//.nodeSize([100,200])
+			//.size([this.treeHeight,this.treeWidth])
+			.nodeSize([this.nodeHeight,this.nodeWidth])
 		info.push(`found a tree;`)
 
 		const stratify = d3.stratify()
@@ -298,18 +581,31 @@ class NothingMap {
 			d.target.x = isRight ? translateXRight(newLink.target.x):translateXLeft(newLink.target.x)
 			d.target.x = isRight ? translateXRight(newLink.target.x):translateXLeft(newLink.target.x)
 		})
+
+		this.root.translate = [translateYRight(this.width /2),translateXRight(this.height /2)]
+
+		const objectThis = this
+		this.root.descendants().forEach(d => {
+			d.x0 = d.x
+			d.y0 = d.y
+			//the reference to class
+			d.nothingMap = objectThis
+		})
 		
+
+		this.mountAndUnmountNode()
+
+		this.layoutNodes()
+
+		
+		console.info(...info)
+		//}}}
+	}
+
+	layoutNodes(){//{{{
 		//now , move the existed shape to the new d3 tree position
-		this.link
-			.transition()
-			.duration(DURATION)
-			.ease(EASE)
-			.attr('d',function(d){
-				const info = ['move links:']
-				const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-				console.debug(...info)
-				return d3.line()(points)
-			})
+		const {root} = this
+		this.linkHelper.transition(this.link)
 		this.node
 			.transition()
 			.duration(DURATION)
@@ -319,32 +615,37 @@ class NothingMap {
 				console.debug(...info)
 				return `translate(${d.y},${d.x})`
 			})
-		this.node.selectAll('circle')
-			.transition()
-			.duration(DURATION)
-			.ease(EASE)
-			.attr('r',function(d){
-				return d.parent ? RADIUS*RATIO_RADIUS : ROOT_RADIUS * RATIO_RADIUS
-			})
+		
+		this.noder.transition(this.node)
 		//move group
 		this.g
 			.transition()
 			.duration(DURATION)
 			.ease(EASE)
-			.attr('transform',`translate(${translateYRight(1200/2)},${-translateXRight(0)})`)
-
-		console.info(...info)
+			.attr('transform',`translate(${this.root.translate[0]},${this.root.translate[1]})`)
 		//}}}
 	}
 
 	/* switch tag display mode between: fold,collapse,relative collapse*/
 	toggleTag(d){
-		//this.toggleChildren(d)
-		this.collapseRelativeTagWithParent.bind(this)(d)		
+		const {hasShowRelativeTags,children,_children} = d
+		if(children){
+			this.toggleChildren(d)
+			this.collapseRelativeTagWithParent.bind(this)(d)		
+		}else if(_children && hasShowRelativeTags){
+			this.collapseRelativeTagWithParent.bind(this)(d)		
+		}else if(_children && !hasShowRelativeTags){
+			this.toggleChildren(d)
+		}else if(!children && !_children){
+			this.collapseRelativeTagWithParent.bind(this)(d)		
+		}
+
 	}
 
 	/* fold/collapse the nodes children  */
 	toggleChildren(d){
+		const oldNodes = this.root.descendants()
+		const info = ['toggleChildren:']
 		if (d.children) {
             d._children = d.children;
             d.children = null;
@@ -352,6 +653,23 @@ class NothingMap {
             d.children = d._children;
             d._children = null;
         }
+		//update the root data
+		//this.root = d3.hierarchy(this.root)
+		const newNodes = this.root.descendants()
+		const removed = oldNodes.filter(node => {
+			return newNodes.every(n => n.id !== node.id)	
+		})
+		info.push(`removed nodes:${removed.length};`)
+		console.debug(`removed nodes:`,removed)
+		//check the data
+		//const {id} = d
+		//if(!this.root.descendants().every(dd => dd.id !== id)){
+		//	console.warn(...info)
+		//	throw new Error()
+		//}
+
+		this.update()
+		console.info(...info)
         return d;
 	}
 
@@ -361,14 +679,14 @@ class NothingMap {
 		const {hasShowRelativeTags} = this
 		info.push(`hasShowRelativeTags :${hasShowRelativeTags}`)
 		if(hasShowRelativeTags){
-			this.hasShowRelativeTags = false
-			this.simulation.stop()
+			d.hasShowRelativeTags = false
+			d.simulation.stop()
 			this.svg.selectAll('.relative-node').remove()
 			this.svg.selectAll('.relative-link').remove()
 			console.info(...info)
 			return
 		}else{
-			this.hasShowRelativeTags = true
+			d.hasShowRelativeTags = true
 		}
 		const {x,y} = d
 		const {name} = d.data
@@ -428,16 +746,15 @@ class NothingMap {
 				})
 		
 		//disperse the nodes
-		this.simulation = d3.forceSimulation()
+		d.simulation = d3.forceSimulation()
 			.force('charge',d3.forceManyBody().strength(-10))
 			.force('link',d3.forceLink(relativeLinks).distance(100))
 			//.force('center',d3.forceCenter([y,x]))
-		this.simulation
+		d.simulation
 			.nodes(relativeTags)
 			.on('tick',function(){
 				relativeNode.attr('transform',function(d){
 					console.debug(d)
-					//if(d.id !== name) debugger
 					return `translate(${d.y},${d.x})`})
 				relativeLink
 					.attr('d',function(d){
@@ -447,7 +764,7 @@ class NothingMap {
 			})
 			.stop()
 
-		setTimeout(()=> this.simulation.restart(),100)
+		setTimeout(()=> d.simulation.restart(),100)
 		
 			
 		console.info(...info)
@@ -548,7 +865,6 @@ class NothingMap {
 			.on('tick',function(){
 				relativeNode.attr('transform',function(d){
 					console.debug(d)
-					//if(d.id !== name) debugger
 					return `translate(${d.y},${d.x})`})
 				relativeLink
 					.attr('d',function(d){
@@ -564,4 +880,352 @@ class NothingMap {
 		console.info(...info)
 		//}}}
 	}
+
+	/* draw the ring context menu for node */
+	drawMenu(d){
+		const info = ['drawMenu:']
+		const menuG = this.svg.append('g')
+			.classed('menu',true)
+			.attr('transform',`translate(${this.root.translate[0] + d.y},${this.root.translate[1]+d.x})`)
+
+		//the menu background ring
+		menuG.append('circle')
+			.classed('ring',true)
+
+		//the menu item
+		const items = [
+			{
+				name : 'GoTo',
+				action : () => this.gotoNode(d),
+			},
+			{
+				name : 'Add',
+				action : () => this.addNode(d),
+			},
+			{
+				name : 'Del',
+				action : () => this.delNode(d),
+			},
+		]
+		const itemG = menuG.selectAll('.item').data(items).enter().append('g')
+			.classed('item',true)
+			.attr('transform',function(d,i){
+				//calculate the position of menu item
+				const r = 100
+				const angle = Math.PI / 6
+				const x = r * Math.sin(angle * i)
+				const y = r * Math.cos(angle * i)
+				return `translate(${x},${-y})`
+			})
+			.on('click',function(d){
+				const info = ['itemClick:']
+				info.push(`clicking ${d.name};`)
+				d.action && d.action()
+				console.info(...info)
+			})
+		itemG.append('circle')
+		itemG.append('text')
+			.text(function(d){return d.name})
+			
+
+
+		this.hasMenuShown = true
+			
+		console.info(...info)
+	}
+
+	/* change the central node to this node */
+	gotoNode(d){
+		const info = ['gotoNode']
+		info.push(`node : ${d.id};`)
+		this.root = d
+		this.update()
+		console.info(...info)
+	}
+
+	addNode(d){
+		const info = ['gotoNode']
+		info.push(`node : ${d.id};`)
+		info.push(`data before add:${this.data.length}`)
+		const newNodeData = {
+			name : `Node${this.data.length}`,
+			_id : `Node${this.data.length}`,
+			parentId : d.id,
+		}
+		this.data.push(newNodeData)
+		info.push(`data after add:${this.data.length}`)
+		const stratify = d3.stratify()
+			.parentId(function(d){return d.parentId })
+			.id(function(d){return d._id})
+		this.root = stratify(this.data)
+		//check the result
+		this.root.descendants().forEach(n => {
+			if(n.id === d.id){
+				if(n.descendants().some(nn => nn.id === newNodeData._id)){
+					info.push(`OK,found the new data:${newNodeData._id},in parent ids;thie parents has descendants:${n.descendants().length};`)
+				}else{
+					throw new Error()
+				}
+			}
+		})
+		this.update()
+		console.info(...info)
+	}
+
+	delNode(d){
+		const info = ['delNode']
+		info.push(`node : ${d.id};`)
+		let toDeleteNodes
+		this.root.descendants().forEach(n => {
+			if(n.id === d.id){
+				toDeleteNodes = n.descendants()
+			}
+		})
+		info.push(`to delete nodes:${toDeleteNodes.length};`)
+		info.push(`the data before delete:${this.data.length};`)
+		this.data = this.data.filter(n => {
+			if(toDeleteNodes.some(t => t.id === n._id)){
+				return false
+			}else{
+				return true
+			}
+		})
+		info.push(`the data after delete:${this.data.length};`)
+		const stratify = d3.stratify()
+			.parentId(function(d){return d.parentId })
+			.id(function(d){return d._id})
+		this.root = stratify(this.data)
+		this.update()
+		console.info(...info)
+	}
+
+	moveNode(d,targetNodeId,area){
+		const info = ['moveNode']
+		info.push(`node : ${d.id};`)
+		if(area === 'right'){
+			//move node's parent to target node 
+			this.data.forEach(e => {
+				if(e._id === d.id){
+					//yes,this is the node to move
+					e.parentId = targetNodeId
+					info.push(`yes,move it:${e._id},to,${e.parentId};`)
+				}
+			})
+		}else if(area === 'top' || area === 'bottom' ){
+			//move node's position to : the parent id is target Node's parent ;the position is before the target node
+			//first ,drop the node (which will to be move) from data
+			let indexOfCurrentNode,currentNodeData
+			this.data.forEach((e,i) => { if(e._id === d.id){ indexOfCurrentNode = i;currentNodeData = e}})
+			this.data.splice(indexOfCurrentNode,1)
+			//then , find the target node
+			let indexOfTargetNodeId,parentOfTargetNodeId
+			this.data.forEach((e,i) => {
+				if(e._id === targetNodeId){
+					indexOfTargetNodeId = i
+					parentOfTargetNodeId = e.parentId
+				}
+			})
+			//move
+			currentNodeData.parentId = parentOfTargetNodeId
+			this.data.splice(area === 'top'?indexOfTargetNodeId: indexOfTargetNodeId + 1,0,currentNodeData)
+			info.push(`remove current node from ${indexOfCurrentNode},then insert to ${indexOfTargetNodeId};`)
+		}
+		const stratify = d3.stratify()
+			.parentId(function(d){return d.parentId })
+			.id(function(d){return d._id})
+		this.root = stratify(this.data)
+		this.update()
+		console.info(...info)
+	}
 }
+
+
+
+const dragListener = d3.drag()
+	.on('start',function(d){
+		const currentD = d
+		const info = ['start:']
+		d3.event.sourceEvent.stopPropagation()
+		//begin drag, hide all children nodes and links from this node,slice(1)->except itself
+		const descendants = d.descendants().slice(1)
+		info.push(`begin drag :${d.id};hide descendants:${descendants.length};`)
+		const descendantNodes = d3.selectAll('g.node').filter(function(d){return descendants.some(dd => dd.id === d.id)})
+		info.push(`found descendant node :${descendantNodes.length};`)
+		descendantNodes
+			.style('opacity',0.2)
+		const descendantLinks = d3.selectAll('path.link').filter(function(d){return descendants.concat(currentD).some(dd => dd.id === d.source.id || dd.id === d.target.id)})
+		info.push(`found descendant link :${descendantLinks.length};`)
+		descendantLinks
+			.style('opacity',0.2)
+		console.info(...info)
+	})
+	.on('drag',function(d){
+		const info = ['drag:']
+		info.push(`is draging : ${d.id}`)
+		d.x0 += d3.event.dy
+		d.y0 += d3.event.dx
+		d3.select(this)
+			.attr('transform',`translate(${d.y0},${d.x0})`)
+		
+		//find the closest node
+		const distance = (x0,y0,x1,y1) =>{
+			return Math.sqrt(Math.pow(x1-x0,2)+Math.pow(y1-y0,2))
+		}
+		const ancestors = d.ancestors()
+		const root = ancestors && ancestors[ancestors.length - 1 ]
+		info.push(`find the ancestors:${ancestors && ancestors.length};the last one is root:${root.id};`)
+		const descendants = root.descendants()
+		info.push(`find nodes:${descendants && descendants.length};`)
+		let closestNode; 
+		descendants.forEach(node => {
+			if(!closestNode){
+				closestNode = node
+			}else{
+				if(node.id !== d.id && distance(node.x,node.y,d.x0,d.y0) < distance(closestNode.x,closestNode.y,d.x0,d.y0)){
+					closestNode = node
+				}
+			}
+		})
+		info.push(`find the closest node:${closestNode && closestNode.id};`)
+		//the node must close enough 
+		//change the closest node style
+		const distanceToClosestNode = distance(closestNode.x,closestNode.y,d.x0,d.y0)
+		const LIMIT = 50
+		/* area: the mouse pointer is close enough and is at top/right/bottom area to closestNode */
+		let area
+		if(distanceToClosestNode < LIMIT){
+			//then, test the moving node is in which area: right/top/bottom (no left)
+			//first , calculate the angle between closest node and mouse pointer
+			let x1 = closestNode.y,
+				y1 = -closestNode.x,
+				x2 = d.y0,
+				y2 = -d.x0,
+				deltaY = y2 - y1,
+				deltaX = x2 - x1, 
+				tan = Math.atan( deltaY / deltaX),
+				angle ,//angle in [0-2PI]
+				conditionCase
+
+			if(deltaX >= 0 ){
+				if(deltaY >= 0 ){
+					angle = tan
+				}else{
+					angle = Math.PI * 2 + tan
+				}
+			}else{
+				angle = Math.PI + tan
+			}
+			if(angle > 0 && angle < Math.PI / 4 ){
+				conditionCase = 1
+				area = 'right'
+			}else if(angle > Math.PI / 4 && angle < Math.PI * 3 /4){
+				conditionCase = 2
+				area = 'top'
+			}else if (angle > Math.PI * 5 / 4 && angle < Math.PI * 7 / 4){
+				conditionCase = 3
+				area = 'bottom'
+			}else if(angle > Math.PI * 7 / 4){
+				conditionCase = 4
+				area = 'right'
+			}
+			info.push(`cal angle ,x1:${x1};x2:${x2};y1:${y1};y2:${y2};deltaX:${deltaX};deltaY:${deltaY};tan:${tan};angle:${angle};area:${area};conditionCase:${conditionCase};`)
+			//OK, draw the area path
+			if(area !== undefined){
+				let arc
+				let style
+				if(area === 'right' ){
+					arc = d3.arc()
+						.innerRadius(0)
+						.outerRadius(LIMIT)
+						.startAngle(Math.PI / 4)
+						.endAngle(Math.PI * 3 / 4)
+					style = 'right'
+				}else if(area === 'top'){
+					arc = d3.arc()
+						.innerRadius(0)
+						.outerRadius(LIMIT)
+						.startAngle(- Math.PI / 4)
+						.endAngle(Math.PI /4)
+					style = 'top'
+				}else if(area === 'bottom'){
+					arc = d3.arc()
+						.innerRadius(0)
+						.outerRadius(LIMIT)
+						.startAngle(Math.PI * 3 / 4)
+						.endAngle(Math.PI * 5 /4)
+					style = 'bottom'
+				}
+				const g = d3.selectAll('g.node').filter(function(d){return d.id === closestNode.id})
+				if(g.select('.mask').size() === 0 || g.select('.mask').classed(style) === false){
+					d3.selectAll('.mask').remove()
+					g.append('g')
+						.classed('mask',true)
+						.classed(style,true)
+						.append('path')
+							.attr('d',arc())
+					console.debug(`draw a mask`)
+				}
+			}
+		}else{
+			d3.selectAll('.mask').remove()
+		}
+
+		if(area === undefined || closestNode === undefined){
+			//remove the dock data for current node
+			d.dock = undefined
+			info.push(`remove dock`)
+		}else{
+			//add/update dock data for current node
+			d.dock = {
+				id : closestNode.id,
+				area,
+			}
+			info.push(`update dock,${d.dock.id};area:${d.dock.area}`)
+		}
+
+
+		console.debug(...info)
+	})
+	.on('end',function(d){
+		const currentD = d
+		const info = ['end:']
+		d3.selectAll('.mask').remove()
+		//check dock data
+		if(d.dock){
+			const descendants = d.descendants().slice(1)
+			info.push(`end drag :${d.id};display descendants:${descendants.length};`)
+			const descendantNodes = d3.selectAll('g.node').filter(function(d){return descendants.some(dd => dd.id === d.id)})
+			info.push(`found descendant node :${descendantNodes.length};`)
+			descendantNodes
+				.style('opacity',1)
+			const descendantLinks = d3.selectAll('path.link').filter(function(d){return descendants.concat(currentD).some(dd => dd.id === d.source.id || dd.id === d.target.id)})
+			info.push(`found descendant link :${descendantLinks.length};`)
+			descendantLinks
+				.style('opacity',1)
+			info.push(`found dock data,try to move nodes;`)
+			info.push(`move the parent;`)
+			d.nothingMap.moveNode(d,d.dock.id,d.dock.area)
+		}else{
+			info.push(`no dock data,move back;`)
+			d.x0 = d.x
+			d.y0 = d.y
+			d3.select(this)
+				.transition()
+				.duration(1000)
+				.attr('transform',`translate(${d.y0},${d.x0})`)
+				.on('end',function(){
+					const descendants = d.descendants().slice(1)
+					info.push(`end drag :${d.id};display descendants:${descendants.length};`)
+					const descendantNodes = d3.selectAll('g.node').filter(function(d){return descendants.some(dd => dd.id === d.id)})
+					info.push(`found descendant node :${descendantNodes.length};`)
+					descendantNodes
+						.style('opacity',1)
+					const descendantLinks = d3.selectAll('path.link').filter(function(d){return descendants.concat(currentD).some(dd => dd.id === d.source.id || dd.id === d.target.id)})
+					info.push(`found descendant link :${descendantLinks.length};`)
+					descendantLinks
+						.style('opacity',1)
+				})
+		}
+
+		console.info(...info)
+	})

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>d3 test</title>
-<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/d3.v4.min.js" charset="utf-8"></script>
 <link rel='stylesheet' href='./mindmap.css' />
 <style>
 body {
@@ -15,7 +15,7 @@ body {
 	<div class='main-container'>
 		<div class='left-bar'>
 		</div>
-		<div class='mindmap-bar'>
+		<div id='mindmapDiv' >
 		</div>
 		<div class='document'>
 		</div>
@@ -26,6 +26,49 @@ body {
 <script type='text/javascript' src='./data4mindmap.js' charset='utf-8'></script>
 <script type='text/javascript' src='./nothingMap.js' charset='utf-8'></script>
 <script >
+	//setting for display style
+	/* the style class for mindmap container */
+	//var containerStyle = 'mindmap-bar' 
+	var containerStyle = 'mindmap-bar-2' //with background-image
+	/********* the config constants for display ******************/
+
+	/* test 1 */
+	//EASE = d3.easeElastic
+	//DURATION  = 1000
+	//// the radius of nodes
+	//RADIUS = 2
+	////the radius of root node
+	//ROOT_RADIUS = 4
+	////when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
+	//RATIO_RADIUS = 2
+	//
+	///* the setting for mindmap class,to set up the style of node ,link and so on */
+	//var setting = {
+	//	noder : NoderTest1,
+	//	linkHelper : LinkHelperTest1,
+	//}
+	
+	/* test 2 */
+	EASE = d3.easeElastic
+	DURATION  = 1000
+	// the radius of nodes
+	RADIUS = 3
+	//the radius of root node
+	ROOT_RADIUS = 5
+	//when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
+	RATIO_RADIUS = 2
+	
+	/* the setting for mindmap class,to set up the style of node ,link and so on */
+	var setting = {
+		noder : NoderTest2,
+		linkHelper : LinkHelperTest2,
+	}
+	
+
+
+
+	d3.select('#mindmapDiv')
+		.classed(containerStyle,true)
 	d3.select('.left-bar').selectAll('button')
 		.data(['Doc','Mindmap','Search']).enter().append('button')
 			.classed('selected',function(d,i){return i === 1})
@@ -36,17 +79,27 @@ body {
 				if(d === 'Mindmap'){
 					//change to mindmap container
 					console.log('change to mindmap container')
-					d3.select('.mindmap-bar')
-						.style('width','100%')
-					mindmap.updateTwoSide()
+					d3.select('#mindmapDiv')
+						.transition()
+						.duration(DURATION)
+						.ease(EASE)
+						.style('width',`${window.innerWidth - 70}px`)
+					mindmap.setMode('twoSide')
+					mindmap.update()
 				}else if(d === 'Doc'){
 					//change to doc container
 					console.log('change to mindmap container')
-					d3.select('.mindmap-bar')
+					d3.select('#mindmapDiv')
+						.transition()
+						.duration(DURATION)
+						.ease(EASE)
 						.style('width','310px')
-					mindmap.updateSingleSide()
+					mindmap.setMode('single')
+					mindmap.update()
 				}
 				})
 
-	var mindmap = new NothingMap(data4mindmap,d3.select('.mindmap-bar'))
+	var mindmap = new NothingMap(data4mindmap,d3.select('#mindmapDiv'),setting)
+	mindmap.setMode('twoSide')
+	mindmap.update()
 </script>
