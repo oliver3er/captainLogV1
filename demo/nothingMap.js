@@ -10,6 +10,8 @@ let RADIUS = 4
 let ROOT_RADIUS = 8
 //when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
 let RATIO_RADIUS = 2
+//the gap between first level children and root node 
+let ROOT_SEPERATOR = 80
 
 //{{{ node helper class 
 const NoderDefault = function(){
@@ -128,6 +130,82 @@ const NoderTest2 = function(){
 		}.bind(this),
 	}
 }
+
+const NodeHelperBig = function(){
+	return {
+		init : function(selector){
+			selector.append('circle')
+				.classed('big-node-circle',true)
+				.attr('id',function(d){return `circle-${d.id}`})
+				.attr('r',0)
+				.style('fill',function(d){
+					return d.data.color
+				})
+				.on('click',this.toggleTag.bind(this))
+				.on('contextmenu',function(d){
+					d3.event.preventDefault()
+					console.warn('click',this)
+					this.drawMenu(d)
+				}.bind(this))
+
+			selector.each(function(d){
+				const info = ['paint:']
+				info.push(`paint:${d.id};`)
+				const node = d3.select(this)
+				node.append("clipPath")
+					  .attr("id", function(d) { return "clip-" + d.id; })
+					.append("use")
+					  .attr("xlink:href", function(d) { return "#circle-" + d.id; });
+				if(d.data.icon){
+					info.push(`paint icon:`)
+					node.append('image')
+						.classed('big-node-icon',true)
+						.attr('xlink:href',`./images/${d.data.icon}`)
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.attr('x',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('y',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('width',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+						.attr('height',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+				}else{
+					info.push(`paint logo letter:`)
+					node.append('text')
+						.classed('big-node-text-logo',true)
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.text(d.data.name.slice(0,1).toUpperCase())
+				}
+				console.info(...info)
+			})
+				
+			selector.append('text')
+				.classed('big-node-text',true)
+				.text(function(d){return d.data.name})
+				.classed('branch-text',function(d){
+					return d.children
+				})
+				.attr('y',function(d){
+					return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+				})
+		}.bind(this),
+		transition : function(selector){
+			const {root} = this
+			selector.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+				})
+		}.bind(this),
+	}
+}
 //}}}
 
 //{{{ link helper class
@@ -192,6 +270,13 @@ const LinkHelperTest2 = function(){
 			selector.append('path')
 				.classed('link',true)
 				.classed('test-2-link',true)
+				.style('stroke',function(d){
+					//if(d.target.data.name === 'logger') debugger
+					const {color} = d.target.data
+					return color === 'crimson' ? '#434549' : d.target.data.color 
+					//return d.target.data.color 
+				})
+				.style('stroke-opacity',0.5)
 				.attr('d',function(d){
 					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
 					const points = [[0,0],[0,0]]
@@ -211,6 +296,44 @@ const LinkHelperTest2 = function(){
 						source : [d.source.y,d.source.x],
 						target : [d.target.y,d.target.x],
 					})
+				})
+		}.bind(this),
+	}
+}
+
+const LinkHelperBig = function(){
+	return {
+		init : function(selector){
+			selector.append('path')
+				.classed('link',true)
+				.classed('big-link',true)
+				.style('stroke',function(d){
+					//if(d.target.data.name === 'logger') debugger
+					const {color} = d.target.data
+					return color === 'crimson' ? '#434549' : d.target.data.color 
+					//return d.target.data.color 
+				})
+				.style('stroke-opacity',0.5)
+				.attr('d',function(d){
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					const points = [[0,0],[0,0]]
+					return d3.line()(points)
+				})
+		}.bind(this),
+		transition : function(selector){
+			selector
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('d',function(d){
+					const info = ['move links:']
+					const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					return d3.line()(points)
+					console.debug(...info)
+					//return d3.linkHorizontal()({
+					//	source : [d.source.y,d.source.x],
+					//	target : [d.target.y,d.target.x],
+					//})
 				})
 		}.bind(this),
 	}
@@ -586,6 +709,9 @@ class NothingMap {
 
 		const objectThis = this
 		this.root.descendants().forEach(d => {
+			if(d.id !== '0' && ROOT_SEPERATOR ){
+				d.y = d.y + ROOT_SEPERATOR * (d.y > 0 ? 1:-1)
+			}
 			d.x0 = d.x
 			d.y0 = d.y
 			//the reference to class

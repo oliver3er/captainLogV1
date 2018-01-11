@@ -49,19 +49,35 @@ body {
 	//}
 	
 	/* test 2 */
+	//EASE = d3.easeElastic
+	//DURATION  = 1000
+	//// the radius of nodes
+	//RADIUS = 3
+	////the radius of root node
+	//ROOT_RADIUS = 5
+	////when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
+	//RATIO_RADIUS = 2
+	//
+	///* the setting for mindmap class,to set up the style of node ,link and so on */
+	//var setting = {
+	//	noder : NoderTest2,
+	//	linkHelper : LinkHelperTest2,
+	//}
+
+	/* big circle node  */
 	EASE = d3.easeElastic
 	DURATION  = 1000
 	// the radius of nodes
-	RADIUS = 3
+	RADIUS = 10
 	//the radius of root node
-	ROOT_RADIUS = 5
+	ROOT_RADIUS = 20
 	//when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
 	RATIO_RADIUS = 2
 	
 	/* the setting for mindmap class,to set up the style of node ,link and so on */
 	var setting = {
-		noder : NoderTest2,
-		linkHelper : LinkHelperTest2,
+		noder : NodeHelperBig,
+		linkHelper : LinkHelperBig,
 	}
 	
 

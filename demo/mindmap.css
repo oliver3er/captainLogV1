@@ -295,8 +295,40 @@ button {
 }
 
 .test-2-link {
-	stroke : #434549 !important;
+	stroke : #434549 ;
 	stroke-width : 8 !important;
 	stroke-miterlimit : 10 !important;
 	fill : none !important;
+}
+
+
+.big-node-circle {
+	fill : crimson ;
+	stroke-width : 0;
+}
+
+
+.big-node-text {
+	fill : #A8AEB2 !important;
+	font-size : 10px !important;
+	text-anchor : middle;
+}
+
+.big-node-text-logo {
+	fill : white !important;
+	font-size : 20px !important;
+	text-anchor : middle;
+	alignment-baseline : middle;
+}
+
+
+.big-link {
+	stroke : #434549 ;
+	stroke-width : 8 !important;
+	stroke-miterlimit : 10 !important;
+	fill : none !important;
+}
+
+.big-node-icon {
+
 }
