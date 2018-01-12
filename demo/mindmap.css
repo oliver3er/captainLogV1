@@ -348,12 +348,29 @@ button {
 	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
+.big-node-text-2 {
+	fill : #A8AEB2 !important;
+	font-size : 12px !important;
+	text-anchor : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+	alignment-baseline : hanging !important;
+}
+
+.big-node-text-2.single {
+	text-anchor : start;
+	alignment-baseline : middle !important;
+}
+
 .big-node-text-logo-2 {
 	fill : white !important;
 	font-size : 20px !important;
 	text-anchor : middle;
 	alignment-baseline : middle;
 	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.big-node-text-logo-2.single {
+	font-size : 14px !important;
 }
 
 

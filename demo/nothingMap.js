@@ -265,13 +265,13 @@ const NodeHelperBig2 = function(){
 			})
 				
 			selector.append('text')
-				.classed('big-node-text',true)
+				.classed('big-node-text-2',true)
 				.text(function(d){return d.data.name})
 				.classed('branch-text',function(d){
 					return d.children
 				})
 				.attr('y',function(d){
-					return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+					return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS + 4 : RADIUS*RATIO_RADIUS + 4
 				})
 		}.bind(this),
 		transition : function(selector){
@@ -481,6 +481,8 @@ class NothingMap {
 		//this.treeHeight = 700
 		this.nodeWidth = 100
 		this.nodeHeight = 50
+		this.nodeSingleWidth = 90
+		this.nodeSingleHeight = 25
 		/* the context menu show or not */
 		this.hasMenuShown = false
 		/* function to draw the map */
@@ -634,6 +636,8 @@ class NothingMap {
 			this.updateSingleSide()
 		}else if (this.mode === 'twoSide'){
 			this.updateTwoSide()
+		}else if (this.mode === 'search'){
+			this.updateSearch()
 		}else{
 			throw new Error()
 		}
@@ -642,10 +646,53 @@ class NothingMap {
 	updateSingleSide(){//{{{
 		const info = ['NothingMap -> updateSingleSide:']
 		info.push(`begin draw...`)
+		
+
+		//delete the force
+		if(this.simulation){
+			this.simulation.force('x',null)
+			this.simulation.force('y',null)
+			this.simulation.force('charge',null)
+			this.simulation.nodes([])
+			this.simulation.on('tick',null)
+			this.simulation = undefined
+
+			//if link is invisible , make it visible 
+			if(d3.select('.link').style('opacity') === "0"){
+				this.link
+					.transition()
+					.duration(DURATION)
+					.ease(EASE)
+					.style('opacity',1)
+			}
+			this.node.selectAll('.big-node-text-2')
+				.classed('single',true)
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.style('opacity','1')
+			this.node.selectAll('.big-node-text-logo-2')
+				.classed('single',true)
+			this.node
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('transform',function(d){
+					return `translate(${d.y0},${d.x0})`
+				})
+			this.node.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					return d.parent ? RADIUS : ROOT_RADIUS
+				})
+			return
+		}
 
 		const tree = d3.tree()
 			//.size([this.treeHeight,this.treeWidth])
-			.nodeSize([this.nodeHeight,this.nodeWidth])
+			.nodeSize([this.nodeSingleHeight,this.nodeSingleWidth])
 		info.push(`found a tree;`)
 
 		const stratify = d3.stratify()
@@ -728,6 +775,16 @@ class NothingMap {
 			.ease(EASE)
 			.attr('r',function(d){
 				return d.parent ? RADIUS : ROOT_RADIUS
+			})
+
+		//add 'single' class to all node group
+		this.node.selectAll('.big-node-text-logo-2')
+			.classed('single',true)
+		this.node.selectAll('.big-node-text-2')
+			.classed('single',true)
+			.attr('y',0)
+			.attr('x',function(d){
+				return d.id === '0' ? ROOT_RADIUS + 2: RADIUS + 2
 			})
 
 		//move group
@@ -845,6 +902,96 @@ class NothingMap {
 
 		this.layoutNodes()
 
+		//add 'single' class to all node group
+		this.node.selectAll('.big-node-text-logo-2')
+			.classed('single',false)
+		this.node.selectAll('.big-node-text-2')
+			.classed('single',false)
+			.attr('x',0)
+			.attr('y',function(d){
+				return d.id === '0' ? ROOT_RADIUS*RATIO_RADIUS + 2: RADIUS*RATIO_RADIUS + 2
+			})
+		
+		console.info(...info)
+		//}}}
+	}
+
+	updateSearch(){//{{{
+		const info = ['NothingMap -> updateSearch:']
+		info.push(`begin draw...`)
+
+		const objectThis = this
+		//this.root.descendants().forEach(d => {
+		//	if(d.id !== '0' && ROOT_SEPERATOR ){
+		//		d.y = d.y + ROOT_SEPERATOR * (d.y > 0 ? 1:-1)
+		//	}
+		//	d.x0 = d.x
+		//	d.y0 = d.y
+		//	//the reference to class
+		//	d.nothingMap = objectThis
+		//})
+
+		//move all node to out space ring orbit ,random angle
+		this.root.descendants().forEach(d => {
+			//const info = ['disperseNode:']
+			//save old place
+			d.x0 = d.x
+			d.y0 = d.y
+			const r = 500
+			//d.x = Math.sin( Math.random() * 2 * Math.PI ) * r
+			//d.y = Math.cos( Math.random() * 2 * Math.PI ) * r
+			d.r = Math.random() * 40 + 5
+			info.push(`random point:(${d.x},${d.y});`)
+			//console.debug(...info)
+		})
+
+		this.node
+			.attr('transform',function(d){
+				return `translate(${d.y},${d.x})`
+			})
+		this.node.selectAll('circle')
+			.transition()
+			.duration(DURATION)
+			.ease(EASE)
+			.attr('r',function(d){ return d.r})
+		//force
+		function charge(d) {
+			return -Math.pow(d.r, 2.0) * forceStrength;
+		}
+		var forceStrength = 0.03;
+		this.simulation = d3.forceSimulation(this.root.descendants())
+			.velocityDecay(0.2)
+			//.force('gravity',d3.forceCenter(0,150))
+			//.force('gravity',d3.forceManyBody())
+			.force('x', d3.forceX().strength(forceStrength).x(0))
+			.force('y', d3.forceY().strength(forceStrength).y(130))
+			//.force('x',d3.forceX(0))
+			//.force('y',d3.forceY(130))
+			.force('charge', d3.forceManyBody().strength(charge))
+			//.force('collide',d3.forceCollide().radius(function(d){
+			//	return d.r * 1.01
+			//}))
+			.on('tick',() => {
+				const info = ['tick:']
+				this.node
+					.attr('transform',function(d){
+						return `translate(${d.y},${d.x})`
+					})
+				console.debug(...info)
+			})
+
+		
+		//add 'single' class to all node group
+		this.node.selectAll('.big-node-text-logo-2')
+			.classed('single',false)
+		this.node.selectAll('.big-node-text-2')
+			.classed('single',false)
+			.style('opacity','0')
+		this.link
+			.transition()
+			.duration(DURATION)
+			.ease(EASE)
+			.style('opacity',0)
 		
 		console.info(...info)
 		//}}}
