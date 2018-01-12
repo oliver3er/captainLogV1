@@ -12,6 +12,7 @@ let ROOT_RADIUS = 8
 let RATIO_RADIUS = 2
 //the gap between first level children and root node 
 let ROOT_SEPERATOR = 80
+const colorScale = d3.scaleOrdinal(d3.schemeCategory20)
 
 //{{{ node helper class 
 const NoderDefault = function(){
@@ -139,7 +140,7 @@ const NodeHelperBig = function(){
 				.attr('id',function(d){return `circle-${d.id}`})
 				.attr('r',0)
 				.style('fill',function(d){
-					return d.data.color
+					return d.data.color === 'crimson' ? colorScale(d.id) : d.data.color
 				})
 				.on('click',this.toggleTag.bind(this))
 				.on('contextmenu',function(d){
@@ -178,6 +179,85 @@ const NodeHelperBig = function(){
 					info.push(`paint logo letter:`)
 					node.append('text')
 						.classed('big-node-text-logo',true)
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.text(d.data.name.slice(0,1).toUpperCase())
+				}
+				console.info(...info)
+			})
+				
+			selector.append('text')
+				.classed('big-node-text',true)
+				.text(function(d){return d.data.name})
+				.classed('branch-text',function(d){
+					return d.children
+				})
+				.attr('y',function(d){
+					return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+				})
+		}.bind(this),
+		transition : function(selector){
+			const {root} = this
+			selector.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+				})
+		}.bind(this),
+	}
+}
+
+const NodeHelperBig2 = function(){
+	return {
+		init : function(selector){
+			selector.append('circle')
+				.classed('big-node-circle-2',true)
+				.attr('id',function(d){return `circle-${d.id}`})
+				.attr('r',0)
+				.style('fill',function(d){
+					return d.data.color === 'crimson' ? colorScale(d.id) : d.data.color
+				})
+				.style('stroke',function(d){
+					return d.data.color === 'crimson' ? colorScale(d.id) : d.data.color
+				})
+				.on('click',this.toggleTag.bind(this))
+				.on('contextmenu',function(d){
+					d3.event.preventDefault()
+					console.warn('click',this)
+					this.drawMenu(d)
+				}.bind(this))
+
+			selector.each(function(d){
+				const info = ['paint:']
+				info.push(`paint:${d.id};`)
+				const node = d3.select(this)
+				node.append("clipPath")
+					  .attr("id", function(d) { return "clip-" + d.id; })
+					.append("use")
+					  .attr("xlink:href", function(d) { return "#circle-" + d.id; });
+				if(d.data.icon){
+					info.push(`paint icon:`)
+					node.append('image')
+						.classed('big-node-icon-2',true)
+						.attr('xlink:href',`./images/${d.data.icon}`)
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.attr('x',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('y',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('width',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+						.attr('height',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+				}else{
+					info.push(`paint logo letter:`)
+					node.append('text')
+						.classed('big-node-text-logo-2',true)
 						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
 						.text(d.data.name.slice(0,1).toUpperCase())
 				}
@@ -310,7 +390,49 @@ const LinkHelperBig = function(){
 				.style('stroke',function(d){
 					//if(d.target.data.name === 'logger') debugger
 					const {color} = d.target.data
-					return color === 'crimson' ? '#434549' : d.target.data.color 
+					//return color === 'crimson' ? '#434549' : d.target.data.color 
+					//return color === 'crimson' ? colorScale(d.target.data._id) : d.target.data.color 
+					return '#434549'
+					//return d.target.data.color 
+				})
+				.style('stroke-opacity',0.5)
+				.attr('d',function(d){
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					const points = [[0,0],[0,0]]
+					return d3.line()(points)
+				})
+		}.bind(this),
+		transition : function(selector){
+			selector
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('d',function(d){
+					const info = ['move links:']
+					const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					return d3.line()(points)
+					console.debug(...info)
+					//return d3.linkHorizontal()({
+					//	source : [d.source.y,d.source.x],
+					//	target : [d.target.y,d.target.x],
+					//})
+				})
+		}.bind(this),
+	}
+}
+
+const LinkHelperBig2 = function(){
+	return {
+		init : function(selector){
+			selector.append('path')
+				.classed('link',true)
+				.classed('big-link-2',true)
+				.style('stroke',function(d){
+					//if(d.target.data.name === 'logger') debugger
+					const {color} = d.target.data
+					//return color === 'crimson' ? '#434549' : d.target.data.color 
+					//return color === 'crimson' ? colorScale(d.target.data._id) : d.target.data.color 
+					return '#434549'
 					//return d.target.data.color 
 				})
 				.style('stroke-opacity',0.5)
@@ -745,9 +867,9 @@ class NothingMap {
 		this.noder.transition(this.node)
 		//move group
 		this.g
-			.transition()
-			.duration(DURATION)
-			.ease(EASE)
+			//.transition()
+			//.duration(DURATION)
+			//.ease(EASE)
 			.attr('transform',`translate(${this.root.translate[0]},${this.root.translate[1]})`)
 		//}}}
 	}
