@@ -27,8 +27,8 @@ body {
 <script type='text/javascript' src='./nothingMap.js' charset='utf-8'></script>
 <script >
 	let mindmap
-	let defaultStyle = 7
-	let styleCount = 8
+	let defaultStyle = 8
+	let styleCount = 9
 	//setting for display style
 	/* the style class for mindmap container */
 	//var containerStyle = 'mindmap-bar' 
@@ -67,6 +67,10 @@ body {
 			}
 			case 7:{
 				build7()
+				break;
+			}
+			case 8:{
+				build8()
 				break;
 			}
 		}
@@ -217,6 +221,24 @@ body {
 		setting = {
 			noder : NodeHelperBig5,
 			linkHelper : LinkHelperBig5,
+		}
+	}
+
+	/* big circle node 6  */
+	const build8 = () => {
+		EASE = d3.easeElastic.period(0.4)//.amplitude(1.90)
+		DURATION  = 1000
+		// the radius of nodes
+		RADIUS = 10
+		//the radius of root node
+		ROOT_RADIUS = 20
+		//when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
+		RATIO_RADIUS = 2
+		
+		/* the setting for mindmap class,to set up the style of node ,link and so on */
+		setting = {
+			noder : NodeHelperBig6,
+			linkHelper : LinkHelperBig6,
 		}
 	}
 

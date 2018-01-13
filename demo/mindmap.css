@@ -448,3 +448,39 @@ button {
 .big-node-text-logo-5.single {
 	font-size : 14px !important;
 }
+
+.big-node-circle-6 {
+	stroke-width : 1 !important;
+	stroke : #a8a8a8;
+}
+
+.big-node-text-logo-6 {
+	font-size : 20px !important;
+	text-anchor : middle;
+	alignment-baseline : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.big-node-text-6 {
+	fill : #828282 !important;
+	font-size : 12px !important;
+	text-anchor : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+	alignment-baseline : hanging !important;
+}
+
+.big-link-6 {
+	stroke : #131314 !important;
+	stroke-width : 1 !important;
+	stroke-miterlimit : 10 !important;
+	fill : none !important;
+}
+
+.big-node-text-6.single {
+	text-anchor : start;
+	alignment-baseline : middle !important;
+}
+
+.big-node-text-logo-6.single {
+	font-size : 14px !important;
+}
