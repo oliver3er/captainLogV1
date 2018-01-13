@@ -1119,13 +1119,13 @@ class NothingMap {
 					.ease(EASE)
 					.style('opacity',1)
 			}
-			this.node.selectAll('.big-node-text-2')
+			this.node.selectAll('.big-node-text-2,.big-node-text-5')
 				.classed('single',true)
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
 				.style('opacity','1')
-			this.node.selectAll('.big-node-text-logo-2')
+			this.node.selectAll('.big-node-text-logo-2,.big-node-text-logo-5')
 				.classed('single',true)
 			this.node
 				.transition()
@@ -1357,9 +1357,9 @@ class NothingMap {
 		this.layoutNodes()
 
 		//add 'single' class to all node group
-		this.node.selectAll('.big-node-text-logo-2')
+		this.node.selectAll('.big-node-text-logo-2,.big-node-text-logo-5')
 			.classed('single',false)
-		this.node.selectAll('.big-node-text-2')
+		this.node.selectAll('.big-node-text-2,.big-node-text-5')
 			.classed('single',false)
 			.attr('x',0)
 			.attr('y',function(d){
@@ -1412,7 +1412,7 @@ class NothingMap {
 		function charge(d) {
 			return -Math.pow(d.r, 2.0) * forceStrength;
 		}
-		var forceStrength = 0.03;
+		var forceStrength = 0.5
 		this.simulation = d3.forceSimulation(this.root.descendants())
 			.velocityDecay(0.2)
 			//.force('gravity',d3.forceCenter(0,150))
@@ -1436,9 +1436,9 @@ class NothingMap {
 
 		
 		//add 'single' class to all node group
-		this.node.selectAll('.big-node-text-logo-2')
+		this.node.selectAll('.big-node-text-logo-2,.big-node-text-logo-5')
 			.classed('single',false)
-		this.node.selectAll('.big-node-text-2')
+		this.node.selectAll('.big-node-text-2,.big-node-text-5')
 			.classed('single',false)
 			.style('opacity','0')
 		this.link

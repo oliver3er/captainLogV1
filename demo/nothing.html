@@ -204,7 +204,7 @@ body {
 	
 	/* big circle node 5  */
 	const build7 = () => {
-		EASE = d3.easeElastic
+		EASE = d3.easeElastic.period(0.4)//.amplitude(1.90)
 		DURATION  = 1000
 		// the radius of nodes
 		RADIUS = 10
