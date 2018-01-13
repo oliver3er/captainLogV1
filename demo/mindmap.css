@@ -380,3 +380,71 @@ button {
 	stroke-miterlimit : 10 !important;
 	fill : none !important;
 }
+
+.big-node-circle-4 {
+	stroke : rgb(67, 69, 73) !important;
+	stroke-width : 3 !important;
+	fill : #2d2f35 !important;
+}
+
+.big-node-text-logo-4 {
+	font-size : 20px !important;
+	text-anchor : middle;
+	alignment-baseline : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.big-node-text-4 {
+	fill : #828282 !important;
+	font-size : 12px !important;
+	text-anchor : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+	alignment-baseline : hanging !important;
+}
+
+.big-link-2 {
+	stroke : #434549 ;
+	stroke-width : 3 !important;
+	stroke-miterlimit : 10 !important;
+	fill : none !important;
+	stroke-opacity : 1 !important;
+}
+
+.big-node-circle-5 {
+	stroke-width : 1 !important;
+	stroke-opacity : 0.8 !important;
+	fill-opacity : 0.5 !important;
+}
+
+.big-node-text-logo-5 {
+	fill : #B8B8B8 !important;
+	font-size : 20px !important;
+	text-anchor : middle;
+	alignment-baseline : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.big-node-text-5 {
+	fill : #828282 !important;
+	font-size : 12px !important;
+	text-anchor : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+	alignment-baseline : hanging !important;
+}
+
+.big-link-5 {
+	stroke : #434549 ;
+	stroke-width : 1 !important;
+	stroke-miterlimit : 10 !important;
+	fill : none !important;
+	stroke-opacity : 0.8 !important;
+}
+
+.big-node-text-5.single {
+	text-anchor : start;
+	alignment-baseline : middle !important;
+}
+
+.big-node-text-logo-5.single {
+	font-size : 14px !important;
+}

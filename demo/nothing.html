@@ -27,7 +27,8 @@ body {
 <script type='text/javascript' src='./nothingMap.js' charset='utf-8'></script>
 <script >
 	let mindmap
-	let defaultStyle = 4
+	let defaultStyle = 7
+	let styleCount = 8
 	//setting for display style
 	/* the style class for mindmap container */
 	//var containerStyle = 'mindmap-bar' 
@@ -56,6 +57,18 @@ body {
 				build4()
 				break;
 			}
+			case 5:{
+				build5()
+				break;
+			}
+			case 6:{
+				build6()
+				break;
+			}
+			case 7:{
+				build7()
+				break;
+			}
 		}
 	}
 	d3.select('.left-bar').append('select')
@@ -68,7 +81,7 @@ body {
 			mindmap.setMode('twoSide')
 			mindmap.update()
 		})
-		.selectAll('option').data([0,1,2,3,4]).enter().append('option')
+		.selectAll('option').data(Array.from(new Array(styleCount)).map((e,i) => i)).enter().append('option')
 			.attr('selected',function(d,i){return i === defaultStyle ? 'selected':undefined})
 			.attr('value',function(d,i){return i})
 			.text(function(d,i){return `style${d}`})
@@ -152,7 +165,60 @@ body {
 			linkHelper : LinkHelperBig2,
 		}
 	}
+
+	/* big circle node 2  */
+	const build5 = () => {
+		EASE = d3.easePolyOut
+		DURATION  = 0
+		// the radius of nodes
+		RADIUS = 10
+		//the radius of root node
+		ROOT_RADIUS = 20
+		//when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
+		RATIO_RADIUS = 2
+		
+		/* the setting for mindmap class,to set up the style of node ,link and so on */
+		setting = {
+			noder : NodeHelperBig3,
+			linkHelper : LinkHelperBig3,
+		}
+	}
+
+	/* big circle node 3  */
+	const build6 = () => {
+		EASE = d3.easePolyOut
+		DURATION  = 0
+		// the radius of nodes
+		RADIUS = 10
+		//the radius of root node
+		ROOT_RADIUS = 20
+		//when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
+		RATIO_RADIUS = 2
+		
+		/* the setting for mindmap class,to set up the style of node ,link and so on */
+		setting = {
+			noder : NodeHelperBig4,
+			linkHelper : LinkHelperBig4,
+		}
+	}
 	
+	/* big circle node 5  */
+	const build7 = () => {
+		EASE = d3.easeElastic
+		DURATION  = 1000
+		// the radius of nodes
+		RADIUS = 10
+		//the radius of root node
+		ROOT_RADIUS = 20
+		//when mindmap view , scale up the radius = RADIUS * RATIO_RADIUS
+		RATIO_RADIUS = 2
+		
+		/* the setting for mindmap class,to set up the style of node ,link and so on */
+		setting = {
+			noder : NodeHelperBig5,
+			linkHelper : LinkHelperBig5,
+		}
+	}
 
 
 
@@ -170,7 +236,7 @@ body {
 					console.log('change to mindmap container')
 					d3.select('#mindmapDiv')
 						.transition()
-						.duration(DURATION)
+						.duration(0)
 						.ease(EASE)
 						.style('width',`${window.innerWidth - 70}px`)
 					mindmap.setMode('twoSide')
@@ -180,7 +246,7 @@ body {
 					console.log('change to mindmap container')
 					d3.select('#mindmapDiv')
 						.transition()
-						.duration(DURATION)
+						.duration(0)
 						.ease(EASE)
 						.style('width','310px')
 					mindmap.setMode('single')

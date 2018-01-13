@@ -286,6 +286,328 @@ const NodeHelperBig2 = function(){
 		}.bind(this),
 	}
 }
+
+const NodeHelperBig3 = function(){
+	return {
+		init : function(selector){
+			selector.append('circle')
+				.classed('big-node-circle-2',true)
+				.attr('id',function(d){return `circle-${d.id}`})
+				.attr('r',0)
+				.style('fill',function(d){
+					return d.data.color === 'crimson' ? colorScale(d.id) : d.data.color
+				})
+				.style('stroke',function(d){
+					return d.data.color === 'crimson' ? colorScale(d.id) : d.data.color
+				})
+				.on('click',this.toggleTag.bind(this))
+				.on('contextmenu',function(d){
+					d3.event.preventDefault()
+					console.warn('click',this)
+					this.drawMenu(d)
+				}.bind(this))
+
+			selector.each(function(d){
+				const info = ['paint:']
+				info.push(`paint:${d.id};`)
+				const node = d3.select(this)
+				node.append("clipPath")
+					  .attr("id", function(d) { return "clip-" + d.id; })
+					.append("use")
+					  .attr("xlink:href", function(d) { return "#circle-" + d.id; });
+				if(d.data.icon){
+					info.push(`paint icon:`)
+					node.append('image')
+						.classed('big-node-icon-2',true)
+						.attr('xlink:href',`./images/${d.data.icon}`)
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.attr('x',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('y',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('width',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+						.attr('height',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+				}else{
+					info.push(`paint logo letter:`)
+					node.append('text')
+						.classed('big-node-text-logo-2',true)
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.text(d.data.name.slice(0,1).toUpperCase())
+				}
+				console.info(...info)
+			})
+				
+			selector.append('text')
+				.classed('big-node-text-2',true)
+				.text(function(d){return d.data.name})
+				.classed('branch-text',function(d){
+					return d.children
+				})
+				.attr('y',function(d){
+					if(d.weight === undefined){
+						throw new Error()
+					}
+					const change = d.weight * 18 - 3
+					return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS + 4 : RADIUS*RATIO_RADIUS + 4 + change
+				})
+		}.bind(this),
+		transition : function(selector){
+			const {root} = this
+			const objectThis = this
+			selector.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					if(d.weight === undefined){
+						throw new Error()
+					}
+					const change = d.weight * 18 - 3
+					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS + change
+				})
+				.on('end',function(){
+					//when finish , force the node
+					var forceStrength = 0.006
+					function charge(d) {
+						if(d.weight === undefined){
+							throw new Error()
+						}
+						const change = d.weight * 18 - 3
+						r = d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS + change
+						return -Math.pow(r, 2.0) * forceStrength
+					}
+					objectThis.simulation = d3.forceSimulation(root.descendants())
+						.velocityDecay(0.7)
+						.alphaDecay(0.08)
+						.force('charge', d3.forceManyBody().strength(charge))
+						//.force('collide',d3.forceCollide().radius(function(d){
+						//	if(d.weight === undefined){
+						//		throw new Error()
+						//	}
+						//	const change = d.weight * 18 - 3
+						//	r = d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS + change
+						//	return r * 1.05
+						//}))
+						.on('tick',() => {
+							const info = ['tick:']
+							objectThis.node
+								.attr('transform',function(d){
+									return `translate(${d.y},${d.x})`
+								})
+							objectThis.link
+								.attr('d',function(d){
+									const info = ['move links:']
+									//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+									//return d3.line()(points)
+									console.debug(...info)
+									return d3.linkHorizontal()({
+										source : [d.source.y,d.source.x],
+										target : [d.target.y,d.target.x],
+									})
+								})
+							console.debug(...info)
+						})
+
+				})
+		}.bind(this),
+	}
+}
+
+const NodeHelperBig4 = function(){
+	return {
+		init : function(selector){
+			selector.append('circle')
+				.classed('big-node-circle-4',true)
+				.attr('id',function(d){return `circle-${d.id}`})
+				.attr('r',0)
+				.on('click',this.toggleTag.bind(this))
+				.on('contextmenu',function(d){
+					d3.event.preventDefault()
+					console.warn('click',this)
+					this.drawMenu(d)
+				}.bind(this))
+
+			selector.each(function(d){
+				const info = ['paint:']
+				info.push(`paint:${d.id};`)
+				const node = d3.select(this)
+				node.append("clipPath")
+					  .attr("id", function(d) { return "clip-" + d.id; })
+					.append("use")
+					  .attr("xlink:href", function(d) { return "#circle-" + d.id; });
+				if(d.data.icon){
+					info.push(`paint icon:`)
+					node.append('image')
+						.classed('big-node-icon-2',true)
+						.attr('xlink:href',`./images/${d.data.icon}`)
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.attr('x',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('y',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('width',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+						.attr('height',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+				}else{
+					info.push(`paint logo letter:`)
+					node.append('text')
+						.classed('big-node-text-logo-4',true)
+						.style('fill',function(d){
+							return d.data.color === 'crimson' ? colorScale(d.id) : d.data.color
+						})
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.text(d.data.name.slice(0,1).toUpperCase())
+				}
+				console.info(...info)
+			})
+				
+			selector.append('text')
+				.classed('big-node-text-4',true)
+				.text(function(d){return d.data.name})
+				.classed('branch-text',function(d){
+					return d.children
+				})
+				.attr('y',function(d){
+					if(d.weight === undefined){
+						throw new Error()
+					}
+					const change = d.weight * 18 - 3
+					return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS + 4 : RADIUS*RATIO_RADIUS + 4 
+				})
+		}.bind(this),
+		transition : function(selector){
+			const {root} = this
+			const objectThis = this
+			selector.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS 
+				})
+		}.bind(this),
+	}
+}
+
+const NodeHelperBig5 = function(){
+	return {
+		init : function(selector){
+			selector.append('linearGradient')
+				.attr('id',function(d){return `L_G_${d.id}`})
+//				.attr('x1',function(d){
+//					return 0
+//				})
+//				.attr('y1',function(d){
+//					const r = d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+//					return -r
+//				})
+//				.attr('x2',function(d){
+//					return 0
+//				})
+//				.attr('y2',function(d){
+//					const r = d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+//					return r
+//				})
+				.attr('gradientTransform','rotate(90)')
+				.selectAll('stop')
+				.data(function(d){
+					const color = d.data.color === 'crimson' ? colorScale(d.id) : d.data.color
+					return [['0%','#ffffff',0.8],['50%',color,0.3],['100%',color,0.8]]
+				}).enter().append('stop')
+					.attr('offset',function(d){return d[0]})
+					.attr('style',function(d){return `stop-color:${d[1]};stop-opacity:${d[2]}`})
+
+			selector.append('circle')
+				.classed('big-node-circle-5',true)
+				.attr('id',function(d){return `circle-${d.id}`})
+				.attr('r',0)
+				.style('fill',function(d){
+					return `url(#L_G_${d.id})`
+				})
+				.style('stroke',function(d){
+					return d.data.color === 'crimson' ? colorScale(d.id) : d.data.color
+				})
+				.on('click',this.toggleTag.bind(this))
+				.on('contextmenu',function(d){
+					d3.event.preventDefault()
+					console.warn('click',this)
+					this.drawMenu(d)
+				}.bind(this))
+
+			selector.each(function(d){
+				const info = ['paint:']
+				info.push(`paint:${d.id};`)
+				const node = d3.select(this)
+				node.append("clipPath")
+					  .attr("id", function(d) { return "clip-" + d.id; })
+					.append("use")
+					  .attr("xlink:href", function(d) { return "#circle-" + d.id; });
+				if(d.data.icon){
+					info.push(`paint icon:`)
+					node.append('image')
+						.classed('big-node-icon-5',true)
+						.attr('xlink:href',`./images/${d.data.icon}`)
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.attr('x',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('y',function(d){
+							return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+						})
+						.attr('width',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+						.attr('height',function(d){
+							return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+						})
+				}else{
+					info.push(`paint logo letter:`)
+					node.append('text')
+						.classed('big-node-text-logo-5',true)
+						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+						.text(d.data.name.slice(0,1).toUpperCase())
+				}
+				console.info(...info)
+			})
+				
+			selector.append('text')
+				.classed('big-node-text-5',true)
+				.text(function(d){return d.data.name})
+				.classed('branch-text',function(d){
+					return d.children
+				})
+				.attr('y',function(d){
+					if(d.weight === undefined){
+						throw new Error()
+					}
+					const change = d.weight * 18 - 3
+					return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS + 4 : RADIUS*RATIO_RADIUS + 4 
+				})
+		}.bind(this),
+		transition : function(selector){
+			const {root} = this
+			const objectThis = this
+			selector.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS 
+				})
+		}.bind(this),
+	}
+}
 //}}}
 
 //{{{ link helper class
@@ -460,6 +782,132 @@ const LinkHelperBig2 = function(){
 		}.bind(this),
 	}
 }
+
+const LinkHelperBig3 = function(){
+	return {
+		init : function(selector){
+			selector.append('path')
+				.classed('link',true)
+				.classed('big-link-2',true)
+				.style('stroke',function(d){
+					//if(d.target.data.name === 'logger') debugger
+					const {color} = d.target.data
+					//return color === 'crimson' ? '#434549' : d.target.data.color 
+					//return color === 'crimson' ? colorScale(d.target.data._id) : d.target.data.color 
+					return '#434549'
+					//return d.target.data.color 
+				})
+				.style('stroke-opacity',0.5)
+				.attr('d',function(d){
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					const points = [[0,0],[0,0]]
+					return d3.line()(points)
+				})
+		}.bind(this),
+		transition : function(selector){
+			selector
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('d',function(d){
+					const info = ['move links:']
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					//return d3.line()(points)
+					console.debug(...info)
+					return d3.linkHorizontal()({
+						source : [d.source.y,d.source.x],
+						target : [d.target.y,d.target.x],
+					})
+				})
+		}.bind(this),
+	}
+}
+
+const LinkHelperBig4 = function(){
+	return {
+		init : function(selector){
+			selector.append('path')
+				.classed('link',true)
+				.classed('big-link-2',true)
+				.style('stroke',function(d){
+					//if(d.target.data.name === 'logger') debugger
+					const {color} = d.target.data
+					//return color === 'crimson' ? '#434549' : d.target.data.color 
+					//return color === 'crimson' ? colorScale(d.target.data._id) : d.target.data.color 
+					return '#434549'
+					//return d.target.data.color 
+				})
+				.style('stroke-opacity',0.5)
+				.attr('d',function(d){
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					const points = [[0,0],[0,0]]
+					return d3.line()(points)
+				})
+		}.bind(this),
+		transition : function(selector){
+			selector
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('d',function(d){
+					const info = ['move links:']
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					//return d3.line()(points)
+					console.debug(...info)
+					return d3.linkHorizontal()({
+						source : [d.source.y,d.source.x],
+						target : [d.target.y,d.target.x],
+					})
+				})
+		}.bind(this),
+	}
+}
+
+const LinkHelperBig5 = function(){
+	return {
+		init : function(selector){
+			selector.append('path')
+				.classed('link',true)
+				.classed('big-link-5',true)
+				.style('stroke',function(d){
+					//if(d.target.data.name === 'logger') debugger
+					const {color} = d.target.data
+					//return color === 'crimson' ? '#434549' : d.target.data.color 
+					return color === 'crimson' ? colorScale(d.target.data._id) : d.target.data.color 
+					//return '#434549'
+					//return d.target.data.color 
+				})
+				.attr('d',function(d){
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					const points = [[0,0],[0,0]]
+					return d3.linkHorizontal()({
+						source : [0,0],
+						target : [0,0],
+					})
+				})
+		}.bind(this),
+		transition : function(selector){
+			selector
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('d',function(d){
+					const info = ['move links:']
+					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					//return d3.line()(points)
+					const sourceRadius = d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+					const targetRadius = d.target.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+					const isRight = d.target.y >= 0 ? true : false
+					const sign = isRight ? 1 : -1
+					console.debug(...info)
+					return d3.linkHorizontal()({
+						source : [d.source.y + sourceRadius * sign,d.source.x],
+						target : [d.target.y - targetRadius * sign,d.target.x],
+					})
+				})
+		}.bind(this),
+	}
+}
 //}}}
 
 /* class for draw mindmap,arguments:
@@ -509,7 +957,13 @@ class NothingMap {
 			.parentId(function(d){return d.parentId })
 			.id(function(d){return d._id})
 		this.root = stratify(data)
+		//add weight
+		this.root.descendants().forEach(n => {
+			n.weight = Math.random()
+		})
 		info.push(`found root ,with nodes:${this.root.descendants().length};links:${this.root.links().length};`)
+
+
 		//the whole tree for single side mindmap
 		this.singleSideData = data
 
@@ -778,9 +1232,9 @@ class NothingMap {
 			})
 
 		//add 'single' class to all node group
-		this.node.selectAll('.big-node-text-logo-2')
+		this.node.selectAll('.big-node-text-logo-2,.big-node-text-logo-5')
 			.classed('single',true)
-		this.node.selectAll('.big-node-text-2')
+		this.node.selectAll('.big-node-text-2,.big-node-text-5')
 			.classed('single',true)
 			.attr('y',0)
 			.attr('x',function(d){
