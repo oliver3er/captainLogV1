@@ -1350,8 +1350,17 @@ class NothingMap {
 				},undefined)
 				info.push(`found new link`,newLink)
 				console.debug(...info)
-				const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-				return d3.line()(points)
+//				const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+//				return d3.line()(points)
+					const sourceRadius = d.id === '0' ? ROOT_RADIUS : RADIUS
+					const targetRadius = d.target.id === '0' ? ROOT_RADIUS : RADIUS
+					const isRight = d.target.y >= 0 ? true : false
+					const sign = isRight ? 1 : -1
+					console.debug(...info)
+					return d3.linkHorizontal()({
+						source : [d.source.y + sourceRadius * sign,d.source.x],
+						target : [d.target.y - targetRadius * sign,d.target.x],
+					})
 			})
 		this.node
 			.transition()
