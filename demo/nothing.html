@@ -29,12 +29,31 @@ body {
 	let mindmap
 	let defaultStyle = 7
 	let styleCount = 9
+	let defaultLinkStyle = 0
+	let linkStyleCount = 3
 	//setting for display style
 	/* the style class for mindmap container */
 	//var containerStyle = 'mindmap-bar' 
 	var containerStyle = 'mindmap-bar-2' //with background-image
 
 	/********* the config constants for display ******************/
+	const buildLink = (i) => {
+		switch(i){
+			case 0:{
+				setting.linkStyle = LinkStyleDefault
+				break
+			}
+			case 1 : {
+				setting.linkStyle = LinkStyle1
+				break
+			}
+			case 2 : {
+				setting.linkStyle = LinkStyle2
+				break
+			}
+		}
+	}
+
 	const build = (i) => {
 		switch(i){
 			case 0:{
@@ -86,6 +105,21 @@ body {
 			mindmap.update()
 		})
 		.selectAll('option').data(Array.from(new Array(styleCount)).map((e,i) => i)).enter().append('option')
+			.attr('selected',function(d,i){return i === defaultStyle ? 'selected':undefined})
+			.attr('value',function(d,i){return i})
+			.text(function(d,i){return `style${d}`})
+
+	d3.select('.left-bar').append('select')
+		.on('change',function(d){
+			var name = d3.event.target.value
+			console.debug(`selected:${name};`)
+			buildLink(+name)
+			d3.select('#mindmapDiv').selectAll('*').remove()
+			mindmap = new NothingMap(data4mindmap,d3.select('#mindmapDiv'),setting)
+			mindmap.setMode('twoSide')
+			mindmap.update()
+		})
+		.selectAll('option').data(Array.from(new Array(linkStyleCount)).map((e,i) => i)).enter().append('option')
 			.attr('selected',function(d,i){return i === defaultStyle ? 'selected':undefined})
 			.attr('value',function(d,i){return i})
 			.text(function(d,i){return `style${d}`})
@@ -220,7 +254,7 @@ body {
 		/* the setting for mindmap class,to set up the style of node ,link and so on */
 		setting = {
 			noder : NodeHelperBig5,
-			linkHelper : LinkHelperBig5,
+			linkHelper : LinkHelperBig5
 		}
 	}
 
@@ -280,6 +314,7 @@ body {
 				})
 
 	build(defaultStyle)
+	buildLink(defaultLinkStyle)
 	
 	mindmap = new NothingMap(data4mindmap,d3.select('#mindmapDiv'),setting)
 	mindmap.setMode('twoSide')

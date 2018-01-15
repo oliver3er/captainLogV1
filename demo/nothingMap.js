@@ -725,23 +725,14 @@ const LinkHelperDefault = function(){
 		init : function(selector){
 			selector.append('path')
 				.classed('link',true)
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.init)
 		}.bind(this),
 		transition : function(selector){
 			selector
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
-				.attr('d',function(d){
-					const info = ['move links:']
-					const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					console.debug(...info)
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.transition)
 		}.bind(this),
 	}
 }
@@ -752,26 +743,14 @@ const LinkHelperTest1 = function(){
 			selector.append('path')
 				.classed('link',true)
 				.classed('test-1-link',true)
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.init)
 		}.bind(this),
 		transition : function(selector){
 			selector
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
-				.attr('d',function(d){
-					const info = ['move links:']
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					console.debug(...info)
-					return d3.linkHorizontal()({
-						source : [d.source.y,d.source.x],
-						target : [d.target.y,d.target.x],
-					})
-				})
+				.attr('d',this.linkStyle.transition)
 		}.bind(this),
 	}
 }
@@ -788,26 +767,14 @@ const LinkHelperTest2 = function(){
 					//return d.target.data.color 
 				})
 				.style('stroke-opacity',0.5)
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.init)
 		}.bind(this),
 		transition : function(selector){
 			selector
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
-				.attr('d',function(d){
-					const info = ['move links:']
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					console.debug(...info)
-					return d3.linkHorizontal()({
-						source : [d.source.y,d.source.x],
-						target : [d.target.y,d.target.x],
-					})
-				})
+				.attr('d',this.linkStyle.transition)
 		}.bind(this),
 	}
 }
@@ -827,27 +794,14 @@ const LinkHelperBig = function(){
 					//return d.target.data.color 
 				})
 				.style('stroke-opacity',0.5)
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.init)
 		}.bind(this),
 		transition : function(selector){
 			selector
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
-				.attr('d',function(d){
-					const info = ['move links:']
-					const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					return d3.line()(points)
-					console.debug(...info)
-					//return d3.linkHorizontal()({
-					//	source : [d.source.y,d.source.x],
-					//	target : [d.target.y,d.target.x],
-					//})
-				})
+				.attr('d',this.linkStyle.transition)
 		}.bind(this),
 	}
 }
@@ -867,27 +821,14 @@ const LinkHelperBig2 = function(){
 					//return d.target.data.color 
 				})
 				.style('stroke-opacity',0.5)
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.init)
 		}.bind(this),
 		transition : function(selector){
 			selector
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
-				.attr('d',function(d){
-					const info = ['move links:']
-					const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					return d3.line()(points)
-					console.debug(...info)
-					//return d3.linkHorizontal()({
-					//	source : [d.source.y,d.source.x],
-					//	target : [d.target.y,d.target.x],
-					//})
-				})
+				.attr('d',this.linkStyle.transition)
 		}.bind(this),
 	}
 }
@@ -907,27 +848,14 @@ const LinkHelperBig3 = function(){
 					//return d.target.data.color 
 				})
 				.style('stroke-opacity',0.5)
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.init)
 		}.bind(this),
 		transition : function(selector){
 			selector
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
-				.attr('d',function(d){
-					const info = ['move links:']
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					//return d3.line()(points)
-					console.debug(...info)
-					return d3.linkHorizontal()({
-						source : [d.source.y,d.source.x],
-						target : [d.target.y,d.target.x],
-					})
-				})
+				.attr('d',this.linkStyle.transition)
 		}.bind(this),
 	}
 }
@@ -947,27 +875,14 @@ const LinkHelperBig4 = function(){
 					//return d.target.data.color 
 				})
 				.style('stroke-opacity',0.5)
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.init)
 		}.bind(this),
 		transition : function(selector){
 			selector
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
-				.attr('d',function(d){
-					const info = ['move links:']
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					//return d3.line()(points)
-					console.debug(...info)
-					return d3.linkHorizontal()({
-						source : [d.source.y,d.source.x],
-						target : [d.target.y,d.target.x],
-					})
-				})
+				.attr('d',this.linkStyle.transition)
 		}.bind(this),
 	}
 }
@@ -986,34 +901,14 @@ const LinkHelperBig5 = function(){
 					//return '#434549'
 					//return d.target.data.color 
 				})
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.linkHorizontal()({
-						source : [0,0],
-						target : [0,0],
-					})
-				})
+				.attr('d',this.linkStyle.init)
 		}.bind(this),
 		transition : function(selector){
 			selector
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
-				.attr('d',function(d){
-					const info = ['move links:']
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					//return d3.line()(points)
-					const sourceRadius = d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
-					const targetRadius = d.target.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
-					const isRight = d.target.y >= 0 ? true : false
-					const sign = isRight ? 1 : -1
-					console.debug(...info)
-					return d3.linkHorizontal()({
-						source : [d.source.y + sourceRadius * sign,d.source.x],
-						target : [d.target.y - targetRadius * sign,d.target.x],
-					})
-				})
+				.attr('d',this.linkStyle.transition)
 		}.bind(this),
 	}
 }
@@ -1032,23 +927,98 @@ const LinkHelperBig6 = function(){
 					//return '#434549'
 					//return d.target.data.color 
 				})
-				.attr('d',function(d){
-					//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.init)
 		}.bind(this),
 		transition : function(selector){
 			selector
 				.transition()
 				.duration(DURATION)
 				.ease(EASE)
-				.attr('d',function(d){
-					const info = ['move links:']
-					const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-					//const points = [[0,0],[0,0]]
-					return d3.line()(points)
-				})
+				.attr('d',this.linkStyle.transition)
+		}.bind(this),
+	}
+}
+//}}}
+
+
+//{{{ linkStyle
+const LinkStyleDefault = function(){
+	return {
+		init : function(d){
+			const points = [[0,0],[0,0]]
+			return d3.linkHorizontal()({
+				source : [0,0],
+				target : [0,0],
+			})
+		}.bind(this),
+		transition : function(d){
+			const info = ['move links:']
+			//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+			//return d3.line()(points)
+			const sourceRadius = d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+			const targetRadius = d.target.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+			const isRight = d.target.y >= 0 ? true : false
+			const sign = isRight ? 1 : -1
+			console.debug(...info)
+			return d3.linkHorizontal()({
+				source : [d.source.y + sourceRadius * sign,d.source.x],
+				target : [d.target.y - targetRadius * sign,d.target.x],
+			})
+		}.bind(this),
+	}
+}
+
+const LinkStyle1 = function(){
+	return {
+		init : function(d){
+			const points = [[0,0],[0,0]]
+			return d3.linkHorizontal()({
+				source : [0,0],
+				target : [0,0],
+			})
+		}.bind(this),
+		transition : function(d){
+			const info = ['move links:']
+			//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+			//return d3.line()(points)
+			const sourceRadius = d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+			const targetRadius = d.target.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+			const isRight = d.target.y >= 0 ? true : false
+			const sign = isRight ? 1 : -1
+			console.debug(...info)
+			return d3.line()([
+				[d.source.y + sourceRadius * sign,d.source.x],
+				[d.target.y - targetRadius * sign,d.target.x],
+			])
+		}.bind(this),
+	}
+}
+
+const LinkStyle2 = function(){
+	return {
+		init : function(d){
+			const points = [[0,0],[0,0]]
+			return d3.linkHorizontal()({
+				source : [0,0],
+				target : [0,0],
+			})
+		}.bind(this),
+		transition : function(d){
+			const info = ['move links:']
+			//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+			//return d3.line()(points)
+			const sourceRadius = d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+			const targetRadius = d.target.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+			const isRight = d.target.y >= 0 ? true : false
+			const sign = isRight ? 1 : -1
+			const distanceY = Math.abs(d.target.y - d.source.y) - sourceRadius - targetRadius
+			console.debug(...info)
+			return d3.line()([
+				[d.source.y + sourceRadius * sign,d.source.x],
+				[d.source.y + sourceRadius * sign + distanceY/3 * sign,d.source.x],
+				[d.source.y + sourceRadius * sign + distanceY*2/3 * sign,d.target.x],
+				[d.target.y - targetRadius * sign,d.target.x],
+			])
 		}.bind(this),
 	}
 }
@@ -1087,6 +1057,11 @@ class NothingMap {
 			this.linkHelper = setting.linkHelper.bind(this)()
 		}else{
 			this.linkHelper = LinkHelperDefault.bind(this)()
+		}
+		if(setting && setting.linkStyle){
+			this.linkStyle = setting.linkStyle.bind(this)()
+		}else{
+			this.linkStyle = LinkStyleDefault.bind(this)()
 		}
 
 		info.push(`load the nothingmap:`,this)
