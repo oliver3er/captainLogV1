@@ -14,6 +14,8 @@ let RATIO_RADIUS = 2
 let ROOT_SEPERATOR = 80
 const colorScale = d3.scaleOrdinal(d3.schemeCategory20)
 
+let NAVIGATION_EASE = d3.easeBackOut
+
 //{{{ node helper class 
 const NoderDefault = function(){
 	return {
@@ -500,25 +502,12 @@ const NodeHelperBig4 = function(){
 	}
 }
 
+/* No.7 mindmap*/
 const NodeHelperBig5 = function(){
 	return {
 		init : function(selector){
 			selector.append('linearGradient')
 				.attr('id',function(d){return `L_G_${d.id}`})
-//				.attr('x1',function(d){
-//					return 0
-//				})
-//				.attr('y1',function(d){
-//					const r = d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
-//					return -r
-//				})
-//				.attr('x2',function(d){
-//					return 0
-//				})
-//				.attr('y2',function(d){
-//					const r = d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
-//					return r
-//				})
 				.attr('gradientTransform','rotate(90)')
 				.selectAll('stop')
 				.data(function(d){
@@ -545,6 +534,7 @@ const NodeHelperBig5 = function(){
 					this.drawMenu(d)
 				}.bind(this))
 
+			var thisObj = this
 			selector.each(function(d){
 				const info = ['paint:']
 				info.push(`paint:${d.id};`)
@@ -577,6 +567,8 @@ const NodeHelperBig5 = function(){
 						.classed('big-node-text-logo-5',true)
 						.attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
 						.text(d.data.name.slice(0,1).toUpperCase())
+						.on('mouseenter',thisObj.mouseEnter.bind(thisObj))
+						.on('mouseleave',thisObj.mouseLeave.bind(thisObj))
 				}
 				console.info(...info)
 			})
@@ -1098,6 +1090,7 @@ class NothingMap {
 					d3.select('.menu').remove()
 					this.hasMenuShown = false
 				}
+				this.toggleDivergentMap()
 				console.info(...info)
 			}.bind(this))
 			//.attr('transform','translate(20,0)')
@@ -1605,6 +1598,8 @@ class NothingMap {
 
 	/* switch tag display mode between: fold,collapse,relative collapse*/
 	toggleTag(d){
+		/* CHANGE: click node to open/close divergent map
+		 *
 		const {hasShowRelativeTags,children,_children} = d
 		if(children){
 			this.toggleChildren(d)
@@ -1616,6 +1611,197 @@ class NothingMap {
 		}else if(!children && !_children){
 			this.collapseRelativeTagWithParent.bind(this)(d)		
 		}
+		*/
+		d3.event.stopPropagation()
+		this.toggleDivergentMap(d)
+	}
+
+	/* open/close the divergent map */
+	toggleDivergentMap(d){
+		const info = ['NothingMap -> toggleDivergentMap:']
+		console.log(`the data:`,d)
+		const hasShowRelativeTags = d && d.hasShowRelativeTags
+		info.push(`hasShowRelativeTags :${hasShowRelativeTags}`)
+		if(hasShowRelativeTags || !d){
+			d && (d.hasShowRelativeTags = false)
+			d && d.simulation.stop()
+			this.svg.selectAll('.relative-node').remove()
+			this.svg.selectAll('.relative-link').remove()
+			this.svg.selectAll('.mask').remove()
+			console.debug(...info)
+			return
+		}else{
+			d.hasShowRelativeTags = true
+		}
+		const {x,y} = d
+		const {name} = d.data
+		info.push(`with data:`,d)
+		//find all reliatve tag
+		const relativeTagNames = []
+		this.linksArray.forEach(link => {
+			if(link.source === name && relativeTagNames.every(e => e !== link.target)){
+				relativeTagNames.push(link.target)
+			}else if(link.target === name && relativeTagNames.every(e => e !== link.source)){
+				relativeTagNames.push(link.source)
+			}
+		})
+		info.push(`found relatived tag :${relativeTagNames.length};`)
+
+		const relativeTags = [
+			{
+				id : name,
+				name,
+				fx:x,
+				fy:y,
+				x,
+				y,
+			},
+			//consider about parent
+			//{
+			//	id : d.parent.data.name,
+			//	name : d.parent.data.name,
+			//	fx : d.parent.data.x,
+			//	fy : d.parent.data.y,
+			//},
+			...
+			relativeTagNames.map(n =>{
+			return {
+				id : n,
+				name : n,
+				x: x + Math.random()*10 - 5,
+				y: y + Math.random()*10 - 5,
+				color : 'crimson',
+			}})
+		]
+		const relativeLinks = relativeTags.map(tag => {
+			return {
+				source : relativeTags[0],
+				target : tag,
+			}
+		})
+		info.push(`build relative link :${relativeLinks.length};`)
+
+		this.g.append('g')
+			.attr('id','divergentMaskG')
+			.classed('mask',true)
+			.append('rect')
+				.attr('x',-2000)
+				.attr('y',-2000)
+				.attr('width',4000)
+				.attr('height',4000)
+
+		const relativeNode = this.g.selectAll('.relative-node')
+			.data(relativeTags.slice(1)).enter().append('g')
+				.classed('relative-node',true)
+				.attr('transform',function(d){return `translate(${d.y},${d.x})`})
+		relativeNode.append('linearGradient')
+			.attr('id',function(d){return `L_G_R_${d.id}`})
+			.attr('gradientTransform','rotate(90)')
+			.selectAll('stop')
+			.data(function(d){
+				const color = d.color === 'crimson' ? colorScale(d.id) : d.color
+				return [['0%','#ffffff',0.8],['50%',color,0.3],['100%',color,0.8]]
+			}).enter().append('stop')
+				.attr('offset',function(d){return d[0]})
+				.attr('style',function(d){return `stop-color:${d[1]};stop-opacity:${d[2]}`})
+
+		relativeNode.append('circle')
+			.classed('big-node-circle-5',true)
+			.attr('id',function(d){return `circle-R-${d.id}`})
+			//the radius is random (to simulate the weight of hashtag)
+			.attr('r',function(d){ return Math.random() * 50 + 8})
+			.style('fill',function(d){
+				return `url(#L_G_R_${d.id})`
+			})
+			.style('stroke',function(d){
+				return d.color === 'crimson' ? colorScale(d.id) : d.color
+			})
+			.on('click',this.toggleTag.bind(this))
+			.on('contextmenu',function(d){
+				d3.event.preventDefault()
+				console.warn('click',this)
+				this.drawMenu(d)
+			}.bind(this))
+
+		relativeNode.each(function(d){
+			const info = ['paint:']
+			info.push(`paint:${d.id};`)
+			const node = d3.select(this)
+			node.append("clipPath")
+				  .attr("id", function(d) { return "clip-R-" + d.id; })
+				.append("use")
+				  .attr("xlink:href", function(d) { return "#circle-R-" + d.id; });
+			if(d.icon){
+				info.push(`paint icon:`)
+				node.append('image')
+					.classed('big-node-icon-5',true)
+					.attr('xlink:href',`./images/${d.data.icon}`)
+					.attr("clip-path", function(d) { return "url(#clip-R-" + d.id + ")"; })
+					.attr('x',function(d){
+						return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+					})
+					.attr('y',function(d){
+						return d.id === '0' ? -ROOT_RADIUS * RATIO_RADIUS : -RADIUS*RATIO_RADIUS
+					})
+					.attr('width',function(d){
+						return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+					})
+					.attr('height',function(d){
+						return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS * 2 : RADIUS*RATIO_RADIUS * 2
+					})
+			}else{
+				info.push(`paint logo letter:`)
+				node.append('text')
+					.classed('big-node-text-logo-5',true)
+					//.attr("clip-path", function(d) { return "url(#clip-R-" + d.id + ")"; })
+					.text(d.name.slice(0,1).toUpperCase())
+			}
+			console.info(...info)
+		})
+		relativeNode.append('text')
+			.classed('big-node-text-5',true)
+			.text(function(d){return d.name})
+			.classed('branch-text',function(d){
+				return d.children
+			})
+			.attr('y',function(d){
+				return d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS + 4 : RADIUS*RATIO_RADIUS + 4 
+			})
+
+		const relativeLink = this.relativeG.selectAll('.relative-link')
+			.data(relativeLinks.slice(1)).enter().append('path')
+				.classed('relative-link',true)
+				.attr('d',function(d){
+					const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+					return d3.line()(points)
+				})
+				
+		
+		//disperse the nodes
+		d.simulation = d3.forceSimulation()
+			.force('charge',d3.forceManyBody().strength(-100))
+			.force('link',d3.forceLink(relativeLinks).distance(function(d){return Math.random()*300 + 80}))
+			//.force('center',d3.forceCenter([y,x]))
+			//.velocityDecay(0.9)
+			.alphaDecay(0.04)
+		d.simulation
+			.nodes(relativeTags)
+			.on('tick',function(){
+				relativeNode.attr('transform',function(d){
+					console.debug(d)
+					return `translate(${d.y},${d.x})`})
+				relativeLink
+					.attr('d',function(d){
+						const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+						return d3.line()(points)
+					})
+			})
+			.stop()
+
+		setTimeout(()=> d.simulation.restart(),100)
+		
+			
+		console.info(...info)
 
 	}
 
@@ -2012,6 +2198,181 @@ class NothingMap {
 			.id(function(d){return d._id})
 		this.root = stratify(this.data)
 		this.update()
+		console.info(...info)
+	}
+
+
+	/* deal with the root node mouse event, the navigation path */
+	mouseEnter(d){
+		const info = ['mouseEnter:']
+		if(d && d.id === this.root.id){
+			info.push(`is root,do it;`)
+			const NODE_RADIUS = 10
+			const NODE_DISTANCE = 40
+			const nodes2Root = []
+			let current = d
+			let count = 0
+			while(current && ++count < 100){
+				nodes2Root.push(current)
+				current = current.parent
+			}
+			info.push(`nodes to root :${nodes2Root.length};`)
+			const navigationG = this.g.append('g')
+				.classed('navigation',true)
+
+			let i = 1
+			this.navigationCount = nodes2Root.length - 1
+				
+			const oneLevel = (i) => {
+				let node = nodes2Root[i]
+				if(!node){
+					//finished, show text
+					d3.selectAll('.navigation-text')
+						.transition()
+						.duration(500)
+						.style('opacity',1)
+
+					return
+				}
+				info.push(`add node:${i};`)
+				const y = ( ROOT_RADIUS * RATIO_RADIUS + NODE_DISTANCE * i) * (-1)
+				//the path
+				const path = navigationG.append('path')
+					.attr('id',`navigation-path-${i}`)
+					.attr('d',d3.line()([
+						[d.y,y + NODE_DISTANCE],
+						[d.y,y + NODE_DISTANCE]]))
+					.datum({
+						x : d.y,
+						y : y + NODE_DISTANCE,
+					})
+
+				//the node
+				const g = navigationG.append('g')
+					.attr('id',`navigation-g-${i}`)
+					//.attr('transform',`translate(${d.y},${y})`)
+					.attr('transform',`translate(${d.y},${y + NODE_DISTANCE}) scale(0)`)
+
+				g.append('linearGradient')
+					.attr('id',`L_G_N_${node.id}`)
+					.attr('gradientTransform','rotate(90)')
+					.selectAll('stop')
+					.data(function(){
+						const color = node.data.color === 'crimson' ? colorScale(node.id) : node.data.color
+						return [['0%','#ffffff',0.8],['50%',color,0.3],['100%',color,0.8]]
+					}).enter().append('stop')
+						.attr('offset',function(d){return d[0]})
+						.attr('style',function(d){return `stop-color:${d[1]};stop-opacity:${d[2]}`})
+
+				g.append('circle')
+					.classed('big-node-circle-5',true)
+					.attr('id',`circle-N-${node.id}`)
+					.attr('r',NODE_RADIUS)
+					.style('fill',`url(#L_G_N_${node.id})`)
+					.style('stroke',node.data.color === 'crimson' ? colorScale(node.id) : node.data.color)
+
+				g.append("clipPath")
+					.attr("id", `clip-N-${node.id}`)
+					.append("use")
+						.attr("xlink:href", `#circle-N-${node.id}`)
+
+				if(node.data.icon){
+					info.push(`paint icon:`)
+					g.append('image')
+						.classed('big-node-icon-5',true)
+						.attr('xlink:href',`./images/${node.data.icon}`)
+						.attr("clip-path", `url(#clip-N-${node.id})`)
+						.attr('x',-NODE_RADIUS)
+						.attr('y',-NODE_RADIUS)
+						.attr('width',NODE_RADIUS*2)
+						.attr('height',NODE_RADIUS*2)
+				}else{
+					info.push(`paint logo letter:`)
+					g.append('text')
+						.classed('navigation-text-logo',true)
+						.attr("clip-path", `url(#clip-${d.id})`)
+						.text(node.data.name.slice(0,1).toUpperCase())
+				}
+					
+				g.append('text')
+					.classed('navigation-text',true)
+					.style('opacity',0)
+					.text(node.data.name)
+					.attr('x',NODE_RADIUS + 4)
+					//.attr('y',node.id === '0' ? ROOT_RADIUS * RATIO_RADIUS + 4 : RADIUS*RATIO_RADIUS + 4 )
+
+				//transition
+				g.transition()
+					.duration(300)
+					.ease(NAVIGATION_EASE)//.period(0.4).amplitude(1.90))//([1.20,0.35]))
+					.attr('transform',`translate(${d.y},${y}) scale(1)`)
+
+				path.transition(d3.easeElastic)
+					.duration(300)
+					.ease(NAVIGATION_EASE)//.period(0.4).amplitude(1.90))//([1.20,0.35]))
+					.attr('d',d3.line()([
+						[d.y,y + NODE_DISTANCE],
+						[d.y,y + RADIUS ]]))
+					.on('end',() => {
+						setTimeout(() => {
+							oneLevel(++i)
+						},10)
+					})
+			}
+			oneLevel(i)
+		}
+		console.info(...info)
+	}
+
+	mouseLeave(d){
+		const info = ['mouseLeave:']
+		if(d && d.id === this.root.id){
+			info.push(`is root,remove navigation;`)
+			//d3.select('.navigation').remove()
+			info.push(`the navigation coutn:${this.navigationCount}`)
+			if(this.navigationCount){
+				let i = this.navigationCount
+				this.navigationCount = undefined
+				const remove = (i) => {
+					if(i === 0){
+						d3.select('.navigation').remove()
+					}
+					const pathName = `#navigation-path-${i}`
+					const path = d3.select(pathName)
+					if(path && path.size() > 0){
+						const data = path.datum()
+						console.warn(`the data:`,data)
+						path.transition()
+							.duration(300)
+							.ease(NAVIGATION_EASE)
+							.attr('d',d3.line()([
+								[data.x,data.y],
+								[data.x,data.y]]))
+						d3.select(`#navigation-g-${i}`)
+							.transition()
+							.duration(300)
+							.ease(NAVIGATION_EASE)
+							.attr('transform',`translate(${data.x},${data.y}) scale(0)`)
+							.on('end',() => {
+								setTimeout(() => {
+									remove(--i)
+								})
+							})
+					}else{
+						//debugger
+					}
+				}
+
+				//finished, show text
+				d3.selectAll('.navigation-text')
+					.transition()
+					.duration(500)
+					.style('opacity',0)
+					.on('end',() => remove(i))
+			}else{
+				info.push(`the navigation is empty`)
+			}
+		}
 		console.info(...info)
 	}
 }
