@@ -177,7 +177,7 @@ button {
 
 .left-bar {
 	width : 72px;
-	height : 700px;
+	height : 800px;
 	background-color : #1f2125;
 	padding-top : 167px;
 	display : flex;
@@ -206,14 +206,14 @@ button {
 
 .mindmap-bar {
 	width : 100%;
-	height : 700px;
+	height : 800px;
 	background-color : #303137;
 	overflow : hidden;
 }
 
 .mindmap-bar-2 {
 	width : 100%;
-	height : 700px;
+	height : 800px;
 	background-image: url(./images/topo-test-bg2.png);
 	overflow : hidden;
 }

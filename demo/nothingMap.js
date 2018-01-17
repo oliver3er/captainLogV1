@@ -1030,7 +1030,7 @@ class NothingMap {
 		this.linksArray = linksArrayDeanchen
 		this.container = container
 		this.width = 1200
-		this.height = 700
+		this.height = 800
 		//this.treeWidth = 300
 		//this.treeHeight = 700
 		this.nodeWidth = 100
