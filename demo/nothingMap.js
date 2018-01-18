@@ -520,7 +520,7 @@ const NodeHelperBig5 = function(){
 			selector.append('circle')
 				.classed('big-node-circle-5',true)
 				.attr('id',function(d){return `circle-${d.id}`})
-				.attr('r',0)
+				.attr('r',0)//function(d){ return d.r })
 				.style('fill',function(d){
 					return `url(#L_G_${d.id})`
 				})
@@ -596,6 +596,23 @@ const NodeHelperBig5 = function(){
 				.ease(EASE)
 				.attr('r',function(d){
 					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS 
+				})
+		}.bind(this),
+		transitionBubble : function(selector){
+			const {root} = this
+			const objectThis = this
+			selector.selectAll('circle')
+				.transition()
+				.duration(DURATION)
+				.ease(EASE)
+				.attr('r',function(d){
+					return d.id === root.id ? ROOT_RADIUS * RATIO_RADIUS : d.r
+				})
+		}.bind(this),
+		tick : function(selector){
+			selector
+				.attr('transform',function(d){
+					return `translate(${d.y},${d.x})`
 				})
 		}.bind(this),
 	}
@@ -902,6 +919,10 @@ const LinkHelperBig5 = function(){
 				.ease(EASE)
 				.attr('d',this.linkStyle.transition)
 		}.bind(this),
+		tick : function(selector){
+			selector
+				.attr('d',this.linkStyle.transition)
+		}.bind(this),
 	}
 }
 
@@ -1014,6 +1035,32 @@ const LinkStyle2 = function(){
 		}.bind(this),
 	}
 }
+
+const LinkStyle3 = function(){
+	return {
+		init : function(d){
+			const points = [[0,0],[0,0]]
+			return d3.linkHorizontal()({
+				source : [0,0],
+				target : [0,0],
+			})
+		}.bind(this),
+		transition : function(d){
+			const info = ['move links:']
+			//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+			//return d3.line()(points)
+			const sourceRadius = d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+			const targetRadius = d.target.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+			const isRight = d.target.y >= 0 ? true : false
+			const sign = isRight ? 1 : -1
+			console.debug(...info)
+			return d3.line()([
+				[d.source.y ,d.source.x],
+				[d.target.y ,d.target.x],
+			])
+		}.bind(this),
+	}
+}
 //}}}
 
 /* class for draw mindmap,arguments:
@@ -1054,6 +1101,14 @@ class NothingMap {
 			this.linkStyle = setting.linkStyle.bind(this)()
 		}else{
 			this.linkStyle = LinkStyleDefault.bind(this)()
+		}
+		if(setting && setting.layoutMode){
+			this.layoutMode = setting.layoutMode
+			if(this.layoutMode !== 'default'){
+				this.linkStyle = LinkStyle3.bind(this)()
+			}
+		}else{
+			this.layoutMode = 'default'
 		}
 
 		info.push(`load the nothingmap:`,this)
@@ -1201,7 +1256,16 @@ class NothingMap {
 		if(this.mode === 'single'){
 			this.updateSingleSide()
 		}else if (this.mode === 'twoSide'){
-			this.updateTwoSide()
+			if(this.layoutMode === 'default'){
+				this.updateTwoSide()
+			}else if(this.layoutMode === 'bubble'){
+				this.updateBubble()
+			}else if(this.layoutMode === 'bubbleRadius'){
+				this.updateBubbleRadius()
+			}else{
+				console.error(`the layout mode is bad:`,this.layoutMode)
+				throw new Error()
+			}
 		}else if (this.mode === 'search'){
 			this.updateSearch()
 		}else{
@@ -1594,6 +1658,198 @@ class NothingMap {
 			//.ease(EASE)
 			.attr('transform',`translate(${this.root.translate[0]},${this.root.translate[1]})`)
 		//}}}
+	}
+
+	updateBubble(){
+		const info = ['NothingMap -> updateBubble:']
+		info.push(`begin draw...`)
+		//generate random radius
+		const MAX_RADIUS = 50
+		const MIN_RADIUS = 10
+		this.root.descendants().forEach(node => {
+			if(node.id === '0'){
+				node.r = ROOT_RADIUS * RATIO_RADIUS
+			}else{
+				//node.r = Math.random() * (MAX_RADIUS - MIN_RADIUS) + MIN_RADIUS
+				node.r = Math.random() * (4 - node.depth) * 10 + ((4-node.depth) * 10 - 10)
+			}
+		})
+
+		//links
+		const link = this.g.selectAll('.link')
+			.data(this.root.links(),function(d){
+				return `${d.source.id}_${d.target.id}`
+			})
+		const linkEnter = link.enter()
+		this.linkHelper.init(linkEnter)
+			
+		info.push(`link enter:${linkEnter.size()};`)
+		const linkExit = link.exit()
+		info.push(`link exit:${linkExit.size()};`)
+		linkExit.remove()
+		this.link = this.g.selectAll('.link')
+		info.push(`link :${this.link.size()};`)
+		//nodes
+		const node = this.g.selectAll('.node')
+			.data(this.root.descendants(),function(d){return d.id})
+		
+		const nodeEnter = node
+			.enter().append('g')
+				.call(dragListener)
+				.classed('node',true)
+				.attr('transform',function(d){
+					return `translate(0,0)`
+					//return `translate(${d.y},${d.x})`
+				})
+		this.noder.init(nodeEnter)
+		info.push(`node enter:${nodeEnter.size()};`)
+
+		const nodeExit = node.exit()
+		console.log(`node exit:`,nodeExit)
+		nodeExit.each(n => console.log(`data:`,n))
+		info.push(`node exit:${nodeExit.size()};`)
+		nodeExit.remove()
+
+		this.node = this.g.selectAll('.node')
+		info.push(`node:${this.node.size()};`)	
+		info.push(`build original shape,this nodes:${d3.selectAll('.node').size()};links:${d3.selectAll('.link').size()};`)
+
+		//layout nodes/links
+		//move group
+		this.root.translate = [this.width /2,this.height /2]
+		this.g
+			.attr('transform',`translate(${this.root.translate[0]},${this.root.translate[1]})`)
+		this.noder.transitionBubble(this.node)
+
+		//using force 
+		//fix the root
+		this.root.fx = 0
+		this.root.fy = 0
+		//disperse the nodes
+		const strengthScale = d3.scaleLinear()
+			.domain([MIN_RADIUS,MAX_RADIUS])
+			.range([-100,-300])
+
+		this.bubbleSimulation = d3.forceSimulation()
+			.force('charge',d3.forceManyBody().strength(function(d){return d.id === '0'?-5000: (1/d.depth) * -300}))
+			.force('collide',d3.forceCollide(function(d){return d.r * 1.1 }))
+			.force('link',d3.forceLink(this.root.links()).distance(function(d){return 20}))//return Math.random()*30 + 20}))
+			//.force('center',d3.forceCenter([y,x]))
+			//.velocityDecay(0.9)
+			.alphaDecay(0.04)
+		this.bubbleSimulation
+			.nodes(this.root.descendants())
+			.on('tick',() =>{
+				this.linkHelper.tick(this.link)
+				this.noder.tick(this.node)
+			})
+
+		//add 'single' class to all node group
+		this.node.selectAll('.big-node-text-logo-2,.big-node-text-logo-5,.big-node-text-logo-6')
+			.classed('single',false)
+		this.node.selectAll('.big-node-text-2,.big-node-text-5,.big-node-text-6')
+			.classed('single',false)
+			.attr('x',0)
+			.attr('y',function(d){
+				return d.id === '0' ? ROOT_RADIUS*RATIO_RADIUS + 2: RADIUS*RATIO_RADIUS + 2
+			})
+		
+		console.info(...info)
+	}
+
+	updateBubbleRadius(){
+		const info = ['NothingMap -> updateBubbleRadius:']
+		info.push(`begin draw...`)
+		//generate random radius
+		const MAX_RADIUS = 50
+		const MIN_RADIUS = 10
+		this.root.descendants().forEach(node => {
+			if(node.id === '0'){
+				node.r = ROOT_RADIUS * RATIO_RADIUS
+			}else{
+				//node.r = Math.random() * (MAX_RADIUS - MIN_RADIUS) + MIN_RADIUS
+				node.r = Math.random() * (4 - node.depth) * 10 + ((4-node.depth) * 10 - 10)
+			}
+		})
+
+		//links
+		const link = this.g.selectAll('.link')
+			.data(this.root.links(),function(d){
+				return `${d.source.id}_${d.target.id}`
+			})
+		const linkEnter = link.enter()
+		this.linkHelper.init(linkEnter)
+			
+		info.push(`link enter:${linkEnter.size()};`)
+		const linkExit = link.exit()
+		info.push(`link exit:${linkExit.size()};`)
+		linkExit.remove()
+		this.link = this.g.selectAll('.link')
+		info.push(`link :${this.link.size()};`)
+		//nodes
+		const node = this.g.selectAll('.node')
+			.data(this.root.descendants(),function(d){return d.id})
+		
+		const nodeEnter = node
+			.enter().append('g')
+				.call(dragListener)
+				.classed('node',true)
+				.attr('transform',function(d){
+					return `translate(0,0)`
+					//return `translate(${d.y},${d.x})`
+				})
+		this.noder.init(nodeEnter)
+		info.push(`node enter:${nodeEnter.size()};`)
+
+		const nodeExit = node.exit()
+		console.log(`node exit:`,nodeExit)
+		nodeExit.each(n => console.log(`data:`,n))
+		info.push(`node exit:${nodeExit.size()};`)
+		nodeExit.remove()
+
+		this.node = this.g.selectAll('.node')
+		info.push(`node:${this.node.size()};`)	
+		info.push(`build original shape,this nodes:${d3.selectAll('.node').size()};links:${d3.selectAll('.link').size()};`)
+
+		//layout nodes/links
+		//move group
+		this.root.translate = [this.width /2,this.height /2]
+		this.g
+			.attr('transform',`translate(${this.root.translate[0]},${this.root.translate[1]})`)
+		this.noder.transitionBubble(this.node)
+
+		//using force 
+		//fix the root
+		this.root.fx = 0
+		this.root.fy = 0
+		//disperse the nodes
+		const strengthScale = d3.scaleLinear()
+			.domain([MIN_RADIUS,MAX_RADIUS])
+			.range([-100,-300])
+
+		this.bubbleSimulation = d3.forceSimulation()
+			.force('r',d3.forceRadial(function(d){return 200}))
+			.force('collide',d3.forceCollide(function(d){return d.r * 1.1 }))
+			//.force('center',d3.forceCenter([y,x]))
+			//.velocityDecay(0.9)
+			.alphaDecay(0.04)
+		this.bubbleSimulation
+			.nodes(this.root.descendants())
+			.on('tick',() =>{
+				this.noder.tick(this.node)
+			})
+
+		//add 'single' class to all node group
+		this.node.selectAll('.big-node-text-logo-2,.big-node-text-logo-5,.big-node-text-logo-6')
+			.classed('single',false)
+		this.node.selectAll('.big-node-text-2,.big-node-text-5,.big-node-text-6')
+			.classed('single',false)
+			.attr('x',0)
+			.attr('y',function(d){
+				return d.id === '0' ? ROOT_RADIUS*RATIO_RADIUS + 2: RADIUS*RATIO_RADIUS + 2
+			})
+		
+		console.info(...info)
 	}
 
 	/* switch tag display mode between: fold,collapse,relative collapse*/
