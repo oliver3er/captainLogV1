@@ -484,3 +484,32 @@ button {
 .big-node-text-logo-6.single {
 	font-size : 14px !important;
 }
+
+.mask rect{
+	fill : black;
+	fill-opacity : 0.6;
+}
+
+.navigation circle{
+	fill : pink;
+}
+
+.navigation path {
+	fill : none;
+	stroke : #828282 !important;
+}
+
+.navigation-text-logo {
+	fill : #B8B8B8 !important;
+	font-size : 11px !important;
+	text-anchor : middle;
+	alignment-baseline : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.navigation-text {
+	fill : #828282 !important;
+	font-size : 12px !important;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+	alignment-baseline : middle !important;
+}
