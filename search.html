@@ -150,19 +150,7 @@
                 $(".search-select-tag").show();
 			}
 		});
-		
-		
-		//tag选择框hover
-		$(".search-select-tags li").hover(function(){
-			var optionLi = $(this);
-			optionLi.addClass("search-select-li-hover");
-			
-			optionLi.append("<div>+</div>");
-		},function(){
-			var optionLi = $(this);
-			optionLi.removeClass();
-			optionLi.children("div:nth-child(2)").remove();
-		});
+
 
 		//关键字日志选择框hover
         $(".search-select-words li").hover(function(){
@@ -636,7 +624,7 @@
 
 
 					<!--搜索结果显示部分-->
-					<div class="search-results-wrapper"><!--search-no-result-->
+					<div class="search-results-wrapper search-no-result"><!--search-no-result-->
 						<div class="search-results view-list">
 							<div class="search-result-item-wrapper">
 								<div class="search-result-item">
@@ -711,13 +699,13 @@
 
 
 					<!--0 search result display part-->
-					<!--<div class="search-no-result-wrapper">
+					<div class="search-no-result-wrapper">
 						<div class="search-results-nothing">
 							<div class="search-results-nothing-pic"></div>
 							<p>We have searched the entire galaxy,
 								but sorry,we did’nt find what your want.</p>
 						</div>
-					</div>-->
+					</div>
 
 
 
