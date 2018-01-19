@@ -151,19 +151,6 @@
 			}
 		});
 
-
-		//关键字日志选择框hover
-        $(".search-select-words li").hover(function(){
-            var optionLi = $(this);
-            optionLi.addClass("search-select-li-hover");
-
-            optionLi.append("<div>+</div>");
-        },function(){
-            var optionLi = $(this);
-            optionLi.removeClass();
-            optionLi.children("div:nth-child(2)").remove();
-        });
-
 		//tag选择窗口选择标签，即标签点击事件
 		$(".search-select-tags li").bind('click',function(){
             $(".search-select-dialog").removeClass("dialog-show");
