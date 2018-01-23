@@ -1016,12 +1016,12 @@ const LinkStyle2 = function(){
 				target : [0,0],
 			})
 		}.bind(this),
-		transition : function(d){
+		transition : function(d,isWidget){
 			const info = ['move links:']
 			//const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
 			//return d3.line()(points)
-			const sourceRadius = d.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
-			const targetRadius = d.target.id === '0' ? ROOT_RADIUS * RATIO_RADIUS : RADIUS*RATIO_RADIUS
+			const sourceRadius = d.id === '0' ? ROOT_RADIUS * (isWidget ? 1 :RATIO_RADIUS) : RADIUS*(isWidget ? 1 :RATIO_RADIUS)
+			const targetRadius = d.target.id === '0' ? ROOT_RADIUS * (isWidget ? 1 :RATIO_RADIUS) : RADIUS*(isWidget ? 1 :RATIO_RADIUS)
 			const isRight = d.target.y >= 0 ? true : false
 			const sign = isRight ? 1 : -1
 			const distanceY = Math.abs(d.target.y - d.source.y) - sourceRadius - targetRadius
@@ -1374,26 +1374,27 @@ class NothingMap {
 			.transition()
 			.duration(DURATION)
 			.ease(EASE)
-			.attr('d',function(d){
-				const info = ['move links:']
-				//found the node in new tree
-				const newLink = singleSideRoot.links().reduce((a,c) => {
-					return c.source.id === d.source.id && c.target.id === d.target.id ? c : a
-				},undefined)
-				info.push(`found new link`,newLink)
-				console.debug(...info)
-//				const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
-//				return d3.line()(points)
-					const sourceRadius = d.id === '0' ? ROOT_RADIUS : RADIUS
-					const targetRadius = d.target.id === '0' ? ROOT_RADIUS : RADIUS
-					const isRight = d.target.y >= 0 ? true : false
-					const sign = isRight ? 1 : -1
-					console.debug(...info)
-					return d3.linkHorizontal()({
-						source : [d.source.y + sourceRadius * sign,d.source.x],
-						target : [d.target.y - targetRadius * sign,d.target.x],
-					})
-			})
+			.attr('d',this.linkStyle.transition)
+			//.attr('d',function(d){
+			//	const info = ['move links:']
+			//	//found the node in new tree
+			//	const newLink = singleSideRoot.links().reduce((a,c) => {
+			//		return c.source.id === d.source.id && c.target.id === d.target.id ? c : a
+			//	},undefined)
+			//	info.push(`found new link`,newLink)
+			//	console.debug(...info)
+//			//	const points = [[d.source.y,d.source.x],[d.target.y,d.target.x]]
+//			//	return d3.line()(points)
+			//		const sourceRadius = d.id === '0' ? ROOT_RADIUS : RADIUS
+			//		const targetRadius = d.target.id === '0' ? ROOT_RADIUS : RADIUS
+			//		const isRight = d.target.y >= 0 ? true : false
+			//		const sign = isRight ? 1 : -1
+			//		console.debug(...info)
+			//		return d3.linkHorizontal()({
+			//			source : [d.source.y + sourceRadius * sign,d.source.x],
+			//			target : [d.target.y - targetRadius * sign,d.target.x],
+			//		})
+			//})
 		this.node
 			.transition()
 			.duration(DURATION)
