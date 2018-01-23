@@ -8,7 +8,6 @@
 }
 
 .search-main-area-wrapper {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -159,8 +158,11 @@
 	cursor: pointer;
 }
 
+
 .search-tag .search-tag-type {
 	padding: 0 11px;
+	/* add by deanchen */
+	cursor : pointer;
 	border-right: 1px solid rgba(31,33,38,.5);
 }
 .search-tag.search-tag-plus .search-tag-type:after {
@@ -192,6 +194,7 @@
 	font-size: 1.6rem;
 	font-weight: 500;
 	height: 100%;
+	cursor : pointer;
 }
 
 .search-tag-content>div {
@@ -226,6 +229,11 @@
 	color: #ececec;
 	font-weight: 500;
 	margin: 0 6px;
+	/* add by deanchen */
+	width : 100%;
+	background-color: transparent;
+	border: none;
+	outline: none;
 }
 
 /*****************select tag dialog for search  begin*****************/
@@ -334,7 +342,6 @@
 	align-items: center;
 	justify-content: space-between;
 
-	margin-top: 1px;
 	padding: 0 10px;
 	height: 34px;
 	border-radius: 4px;
@@ -342,6 +349,7 @@
 	cursor: pointer;
 	transition: background-color .15s ease;
 }
+
 
 .search-select-words li {
 	display: flex;
@@ -357,8 +365,16 @@
 	transition: background-color .15s ease;
 }
 
-.search-select-li-hover {
-	background-color: #d0d0d0 !important;
+.search-select-tags li:hover, .search-select-words li:hover {
+	background-color: #d0d0d0;
+}
+
+.search-select-tags li:hover:after, .search-select-words li:hover:after {
+	content: "+";
+	height: 1.8rem;
+	font-size: 1.8rem;
+	font-weight: 600;
+	display: block;
 }
 
 .search-select-tag-info, .search-select-word-info {
@@ -635,7 +651,7 @@
 .search-results-wrapper, .search-no-result-wrapper, .search-records-wrapper, .search-get-start-wrapper {
 	flex: 1 1 0%;
 	position: relative;
-	z-index: 1;
+	/*z-index: 1;*/
 	min-height: 1px;
 	height: 100%;
 	margin: 5px 2px 5px 0px;
@@ -1396,7 +1412,7 @@
 	letter-spacing: 1px;
 	font-size: 1.4rem;
 	font-weight: 400; 	
-	z-index: 10;
+	z-index: 8;
 	pointer-events: none;
 	
 	-webkit-animation-duration: 0.4s;
@@ -1492,6 +1508,8 @@
 	font-weight: 400;
 	color: #ececec;
 	visibility: hidden;
+
+    z-index: 10;
 }
 
 .small-tip-wrapper {

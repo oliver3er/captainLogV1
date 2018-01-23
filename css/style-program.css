@@ -62,3 +62,28 @@
 	background : rgba(255,172,191,1);
 	text-decoration: underline;
 }
+
+
+
+/* CSS for datepicker */
+.react-datepicker__current-month, .react-datepicker-time__header {
+	margin-top: 0;
+	color: #000;
+	font-weight: bold;
+	font-size: 1.244rem; 
+}
+
+.react-datepicker__month-container {
+  float: left; 
+}
+
+.react-datepicker {
+	margin-top : 10px;
+	font-size: 1.2rem;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day, .react-datepicker__time-name {
+  width: 3rem;
+  line-height: 2.2rem;
+  margin: 0.166rem; }
