@@ -158,8 +158,11 @@
 	cursor: pointer;
 }
 
+
 .search-tag .search-tag-type {
 	padding: 0 11px;
+	/* add by deanchen */
+	cursor : pointer;
 	border-right: 1px solid rgba(31,33,38,.5);
 }
 .search-tag.search-tag-plus .search-tag-type:after {
@@ -191,6 +194,7 @@
 	font-size: 1.6rem;
 	font-weight: 500;
 	height: 100%;
+	cursor : pointer;
 }
 
 .search-tag-content>div {
@@ -225,6 +229,11 @@
 	color: #ececec;
 	font-weight: 500;
 	margin: 0 6px;
+	/* add by deanchen */
+	width : 100%;
+	background-color: transparent;
+	border: none;
+	outline: none;
 }
 
 /*****************select tag dialog for search  begin*****************/

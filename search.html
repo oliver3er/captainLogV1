@@ -189,7 +189,7 @@
                 "</div>";
             $(".search-inputbox").append(tagStr1);
 
-            var wordStr = "<div class='search-key-words'>Logger</div>" ;
+			var wordStr = "<input class='search-key-words' value='Logger ' />" ;
 			$(".search-inputbox").append(wordStr);
 
 
@@ -460,7 +460,7 @@
 						</div>
 						
 						<div class="search-inputbox-wrapper">
-							<div class="search-inputbox" contenteditable="true"></div>
+							<div class="search-inputbox" ></div>
 							<div class="search-input-btn">
 								<!--div class="search-inputbox-delete-btn"></div-->
 								<div class="search-inputbox-search-icon"></div>
@@ -611,7 +611,7 @@
 
 
 					<!--搜索结果显示部分-->
-					<div class="search-results-wrapper search-no-result"><!--search-no-result-->
+					<div class="search-results-wrapper "><!--search-no-result-->
 						<div class="search-results view-list">
 							<div class="search-result-item-wrapper">
 								<div class="search-result-item">
@@ -686,7 +686,7 @@
 
 
 					<!--0 search result display part-->
-					<div class="search-no-result-wrapper">
+					<div class="search-no-result-wrapper" style='display:none' >
 						<div class="search-results-nothing">
 							<div class="search-results-nothing-pic"></div>
 							<p>We have searched the entire galaxy,
