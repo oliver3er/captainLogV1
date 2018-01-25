@@ -2902,7 +2902,9 @@ li {
 	display: flex;
 }
 
-.tag-setting-colors div {
+/* change by deanchen 
+.tag-setting-colors div {*/
+.tag-setting-colors .color-box {
 	width: 24px;
 	height: 24px;
 	margin-left: 10px;
