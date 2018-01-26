@@ -953,6 +953,7 @@ li {
 
 /*added by dean: add a div above widgets-content-btns-bar and widgets-content-main */
 .widgets-container {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -961,14 +962,153 @@ li {
 	min-height: 0px;
 }
 
-.widgets-content-btns-bar {
+/*.widgets-content-btns-bar {
 	display: flex;
 	justify-content: flex-end;
 	flex-shrink: 0;
 	align-items: center;
 	height: 50px;
 	margin-right: 20px;
+}*/
+
+.widgets-content-btns-bar {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	margin-right: 20px;
 }
+
+.widgets-map-view-type {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #3e4146;
+	border-radius: 4px;
+	-webkit-transition: width .15s cubic-bezier(0.41, 0.8, 0.88, 1.1);
+	-moz-transition: width .15s cubic-bezier(0.41, 0.8, 0.88, 1.1);
+	transition: width .15s cubic-bezier(0.41, 0.8, 0.88, 1.1);
+}
+
+.widgets-map-view-type > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 28px;
+	border-radius: 4px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: auto 20px;
+	cursor: pointer;
+}
+
+.map-view-type1 {
+	width: 28px;
+	background-color: #292b30;
+	background-image: url('../images/map-view1.svg');
+	z-index: 1;
+}
+
+.widgets-map-view-type:hover {
+	width: 60px;
+}
+
+.widgets-map-view-type:hover .map-view-type1 {
+	width: 29px;
+}
+
+.widgets-map-view-type:hover .map-view-type2 {
+	-webkit-transform: translateX(29px);
+	-moz-transform: translateX(29px);
+	-ms-transform: translateX(29px);
+	transform: translateX(29px);
+	opacity: 1;
+}
+
+.map-view-type2 {
+	width: 29px;
+	background-color: #2f3236;
+	background-image: url('../images/map-view2.svg');
+	opacity: 0;
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transition: transform .18s cubic-bezier(0.41, 0.8, 0.88, 1.1) .05s, opacity .1s;
+	-moz-transition: transform .18s cubic-bezier(0.41, 0.8, 0.88, 1.1) .05s, opacity .1s;
+	transition: transform .18s cubic-bezier(0.41, 0.8, 0.88, 1.1) .05s, opacity .1s;
+}
+
+.widgets-map-zoom {
+	margin-top: 12px;
+}
+
+.widgets-map-zoom .map-zoom-out, .widgets-map-zoom .map-zoom-in {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 22px;
+	height: 22px;
+	margin-left: 4px;
+	-webkit-border-radius: 11px;
+	-moz-border-radius: 11px;
+	border-radius: 11px;
+	border: 2px solid #3e4146;
+	background-color: #292b30;
+	cursor: pointer;
+	transition: border .15s ease-out;
+}
+
+.map-zoom-out:hover svg *, .map-zoom-in:hover svg *  {
+	fill: #ececec;
+}
+.widgets-map-zoom .map-zoom-out:hover {
+	border-width: 3px;
+}
+
+.widgets-map-zoom .map-zoom-in:hover {
+	border-width: 1px;
+}
+
+
+.widgets-map-zoom .map-zoom-line {
+	margin-left: 13px;
+	width: 4px;
+	height: 6px;
+	background-color: #3e4146;
+}
+
+.widgets-map-zoom .map-zoom-original {
+	width: 30px;
+	height: 30px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	border: 2px solid #3e4146;
+	background-color: #292b30;
+	font-size: 10px;
+	cursor: pointer;
+}
+
+.map-zoom-original svg {
+	transition: transform .3s cubic-bezier(0.22, 0.33, 0.4, 1.38) .1s;
+}
+
+.map-zoom-original:hover svg {
+	-webkit-transform: rotateZ(180deg);
+	-moz-transform: rotateZ(180deg);
+	-ms-transform: rotateZ(180deg);
+	-o-transform: rotateZ(180deg);
+	transform: rotateZ(180deg);
+}
+
+/*
+.map-zoom-original:hover svg * {
+	stroke: #ececec;
+}
+*/
+
 
 .widgets-content-btn-zoom {
 	width: 18px;
@@ -1009,13 +1149,15 @@ li {
 }
 
 .widgets-content-main {
+	display: flex;
+	align-items: center;
 	flex: 1 1 0%;
 	margin-bottom: 8px;
 	min-height: 1px;
 	height: 100%;
 	margin-right: 5px;
-	overflow-y: auto;
-    overflow-x: hidden;
+	/*overflow-y: auto;
+    overflow-x: hidden;*/
 	/*added by dean: for svg text style */
 	font-size : 1.4rem;
 	fill : rgba(233,69,69,1);
