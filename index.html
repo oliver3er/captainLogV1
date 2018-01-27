@@ -35,6 +35,8 @@
 					$(".btn-stretch-svg").css("transition","all .2s cubic-bezier(.23,1,.32,1) .55s");
 					$(".widgets-foot-line").css("width","10px");
 					$(".widgets-foot-line").css("margin-left","0");
+
+					$('.widgets-content-btns-bar').css('z-index','0');
 					
 					setTimeout(function(){
 						$(".widgets-foot-btn-stretch").addClass("widgets-foot-btn-stretch1").removeClass("widgets-foot-btn-stretch");
@@ -49,10 +51,12 @@
 					$(".btn-stretch-svg").css("transition","all .2s cubic-bezier(.23,1,.32,1) .55s");
 					$(".widgets-foot-line").css("width","90%");
 					$(".widgets-foot-line").css("margin-left","5%");
-		
+
+
 					setTimeout(function(){
 						$(".widgets-foot-btn-stretch1").addClass("widgets-foot-btn-stretch").removeClass("widgets-foot-btn-stretch1");
 						$(".widgets-stretch-arrow1").addClass("widgets-stretch-arrow").removeClass("widgets-stretch-arrow1");
+                        $('.widgets-content-btns-bar').css('z-index','1');
 					},600);
 				}
 			});
@@ -515,6 +519,8 @@
 				
 			});
 			//特殊标签-----添加图片标签end
+
+
 	    });
 	</script>
 	
