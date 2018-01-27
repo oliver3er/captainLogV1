@@ -1184,6 +1184,7 @@ li {
 }
 
 .widgets-content-main .map-detail .map-detail-info span:nth-child(2){
+	/*暂时限制一行，可写js限制字数*/
 	white-space: nowrap;
 	text-overflow:ellipsis;
 	-o-text-overflow:ellipsis;
