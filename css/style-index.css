@@ -105,6 +105,8 @@ li {
 .loading-animation {
 	width: 100%;
 	height: 32px;
+	/* add by deanchen */
+	margin : 20px;
 }
 .loading-animation>div {
 	width:32px;
@@ -3562,6 +3564,35 @@ li {
 }
 
 /*message-bar end*/
+
+/*************************** mindmap CSS *********************/
+.mindmap-widget-container {
+	width : 310px;
+	background-image: url(../images/topo-test-bg2.png);
+	overflow : hidden;
+}
+
+.mindmap {
+}
+
+.mindmap .mindmap-node-text-logo {
+	fill : #B8B8B8 !important;
+	font-size : 20px !important;
+	text-anchor : middle;
+	alignment-baseline : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.hashtag-node {
+	cursor : pointer;
+}
+
+.hashtag-node-link {
+	fill : none;
+	stroke-opacity: 0.4;
+}
+/*************************** mindmap CSS end *********************/
+
 
 /****************************tag form begin****************************/
 .tag-form-wrapper {
