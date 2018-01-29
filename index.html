@@ -35,6 +35,8 @@
 					$(".btn-stretch-svg").css("transition","all .2s cubic-bezier(.23,1,.32,1) .55s");
 					$(".widgets-foot-line").css("width","10px");
 					$(".widgets-foot-line").css("margin-left","0");
+
+					$('.widgets-content-btns-bar').css('z-index','0');
 					
 					setTimeout(function(){
 						$(".widgets-foot-btn-stretch").addClass("widgets-foot-btn-stretch1").removeClass("widgets-foot-btn-stretch");
@@ -49,10 +51,12 @@
 					$(".btn-stretch-svg").css("transition","all .2s cubic-bezier(.23,1,.32,1) .55s");
 					$(".widgets-foot-line").css("width","90%");
 					$(".widgets-foot-line").css("margin-left","5%");
-		
+
+
 					setTimeout(function(){
 						$(".widgets-foot-btn-stretch1").addClass("widgets-foot-btn-stretch").removeClass("widgets-foot-btn-stretch1");
 						$(".widgets-stretch-arrow1").addClass("widgets-stretch-arrow").removeClass("widgets-stretch-arrow1");
+                        $('.widgets-content-btns-bar').css('z-index','1');
 					},600);
 				}
 			});
@@ -515,6 +519,8 @@
 				
 			});
 			//特殊标签-----添加图片标签end
+
+
 	    });
 	</script>
 	
@@ -707,17 +713,50 @@
 					
 					<div class='widgets-container'>
 						<div class="widgets-content-btns-bar">
-							<div class="widgets-content-btn-zoom small-grey-plus"></div>
-							<div class="widgets-content-btns-separateline"></div>
-							<div class="widgets-content-btn-zoom0"></div>
-							<div class="widgets-content-btns-separateline"></div>
-							<div class="widgets-content-btn-zoom small-grey-minus"></div>
+							<div class="widgets-map-view-type">
+								<div class="map-view-type1"></div>
+								<div class="map-view-type2"></div>
+							</div>
+							<div class="widgets-map-zoom">
+								<div class="map-zoom-in">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12.001px" viewBox="0.708 0.708 12 12.001" enable-background="new 0.708 0.708 12 12.001" xml:space="preserve">
+									<path fill="#888989" d="M8.051,11.816c0,0.493-0.499,0.894-1.112,0.894H6.478c-0.614,0-1.111-0.4-1.111-0.894V1.603
+										c0-0.494,0.498-0.895,1.111-0.895h0.461c0.615,0,1.112,0.401,1.112,0.895V11.816z"/>
+									<path fill="#888989" d="M11.814,5.366c0.494,0,0.894,0.498,0.894,1.11v0.463c0,0.613-0.399,1.11-0.894,1.11H1.603
+										c-0.495,0-0.895-0.497-0.895-1.11V6.476c0-0.612,0.4-1.11,0.895-1.11H11.814z"/>
+									</svg>
+								</div>
+								<div class="map-zoom-line"></div>
+								<div class="map-zoom-original">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 width="25.75px" height="26px" viewBox="0 0 25.75 26" enable-background="new 0 0 25.75 26" xml:space="preserve">
+									<path fill="none" stroke="#3E4146" stroke-width="2" stroke-miterlimit="10" d="M20.153,7.319c0.671,1.036,1.149,2.22,1.377,3.512
+										c0.638,3.633-0.878,7.146-3.631,9.228"/>
+									</svg>
+
+								</div>
+								<div class="map-zoom-line"></div>
+								<div class="map-zoom-out">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 width="12px" height="2.684px" viewBox="0.71 5.368 12 2.684" enable-background="new 0.71 5.368 12 2.684" xml:space="preserve">
+									<path fill="#888989" d="M11.815,5.368c0.495,0,0.895,0.498,0.895,1.11v0.463c0,0.612-0.399,1.11-0.895,1.11H1.604
+										c-0.494,0-0.895-0.498-0.895-1.11V6.479c0-0.613,0.401-1.11,0.895-1.11H11.815z"/>
+									</svg>
+								</div>
+							</div>
 						</div>
 						<div class="widgets-content-main">
 							<div style="width: 100%;TEXT-ALIGN: center;">
 								<!--思维导图-->
 								<img src="images/topo.png" alt="思维导图" style="margin:20px auto 0;" ／>
 							</div>
+                            <div class="map-detail">
+                                <div class="map-detail-name">DEANCHEN</div>
+                                <div class="map-detail-info"><span>Created at 15/12/2017.</span></br>
+                                    <span>this hashtag is root of others, it means the user.</span></br>
+                                    <span>385 relevant logs.</span>
+                                </div>
+                            </div>
 						</div>
 					</div>
 					
