@@ -1301,6 +1301,11 @@
 	border-radius: 10px;
 }
 
+/* add by deanchen */
+.edit-log-status {
+	cursor : pointer;
+}
+
 .edit-log-dialog-content::-webkit-scrollbar-thumb {
 	border: 3px solid #2b2d32;
 	border-radius: 10px;
@@ -1509,6 +1514,18 @@
 	color: #ececec;
 	visibility: hidden;
 
+    z-index: 10;
+}
+
+/* add by deanchen */
+.small-tip{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: #ececec;
+	visibility: hidden;
     z-index: 10;
 }
 
