@@ -987,6 +987,7 @@ li {
 	border: 1px solid #3e4146;
 	border-radius: 4px;
 	font-size: 10px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.6);
 	-webkit-transition: width .15s cubic-bezier(0.41, 0.8, 0.88, 1.1);
 	-moz-transition: width .15s cubic-bezier(0.41, 0.8, 0.88, 1.1);
 	transition: width .15s cubic-bezier(0.41, 0.8, 0.88, 1.1);
@@ -1072,6 +1073,7 @@ li {
 	border-radius: 11px;
 	border: 2px solid #3e4146;
 	background-color: #292b30;
+    box-shadow: 1px 2px 2px rgba(0,0,0,.6);
 	cursor: pointer;
 	transition: border .15s ease-out;
 }
@@ -1103,6 +1105,7 @@ li {
 	border-radius: 15px;
 	border: 2px solid #3e4146;
 	background-color: #292b30;
+    box-shadow: 1px 2px 2px rgba(0,0,0,.6);
 	font-size: 10px;
 	cursor: pointer;
 }
@@ -1117,6 +1120,55 @@ li {
 	-ms-transform: rotateZ(180deg);
 	-o-transform: rotateZ(180deg);
 	transform: rotateZ(180deg);
+}
+
+
+.map-tag-detail-tip-wrapper {
+    position: absolute;
+    display: none;
+}
+
+.map-tag-detail-tip {
+    width: 190px;
+    height: 106px;
+    box-shadow: 0 0 6px rgba(135,138,146,.65);
+    border: 1px solid rgba(135,138,146,.75);
+    border-radius: 4px;
+    background-color: rgba(40,43,49,1);
+    color: #b8b8b8;
+    overflow: hidden;
+}
+
+.map-tag-detail-name {
+    max-width: 170px;
+    margin: 10px 10px 6px;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    overflow: hidden;
+}
+
+.map-tag-detail-info {
+    margin: 6px 10px 10px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.3rem;
+}
+
+.map-tag-detail-info span {
+    display: inline-block;
+}
+
+.map-tag-detail-info .map-tag-detail-desc {
+    max-width: 170px;
+    max-height: 2.2rem;
+    line-height: 1.3rem;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    overflow: hidden;
 }
 
 /*
@@ -4521,6 +4573,7 @@ li {
 	height: 80px;
 	border: 1px solid #3e4146;
 	border-radius: 4px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.6);
 }
 
 .content-map-view-type > div {
@@ -4573,6 +4626,7 @@ li {
 	border-radius: 14px;
 	border: 3px solid #3e4146;
 	background-color: #292b30;
+    box-shadow: 1px 2px 2px rgba(0,0,0,.6);
 	cursor: pointer;
 	transition: border .15s ease-out;
 }
@@ -4602,6 +4656,7 @@ li {
 	border-radius: 20px;
 	border: 3px solid #3e4146;
 	background-color: #292b30;
+    box-shadow: 1px 2px 2px rgba(0,0,0,.6);
 	cursor: pointer;
 }
 

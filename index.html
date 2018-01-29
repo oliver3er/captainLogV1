@@ -531,6 +531,20 @@
                 $('.widgets-map-view-type .map-view-type1').empty().append(icon2.prop('outerHTML'));
             });
 
+
+            //mindmap 点击节点显示节点信息
+            $('.widgets-content-main').children("div:first-child").bind('click', function(e){
+                var pointerX = e.originalEvent.x;
+                var pointerY = e.originalEvent.y;
+                var detailInfoTip = $('.map-tag-detail-tip-wrapper');
+                var detailInfo = $('.map-tag-detail-tip');
+                detailInfoTip.css('left',pointerX);
+                detailInfoTip.css('top',pointerY);
+                detailInfo.css("border-color","rgba(211,165,112,.75)");
+                detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
+                detailInfoTip.show();
+            });
+
 	    });
 	</script>
 	
@@ -1865,6 +1879,21 @@ test--
 			</div>
 			
 			<!--   tag image dialog end  -->
+
+
+
+            <!--   tag detail info tip in mindmap begin  -->
+            <div class="map-tag-detail-tip-wrapper">
+                <div class="map-tag-detail-tip">
+                    <div class="map-tag-detail-name">#logger</div>
+                    <div class="map-tag-detail-info"><span>Created at 15/12/2017.</span>
+                        <span class="map-tag-detail-desc">this hashtag is root of others, it means the user.</span>
+                        <span>385 relevant logs.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!--   tag detail info dialog in mindmap end  -->
 			
 		</div>
 	</div>
