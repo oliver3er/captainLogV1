@@ -4535,10 +4535,6 @@ li {
 	transition: background-color .15s;
 }
 
-.content-map-view-type > div svg * {
-	transition: all .1s;
-}
-
 .content-map-view-type .selected-type {
 	background-color: #292b30;
 	cursor: default;
