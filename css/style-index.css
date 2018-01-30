@@ -3839,12 +3839,28 @@ input:focus {
 .mindmap {
 }
 
-.mindmap .mindmap-node-text-logo {
+.bubble {
+}
+
+.hashtag-node-text-logo {
 	fill : #B8B8B8 !important;
-	font-size : 20px !important;
+	font-size : 15px !important;
 	text-anchor : middle;
 	alignment-baseline : middle;
 	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.hashtag-node-title {
+	fill : #828282;
+	font-size : 12px;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+	alignment-baseline: middle;
+	text-anchor: start;
+	visibility : hidden;
+}
+
+.mindmap .hashtag-node-title{
+	visibility : visible;
 }
 
 .hashtag-node {
@@ -3855,6 +3871,17 @@ input:focus {
 	fill : none;
 	stroke-opacity: 0.4;
 }
+
+.hashtag-node-tip {
+	position : absolute;
+	background-color : black;
+	opacity : 0.6;
+	border : 1px solid pink;
+	border-radius : 4px;
+	padding : 5px;
+	color : white;
+}
+
 /*************************** mindmap CSS end *********************/
 
 
