@@ -4636,6 +4636,7 @@ input:focus {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 18px;
+	cursor: pointer;
 }
 
 .mind-map-content-wrapper {
