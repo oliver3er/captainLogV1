@@ -5091,8 +5091,9 @@ input:focus {
     transform: rotate(-307deg);
 }
 
-.tag-menu-valid-btn svg * {
-    fill: #43464C;
+.tag-menu-invalid-btn svg * {
+    fill: #7a7c7f;
+    cursor: default;
 }
 
 

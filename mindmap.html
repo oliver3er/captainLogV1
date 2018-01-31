@@ -71,9 +71,9 @@
                     tagDialog.removeClass("dialog-close").removeClass("dialog-open");
                     tagDialog.addClass("dialog-close");
                 }else if($(this).val()=='valid'){
-                    $('.tag-menu-icon-paste').addClass('tag-menu-valid-btn');
+                    $('.tag-menu-icon-paste').removeClass('tag-menu-invalid-btn');
                 }else if($(this).val()=='invalid'){
-                    $('.tag-menu-icon-paste').removeClass('tag-menu-valid-btn');
+                    $('.tag-menu-icon-paste').addClass('tag-menu-invalid-btn');
                 }
 
             });
@@ -491,12 +491,12 @@
                     </svg>
                 </li>
 
-                <li class="tag-menu-icon-paste">
+                <li class="tag-menu-icon-paste tag-menu-invalid-btn">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              width="26px" height="26px" viewBox="0 0 34.993 35.068" enable-background="new 0 0 34.993 35.068" xml:space="preserve">
-                        <path fill="#7a7c7f" d="M32.369,23.812H13.807c-1.447,0-2.625-1.178-2.625-2.625V2.625C11.182,1.178,12.359,0,13.807,0h18.562
+                        <path fill="#43464C" d="M32.369,23.812H13.807c-1.447,0-2.625-1.178-2.625-2.625V2.625C11.182,1.178,12.359,0,13.807,0h18.562
                             c1.446,0,2.624,1.178,2.624,2.625v18.562C34.993,22.635,33.815,23.812,32.369,23.812z M14.432,20.562h17.312V3.25H14.432V20.562z"/>
-                        <path fill="#7a7c7f" d="M20.562,35.068h-0.441v-2h2.441C22.562,34.172,21.665,35.068,20.562,35.068z M18.108,35.068h-2.013v-2h2.013
+                        <path fill="#43464C" d="M20.562,35.068h-0.441v-2h2.441C22.562,34.172,21.665,35.068,20.562,35.068z M18.108,35.068h-2.013v-2h2.013
                             V35.068z M14.083,35.068H12.07v-2h2.013V35.068z M10.058,35.068H8.045v-2h2.013V35.068z M6.032,35.068H4.02v-2h2.013V35.068z
                              M2.007,35.068H2c-1.103,0-2-0.896-2-2v-0.435h2L2.007,35.068z M22.562,31.029h-2v-2.013h2V31.029z M2,30.621H0v-2.014h2V30.621z
                              M22.562,27.004h-2v-2.013h2V27.004z M2,26.596H0v-2.014h2V26.596z M22.562,22.979h-2v-2.013h2V22.979z M2,22.57H0v-2.014h2V22.57z
