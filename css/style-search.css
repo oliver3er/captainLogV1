@@ -596,6 +596,25 @@
 	margin-left: 55px;
 }
 
+.date-range-delete-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background-color: rgba(147,147,147,.15);
+	margin-left: 2px;
+}
+
+.date-range-delete-btn:hover {
+	background-color: rgba(147,147,147,.4);
+}
+
+.date-range-delete-btn:hover svg * {
+	stroke: #6a6a6a;
+}
+
 .search-setting-value-footer {
 	flex-shrink: 0;
 	display: flex;
