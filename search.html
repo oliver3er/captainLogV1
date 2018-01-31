@@ -236,18 +236,24 @@
         });
 
 
-        //mindmap 点击节点显示节点信息
-        $('.widgets-content-main').children("div:first-child").bind('click', function(e){
-            var pointerX = e.originalEvent.x;
-            var pointerY = e.originalEvent.y;
+        $('#open-close-tag-info-tip').bind('change',function(){
             var detailInfoTip = $('.map-tag-detail-tip-wrapper');
             var detailInfo = $('.map-tag-detail-tip');
-            detailInfoTip.css('left',pointerX);
-            detailInfoTip.css('top',pointerY);
-            detailInfo.css("border-color","rgba(211,165,112,.75)");
-            detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
-            detailInfoTip.show();
+            if($(this).val()=='open'){
+                detailInfoTip.css('left','140px');
+                detailInfoTip.css('top','200px');
+                detailInfo.css("border-color","rgba(211,165,112,.75)");
+                detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
+
+                detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                detailInfoTip.addClass("dialog-open");
+            }else if ($(this).val()=='close'){
+                detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                detailInfoTip.addClass("dialog-close");
+            }
         });
+
+
 	});
 
 	</script>
@@ -1252,5 +1258,12 @@
     </div>
 
     <!--   tag detail info dialog in mindmap end  -->
+
+    <div style="position:absolute; top: 30px;left: 150px;">
+        <select id="open-close-tag-info-tip" style="height: 30px;">
+            <option value="close">close the tag's info tip</option>
+            <option value="open">show the tag's info tip</option>
+        </select>
+    </div>
 </body>
 </html>

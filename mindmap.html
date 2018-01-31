@@ -21,24 +21,91 @@
             });
 
 
-            //mindmap 点击节点显示节点信息
-            $('.mind-map-content-wrapper').children("div:first-child").bind('click', function(e){
-                var pointerX = e.originalEvent.x;
-                var pointerY = e.originalEvent.y;
+            $('#open-close-tag-info-tip').bind('change',function(){
                 var detailInfoTip = $('.map-tag-detail-tip-wrapper');
                 var detailInfo = $('.map-tag-detail-tip');
-                detailInfoTip.css('left',pointerX);
-                detailInfoTip.css('top',pointerY);
-                detailInfo.css("border-color","rgba(211,165,112,.75)");
-                detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
-                detailInfoTip.show();
+                if($(this).val()=='open'){
+                    detailInfoTip.css('left','140px');
+                    detailInfoTip.css('top','200px');
+                    detailInfo.css("border-color","rgba(211,165,112,.75)");
+                    detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
+
+                    detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                    detailInfoTip.addClass("dialog-open");
+                }else if ($(this).val()=='close'){
+                    detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                    detailInfoTip.addClass("dialog-close");
+                }
             });
 
 
+            $('#open-close-tag-dialog').bind('change',function(){
+                var tagDialog = $('.map-tag-dialog-wrapper');
+                var addTagDialog = $('.map-tag-add-dialog-wrapper');
+                if($(this).val()=='open'){
+                    tagDialog.css('left','140px');
+                    tagDialog.css('top','200px');
+                    addTagDialog.css("border-color","rgba(211,165,112,.75)");
+                    addTagDialog.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
+
+                    tagDialog.removeClass("dialog-close").removeClass("dialog-open");
+                    tagDialog.addClass("dialog-open");
+
+                    $('.map-tag-add-input').focus();
+                }else if($(this).val()=='close'){
+                    tagDialog.removeClass("dialog-close").removeClass("dialog-open");
+                    tagDialog.addClass("dialog-close");
+                }
+
+            });
+
+
+
+
+            $('#map-tag-add-next').bind('click', function(){
+                //$('.map-tag-add-existed').removeClass("map-tag-add-dialog-hide");
+                //$('.map-tag-add-existed').addClass("map-tag-add-dialog-show");
+
+                $('.map-tag-add-new').removeClass("map-tag-add-dialog-hide");
+                $('.map-tag-add-new').addClass("map-tag-add-dialog-show");
+
+                $('.map-tag-add').css('transform','translateX(-100%)').css('visibility','hidden').css('z-index','0');
+            });
+
+
+            $('.dialog-btn-back-wrapper .btn-back').bind('click', function(){
+                var existTagDialog = $('.map-tag-add-existed');
+                var newTagDialog = $('.map-tag-add-new');
+                if(existTagDialog.hasClass('map-tag-add-dialog-show')) {
+                    $('.map-tag-add').css('transform','translateX(0)').css('visibility','visible').css('z-index','2');
+                    existTagDialog.addClass("map-tag-add-dialog-hide");
+                    existTagDialog.removeClass("map-tag-add-dialog-show");
+                }
+                if(newTagDialog.hasClass('map-tag-add-dialog-show')) {
+                    $('.map-tag-add').css('transform','translateX(0)').css('visibility','visible').css('z-index','2');
+                    newTagDialog.addClass("map-tag-add-dialog-hide");
+                    newTagDialog.removeClass("map-tag-add-dialog-show");
+                }
+            });
         });
     </script>
 </head>
 <body>
+
+<div style="position:absolute; top: 30px;left: 150px;">
+    <select id="open-close-tag-info-tip" style="height: 30px;">
+        <option value="close">close the tag's info tip</option>
+        <option value="open">show the tag's info tip</option>
+    </select>
+
+
+    <select id="open-close-tag-dialog" style="height: 30px;">
+        <option value="close">close add tag dialog </option>
+        <option value="open">show add tag dialog</option>
+    </select>
+</div>
+
+
 <div>
     <div class="index-page dark-style">
         <!----------------left1 begin----------------->
@@ -347,17 +414,91 @@
             </div>
         </div>
     </div>
-
     <!--   tag detail info dialog in mindmap end  -->
 
 
     <!--   tag menu dialog in mindmap begin  -->
-    <div class="map-tag-menu-wrapper">
+    <div class="map-tag-menu-dialog-wrapper">
         <div class="map-tag-menu">
 
         </div>
     </div>
-
     <!--   tag menu dialog in mindmap end  -->
+
+    <!--   tag add dialog in mindmap begin  -->
+    <div class="map-tag-dialog-wrapper">
+        <div class="map-tag-add-dialog-wrapper">
+        <div class="map-tag-add-dialog map-tag-add">
+            <div class="map-tag-add-dialog-main">
+                <div class="map-tag-add-dialog-title">
+                    <div><span>ADD A HASHTAG</span><span>relevated to #技术线</span></div>
+                </div>
+                <div class="map-tag-add-dialog-content">
+                    <div class="map-tag-add-input-name">
+                        <span class="map-tag-add-sign">#</span>
+                        <input class="map-tag-add-input"/>
+                    </div>
+                </div>
+            </div>
+            <div class="map-tag-add-dialog-footer">
+                <div class="btn-cancle"><span>Cancel</span></div>
+                <div id="map-tag-add-next" class="btn-ok">Next</div>
+            </div>
+
+        </div>
+
+        <div class="map-tag-add-dialog map-tag-add-existed">
+            <div class="map-tag-add-dialog-main">
+                <div class="map-tag-add-dialog-title">
+                    <div><span>ADD A HASHTAG</span><span>relevated to #技术线</span></div>
+                </div>
+                <div class="map-tag-add-dialog-content">
+                    <div class="map-tag-add-info">
+                        <div class="map-tag-add-existed-name">
+                            <div>#logger</div>
+                            <div>Setting</div>
+                        </div>
+                        <div class="map-tag-add-existed-desc">
+                            is a tool, with it noting people’s everything.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-tag-add-dialog-footer">
+                <div class="dialog-btn-back-wrapper">
+                    <div class="btn-back"><span>BACK</span></div>
+                </div>
+                <div class="btn-cancle"><span>Cancel</span></div>
+                <div class="btn-ok">OK</div>
+            </div>
+        </div>
+
+        <div class="map-tag-add-dialog map-tag-add-new">
+            <div class="map-tag-add-dialog-main">
+                <div class="map-tag-add-dialog-title">
+                    <div><span>ADD A HASHTAG</span><span>relevated to #技术线</span></div>
+                </div>
+                <div class="map-tag-add-dialog-content">
+                    <div class="map-tag-add-info">
+                        <div class="map-tag-add-name">
+                            <div>#logger</div>
+                        </div>
+                        <div class="map-tag-add-desc">
+                            is a tool, with it noting people’s everything.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-tag-add-dialog-footer">
+                <div class="dialog-btn-back-wrapper">
+                    <div class="btn-back"><span>BACK</span></div>
+                </div>
+                <div class="btn-cancle"><span>Cancel</span></div>
+                <div class="btn-ok">OK</div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--   tag add dialog in mindmap end  -->
 </body>
 </html>

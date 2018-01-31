@@ -1135,10 +1135,32 @@ input:focus {
 }
 
 
-.map-tag-detail-tip-wrapper {
+.map-tag-dialog-wrapper, .map-tag-detail-tip-wrapper {
     position: absolute;
-    display: none;
+	visibility: hidden;
+
+	-webkit-animation-duration: 0.1s;
+	animation-duration: 0.1s;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
 }
+
+.dialog-open.map-tag-dialog-wrapper, .dialog-open.map-tag-detail-tip-wrapper {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	animation-timing-function: ease-out;
+	animation-duration: .1s;
+	pointer-events: auto;
+}
+
+.dialog-close.map-tag-dialog-wrapper, .dialog-close.map-tag-detail-tip-wrapper {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.2s;
+	animation-duration: 0.2s;
+	pointer-events: none;
+}
+
 
 .map-tag-detail-tip {
     width: 190px;
@@ -3368,7 +3390,33 @@ input:focus {
 	border-bottom: 2px solid rgba(84,84,84,.9);
 }
 
+.btn-back {
+	padding: 10px 1px 8px;
+	color: rgba(196,200,209,.6);
+	font-weight: 500;
+	font-size: 1.2rem;
+	cursor: pointer;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 
+	border-bottom: 2px solid rgba(196,200,209,0);
+	transition: border .17s ease;
+}
+
+.btn-back:before {
+	background: url('../images/back-arrow2.svg') no-repeat left center;
+	-webkit-background-size: 18px,12px;
+	background-size: 18px,12px;
+	content: " ";
+	margin-right: 6px;
+	padding-right: 18px;
+}
+
+.btn-back:hover {
+	color: rgba(196,200,209,1);
+	border-bottom: 2px solid rgba(196,200,209,.5);
+}
 
 
 .tag-setting-base-info-backdrop {
@@ -3488,7 +3536,7 @@ input:focus {
 	animation-fill-mode: forwards;
 }
 
-.message-dialog-open.message-dialog {
+.dialog-open.message-dialog {
 	-webkit-animation-name: dialog-anim-open;
 	animation-name: dialog-anim-open;
 	/*-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
@@ -3498,11 +3546,11 @@ input:focus {
 	pointer-events: auto;
 }
 
-.message-dialog-close.message-dialog {
+.dialog-close.message-dialog {
 	-webkit-animation-name: dialog-anim-close;
 	animation-name: dialog-anim-close;
-	-webkit-animation-duration: 0.2s;
-	animation-duration: 0.2s;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: 0.1s;
 	pointer-events: none;
 }
 
@@ -4738,5 +4786,225 @@ input:focus {
     box-shadow: 1px 2px 2px rgba(0,0,0,.6);
 	cursor: pointer;
 }
+
+
+/****add tag dialog in mindmap begin****/
+.map-tag-add-dialog-wrapper {
+	position: relative;
+	width: 320px;
+	height: 180px;
+	box-shadow: 0 0 6px rgba(135, 138, 146, .65);
+	border: 1px solid rgba(135, 138, 146, .75);
+	border-radius: 4px;
+	overflow: hidden;
+	background-color: rgba(40, 43, 49, 1);
+}
+
+.map-tag-add-dialog {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(40, 43, 49, 1);
+	color: #b8b8b8;
+	overflow: hidden;
+}
+
+.map-tag-add {
+	position: absolute;
+	transition: all .3s ease-in-out;
+}
+
+.map-tag-add-dialog-main {
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: flex-start;
+	 align-items: stretch;
+	 flex: 1 1 auto;
+	 min-height: 0px;
+	 background-color: #2b2d32;
+}
+
+.map-tag-add-dialog-title {
+	flex-shrink: 0;
+	height: 50px;
+	width: 100%;
+	background-color: #33353b;
+	border-bottom: 1px solid rgba(0,0,0,.42);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+	box-shadow: 0 1px 2px rgba(0,0,0,.25);
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	overflow: hidden;
+	cursor: default;
+}
+
+.map-tag-add-dialog-title div {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.map-tag-add-dialog-title div span:nth-child(1) {
+	margin-left: 14px;
+	margin-right: 4px;
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: #ececec;
+}
+
+.map-tag-add-dialog-title div span:nth-child(2) {
+	max-width: 180px;
+	margin-left: 4px;
+	margin-right: 10px;
+	font-weight: 400;
+	color: #72757a;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	overflow: hidden;
+}
+
+.map-tag-add-dialog-content {
+	flex: 1 1 0%;
+	min-height: 1px;
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.map-tag-add-input-name {
+	margin-top: 20px;
+	margin-left: 14px;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: #ececec;
+	letter-spacing: 1px;
+}
+
+.map-tag-add-sign {
+	font-size: 1.6rem;
+	margin-right: 6px;
+}
+
+.map-tag-add-input {
+	width: 266px;
+	height: 30px;
+	padding-left: 4px;
+	padding-right: 2px;
+	border-radius: 4px;
+	border: 1px solid rgba(184,184,184,.3);
+	background-color: rgba(33,34,38,.2);
+	letter-spacing: 1px;
+	overflow: hidden;
+	transition: all .15s ease-out;
+}
+
+.map-tag-add-input:hover {
+	border: 1px solid rgba(184,184,184,.45);
+}
+
+.map-tag-add-input:focus {
+	background-color: rgba(33,34,38,.3);
+	border: 1px solid rgba(112, 156, 238, .8);
+	box-shadow: 0 0 1px rgba(112, 156, 238, .2);
+}
+
+.map-tag-add-dialog-footer {
+	flex-shrink: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: 18px;
+	height: 42px;
+	background-color: #212226;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.map-tag-add-dialog-footer .btn-cancle {
+	padding: 8px 16px;
+}
+
+.map-tag-add-dialog-footer .btn-ok {
+	padding: 8px 16px;
+}
+
+.dialog-btn-back-wrapper {
+	width: 100%;
+	flex-shrink: 1;
+}
+
+.map-tag-add-dialog-footer .btn-back {
+	margin-left: 14px;
+	display: inline-block;
+}
+
+
+.map-tag-add-existed, .map-tag-add-new {
+	position: absolute;
+	left: 318px;
+	top: 0;
+	visibility: hidden;
+	z-index: 1;
+	transition: all .3s ease-in-out;
+}
+
+.map-tag-add-existed.map-tag-add-dialog-show, .map-tag-add-new.map-tag-add-dialog-show{
+	 visibility: visible;
+	 transform: translateX(-318px);
+ }
+
+.map-tag-add-existed.map-tag-add-dialog-hide, .map-tag-add-new.map-tag-add-dialog-hide{
+	visibility: hidden;
+	transform: translateX(0);
+}
+
+
+.map-tag-add-name {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
+	margin-left: 14px;
+	margin-right: 18px;
+}
+
+.map-tag-add-name div:nth-child(1) {
+	font-size: 1.6rem;
+	color: #ececec;
+	letter-spacing: 1px;
+}
+
+.map-tag-add-name div:nth-child(2) {
+	font-size: 1.4rem;
+	color: #009cf5;
+	cursor: pointer;
+}
+
+.map-tag-add-name div:nth-child(2):hover {
+	border-bottom: 1px solid #009cf5;
+}
+
+.map-tag-add-desc {
+	max-height: 3rem;
+	margin-left: 14px;
+	margin-right: 18px;
+	color: #72757a;
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 1.5rem;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+}
+
+.map-tag-add-new .map-tag-add-desc {
+	color: #ececec;
+}
+
+
+/****add tag dialog in mindmap end****/
+
 
 /** mind map page end**/
