@@ -1135,17 +1135,16 @@ input:focus {
 }
 
 
-.map-tag-dialog-wrapper, .map-tag-detail-tip-wrapper {
+.map-tag-dialog-wrapper, .map-tag-detail-tip-wrapper, .map-tag-menu-dialog-wrapper {
     position: absolute;
 	visibility: hidden;
 
-	-webkit-animation-duration: 0.1s;
-	animation-duration: 0.1s;
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 }
 
-.dialog-open.map-tag-dialog-wrapper, .dialog-open.map-tag-detail-tip-wrapper {
+.dialog-open.map-tag-dialog-wrapper, .dialog-open.map-tag-detail-tip-wrapper,
+.dialog-open.map-tag-menu-dialog-wrapper {
 	-webkit-animation-name: dialog-anim-open;
 	animation-name: dialog-anim-open;
 	animation-timing-function: ease-out;
@@ -1153,7 +1152,8 @@ input:focus {
 	pointer-events: auto;
 }
 
-.dialog-close.map-tag-dialog-wrapper, .dialog-close.map-tag-detail-tip-wrapper {
+.dialog-close.map-tag-dialog-wrapper, .dialog-close.map-tag-detail-tip-wrapper,
+.dialog-close.map-tag-menu-dialog-wrapper{
 	-webkit-animation-name: dialog-anim-close;
 	animation-name: dialog-anim-close;
 	-webkit-animation-duration: 0.2s;
@@ -5004,8 +5004,101 @@ input:focus {
 	color: #ececec;
 }
 
-
 /****add tag dialog in mindmap end****/
+
+/****tag menu in mindmap begin****/
+.map-tag-menu-dialog {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    background: url('../images/tag-menu-bg.svg') no-repeat center center;
+    -webkit-background-size: 160px;
+    background-size: 160px;
+}
+
+.map-tag-menu-dialog li {
+    position: absolute;
+    left: 50%;
+    top: -6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+    margin-left: -23px;
+    margin-right: -23px;
+    border-radius: 50%;
+    border: 2px solid #dcdcdd;
+    background: #b3b7bd;
+    transform-origin: 23px 80px;
+    cursor: pointer;
+    transition: background .1s ease,border .1s ease;
+}
+
+.map-tag-menu-dialog li:hover {
+    border-color: #fff;
+    background-color: #bfc1c5;
+    width: 47px;
+    height: 47px;
+}
+
+.map-tag-menu-dialog li:nth-child(2) {
+    transform: rotate(53deg);
+    left: 84px;
+}
+.map-tag-menu-dialog li:nth-child(2) svg{
+    transform: rotate(-53deg);
+    left: 84px;
+}
+.map-tag-menu-dialog li:nth-child(3) {
+    transform: rotate(106deg);
+    left: 87px;
+    top: -4px;
+}
+.map-tag-menu-dialog li:nth-child(3) svg {
+    transform: rotate(-106deg);
+}
+.map-tag-menu-dialog li:nth-child(4) {
+    transform: rotate(156deg);
+    top: 4px;
+    left: 85px;
+}
+.map-tag-menu-dialog li:nth-child(4) svg {
+    transform: rotate(-156deg);
+}
+.map-tag-menu-dialog li:nth-child(5) {
+    transform: rotate(204deg);
+    top: 4px;
+    left: 75px;
+}
+.map-tag-menu-dialog li:nth-child(5) svg {
+    transform: rotate(-204deg);
+}
+.map-tag-menu-dialog li:nth-child(6) {
+    transform: rotate(254deg);
+    left: 73px;
+    top: -4px;
+}
+.map-tag-menu-dialog li:nth-child(6) svg {
+    transform: rotate(-254deg);
+}
+.map-tag-menu-dialog li:nth-child(7) {
+    transform: rotate(307deg);
+    left: 76px;
+}
+.map-tag-menu-dialog li:nth-child(7) svg {
+    transform: rotate(-307deg);
+}
+
+.tag-menu-valid-btn svg * {
+    fill: #43464C;
+}
+
+
+/****tag menu in mindmap end****/
+
+
 
 
 /** mind map page end**/
