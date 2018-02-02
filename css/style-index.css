@@ -2393,6 +2393,7 @@ input:focus {
 
 /****************tag image begin****************/
 .tag-image-area {
+	display: table;
 	position: relative;
 	max-width: 540px;
 	max-height: 290px;
