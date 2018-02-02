@@ -236,18 +236,24 @@
         });
 
 
-        //mindmap 点击节点显示节点信息
-        $('.widgets-content-main').children("div:first-child").bind('click', function(e){
-            var pointerX = e.originalEvent.x;
-            var pointerY = e.originalEvent.y;
+        $('#open-close-tag-info-tip').bind('change',function(){
             var detailInfoTip = $('.map-tag-detail-tip-wrapper');
             var detailInfo = $('.map-tag-detail-tip');
-            detailInfoTip.css('left',pointerX);
-            detailInfoTip.css('top',pointerY);
-            detailInfo.css("border-color","rgba(211,165,112,.75)");
-            detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
-            detailInfoTip.show();
+            if($(this).val()=='open'){
+                detailInfoTip.css('left','140px');
+                detailInfoTip.css('top','200px');
+                detailInfo.css("border-color","rgba(211,165,112,.75)");
+                detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
+
+                detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                detailInfoTip.addClass("dialog-open");
+            }else if ($(this).val()=='close'){
+                detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                detailInfoTip.addClass("dialog-close");
+            }
         });
+
+
 	});
 
 	</script>
@@ -660,6 +666,10 @@
 												<div>
 													<input type="text" class="form-input form-input-small form-input-lightbg" name="dateFrom" value="2017-3-10" placeholder="" maxlength="10" />
 												</div>
+                                                <div class="date-range-delete-btn">
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                         width="10px" height="10px" viewBox="0 0 43.443 43.451" enable-background="new 0 0 43.443 43.451" xml:space="preserve"><line fill="none" stroke="#939393" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="39.451" x2="39.443" y2="4"></line><line fill="none" stroke="#939393" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="4.001" x2="39.443" y2="39.451"></line></svg>
+                                                </div>
 											</div>
 											<div class="date-range-selection"><img src="images/date-range1.png"/></div>
 										</div>
@@ -1252,5 +1262,12 @@
     </div>
 
     <!--   tag detail info dialog in mindmap end  -->
+
+    <div style="position:absolute; top: 30px;left: 150px;">
+        <select id="open-close-tag-info-tip" style="height: 30px;">
+            <option value="close">close the tag's info tip</option>
+            <option value="open">show the tag's info tip</option>
+        </select>
+    </div>
 </body>
 </html>

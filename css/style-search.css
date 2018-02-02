@@ -596,6 +596,25 @@
 	margin-left: 55px;
 }
 
+.date-range-delete-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background-color: rgba(147,147,147,.15);
+	margin-left: 2px;
+}
+
+.date-range-delete-btn:hover {
+	background-color: rgba(147,147,147,.4);
+}
+
+.date-range-delete-btn:hover svg * {
+	stroke: #6a6a6a;
+}
+
 .search-setting-value-footer {
 	flex-shrink: 0;
 	display: flex;
@@ -1137,7 +1156,7 @@
 	fill: #aaaaaa;
 }
 
-.search-foot-view>div {
+.search-foot-view .search-foot-view-list, .search-foot-view .search-foot-view-card {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1149,11 +1168,11 @@
 	transition: background-color .15s ,border-color .15s ,color .15s ;
 }
 
-.search-foot-view div:first-child {
+.search-foot-view .search-foot-view-list {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 }
-.search-foot-view div:last-child {
+.search-foot-view .search-foot-view-card {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
@@ -1164,19 +1183,19 @@
 	stroke: inherit;
 }
 
-.search-foot-view>div:not(.search-foot-view-selected):hover {
+.search-foot-view div:not(.search-foot-view-selected):hover {
 	background-color: #323539;
 	border-color: #414449;
 	color: #ececec;
 }
 
-.search-foot-view>div:not(.search-foot-view-selected):active {
+.search-foot-view div:not(.search-foot-view-selected):active {
 	background-color: #2b2e32;
 	border-color: #484b50;
 	color: #ececec;
 }
 
-.search-foot-view>div:hover svg * {
+.search-foot-view div:hover svg * {
 	fill: #ececec;
 }
 

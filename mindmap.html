@@ -21,17 +21,87 @@
             });
 
 
-            //mindmap 点击节点显示节点信息
-            $('.mind-map-content-wrapper').children("div:first-child").bind('click', function(e){
-                var pointerX = e.originalEvent.x;
-                var pointerY = e.originalEvent.y;
+            $('#open-close-tag-info-tip').bind('change',function(){
                 var detailInfoTip = $('.map-tag-detail-tip-wrapper');
                 var detailInfo = $('.map-tag-detail-tip');
-                detailInfoTip.css('left',pointerX);
-                detailInfoTip.css('top',pointerY);
-                detailInfo.css("border-color","rgba(211,165,112,.75)");
-                detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
-                detailInfoTip.show();
+                if($(this).val()=='open'){
+                    detailInfoTip.css('left','140px');
+                    detailInfoTip.css('top','200px');
+                    detailInfo.css("border-color","rgba(211,165,112,.75)");
+                    detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
+
+                    detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                    detailInfoTip.addClass("dialog-open");
+                }else if ($(this).val()=='close'){
+                    detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                    detailInfoTip.addClass("dialog-close");
+                }
+            });
+
+
+            $('#open-close-tag-dialog').bind('change',function(){
+                var tagDialog = $('.map-tag-dialog-wrapper');
+                var addTagDialog = $('.map-tag-add-dialog-wrapper');
+                if($(this).val()=='open'){
+                    tagDialog.css('left','140px');
+                    tagDialog.css('top','200px');
+                    addTagDialog.css("border-color","rgba(211,165,112,.75)");
+                    addTagDialog.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
+
+                    tagDialog.removeClass("dialog-close").removeClass("dialog-open");
+                    tagDialog.addClass("dialog-open");
+
+                    $('.map-tag-add-input').focus();
+                }else if($(this).val()=='close'){
+                    tagDialog.removeClass("dialog-close").removeClass("dialog-open");
+                    tagDialog.addClass("dialog-close");
+                }
+
+            });
+
+
+            $('#open-close-tag-menu').bind('change',function(){
+                var tagDialog = $('.map-tag-menu-dialog-wrapper');
+                if($(this).val()=='open'){
+                    tagDialog.css('left','476px');
+                    tagDialog.css('top','184px');
+                    tagDialog.removeClass("dialog-close").removeClass("dialog-open");
+                    tagDialog.addClass("dialog-open");
+                }else if($(this).val()=='close'){
+                    tagDialog.removeClass("dialog-close").removeClass("dialog-open");
+                    tagDialog.addClass("dialog-close");
+                }else if($(this).val()=='valid'){
+                    $('.tag-menu-icon-paste').removeClass('tag-menu-invalid-btn');
+                }else if($(this).val()=='invalid'){
+                    $('.tag-menu-icon-paste').addClass('tag-menu-invalid-btn');
+                }
+
+            });
+
+            $('#map-tag-add-next').bind('click', function(){
+                //$('.map-tag-add-existed').removeClass("map-tag-add-dialog-hide");
+                //$('.map-tag-add-existed').addClass("map-tag-add-dialog-show");
+
+                $('.map-tag-add-new').removeClass("map-tag-add-dialog-hide");
+                $('.map-tag-add-new').addClass("map-tag-add-dialog-show");
+
+                $('.map-tag-add').css('transform','translateX(-100%)').css('visibility','hidden').css('z-index','0');
+            });
+
+
+            $('.dialog-btn-back-wrapper .btn-back').bind('click', function(){
+                var existTagDialog = $('.map-tag-add-existed');
+                var newTagDialog = $('.map-tag-add-new');
+                if(existTagDialog.hasClass('map-tag-add-dialog-show')) {
+                    $('.map-tag-add').css('transform','translateX(0)').css('visibility','visible').css('z-index','2');
+                    existTagDialog.addClass("map-tag-add-dialog-hide");
+                    existTagDialog.removeClass("map-tag-add-dialog-show");
+                }
+                if(newTagDialog.hasClass('map-tag-add-dialog-show')) {
+                    $('.map-tag-add').css('transform','translateX(0)').css('visibility','visible').css('z-index','2');
+                    newTagDialog.addClass("map-tag-add-dialog-hide");
+                    newTagDialog.removeClass("map-tag-add-dialog-show");
+                }
             });
 
 
@@ -39,6 +109,29 @@
     </script>
 </head>
 <body>
+
+<div style="position:absolute; top: 30px;left: 150px;">
+    <select id="open-close-tag-info-tip" style="height: 30px;">
+        <option value="close">close the tag's info tip</option>
+        <option value="open">show the tag's info tip</option>
+    </select>
+
+
+    <select id="open-close-tag-dialog" style="height: 30px;">
+        <option value="close">close add tag dialog </option>
+        <option value="open">show add tag dialog</option>
+    </select>
+
+    <select id="open-close-tag-menu" style="height: 30px;">
+        <option value="close">close add tag menu </option>
+        <option value="open">show add tag menu</option>
+
+        <option value="valid">copy button is valid</option>
+        <option value="invalid">copy button is invalid</option>
+    </select>
+</div>
+
+
 <div>
     <div class="index-page dark-style">
         <!----------------left1 begin----------------->
@@ -347,17 +440,188 @@
             </div>
         </div>
     </div>
-
     <!--   tag detail info dialog in mindmap end  -->
 
 
     <!--   tag menu dialog in mindmap begin  -->
-    <div class="map-tag-menu-wrapper">
-        <div class="map-tag-menu">
+    <div class="map-tag-menu-dialog-wrapper" style="top: 250px;left: 300px;">
+        <div class="map-tag-menu-dialog">
+            <ul class="map-tag-menu">
+                <li>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="28px" height="30px" viewBox="0 0 33.234 35.786" enable-background="new 0 0 33.234 35.786" xml:space="preserve">
+                        <path fill="#43464C" d="M18.294,0H14.94c-1.232,0-2.233,1.003-2.233,2.236v2.82C10.753,5.654,8.962,6.69,7.47,8.087L5.029,6.672
+                            C4.514,6.375,3.905,6.296,3.333,6.45C2.76,6.603,2.271,6.978,1.975,7.493L0.3,10.401c-0.296,0.515-0.378,1.126-0.223,1.699
+                            c0.155,0.572,0.529,1.063,1.041,1.36l2.439,1.408c-0.464,1.993-0.464,4.066,0,6.058l-2.439,1.409
+                            c-0.512,0.299-0.888,0.788-1.041,1.358c-0.153,0.578-0.073,1.188,0.223,1.7l1.675,2.903c0.298,0.512,0.786,0.892,1.358,1.042
+                            c0.574,0.154,1.183,0.071,1.696-0.226l2.442-1.411c1.492,1.396,3.284,2.429,5.236,3.032v2.817c0,1.232,1.001,2.234,2.234,2.234
+                            h3.354c1.233,0,2.232-1.002,2.232-2.234v-2.817c1.955-0.599,3.74-1.637,5.235-3.032l2.443,1.411c0.513,0.297,1.122,0.38,1.695,0.226
+                            c0.574-0.15,1.061-0.53,1.356-1.042l1.676-2.903c0.295-0.513,0.377-1.122,0.222-1.7c-0.155-0.572-0.529-1.06-1.039-1.358
+                            l-2.438-1.409c0.462-1.991,0.462-4.064,0-6.058l2.438-1.408c0.51-0.297,0.884-0.786,1.039-1.36c0.155-0.575,0.073-1.186-0.222-1.699
+                            l-1.676-2.902c-0.296-0.516-0.783-0.89-1.356-1.043c-0.569-0.153-1.183-0.074-1.695,0.223l-2.443,1.413
+                            c-1.495-1.397-3.28-2.436-5.235-3.036v-2.82C20.528,1.003,19.529,0,18.294,0z M23.647,17.896c0,3.879-3.148,7.031-7.027,7.031
+                            c-3.886,0-7.032-3.146-7.032-7.031s3.146-7.029,7.032-7.029c1.861,0,3.646,0.74,4.968,2.058
+                            C22.91,14.244,23.647,16.034,23.647,17.896z"/>
+                    </svg>
+                </li>
 
+                <li>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="20px" height="20px" viewBox="0 0 28.634 28.633" enable-background="new 0 0 28.634 28.633" xml:space="preserve">
+                        <path fill="#43464C" d="M28.26,2.625c0.451,0.452,0.502,1.135,0.111,1.526L4.152,28.369c-0.391,0.391-1.073,0.342-1.526-0.111
+                            l-2.251-2.25c-0.452-0.453-0.502-1.136-0.112-1.526l24.22-24.218c0.391-0.391,1.072-0.341,1.525,0.112L28.26,2.625z"/>
+                        <path fill="#43464C" d="M2.626,0.375c0.453-0.452,1.135-0.502,1.526-0.111L28.371,24.48c0.391,0.392,0.34,1.074-0.111,1.527
+                            l-2.252,2.25c-0.453,0.453-1.135,0.502-1.525,0.111L0.263,4.151c-0.391-0.391-0.34-1.074,0.112-1.526L2.626,0.375z"/>
+                    </svg>
+                </li>
+
+                <li>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="32px" height="29px" viewBox="0 0 37.418 35.673" enable-background="new 0 0 37.418 35.673" xml:space="preserve">
+                        <path fill="none" stroke="#43464C" stroke-width="3.5" stroke-miterlimit="10" d="M35.668,9.476c-9.586,0-16.993,4.792-16.993,4.792
+                            S11.148,9.476,1.75,9.476c0,0,0,17.987,0,19.606c9.398,0,16.925,4.543,16.925,4.543s7.407-4.543,16.993-4.543
+                            C35.668,25.845,35.668,11.342,35.668,9.476z"/>
+                        <path id="file-sight-movepath" fill="none" stroke="#43464C" stroke-width="2.5" stroke-miterlimit="10" d="M3.866,1.25
+                            c6.118,0.088,14.841,4.418,14.841,4.418s8.932-4.418,14.596-4.415"/>
+                        <path fill="none" stroke="#43464C" stroke-width="2.5" stroke-miterlimit="10" d="M2.341,5.289c7.594,0,16.365,4.419,16.365,4.419
+                            s8.838-4.419,16.37-4.419"/>
+                        <rect x="5.075" y="16.071" fill="none" width="32.028" height="11.579"/>
+                        <text transform="matrix(1 0 0 1 5.0737 25.1655)" fill="#43464C" font-family="'NuevaStd-Bold'" font-size="10.9543">E=MC</text>
+                        <text transform="matrix(1 0 0 1 30.3359 21.5171)" fill="#43464C" font-family="'NuevaStd-Bold'" font-size="6.3863">2</text>
+                    </svg>
+                </li>
+
+                <li class="tag-menu-icon-paste tag-menu-invalid-btn">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="26px" height="26px" viewBox="0 0 34.993 35.068" enable-background="new 0 0 34.993 35.068" xml:space="preserve">
+                        <path fill="#43464C" d="M32.369,23.812H13.807c-1.447,0-2.625-1.178-2.625-2.625V2.625C11.182,1.178,12.359,0,13.807,0h18.562
+                            c1.446,0,2.624,1.178,2.624,2.625v18.562C34.993,22.635,33.815,23.812,32.369,23.812z M14.432,20.562h17.312V3.25H14.432V20.562z"/>
+                        <path fill="#43464C" d="M20.562,35.068h-0.441v-2h2.441C22.562,34.172,21.665,35.068,20.562,35.068z M18.108,35.068h-2.013v-2h2.013
+                            V35.068z M14.083,35.068H12.07v-2h2.013V35.068z M10.058,35.068H8.045v-2h2.013V35.068z M6.032,35.068H4.02v-2h2.013V35.068z
+                             M2.007,35.068H2c-1.103,0-2-0.896-2-2v-0.435h2L2.007,35.068z M22.562,31.029h-2v-2.013h2V31.029z M2,30.621H0v-2.014h2V30.621z
+                             M22.562,27.004h-2v-2.013h2V27.004z M2,26.596H0v-2.014h2V26.596z M22.562,22.979h-2v-2.013h2V22.979z M2,22.57H0v-2.014h2V22.57z
+                             M22.562,18.953h-2V16.94h2V18.953z M2,18.545H0v-2.014h2V18.545z M22.562,14.928h-2v-2.422c1.103,0,2,0.896,2,2V14.928z M0,14.52
+                            v-0.014c0-1.104,0.897-2,2-2h0.429v2L0,14.52z M18.53,14.506h-2.013v-2h2.013V14.506z M14.505,14.506h-2.013v-2h2.013V14.506z
+                             M10.479,14.506H8.467v-2h2.013V14.506z M6.454,14.506H4.441v-2h2.013V14.506z"/>
+                        <rect x="14.229" y="3.216" opacity="0.3" fill="#43464C" width="17.5" height="17.5"/>
+                    </svg>
+                </li>
+                <li>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="28px" height="30px" viewBox="0 0 33 35.112" enable-background="new 0 0 33 35.112" xml:space="preserve">
+                        <g>
+                            <path fill="#43464C" d="M18.212,0c-0.295-0.008-0.555,0.197-0.616,0.486l-3.059,14.508l-13.686-5.7
+                                C0.579,9.181,0.263,9.276,0.101,9.524c-0.162,0.249-0.125,0.577,0.09,0.782l5.101,4.878c1.51,1.131,8.257,4.492,8.257,4.492
+                                l-0.938,4.451C10.194,24.264,8.062,26,7.542,28.479c-0.624,2.978,1.302,5.893,4.245,6.515c2.961,0.623,5.888-1.28,6.514-4.244
+                                c0.025-0.115,0.047-0.231,0.065-0.351c0.313-2.162-0.695-4.238-2.432-5.379l1.599-4.33l4.47,1.137
+                                c-0.052,2.24,1.271,4.318,3.384,5.197c1.354,0.562,2.85,0.565,4.209,0.006c1.354-0.561,2.416-1.613,2.979-2.969
+                                c0.179-0.428,0.301-0.875,0.368-1.329c0.358-2.483-1.01-4.892-3.329-5.863c-2.341-0.971-4.975-0.202-6.46,1.715l-4.195-1.751
+                                c0,0,1.078-7.757,0.977-9.35l-1.129-6.966C18.755,0.226,18.507,0.007,18.212,0z M13.545,26.649c1.626,0.341,2.707,1.93,2.339,3.592
+                                c-0.345,1.633-1.954,2.683-3.585,2.34c-1.561-0.332-2.604-1.823-2.376-3.399c0.008-0.065,0.018-0.128,0.034-0.19
+                                C10.302,27.353,11.912,26.304,13.545,26.649z M28.664,19.15c1.514,0.627,2.275,2.425,1.631,3.96
+                                c-0.311,0.747-0.893,1.328-1.644,1.637c-0.744,0.309-1.571,0.308-2.316-0.004c-1.276-0.533-2.034-1.861-1.839-3.227
+                                c0.037-0.254,0.105-0.5,0.205-0.735C25.348,19.241,27.122,18.508,28.664,19.15z M17.292,17.847c-0.103,0.72-0.771,1.22-1.498,1.115
+                                c-0.72-0.104-1.223-0.774-1.118-1.493c0.103-0.725,0.774-1.225,1.497-1.121C16.899,16.453,17.397,17.125,17.292,17.847z"/>
+                        </g>
+                    </svg>
+                </li>
+                <li>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="24px" height="24px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
+                        <path fill="#43464C" d="M0,3.333V10h3.607V3.667h6.375L10,0H3.334C1.491,0,0,1.491,0,3.333z"/>
+                        <path fill="#43464C" d="M3.607,20.004L0,20v6.667C0,28.508,1.491,30,3.334,30H10l-0.018-3.622H3.607V20.004z"/>
+                        <path fill="#43464C" d="M26.359,26.378h-6.377L20,30h6.668C28.507,30,30,28.508,30,26.667V20l-3.641,0.004V26.378z"/>
+                        <path fill="#43464C" d="M26.667,0H20l-0.018,3.667h6.377V10H30V3.333C30,1.491,28.507,0,26.667,0z"/>
+                    </svg>
+                </li>
+                <li>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 36.25 36.25" enable-background="new 0 0 36.25 36.25" xml:space="preserve">
+<path fill="#43464C" d="M36.25,19.862c0,0.697-0.448,1.263-1,1.263H1c-0.552,0-1-0.566-1-1.263v-3.474c0-0.697,0.448-1.263,1-1.263
+	h34.25c0.552,0,1,0.566,1,1.263V19.862z"/>
+<path fill="#43464C" d="M19.862,0c0.697,0,1.263,0.448,1.263,1v34.25c0,0.553-0.566,1-1.263,1h-3.474c-0.697,0-1.263-0.447-1.263-1
+	V1c0-0.552,0.566-1,1.263-1H19.862z"/>
+</svg>
+                </li>
+            </ul>
         </div>
     </div>
-
     <!--   tag menu dialog in mindmap end  -->
+
+    <!--   tag add dialog in mindmap begin  -->
+    <div class="map-tag-dialog-wrapper">
+        <div class="map-tag-add-dialog-wrapper">
+        <div class="map-tag-add-dialog map-tag-add">
+            <div class="map-tag-add-dialog-main">
+                <div class="map-tag-add-dialog-title">
+                    <div><span>ADD A HASHTAG</span><span>relevated to #技术线</span></div>
+                </div>
+                <div class="map-tag-add-dialog-content">
+                    <div class="map-tag-add-input-name">
+                        <span class="map-tag-add-sign">#</span>
+                        <input class="map-tag-add-input"/>
+                    </div>
+                </div>
+            </div>
+            <div class="map-tag-add-dialog-footer">
+                <div class="btn-cancle"><span>Cancel</span></div>
+                <div id="map-tag-add-next" class="btn-ok">Next</div>
+            </div>
+
+        </div>
+
+        <div class="map-tag-add-dialog map-tag-add-existed">
+            <div class="map-tag-add-dialog-main">
+                <div class="map-tag-add-dialog-title">
+                    <div><span>ADD A HASHTAG</span><span>relevated to #技术线</span></div>
+                </div>
+                <div class="map-tag-add-dialog-content">
+                    <div class="map-tag-add-info">
+                        <div class="map-tag-add-existed-name">
+                            <div>#logger</div>
+                            <div>Setting</div>
+                        </div>
+                        <div class="map-tag-add-existed-desc">
+                            is a tool, with it noting people’s everything.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-tag-add-dialog-footer">
+                <div class="dialog-btn-back-wrapper">
+                    <div class="btn-back"><span>BACK</span></div>
+                </div>
+                <div class="btn-cancle"><span>Cancel</span></div>
+                <div class="btn-ok">OK</div>
+            </div>
+        </div>
+
+        <div class="map-tag-add-dialog map-tag-add-new">
+            <div class="map-tag-add-dialog-main">
+                <div class="map-tag-add-dialog-title">
+                    <div><span>ADD A HASHTAG</span><span>relevated to #技术线</span></div>
+                </div>
+                <div class="map-tag-add-dialog-content">
+                    <div class="map-tag-add-info">
+                        <div class="map-tag-add-name">
+                            <div>#logger</div>
+                        </div>
+                        <div class="map-tag-add-desc">
+                            is a tool, with it noting people’s everything.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-tag-add-dialog-footer">
+                <div class="dialog-btn-back-wrapper">
+                    <div class="btn-back"><span>BACK</span></div>
+                </div>
+                <div class="btn-cancle"><span>Cancel</span></div>
+                <div class="btn-ok">OK</div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--   tag add dialog in mindmap end  -->
 </body>
 </html>
