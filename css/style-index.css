@@ -2536,7 +2536,7 @@ input:focus {
 	padding-right: 1px;
 	color: rgb(31,183,88);
 	background-color: rgba(31,183,88,.1);
-	line-height: 1.7rem;
+	line-height: 1.58rem;
 	cursor: pointer;
 	transition: background-color .1s ,color .1s ;
 }
@@ -2567,12 +2567,12 @@ input:focus {
 	background-image: url('../images/timer.svg');
 	background-repeat: no-repeat;
 	background-position: 3px 0px;
-	background-size: auto 21px;
+	background-size: auto 20px;
 	padding-left: 22px;
-	padding-right: 1px;
+	padding-right: 2px;
 	color: rgb(25,186,249);
 	background-color: rgba(25,186,249,.1);/*rgba(156,235,255,.1);*/
-	line-height: 1.7rem;
+	line-height: 1.58rem;
 	cursor: pointer;
 	transition: background-color .1s ,color .1s ;
 }
