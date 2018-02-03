@@ -87,3 +87,9 @@
   width: 3rem;
   line-height: 2.2rem;
   margin: 0.166rem; }
+
+/* override the highlight CSS */
+.hljs{padding:initial;}
+
+
+

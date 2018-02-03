@@ -2045,6 +2045,13 @@ input:focus {
 	color: #b8b8b8;
 }
 
+/* add by deanchen ,specific CSS style for tags like : todo ,run */
+.log-item-tag-words-specific {
+	display: inline-block;
+	padding: 0 2px;
+	font-weight: 400;
+}
+
 /* change: from log-item-detail to content-log-item */
 /*.content-log-item .log-item-tag-words {
 	font-size: 1.4rem;
