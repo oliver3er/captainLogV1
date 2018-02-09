@@ -1138,7 +1138,8 @@ input:focus {
 .map-tag-dialog-wrapper, .map-tag-detail-tip-wrapper, .map-tag-menu-dialog-wrapper {
     position: absolute;
 	visibility: hidden;
-
+	/* add by deanchen */
+	z-index : 9;
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 }
@@ -3902,6 +3903,14 @@ input:focus {
 
 .hashtag-node-text-logo {
 	fill : #B8B8B8 !important;
+	font-size : 20px !important;
+	text-anchor : middle;
+	alignment-baseline : middle;
+	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.hashtag-node-text-logo-widget {
+	fill : #B8B8B8 !important;
 	font-size : 15px !important;
 	text-anchor : middle;
 	alignment-baseline : middle;
@@ -3909,6 +3918,15 @@ input:focus {
 }
 
 .hashtag-node-title {
+	fill : #828282;
+	font-size : 16px;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+	alignment-baseline: hanging;
+	text-anchor: middle;
+	visibility : hidden;
+}
+
+.hashtag-node-title-widget {
 	fill : #828282;
 	font-size : 12px;
 	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
