@@ -1537,7 +1537,7 @@
 	color: #ececec;
 	visibility: hidden;
 
-    z-index: 10;
+    z-index: 1000;
 }
 
 /* add by deanchen */
