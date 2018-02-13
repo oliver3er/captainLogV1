@@ -158,6 +158,56 @@ input:focus {
 	display: flex;
 }
 
+/***************menu style begin*****************/
+.menu-style {
+	border: 1px solid rgba(28,36,43,.6);
+	border-radius: 4px;
+	box-shadow: 0 2px 10px 3px rgba(0,0,0,.3);
+	background-color: #282b30;
+	color: #b8b8b8;
+	letter-spacing: 1px;
+	font-size: 1.4rem;
+	font-weight: 400;
+	z-index: 10;
+	pointer-events: none;
+
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.menu-items-style {
+
+}
+
+.menu-item-style {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	cursor: pointer;
+	border-bottom: 1px solid rgba(100,100,100,.2);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	transition: background-color .15s;
+}
+
+.menu-selected-item-style {
+	background-color: #212429;
+	color: #ececec;
+}
+
+.menu-item-style:last-child {
+	border: 0;
+}
+
+.menu-item-style:not(.menu-selected-item-style):hover {
+	background-color: #25282d;
+ }
+
+
+
+/***************menu style end*****************/
 
 
 /*********************log data loading animation begin********************/
@@ -1631,9 +1681,7 @@ input:focus {
 	font-weight: 400; 	
 	z-index: 10;
 	pointer-events: none;
-	
-	-webkit-animation-duration: 0.4s;
-	animation-duration: 0.4s;
+
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 	transform-origin: 0 0 0;
@@ -1641,6 +1689,8 @@ input:focus {
 .title-back-forward-menu-open.title-back-forward-menu {
 	-webkit-animation-name: dialog-anim-open;
 	animation-name: dialog-anim-open;
+	-webkit-animation-duration: 0.3s;
+	animation-duration: 0.3s;
 	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
 	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
 	pointer-events: auto;
@@ -1659,8 +1709,8 @@ input:focus {
 .title-back-forward-menu-close.title-back-forward-menu {
 	-webkit-animation-name: dialog-anim-close;
 	animation-name: dialog-anim-close;
-	-webkit-animation-duration: 0.2s;
-	animation-duration: 0.2s;
+	-webkit-animation-duration: 0.15s;
+	animation-duration: 0.15s;
 	pointer-events: none;
 }
 
@@ -2769,7 +2819,6 @@ input:focus {
 	width: 260px;
 	background-color: #f4f4f4;
 	border-radius: 5px;
-	font-size: 1.2rem;
 	visibility: hidden;
 	
 	-webkit-animation-duration: 0.1s;
@@ -2805,7 +2854,7 @@ input:focus {
 
 .conteng-tag-dialog-nav {
 	display: flex;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	fong-weight: 400;
 }
 .conteng-tag-dialog-nav-item {
@@ -2813,8 +2862,8 @@ input:focus {
 	align-items : center;
 }
 .conteng-tag-dialog-nav-arrow {
-	width: 16px;
-	height: 16px;
+	width: 14px;
+	height: 10px;
 	background-image: url(../images/arrow2.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -2848,7 +2897,7 @@ input:focus {
 	justify-content: space-between;
 	align-items: center;
 	padding: 5px 15px;
-	height: 44px;
+	height: 40px;
 	border-bottom: 1px solid rgba(183,183,183,.8);
 	font-size: 1.4rem;
 	font-weight: 500;
@@ -2890,7 +2939,7 @@ input:focus {
 }
 
 .content-tag-dialog-info {
-	margin: 10px 15px 0;
+	margin: 8px 15px 0;
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
 	font-weight: 400;
@@ -2900,20 +2949,21 @@ input:focus {
 .content-tag-dialog-info-title {
 	display: flex;
 	align-items: center;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	font-weight: 500;
 	color: rgba(79,83,91,.9);
-	margin: 13px 0 15px;
+	margin: 8px 0 12px;
 }
 
 .content-tag-dialog-info-title div {
 	width: 17px;
 	height: 24px;
 	margin-right: 3px;
+	margin-top: -2px;
 	background-image: url("../images/info.svg");
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: 15px auto;
+	background-size: 14px auto;
 }
 
 .content-tag-dialog-info-row {
@@ -2922,6 +2972,7 @@ input:focus {
 	align-items: center;
 	padding-bottom: 4px;
 	padding-top: 15px;
+	font-size: 1rem;
 }
 
 .content-tag-dialog-info-value {
@@ -2937,7 +2988,7 @@ input:focus {
 }
 
 .content-tag-dialog-info-textarea {
-	margin: 0 12px 25px 15px;
+	margin: 0 12px 16px 15px;
 }
 
 .content-tag-dialog-info-textarea div:last-child {
@@ -5361,3 +5412,87 @@ input:focus {
 	border-bottom-right-radius: 3px;
 }
 /***select tag icon dialog in setting tag index end***/
+
+/****tag smart complete dialog begin****/
+.tag-smart-complete {
+	position: absolute;
+	transform-origin: 0 0 0;
+}
+
+.menu-open.tag-smart-complete {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	-webkit-animation-duration: .15s;
+	animation-duration: .15s;
+	-webkit-animation-timing-function: cubic-bezier(0.03, 0.92, 0.18, 0.99);
+	animation-timing-function: cubic-bezier(0.03, 0.92, 0.18, 0.99);
+	pointer-events: auto;
+}
+
+.menu-close.tag-smart-complete {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.15s;
+	animation-duration: 0.15s;
+	animation-timing-function: cubic-bezier(0.35, 0.15, 0.91, 0.06);
+	pointer-events: none;
+}
+
+.tag-smart-complete-items li {
+	padding: 0 16px;
+	list-style-type: none;
+	height: 3rem;
+	line-height: 3rem;
+}
+
+.tag-smart-complete-tag-info {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.tag-smart-complete-tag-info>div {
+	margin-left: 8px;
+}
+
+.tag-smart-complete-tag-info>div:nth-child(1) {
+	margin-left: 0;
+}
+
+.tag-smart-complete-info-tag {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.4rem;
+	font-weight: 500;
+}
+
+.tag-smart-complete-info-tag span {
+	display: inline-block;
+	margin-left: 2px;
+	width: 24px;
+	height: 24px;
+}
+
+.tag-smart-complete-info-tag img {
+	max-width: 22px;
+	max-height: 22px;
+}
+
+.tag-smart-complete-info-num {
+	color: #b8b8b8;
+}
+
+.tag-smart-complete-info-desc {
+	max-width: 240px;
+	color: rgba(184,184,184,.6);
+	margin-top: 3px;
+	font-size: 1.2rem;
+	font-weight: 400;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/****tag smart complete dialog end****/

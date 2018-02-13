@@ -596,6 +596,22 @@
                 }
             });
 
+
+			//open or close the tag smart complete tip
+            $('#open-close-tag-smart').bind('change',function(){
+                var smartTip = $('.tag-smart-complete');
+                if($(this).val()=='open'){
+                    smartTip.css('left','413px');
+                    smartTip.css('top','164px');
+
+                    smartTip.removeClass("menu-close").removeClass("menu-open");
+                    smartTip.addClass("menu-open");
+                }else if ($(this).val()=='close'){
+                    smartTip.removeClass("menu-close").removeClass("menu-open");
+                    smartTip.addClass("menu-close");
+                }
+            });
+
 	    });
 	</script>
 	
@@ -2073,6 +2089,50 @@ test--
 		</div>
 	</div>
 	<!--tag icon selection dialog end-->
+
+
+
+
+	<!--operate the tag smart complete dialog selection--->
+	<div style="position:absolute; top: 80px;left: 420px;">
+		<select id="open-close-tag-smart" style="height: 30px;">
+			<option value="close">close the tag's smart tip</option>
+			<option value="open">show the tag's smart tip</option>
+		</select>
+	</div>
+	<!--tag smart complete dialog begin-->
+	<div class="tag-smart-complete menu-style">
+		<div class="tag-smart-complete-items menu-items-style">
+			<li class="menu-item-style">
+				<div class="tag-smart-complete-tag-info">
+					<div class="tag-smart-complete-info-tag" style="color: rgb(121, 178, 234);">
+						#logger<span><img src="images/tag-icons/spaceship.svg" alt="tag-icon"></span>
+					</div>
+					<div class="tag-smart-complete-info-num">(26logs)</div>
+					<div class="tag-smart-complete-info-desc">the first cooperation project.</div>
+				</div>
+			</li>
+			<li class="menu-item-style">
+				<div class="tag-smart-complete-tag-info">
+					<div class="tag-smart-complete-info-tag" style="color: rgb(225, 41, 119);">
+						#logger-design<span><img src="images/tag-icons/island.svg" alt="tag-icon"></span>
+					</div>
+					<div class="tag-smart-complete-info-num">(8logs)</div>
+					<div class="tag-smart-complete-info-desc">design and make</div>
+				</div>
+			</li>
+			<li class="menu-item-style">
+				<div class="tag-smart-complete-tag-info">
+					<div class="tag-smart-complete-info-tag" style="color: rgb(176, 199, 66);">
+						#logger-development<span><img src="images/tag-icons/alien.svg" alt="tag-icon"></span>
+					</div>
+					<div class="tag-smart-complete-info-num">(50logs)</div>
+					<div class="tag-smart-complete-info-desc">development</div>
+				</div>
+			</li>
+		</div>
+	</div>
+	<!--tag smart complete dialog end-->
 
 </body>
 </html>
