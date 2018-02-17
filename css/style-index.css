@@ -3895,21 +3895,65 @@ input:focus {
 	overflow : hidden;
 }
 
+/* the ruler:
+ * below class name is hang on svg element
+ * .widget		: this is a widget :document widget or search widget
+ * .main		: this is the main mindmap view
+ *
+ * .mindmap		: what is showing is a mindmap style view
+ * .bubble		: what is showing is a bubble style view
+ *
+ * so , a mindmap/bubble node style is decided by this:
+ * .widget.mindmap .some-name-title/logo/link/node 		: this is a widget , and now is showing mindmap
+ *
+*/
+
 .mindmap {
 }
 
 .bubble {
 }
-
 .hashtag-node-text-logo {
 	fill : #B8B8B8 !important;
-	font-size : 20px !important;
 	text-anchor : middle;
 	alignment-baseline : middle;
 	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
 }
+.widget.mindmap .hashtag-node-text-logo {
+	font-size : 15px !important;
+}
 
-.hashtag-node-text-logo-widget {
+.main.mindmap .hashtag-node-text-logo {
+	font-size : 20px !important;
+}
+
+.hashtag-node-title {
+	fill : #828282;
+	font-size : 16px;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+	/*visibility : hidden;*/
+}
+
+.widget.mindmap .hashtag-node-title {
+	alignment-baseline: middle;
+	text-anchor: start;
+}
+
+.main.mindmap .hashtag-node-title {
+	alignment-baseline: hanging;
+	text-anchor: middle;
+}
+
+.main.bubble .hashtag-node-title {
+	visibility : hidden;
+}
+
+.widget.bubble .hashtag-node-title {
+	visibility : hidden;
+}
+
+
+.bubble .hashtag-node-text-logo {
 	fill : #B8B8B8 !important;
 	font-size : 15px !important;
 	text-anchor : middle;
@@ -3917,14 +3961,6 @@ input:focus {
 	font-family : Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
-.hashtag-node-title {
-	fill : #828282;
-	font-size : 16px;
-	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-	alignment-baseline: hanging;
-	text-anchor: middle;
-	visibility : hidden;
-}
 
 .hashtag-node-title-widget {
 	fill : #828282;
