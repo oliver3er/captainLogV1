@@ -45,6 +45,49 @@ input:focus {
 	border: 0;
 }
 
+
+/*所有弹出窗口布局的公共类 begin*/
+.dialog-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+}
+
+.dialog-layout {
+	display: flex;
+	flex-direction: column;
+}
+
+.dialog-main-layout {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	flex: 1 1 auto;
+	min-height: 0px;
+}
+
+.dialog-title-layout, .dialog-footer-layout {
+	flex-shrink: 0;
+}
+
+.dialog-content-layout {
+	flex: 1 1 0%;
+	min-height: 1px;
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/*所有弹出窗口布局的公共类 end*/
+
 .clearfix:after {
 	clear: both;
 }
@@ -107,10 +150,64 @@ input:focus {
 	position: relative;
 }
 
+.position-static {
+	position: static !important;
+}
+
 .index-page {
 	display: flex;
 }
 
+/***************menu style begin*****************/
+.menu-style {
+	border: 1px solid rgba(28,36,43,.6);
+	border-radius: 4px;
+	box-shadow: 0 2px 10px 3px rgba(0,0,0,.3);
+	background-color: #282b30;
+	color: #b8b8b8;
+	letter-spacing: 1px;
+	font-size: 1.4rem;
+	font-weight: 400;
+	z-index: 10;
+	pointer-events: none;
+
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.menu-items-style {
+
+}
+
+.menu-item-style {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	cursor: pointer;
+	border-bottom: 1px solid rgba(100,100,100,.2);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	transition: background-color .15s;
+}
+
+.menu-selected-item-style {
+	background-color: #212429;
+	color: #ececec;
+}
+
+.menu-item-style:last-child {
+	border: 0;
+}
+
+.menu-item-style:not(.menu-selected-item-style):hover {
+	background-color: #25282d;
+ }
+
+
+
+/***************menu style end*****************/
 
 
 /*********************log data loading animation begin********************/
@@ -1585,9 +1682,7 @@ input:focus {
 	font-weight: 400; 	
 	z-index: 10;
 	pointer-events: none;
-	
-	-webkit-animation-duration: 0.4s;
-	animation-duration: 0.4s;
+
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 	transform-origin: 0 0 0;
@@ -1595,6 +1690,8 @@ input:focus {
 .title-back-forward-menu-open.title-back-forward-menu {
 	-webkit-animation-name: dialog-anim-open;
 	animation-name: dialog-anim-open;
+	-webkit-animation-duration: 0.3s;
+	animation-duration: 0.3s;
 	-webkit-animation-timing-function: cubic-bezier(0.6,0,0.4,1);
 	animation-timing-function: cubic-bezier(0.6,0,0.4,1);
 	pointer-events: auto;
@@ -1613,8 +1710,8 @@ input:focus {
 .title-back-forward-menu-close.title-back-forward-menu {
 	-webkit-animation-name: dialog-anim-close;
 	animation-name: dialog-anim-close;
-	-webkit-animation-duration: 0.2s;
-	animation-duration: 0.2s;
+	-webkit-animation-duration: 0.15s;
+	animation-duration: 0.15s;
 	pointer-events: none;
 }
 
@@ -2544,7 +2641,7 @@ input:focus {
 	padding-right: 1px;
 	color: rgb(31,183,88);
 	background-color: rgba(31,183,88,.1);
-	line-height: 1.7rem;
+	line-height: 1.58rem;
 	cursor: pointer;
 	transition: background-color .1s ,color .1s ;
 }
@@ -2575,12 +2672,12 @@ input:focus {
 	background-image: url('../images/timer.svg');
 	background-repeat: no-repeat;
 	background-position: 3px 0px;
-	background-size: auto 21px;
+	background-size: auto 20px;
 	padding-left: 22px;
-	padding-right: 1px;
+	padding-right: 2px;
 	color: rgb(25,186,249);
 	background-color: rgba(25,186,249,.1);/*rgba(156,235,255,.1);*/
-	line-height: 1.7rem;
+	line-height: 1.58rem;
 	cursor: pointer;
 	transition: background-color .1s ,color .1s ;
 }
@@ -2730,7 +2827,6 @@ input:focus {
 	width: 260px;
 	background-color: #f4f4f4;
 	border-radius: 5px;
-	font-size: 1.2rem;
 	visibility: hidden;
 	
 	-webkit-animation-duration: 0.1s;
@@ -2766,7 +2862,7 @@ input:focus {
 
 .conteng-tag-dialog-nav {
 	display: flex;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	fong-weight: 400;
 }
 .conteng-tag-dialog-nav-item {
@@ -2774,8 +2870,8 @@ input:focus {
 	align-items : center;
 }
 .conteng-tag-dialog-nav-arrow {
-	width: 16px;
-	height: 16px;
+	width: 14px;
+	height: 10px;
 	background-image: url(../images/arrow2.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -2809,7 +2905,7 @@ input:focus {
 	justify-content: space-between;
 	align-items: center;
 	padding: 5px 15px;
-	height: 44px;
+	height: 40px;
 	border-bottom: 1px solid rgba(183,183,183,.8);
 	font-size: 1.4rem;
 	font-weight: 500;
@@ -2851,7 +2947,7 @@ input:focus {
 }
 
 .content-tag-dialog-info {
-	margin: 10px 15px 0;
+	margin: 8px 15px 0;
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
 	font-weight: 400;
@@ -2861,20 +2957,21 @@ input:focus {
 .content-tag-dialog-info-title {
 	display: flex;
 	align-items: center;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	font-weight: 500;
 	color: rgba(79,83,91,.9);
-	margin: 13px 0 15px;
+	margin: 8px 0 12px;
 }
 
 .content-tag-dialog-info-title div {
 	width: 17px;
 	height: 24px;
 	margin-right: 3px;
+	margin-top: -2px;
 	background-image: url("../images/info.svg");
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: 15px auto;
+	background-size: 14px auto;
 }
 
 .content-tag-dialog-info-row {
@@ -2883,6 +2980,7 @@ input:focus {
 	align-items: center;
 	padding-bottom: 4px;
 	padding-top: 15px;
+	font-size: 1rem;
 }
 
 .content-tag-dialog-info-value {
@@ -2898,7 +2996,7 @@ input:focus {
 }
 
 .content-tag-dialog-info-textarea {
-	margin: 0 12px 25px 15px;
+	margin: 0 12px 16px 15px;
 }
 
 .content-tag-dialog-info-textarea div:last-child {
@@ -3099,21 +3197,71 @@ input:focus {
 }
 
 .tag-setting-icon-edit {
+	display: flex;
+	justify-content: space-between;
 	position: absolute;
-	right: -12px;
-	left: auto;
-	top: 0px;
+	left: -10px;
+	top: -10px;
+	width: 180px;
 	z-index: 200;
-	width: 44px;
-	height: 44px;
-	border-radius: 22px;
-	background-color: #d7d7d7;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 24px 24px;
-	cursor: pointer;
-	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4Ii8+CiAgICA8cGF0aCBmaWxsPSIjNEY1NDVDIiBkPSJNMTMuNSw4LjI1IEwxMy41LDEyLjc1IEMxMy41LDEzLjU3ODQyNzEgMTIuODI4NDI3MSwxNC4yNSAxMiwxNC4yNSBMMS41LDE0LjI1IEMwLjY3MTU3Mjg3NSwxNC4yNSAwLDEzLjU3ODQyNzEgMCwxMi43NSBMMCwyLjI1IEMwLDEuNDIxNTcyODggMC42NzE1NzI4NzUsMC43NSAxLjUsMC43NSBMOSwwLjc1IEw2LDAuNzUgTDYsMi4yNSBMMS41LDIuMjUgTDEuNSwxMi43NSBMMTIsMTIuNzUgTDEyLDguMjUgTDEzLjUsOC4yNSBaIE04LjIyLDcuNzE3NSBMMTAuODc1LDExLjI1IEwyLjYyNSwxMS4yNSBMNC42ODc1LDguNjAyNSBMNi4xNTc1LDEwLjM3MjUgTDguMjIsNy43MTc1IFogTTEyLDIuMjUgTDE0LjI1LDIuMjUgTDE0LjI1LDMuNzUgTDEyLDMuNzUgTDEyLDYgTDEwLjUsNiBMMTAuNSwzLjc1IEw4LjI1LDMuNzUgTDguMjUsMi4yNSBMMTAuNSwyLjI1IEwxMC41LDAgTDEyLDAgTDEyLDIuMjUgWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi4yNSAxLjUpIi8+CiAgPC9nPgo8L3N2Zz4K);
+
 }
+
+.tag-setting-icon-edit>div {
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.tag-setting-icon-edit>div:nth-child(1) {
+	justify-content: flex-end;
+}
+
+.tag-setting-icon-edit>div:nth-child(2) {
+	justify-content: flex-start;
+}
+
+.tag-setting-select-icon {
+	width: 40px;
+	height: 38px;
+
+	background-repeat: no-repeat;
+	background-position: 8px 5px;
+	background-size: 19px;
+	background-color: transparent;
+	transition: all .15s ease;
+}
+
+.tag-setting-upload-icon {
+	width: 39px;
+	height: 38px;
+	background-repeat: no-repeat;
+	background-position: 13px 5px;
+	background-size: 17px;
+	background-color: transparent;
+	transition: all .15s ease;
+}
+
+
+
+.tag-setting-head-right:hover .tag-setting-select-icon {
+	background-image: url('../images/select-icon.svg');
+	background-color: #d7d7d7;
+	background-position: 8px 8px;
+}
+
+.tag-setting-head-right:hover .tag-setting-upload-icon {
+	background-image: url('../images/upload-icon.svg');
+	background-color: #d7d7d7;
+	background-position: 13px 8px;
+}
+
+
 .tag-setting-head-right:hover .tag-setting-icon-backdrop {
 	-moz-opacity: 1;
 	opacity: 1;
@@ -3121,6 +3269,9 @@ input:focus {
 }
 
 .tag-setting-icon-backdrop {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -3130,11 +3281,42 @@ input:focus {
 	margin-top: 12px;
 	width: 138px;
 	height: 138px;
-	box-shadow: inset 0 0 120px rgba(0,0,0,.5);
+	box-shadow: inset 0 0 120px rgba(0,0,0,.8);
 	opacity: 0;
 	pointer-events: none;
 	transition: all .35s ease;
-	cursor: pointer;
+
+}
+
+.drag-drop-icon-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 92%;
+	height: 92%;
+	border-radius: 4px;
+	border: 2px dashed #fff;
+	cursor: default;
+}
+
+.drag-drop-icon-block div {
+	color: #fff;
+}
+
+.drag-drop-icon-block div:nth-child(1) {
+	text-align: center;
+	font-size: 1.6rem;
+	font-weight: 500;
+	margin-bottom: 8px;
+	letter-spacing: 1px;
+}
+
+.drag-drop-icon-block div:nth-child(2) {
+	margin-left: 6px;
+	margin-right: 6px;
+	font-size: 1.2rem;
+	font-weight: 400;
 }
 
 .tag-setting-head-icon {
@@ -5187,7 +5369,218 @@ input:focus {
 
 /****tag menu in mindmap end****/
 
-
-
-
 /** mind map page end**/
+
+
+/***select tag icon dialog in setting tag index begin***/
+.icon-select-dialog-wrapper {
+	transform: scale(1) translateZ(0px);
+	visibility: hidden;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.dialog-open.icon-select-dialog-wrapper {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	animation-timing-function: ease-out;
+	animation-duration: .1s;
+	pointer-events: auto;
+}
+
+.dialog-close.icon-select-dialog-wrapper {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: 0.1s;
+	pointer-events: none;
+}
+
+.icon-select-dialog {
+	position: absolute;
+	width: 700px;
+	max-height: 80vh;
+	border-radius: 3px;
+	overflow: hidden;
+	z-index: 1000;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: #7c7e83;
+	border: 1px solid rgba(28,36,43,.6);
+	box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+}
+
+.icon-selection-main {
+	background-color: #f0f0f0;
+}
+
+.icon-selection-title {
+	padding-left: 50px;
+	padding-right: 45px;
+	height: 56px;
+	line-height: 56px;
+	font-weight: 600;
+	border-bottom: 1px solid rgba(0,0,0,.5);
+	-webkit-box-shadow: 0 1px 2px rgba(113,113,113,.75);
+	box-shadow: 0 1px 2px rgba(113,113,113,.75);
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	overflow: hidden;
+	color: #5d6068;
+	background-color: #f9f9f9;
+}
+
+.icon-selection-content {
+	position: relative;
+	margin-top: 2px;
+	margin-bottom: 12px;
+	padding-left: 50px;
+	padding-right: 32px;
+}
+
+/*.icon-selection-icons {
+	margin-top: 20px;
+	margin-bottom: 15px;
+}*/
+
+.icon-selection-icon-type {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10px 12px 8px 0;
+	padding-top: 10px;
+	font-weight: 500;
+	color: #7c7e83;
+	text-transform : uppercase;
+}
+
+.icon-selection-content .sticky-header {
+	position: absolute;
+	left: 50px;
+	top: 0;
+	margin-right: 45px;
+	width: 93%;
+	z-index: 1;
+}
+
+.icon-selection-icon-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.icon-selection-icon-list>div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 4px 6px 4px 0;
+	width: 44px;
+	height: 44px;
+	border-radius: 4px;
+}
+
+.icon-selection-icon-list>div:hover {
+	background-color: rgba(0,0,0,.08);
+}
+
+.icon-selection-icon-list img {
+	max-width: 36px;
+	max-height: 36px;
+}
+
+.icon-selection-footer {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-left: 50px;
+	padding-right: 40px;
+	padding-top: 2px;
+	height: 60px;
+	background-color: #36393f;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+/***select tag icon dialog in setting tag index end***/
+
+/****tag smart complete dialog begin****/
+.tag-smart-complete {
+	position: absolute;
+	transform-origin: 0 0 0;
+}
+
+.menu-open.tag-smart-complete {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	-webkit-animation-duration: .15s;
+	animation-duration: .15s;
+	-webkit-animation-timing-function: cubic-bezier(0.03, 0.92, 0.18, 0.99);
+	animation-timing-function: cubic-bezier(0.03, 0.92, 0.18, 0.99);
+	pointer-events: auto;
+}
+
+.menu-close.tag-smart-complete {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.15s;
+	animation-duration: 0.15s;
+	animation-timing-function: cubic-bezier(0.35, 0.15, 0.91, 0.06);
+	pointer-events: none;
+}
+
+.tag-smart-complete-items li {
+	padding: 0 16px;
+	list-style-type: none;
+	height: 3rem;
+	line-height: 3rem;
+}
+
+.tag-smart-complete-tag-info {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.tag-smart-complete-tag-info>div {
+	margin-left: 8px;
+}
+
+.tag-smart-complete-tag-info>div:nth-child(1) {
+	margin-left: 0;
+}
+
+.tag-smart-complete-info-tag {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.4rem;
+	font-weight: 500;
+}
+
+.tag-smart-complete-info-tag span {
+	display: inline-block;
+	margin-left: 2px;
+	width: 24px;
+	height: 24px;
+}
+
+.tag-smart-complete-info-tag img {
+	max-width: 22px;
+	max-height: 22px;
+}
+
+.tag-smart-complete-info-num {
+	color: #b8b8b8;
+}
+
+.tag-smart-complete-info-desc {
+	max-width: 240px;
+	color: rgba(184,184,184,.6);
+	margin-top: 3px;
+	font-size: 1.2rem;
+	font-weight: 400;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/****tag smart complete dialog end****/

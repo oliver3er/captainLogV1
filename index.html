@@ -6,10 +6,57 @@
 	<title>Captain Logger</title>
 	<link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="css/style-index.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/style-search.css" type="text/css" media="all" />
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript">
 	
 		$(function (){
+            //标签设置中上传/选择图标的提示
+            $(".with-top-tip").hover(function(){
+				var thisObj = $(this);
+				//插入消息内容
+				var tipMg = thisObj.attr("tip-message");
+				var theTip = $("#small-tip");
+
+				theTip.find(".tip-main").empty().append("<span>"+tipMg+"</span>");
+				//获取目标对象位置
+				var objX = thisObj.offset().left;
+				var objY = thisObj.offset().top;
+
+				var tipWidth = theTip.width();
+				var tipX = objX+thisObj.width()/2-tipWidth/2;
+				var wholeWidth = $(document).width();
+				if((tipX+tipWidth)>wholeWidth){
+					var moveWd = ((tipX+tipWidth)-wholeWidth);
+					tipX = tipX-moveWd;
+					theTip.find(".tip-arrow").css("left",tipWidth/2+moveWd);
+				}
+
+				theTip.css("left",tipX);
+				theTip.css("top",(objY-theTip.height()-8));
+				theTip.css("visibility","visible");
+			}
+			, function(){
+				var theTip = $("#small-tip");
+				theTip.find(".tip-arrow").css("left","50%");
+				theTip.css("visibility","hidden");
+			});
+
+
+            //选择标签图标
+            $(".tag-setting-select-icon").bind('click',function(){
+                //$(".content-tag-dialog").hide();
+                var iconDialogWr = $(".icon-select-dialog-wrapper");
+                iconDialogWr.removeClass("dialog-close").removeClass("dialog-open");
+                iconDialogWr.addClass("dialog-open");
+
+                var settingDialogWr = $(".tag-setting-wrapper");
+                settingDialogWr.removeClass("tag-setting-wrapper-open");
+                settingDialogWr.addClass("tag-setting-wrapper-close");
+            });
+
+
+
 			$('.widgets-btns').find('div[class^="widgets-btn-"]').bind('click',function(){
 				var widgetsBtn = $(this);
 				var btnName = $(this).attr('class');
@@ -89,7 +136,7 @@
 					setTimeout(function(){
 						savingIcon.hide();
 					},50);
-					
+
 					savedIcon.css("stroke-dasharray","27,27");
 					savedIcon.css("stroke-dashoffset","27");
 					savedIcon.css("animation","log-saved-status-dash .4s ease-in 1");
@@ -546,6 +593,22 @@
                 }else if ($(this).val()=='close'){
                     detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
                     detailInfoTip.addClass("dialog-close");
+                }
+            });
+
+
+			//open or close the tag smart complete tip
+            $('#open-close-tag-smart').bind('change',function(){
+                var smartTip = $('.tag-smart-complete');
+                if($(this).val()=='open'){
+                    smartTip.css('left','413px');
+                    smartTip.css('top','164px');
+
+                    smartTip.removeClass("menu-close").removeClass("menu-open");
+                    smartTip.addClass("menu-open");
+                }else if ($(this).val()=='close'){
+                    smartTip.removeClass("menu-close").removeClass("menu-open");
+                    smartTip.addClass("menu-close");
                 }
             });
 
@@ -1397,8 +1460,20 @@ test--
 									</div>
 									
 									<div class="tag-setting-head-right">
-										<div class="tag-setting-icon-edit"></div>
-										<div class="tag-setting-icon-backdrop"></div>
+										<div class="tag-setting-icon-edit">
+											<div class="tag-setting-select-icon-bg">
+												<div class="tag-setting-select-icon with-top-tip"  tip-message="select an icon"></div>
+											</div>
+											<div class="tag-setting-upload-icon-bg">
+												<div class="tag-setting-upload-icon with-top-tip " tip-message="upload an icon"></div>
+											</div>
+										</div>
+										<div class="tag-setting-icon-backdrop">
+											<div class="drag-drop-icon-block">
+												<div>Drag&Drop</div>
+												<div>upload your picture.</div>
+											</div>
+										</div>
 										<div class="tag-setting-head-icon">
 											<img src="images/happy.svg" alt="icon" ／>
 										</div>
@@ -1913,5 +1988,151 @@ test--
             <option value="open">show the tag's info tip</option>
         </select>
     </div>
+
+
+	<!--提示框-->
+	<div id="small-tip">
+		<div class="small-tip-wrapper">
+			<div class="tip-main"></div>
+			<div class="tip-arrow"></div>
+		</div>
+	</div>
+
+
+	<!--tag icon selection dialog begin-->
+	<div class="icon-select-dialog-wrapper dialog-wrapper">
+		<div class="icon-select-dialog dialog-layout">
+			<div class="icon-selection-main dialog-main-layout">
+				<div class="icon-selection-title dialog-title-layout">
+					<div>HASHTAG ICON SELECTION</div>
+				</div>
+
+				<div class="icon-selection-content dialog-content-layout">
+                    <div class="sticky-header"><div class="icon-selection-icon-type">frequently used</div></div>
+                    <div class="icon-selection-icon-type">frequently used</div>
+                    <div class="icon-selection-icon-list">
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/spaceship.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/gesture.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/idea.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/spark-face.png" alt="tag icon"/></div>
+						<div><img src="images/tag-icons/uhura-face.png" alt="tag icon"/></div>
+						<div><img src="images/tag-icons/test-tube.svg" alt="tag icon"/></div>
+						<div><img src="images/tag-icons/alien.svg" alt="tag icon"/></div>
+						<div><img src="images/tag-icons/spaceship.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/books.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/chef.png" alt="tag icon"/></div>
+						<div><img src="images/tag-icons/suv.svg" alt="tag icon"/></div>
+						<div><img src="images/tag-icons/island.svg" alt="tag icon"/></div>
+						<div><img src="images/tag-icons/suitcase.svg" alt="tag icon"/></div>
+						<div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                    </div>
+
+
+                    <div class="icon-selection-icon-type">special</div>
+                    <div class="icon-selection-icon-list">
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                    </div>
+
+
+                    <div class="icon-selection-icon-type">food</div>
+                    <div class="icon-selection-icon-list">
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                    </div>
+
+
+
+                    <div class="icon-selection-icon-type">sports</div>
+                    <div class="icon-selection-icon-list">
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/starwar-symbol.png" alt="tag icon"/></div>
+                    </div>
+
+				</div>
+			</div>
+			<div class="icon-selection-footer dialog-footer-layout">
+                <div class="btn-cancle"><span>Cancel</span></div>
+			</div>
+		</div>
+	</div>
+	<!--tag icon selection dialog end-->
+
+
+
+
+	<!--operate the tag smart complete dialog selection--->
+	<div style="position:absolute; top: 80px;left: 420px;">
+		<select id="open-close-tag-smart" style="height: 30px;">
+			<option value="close">close the tag's smart tip</option>
+			<option value="open">show the tag's smart tip</option>
+		</select>
+	</div>
+	<!--tag smart complete dialog begin-->
+	<div class="tag-smart-complete menu-style">
+		<div class="tag-smart-complete-items menu-items-style">
+			<li class="menu-item-style">
+				<div class="tag-smart-complete-tag-info">
+					<div class="tag-smart-complete-info-tag" style="color: rgb(121, 178, 234);">
+						#logger<span><img src="images/tag-icons/spaceship.svg" alt="tag-icon"></span>
+					</div>
+					<div class="tag-smart-complete-info-num">(26logs)</div>
+					<div class="tag-smart-complete-info-desc">the first cooperation project.</div>
+				</div>
+			</li>
+			<li class="menu-item-style">
+				<div class="tag-smart-complete-tag-info">
+					<div class="tag-smart-complete-info-tag" style="color: rgb(225, 41, 119);">
+						#logger-design<span><img src="images/tag-icons/island.svg" alt="tag-icon"></span>
+					</div>
+					<div class="tag-smart-complete-info-num">(8logs)</div>
+					<div class="tag-smart-complete-info-desc">design and make</div>
+				</div>
+			</li>
+			<li class="menu-item-style">
+				<div class="tag-smart-complete-tag-info">
+					<div class="tag-smart-complete-info-tag" style="color: rgb(176, 199, 66);">
+						#logger-development<span><img src="images/tag-icons/alien.svg" alt="tag-icon"></span>
+					</div>
+					<div class="tag-smart-complete-info-num">(50logs)</div>
+					<div class="tag-smart-complete-info-desc">development</div>
+				</div>
+			</li>
+		</div>
+	</div>
+	<!--tag smart complete dialog end-->
+
 </body>
 </html>

@@ -628,63 +628,118 @@
 								<div class="search-setting-value-title">#createtime</div>
 								<div class="search-setting-value-content">
 									<div class="setting-value-item">
-									<div class="setting-value-form-radiobox">
-										<script type="text/javascript">
-											$(function (){
-												$(".form-radiobox .form-radiobox-control").bind('click',function(){
-													var contrl = $(this);
-													if(contrl.hasClass("form-radiobox-checked")){
-														contrl.removeClass("form-radiobox-checked").addClass("form-radiobox-unchecked");
-														return -1;
-													}
-													if(contrl.hasClass("form-radiobox-unchecked")){
-														contrl.removeClass("form-radiobox-unchecked").addClass("form-radiobox-checked");
-														return -1;
-													}
+										<div class="setting-value-form-radiobox">
+											<script type="text/javascript">
+												$(function (){
+													$(".form-radiobox .form-radiobox-control").bind('click',function(){
+														var contrl = $(this);
+														if(contrl.hasClass("form-radiobox-checked")){
+															contrl.removeClass("form-radiobox-checked").addClass("form-radiobox-unchecked");
+															return -1;
+														}
+														if(contrl.hasClass("form-radiobox-unchecked")){
+															contrl.removeClass("form-radiobox-unchecked").addClass("form-radiobox-checked");
+															return -1;
+														}
+													});
 												});
-											});
-										</script>
+											</script>
 
-										<div class="form-radiobox form-radiobox-small">
-											<div class="setting-value-form-radiobox-label">EXCLUDE</div>
-											<div class="form-radiobox-control form-radiobox-unchecked">
-												<input type="checkbox" class="form-radiobox-value" value="off" />
+											<div class="form-radiobox form-radiobox-small">
+												<div class="setting-value-form-radiobox-label">EXCLUDE</div>
+												<div class="form-radiobox-control form-radiobox-unchecked">
+													<input type="checkbox" class="form-radiobox-value" value="off" />
+												</div>
 											</div>
 										</div>
-									</div>
 
-									<div class="setting-value-disc">find all logs those exclude this tag.</div>
-								</div>
+										<div class="setting-value-disc">find all logs those exclude this tag.</div>
+								    </div>
 
 									<div class="setting-value-item">
-									<div class="setting-value-label">VALUE</div>
-									<div class="setting-value-date-range">
+										<div class="setting-value-label">VALUE</div>
+										<div class="setting-value-date-range">
 
-										<div class="date-range-part">
-											<div class="date-range-part-label">
-												<div>from:</div>
-												<div>
-													<input type="text" class="form-input form-input-small form-input-lightbg" name="dateFrom" value="2017-3-10" placeholder="" maxlength="10" />
+											<div class="date-range-part">
+												<div class="date-range-part-label">
+													<div>from:</div>
+													<div>
+														<input type="text" class="form-input form-input-small form-input-lightbg" name="dateFrom" value="2017-3-10" placeholder="" maxlength="10" />
+													</div>
+													<div class="date-range-delete-btn">
+														<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+															 width="10px" height="10px" viewBox="0 0 43.443 43.451" enable-background="new 0 0 43.443 43.451" xml:space="preserve"><line fill="none" stroke="#939393" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="39.451" x2="39.443" y2="4"></line><line fill="none" stroke="#939393" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="4.001" x2="39.443" y2="39.451"></line></svg>
+													</div>
 												</div>
-                                                <div class="date-range-delete-btn">
-                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                         width="10px" height="10px" viewBox="0 0 43.443 43.451" enable-background="new 0 0 43.443 43.451" xml:space="preserve"><line fill="none" stroke="#939393" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="39.451" x2="39.443" y2="4"></line><line fill="none" stroke="#939393" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="4" y1="4.001" x2="39.443" y2="39.451"></line></svg>
-                                                </div>
+												<div class="date-range-selection"><img src="images/date-range1.png"/></div>
 											</div>
-											<div class="date-range-selection"><img src="images/date-range1.png"/></div>
-										</div>
 
-										<div class="date-range-part">
-											<div class="date-range-part-label">
-												<div>to:</div>
-												<div>
-													<input type="text" class="form-input form-input-small form-input-lightbg" name="dateTo" value="2017-10-18" placeholder="" maxlength="10" />
+											<div class="date-range-part">
+												<div class="date-range-part-label">
+													<div>to:</div>
+													<div>
+														<input type="text" class="form-input form-input-small form-input-lightbg" name="dateTo" value="2017-10-18" placeholder="" maxlength="10" />
+													</div>
 												</div>
+												<div class="date-range-selection"><img src="images/date-range2.png"/></div>
 											</div>
-											<div class="date-range-selection"><img src="images/date-range2.png"/></div>
 										</div>
 									</div>
-								</div>
+
+									<div class="setting-value-item">
+										<div class="setting-value-label">VALUE</div>
+										<div class="setting-value-selection">
+											<div class="form-select position-static">
+												<script type="text/javascript">
+                                                    $(function (){
+                                                        $(".form-select .select-list-box .select-list-option").mouseover(function(){
+                                                            $(".form-select .select-list-box .select-list-option").each(function(){
+                                                                $(this).removeClass("is-focus");
+                                                            });
+                                                            $(this).addClass("is-focus");
+                                                        });
+
+                                                        $(".form-select .form-select-control").bind("click",function(){
+                                                            if($(".form-select-outer").length==0){
+                                                                $(".form-select-control .select-arrow").css("opacity","0");
+
+                                                                $(".form-select").append("<div class='form-select-outer'>"+
+                                                                    "<div class='select-list-box'><div class='select-list-option is-selected'>Chinese</div>"+
+                                                                    "<div class='select-list-option'>USA</div>"+
+                                                                    "<div class='select-list-option'>UK</div>"+
+                                                                    "<div class='select-list-option'>Italy</div></div></div>");
+
+                                                                $(".form-select .select-list-box .select-list-option").mouseover(function(){
+                                                                    $(".form-select .select-list-box .select-list-option").each(function(){
+                                                                        $(this).removeClass("is-focus");
+                                                                    });
+                                                                    $(this).addClass("is-focus");
+                                                                });
+                                                            }else {
+                                                                $(".form-select-control .select-arrow").css("opacity","1");
+                                                                $(".form-select .form-select-outer").remove();
+                                                            }
+                                                        });
+                                                    });
+												</script>
+												<div class="form-select-control">
+													<div class="form-select-value">
+														<div class="select-value-label">doing</div>
+													</div>
+													<div class="form-select-arrow">
+														<div class="select-arrow"></div>
+													</div>
+												</div>
+												<!--div class="form-select-outer">
+													<div class="select-list-box">
+														<div class="select-list-option ">---</div>
+														<div class="select-list-option is-selected">doing</div>
+														<div class="select-list-option ">done</div>
+													</div>
+												</div-->
+											</div>
+										</div>
+									</div>
 
 								</div>
 							</div>
