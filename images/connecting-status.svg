@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="34px" height="34px" viewBox="0 0 34 34" enable-background="new 0 0 34 34" xml:space="preserve">
+<defs>    
+    <style>
+        @keyframes strokeanim {
+        	0% {  transform: rotate(0deg); }
+    		100% { transform: rotate(360deg); }
+		}
+		circle {
+			transform-origin: 50% 50% 0 ;
+    		animation: strokeanim 1s infinite linear;
+		}
+    </style>
+</defs>    
+<circle fill="none" stroke="#20C05C" stroke-width="5" stroke-miterlimit="10" stroke-linecap="round" cx="17" cy="17" r="14" transform="rotate(0 0 0)"
+                    stroke-dasharray="87.92"
+                    stroke-dashoffset="115">
+<!--animateTransform attributeName="transform" type="rotate" from="0 17 17" to="360 17 17" dur="1s" repeatCount="indefinite"></animateTransform-->
+</circle>
+</svg>
