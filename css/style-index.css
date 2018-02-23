@@ -1929,8 +1929,9 @@ input:focus {
 }
 
 .save-status-desynchronize {
-	width: 12px;
-	height: 4px;
+	width: 14px;
+	height: 14px;
+	border-radius: 7px;
 	background-color: #E94545;
 }
 
