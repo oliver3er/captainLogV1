@@ -2605,6 +2605,7 @@ input:focus {
 	height: 100%;
 	margin-top: -18px;
 	margin-left: -30px;
+	border: 1px solid transparent;
 	border-radius: 4px;
 	visibility: hidden;
 	z-index: 2;
