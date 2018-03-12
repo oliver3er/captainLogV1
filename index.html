@@ -652,28 +652,37 @@
                     $('.content-logs-btns-wrapper').removeClass('__close').addClass('__open');
 				}else if($(this).val()=='close-tool-bar') {
                     $('.content-logs-btns-wrapper').removeClass('__open').addClass('__close');
-                }else if($(this).val()=='blue1') {
-					$('.content-logs-btns-wrapper').css('background-color','rgba(48,85,228,.9)');
-				}else if($(this).val()=='blue2'){
-                    $('.content-logs-btns-wrapper').css('background-color','rgba(96,120,164,.9)');
-				}else if($(this).val()=='blue3') {
-                    $('.content-logs-btns-wrapper').css('background-color','rgba(43,103,213,.9)');
-                }else if($(this).val()=='blue4'){
-                    $('.content-logs-btns-wrapper').css('background-color','rgba(99,109,127,.9)');
-                }else if($(this).val()=='green5') {
-                    $('.content-logs-btns-wrapper').css('background-color','rgba(88,119,95,.9)');
-                }else if($(this).val()=='green6'){
-                    $('.content-logs-btns-wrapper').css('background-color','rgba(84,96,87,.9)');
-                }else if($(this).val()=='yellow7') {
-                    $('.content-logs-btns-wrapper').css('background-color','rgba(109,105,89,.9)');
-                }else if($(this).val()=='yellow8'){
-                    $('.content-logs-btns-wrapper').css('background-color','rgba(102,93,85,.9)');
-                }else if($(this).val()=='blue9'){
-                    $('.content-logs-btns-wrapper').css('background-color','rgba(37,70,195,.9)');
-                }else if($(this).val()=='blue10'){
-                    $('.content-logs-btns-wrapper').css('background-color','rgba(56,88,209,.9)');
-                }
+                }else if($(this).val()=='delete-hover') {
+
+                    if($('.log-editing-status').length > 0) {
+                        $('.log-editing-status').find('.content-log-delete-status').addClass('log-deleting-status-show');
+                    }else{
+                        $(".content-log-item").eq(0).addClass('log-editing-status').find('.content-log-delete-status').addClass('log-deleting-status-show');
+					}
+				}
             });
+
+            $('.logs-delete-btn.logs-edit-btn-valid').hover(function(){
+                if($('.log-editing-status').length > 0) {
+                    $('.log-editing-status').find('.content-log-delete-status').addClass('log-deleting-status-show');
+                }else{
+                    $(".content-log-item").eq(0).addClass('log-editing-status').find('.content-log-delete-status').addClass('log-deleting-status-show');
+                }
+			},function(){
+                if($('.log-editing-status').length > 0) {
+                    $('.log-editing-status').find('.content-log-delete-status').removeClass('log-deleting-status-show');
+                }
+			});
+
+            $('.content-log-item').hover(function(){
+
+			},function(){
+				$(this).find('.content-log-tip-show').removeClass('content-log-tip-show').addClass('content-log-tip-hide');
+			});
+
+			$('.content-log-tip-icon').bind('click',function(){
+			    $(this).parents('.content-log-tip').removeClass('content-log-tip-hide').addClass('content-log-tip-show');
+			});
 
 
             //滚动条向上滚动时，title变化
@@ -689,6 +698,14 @@
                     $('.current-log-name-on-top').removeClass("move-to-top").addClass("move-to-bottom");
 				}
 				pScrollTop = scrollTop;
+			});
+
+			$(".content-log-item").bind('click',function(){
+				var logItem = $(this);
+                if($('.log-editing-status').length > 0){
+                    $('.log-editing-status').removeClass('log-editing-status');
+				}
+                logItem.addClass('log-editing-status');
 			});
 
 	    });
@@ -1404,7 +1421,43 @@
 							<div class="content-log-inputbox" contenteditable="true" data-placeholder="write down your words here."></div>
 						</div>
 					<!-------------------------显示标签表单，及特殊标签效果 begin------------------------->
-						<div class="content-log-item">
+						<div class="content-log-items position-relative">
+							<div class="content-log-item">
+								<div class="content-log-delete-status">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="60px" height="60px" viewBox="0 0 21.961 21.965" enable-background="new 0 0 21.961 21.965" xml:space="preserve">
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" d="M8.68,3.479c0-1.211,0.594-2.979,2.339-2.979
+											l0,0c1.655,0,2.226,1.769,2.226,2.979H8.68z"/>
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M19.459,11.745v7.381
+											c0,1.107-0.895,2.006-1.938,2.34H5.506c-1.166-0.334-2.062-1.231-2.062-2.34V8.747H3.018c-1.393,0-2.518-1.18-2.518-2.633l0,0
+											c0-1.455,1.125-2.635,2.518-2.635h15.927c1.394,0,2.519,1.18,2.519,2.635l0,0c0,1.453-1.071,2.373-2.446,2.311"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="7.432" y1="7.519" x2="7.432" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="11.479" y1="7.519" x2="11.479" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="15.434" y1="7.519" x2="15.434" y2="17.838"/>
+									</svg>
+								</div>
+								<div class="content-log-divider-line"></div>
+								<div class="log-item-divider-date divider-date-today">3<span>/</span>10<span>/</span>2018</div>
+								<div class="content-log-tip  content-log-tip-info">
+									<div class="content-log-tip-icon">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+										<g>
+											<path fill="#030104" d="M62.162,0c6.696,0,10.043,4.567,10.043,9.789c0,6.522-5.814,12.555-13.391,12.555
+												c-6.344,0-10.045-3.752-9.869-9.947C48.945,7.176,53.35,0,62.162,0z M41.543,100c-5.287,0-9.164-3.262-5.463-17.615l6.07-25.457
+												c1.057-4.077,1.23-5.707,0-5.707c-1.588,0-8.451,2.816-12.51,5.59L27,52.406C39.863,41.48,54.662,35.072,61.004,35.072
+												c5.285,0,6.168,6.361,3.525,16.148L57.58,77.98c-1.234,4.729-0.703,6.359,0.527,6.359c1.586,0,6.787-1.963,11.896-6.041L73,82.377
+												C60.488,95.1,46.83,100,41.543,100z"/>
+										</g>
+									</svg>
+									</div>
+
+									<div class="content-log-tip-content">
+										<div>The log must include the current hashtag: #Logger</div>
+									</div>
+
+								</div>
+
 							<div class="log-item-title">
 								For the special <div style="display: inline-block;
 															margin-left: 2px;
@@ -1541,7 +1594,41 @@ test--
 						</div>
 					<!-------------------------显示标签表单，及特殊标签效果 end------------------------->
 					
-						<div class="content-log-item">
+							<div class="content-log-item">
+								<div class="content-log-delete-status">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="60px" height="60px" viewBox="0 0 21.961 21.965" enable-background="new 0 0 21.961 21.965" xml:space="preserve">
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" d="M8.68,3.479c0-1.211,0.594-2.979,2.339-2.979
+											l0,0c1.655,0,2.226,1.769,2.226,2.979H8.68z"/>
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M19.459,11.745v7.381
+											c0,1.107-0.895,2.006-1.938,2.34H5.506c-1.166-0.334-2.062-1.231-2.062-2.34V8.747H3.018c-1.393,0-2.518-1.18-2.518-2.633l0,0
+											c0-1.455,1.125-2.635,2.518-2.635h15.927c1.394,0,2.519,1.18,2.519,2.635l0,0c0,1.453-1.071,2.373-2.446,2.311"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="7.432" y1="7.519" x2="7.432" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="11.479" y1="7.519" x2="11.479" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="15.434" y1="7.519" x2="15.434" y2="17.838"/>
+									</svg>
+								</div>
+								<div class="content-log-divider-line"></div>
+								<div class="log-item-divider-date">3<span>/</span>8<span>/</span>2018</div>
+								<div class="content-log-tip  content-log-tip-info">
+									<div class="content-log-tip-icon">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+										<g>
+											<path fill="#030104" d="M62.162,0c6.696,0,10.043,4.567,10.043,9.789c0,6.522-5.814,12.555-13.391,12.555
+												c-6.344,0-10.045-3.752-9.869-9.947C48.945,7.176,53.35,0,62.162,0z M41.543,100c-5.287,0-9.164-3.262-5.463-17.615l6.07-25.457
+												c1.057-4.077,1.23-5.707,0-5.707c-1.588,0-8.451,2.816-12.51,5.59L27,52.406C39.863,41.48,54.662,35.072,61.004,35.072
+												c5.285,0,6.168,6.361,3.525,16.148L57.58,77.98c-1.234,4.729-0.703,6.359,0.527,6.359c1.586,0,6.787-1.963,11.896-6.041L73,82.377
+												C60.488,95.1,46.83,100,41.543,100z"/>
+										</g>
+									</svg>
+									</div>
+
+									<div class="content-log-tip-content">
+										<div>The log must include the current hashtag: #Logger</div>
+									</div>
+								</div>
+
 							<div class="log-item-title">
 								This is a <div class="log-item-tag-words"><span>#</span><span>title</span><span>#</span></div>
 							</div>
@@ -1560,7 +1647,39 @@ test--
 							</div>
 						</div>
 						
-						<div class="content-log-item">
+							<div class="content-log-item">
+								<div class="content-log-delete-status">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="60px" height="60px" viewBox="0 0 21.961 21.965" enable-background="new 0 0 21.961 21.965" xml:space="preserve">
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" d="M8.68,3.479c0-1.211,0.594-2.979,2.339-2.979
+											l0,0c1.655,0,2.226,1.769,2.226,2.979H8.68z"/>
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M19.459,11.745v7.381
+											c0,1.107-0.895,2.006-1.938,2.34H5.506c-1.166-0.334-2.062-1.231-2.062-2.34V8.747H3.018c-1.393,0-2.518-1.18-2.518-2.633l0,0
+											c0-1.455,1.125-2.635,2.518-2.635h15.927c1.394,0,2.519,1.18,2.519,2.635l0,0c0,1.453-1.071,2.373-2.446,2.311"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="7.432" y1="7.519" x2="7.432" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="11.479" y1="7.519" x2="11.479" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="15.434" y1="7.519" x2="15.434" y2="17.838"/>
+									</svg>
+								</div>
+								<div class="content-log-divider-line"></div>
+								<div class="content-log-tip  content-log-tip-info">
+									<div class="content-log-tip-icon">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+										<g>
+											<path fill="#030104" d="M62.162,0c6.696,0,10.043,4.567,10.043,9.789c0,6.522-5.814,12.555-13.391,12.555
+												c-6.344,0-10.045-3.752-9.869-9.947C48.945,7.176,53.35,0,62.162,0z M41.543,100c-5.287,0-9.164-3.262-5.463-17.615l6.07-25.457
+												c1.057-4.077,1.23-5.707,0-5.707c-1.588,0-8.451,2.816-12.51,5.59L27,52.406C39.863,41.48,54.662,35.072,61.004,35.072
+												c5.285,0,6.168,6.361,3.525,16.148L57.58,77.98c-1.234,4.729-0.703,6.359,0.527,6.359c1.586,0,6.787-1.963,11.896-6.041L73,82.377
+												C60.488,95.1,46.83,100,41.543,100z"/>
+										</g>
+									</svg>
+									</div>
+
+									<div class="content-log-tip-content">
+										<div>The log must include the current hashtag: #Logger</div>
+									</div>
+								</div>
 							<div class="log-item-title">
 								这条日志用<div class="log-item-tag-words"><span>#</span><span>中文</span><span>#</span></div>写
 							</div>
@@ -1576,7 +1695,39 @@ test--
 							</div>
 						</div>
 						
-						<div class="content-log-item">
+							<div class="content-log-item">
+								<div class="content-log-delete-status">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="60px" height="60px" viewBox="0 0 21.961 21.965" enable-background="new 0 0 21.961 21.965" xml:space="preserve">
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" d="M8.68,3.479c0-1.211,0.594-2.979,2.339-2.979
+											l0,0c1.655,0,2.226,1.769,2.226,2.979H8.68z"/>
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M19.459,11.745v7.381
+											c0,1.107-0.895,2.006-1.938,2.34H5.506c-1.166-0.334-2.062-1.231-2.062-2.34V8.747H3.018c-1.393,0-2.518-1.18-2.518-2.633l0,0
+											c0-1.455,1.125-2.635,2.518-2.635h15.927c1.394,0,2.519,1.18,2.519,2.635l0,0c0,1.453-1.071,2.373-2.446,2.311"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="7.432" y1="7.519" x2="7.432" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="11.479" y1="7.519" x2="11.479" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="15.434" y1="7.519" x2="15.434" y2="17.838"/>
+									</svg>
+								</div>
+								<div class="content-log-divider-line"></div>
+								<div class="content-log-tip  content-log-tip-info">
+									<div class="content-log-tip-icon">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+										<g>
+											<path fill="#030104" d="M62.162,0c6.696,0,10.043,4.567,10.043,9.789c0,6.522-5.814,12.555-13.391,12.555
+												c-6.344,0-10.045-3.752-9.869-9.947C48.945,7.176,53.35,0,62.162,0z M41.543,100c-5.287,0-9.164-3.262-5.463-17.615l6.07-25.457
+												c1.057-4.077,1.23-5.707,0-5.707c-1.588,0-8.451,2.816-12.51,5.59L27,52.406C39.863,41.48,54.662,35.072,61.004,35.072
+												c5.285,0,6.168,6.361,3.525,16.148L57.58,77.98c-1.234,4.729-0.703,6.359,0.527,6.359c1.586,0,6.787-1.963,11.896-6.041L73,82.377
+												C60.488,95.1,46.83,100,41.543,100z"/>
+										</g>
+									</svg>
+									</div>
+
+									<div class="content-log-tip-content">
+										<div>The log must include the current hashtag: #Logger</div>
+									</div>
+								</div>
 							<div class="log-item-title">
 								This is a <div class="log-item-tag-words"><span>#</span><span>title</span><span>#</span></div>
 							</div>
@@ -1599,7 +1750,40 @@ test--
 							</div>
 						</div>
 						
-						<div class="content-log-item">
+							<div class="content-log-item">
+								<div class="content-log-delete-status">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="60px" height="60px" viewBox="0 0 21.961 21.965" enable-background="new 0 0 21.961 21.965" xml:space="preserve">
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" d="M8.68,3.479c0-1.211,0.594-2.979,2.339-2.979
+											l0,0c1.655,0,2.226,1.769,2.226,2.979H8.68z"/>
+										<path fill="none" stroke="#E94545" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M19.459,11.745v7.381
+											c0,1.107-0.895,2.006-1.938,2.34H5.506c-1.166-0.334-2.062-1.231-2.062-2.34V8.747H3.018c-1.393,0-2.518-1.18-2.518-2.633l0,0
+											c0-1.455,1.125-2.635,2.518-2.635h15.927c1.394,0,2.519,1.18,2.519,2.635l0,0c0,1.453-1.071,2.373-2.446,2.311"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="7.432" y1="7.519" x2="7.432" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="11.479" y1="7.519" x2="11.479" y2="17.838"/>
+										<line fill="none" stroke="#E94545" stroke-linecap="round" stroke-miterlimit="10" x1="15.434" y1="7.519" x2="15.434" y2="17.838"/>
+									</svg>
+								</div>
+								<div class="content-log-divider-line"></div>
+								<div class="log-item-divider-date">2<span>/</span>28<span>/</span>2018</div>
+								<div class="content-log-tip  content-log-tip-info">
+									<div class="content-log-tip-icon">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+										<g>
+											<path fill="#030104" d="M62.162,0c6.696,0,10.043,4.567,10.043,9.789c0,6.522-5.814,12.555-13.391,12.555
+												c-6.344,0-10.045-3.752-9.869-9.947C48.945,7.176,53.35,0,62.162,0z M41.543,100c-5.287,0-9.164-3.262-5.463-17.615l6.07-25.457
+												c1.057-4.077,1.23-5.707,0-5.707c-1.588,0-8.451,2.816-12.51,5.59L27,52.406C39.863,41.48,54.662,35.072,61.004,35.072
+												c5.285,0,6.168,6.361,3.525,16.148L57.58,77.98c-1.234,4.729-0.703,6.359,0.527,6.359c1.586,0,6.787-1.963,11.896-6.041L73,82.377
+												C60.488,95.1,46.83,100,41.543,100z"/>
+										</g>
+									</svg>
+									</div>
+
+									<div class="content-log-tip-content">
+										<div>The log must include the current hashtag: #Logger</div>
+									</div>
+								</div>
 							<div class="log-item-title">
 								This is a <div class="log-item-tag-words"><span>#</span><span>title</span><span>#</span></div>
 							</div>
@@ -1611,6 +1795,20 @@ test--
 								to find a way to say "please do us all a favor and “FUCKING STOP” nicely 
 								I held in all my rage and ended up yelling at my <div class="log-item-tag-words" style="color: rgba(176,199,66,1);background-color:rgba(176,199,66,0.1);"><span>#</span><span>sister</span><span>#</span></div>
 							</div>
+						</div>
+						</div>
+
+						<div class="content-logs-to-top">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="30px" height="30px" viewBox="0 0 18 18" enable-background="new 0 0 18 18" xml:space="preserve">
+								<path fill="#6B6E72" d="M15.089,3.765H2.911c-0.291,0-0.527-0.291-0.527-0.65s0.236-0.65,0.527-0.65h12.178
+									c0.292,0,0.528,0.291,0.528,0.65S15.381,3.765,15.089,3.765z"/>
+								<path fill="#6B6E72" d="M12.682,11.478L9.711,6.495C9.578,6.271,9.335,6.133,9.075,6.133c0,0-0.001,0-0.002,0
+									c-0.261,0-0.503,0.14-0.635,0.364l-2.944,5.001c-0.135,0.23-0.137,0.515-0.004,0.742c0.132,0.23,0.376,0.372,0.641,0.372
+									c0,0,0.001,0,0.002,0l2.216-0.006v3.127c0,0.408,0.331,0.74,0.739,0.74c0.408,0,0.739-0.332,0.739-0.74v-3.131l2.221-0.006
+									c0.266-0.002,0.51-0.145,0.642-0.376C12.821,11.991,12.818,11.707,12.682,11.478z M9.095,11.126c-0.002,0-0.004-0.002-0.006-0.002
+									s-0.004,0.002-0.005,0.002L7.426,11.13l1.653-2.807l1.67,2.799L9.095,11.126z"/>
+							</svg>
 						</div>
 					</div><!--content-logs-wrapper end-->
 				<!--/div-->
@@ -2360,17 +2558,7 @@ test--
 			<option value="desynchronize">saving desynchronize status</option>
 			<option value="close-tool-bar">close the tool bar</option>
 			<option value="open-tool-bar">open the tool bar</option>
-			<option value="blue1">BLUE-1</option>
-			<option value="blue2">BLUE-2</option>
-			<option value="blue3">BLUE-3</option>
-			<option value="blue4">BLUE-4</option>
-			<option value="green5">GREEN-5</option>
-			<option value="green6">GREEN-6</option>
-			<option value="yellow7">YELLOW-7</option>
-			<option value="yellow8">YELLOW-8</option>
-			<option value="blue9">BLUE-9</option>
-			<option value="blue10">BLUE-10</option>
-			<option value="blue11">BLUE-11</option>
+			<option value="delete-hover">hover the delete button</option>
 
 
 		</select>
