@@ -1965,6 +1965,11 @@ input:focus {
     background-size: 30px auto;
 }
 
+/* add by deanchen , for status which nothing to show */
+.system-status-unknown {
+	display : none;
+}
+
 .save-status {
 	width: 22px;
 	height: 22px;
