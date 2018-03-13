@@ -4762,7 +4762,6 @@ input:focus {
 /*************************** mindmap CSS *********************/
 .mindmap-widget-container {
 	width : 310px;
-	background-image: url(../images/topo-test-bg2.png);
 	overflow : hidden;
 }
 
