@@ -2197,17 +2197,25 @@ input:focus {
 	height: 30px;
 	border-radius: 4px;
 	background-color: #36393e;
-	max-width: 100%;
+	width: 100%;
 }
 
 .logs-commend-items-pre, .logs-commend-items-next {
+	position: absolute;
+	top: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-shrink: 0;
-	margin: 0 6px;
-	width: 12px;
+	width: 22px;
 	height: 100%;
+}
+
+.logs-commend-items-pre {
+	left: 0;
+}
+
+.logs-commend-items-next {
+	right: 0;
 }
 
 .logs-commend-items-next.btn-valid, .logs-commend-items-pre.btn-valid {
@@ -2234,10 +2242,11 @@ input:focus {
 	display: flex;
 	align-items: center;
 	min-width: 1px;
+	margin: 0 22px;
 	overflow-x: auto;
 	overflow-y: hidden;
 	font-size: 1.4rem;
-	line-height: 1.6rem;
+	line-height: 1.9rem;
 	counter-reset: commend-item-counter 0;
 }
 
@@ -3326,7 +3335,6 @@ input:focus {
 	background-image: url('../images/running.svg');
 	background-repeat: no-repeat;
 	background-position: 2px 0px;
-	/* background-size: auto 20px;*/
 	background-size : auto 100%;
 	padding-left: 35px;
 	padding-right: 1px;
@@ -3363,7 +3371,6 @@ input:focus {
 	background-image: url('../images/timer.svg');
 	background-repeat: no-repeat;
 	background-position: 3px 0px;
-	/* background-size: auto 20px;*/
 	background-size: auto 100%;
 	padding-left: 22px;
 	padding-right: 2px;
