@@ -59,9 +59,9 @@
             if(viewBtn.hasClass("search-foot-view-selected")){
                return;
 			}
-			var resultList = $(".search-results");
+			var resultList = $(".search-results-layout");
 			if(resultList.length>0){
-                if($(".search-results[class$='-list']").length > 0){
+                if($(".search-results-layout[class$='-list']").length > 0){
                     resultList.removeClass("view-list").addClass("view-card");
                     $(".search-foot-view-list").removeClass("search-foot-view-selected");
                     $(".search-foot-view-card").addClass("search-foot-view-selected");
