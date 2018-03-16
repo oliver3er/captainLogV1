@@ -2550,7 +2550,7 @@ input:focus {
 	/*border-top: 1px solid hsla(0,0%,100%,.04);*/
 	font-size: 1.4rem;
 	font-weight: 400;
-	line-height: 1.8rem;
+	line-height: 20px;
 	color: #b8b8b8;
 	cursor: pointer;
 
@@ -2845,21 +2845,17 @@ input:focus {
 	line-height: 1.4rem;
 }
 
-.log-item-detail .log-item-tag-words {
-	line-height: 1.6rem;
-}
-
 .log-item-title {
 	font-size: 1.6rem;
 	font-weight: 400;
 	color: #ececec;
-	line-height: 1.6rem;
+	line-height: 20px;
 	margin-bottom: 8px;
 }
 
 .log-item-title .log-item-tag-words {
 	font-size: 1.6rem;
-	line-height: 1.6rem;
+	line-height: 20px;
 	font-weight: 400;
 }
 
