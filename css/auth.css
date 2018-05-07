@@ -161,7 +161,7 @@ a {
     height: 60%;
 }
 
-.auth-main-form {
+.auth-main-form, .auth-main-forgot-form  {
     width: 360px;
     text-align: center;
 }
@@ -174,15 +174,36 @@ a {
     letter-spacing: 1px;
 }
 
+.auth-main-forgot-form .auth-main-form-title {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    height: 46px;
+    letter-spacing: 2px;
+}
+
+.auth-main-form-title-info {
+    margin-bottom: 36px;
+    width: 360px;
+    font-size: .16rem;
+    font-weight: 300;
+    color: #bdbebf;
+    text-align: left;
+}
+
 .auth-main-form-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-bottom: 28px;
+    /*margin-bottom: 28px;*/
     font-size: .14rem;
     font-weight: 400;
     color: #dadada;
+}
+
+.auth-main-form>div:nth-child(3) {
+    margin-top: 28px;
 }
 
 .auth-main-form-item-label {
@@ -223,6 +244,24 @@ a {
     color: #36373c;
 }
 
+.auth-main-form-forgot-psw {
+    margin-top: 10px;
+    width: 100%;
+    height: .14rem;
+    color: #bdbebf;
+    font-size: .14rem;
+    font-weight: 400;
+    text-align: left;
+}
+
+.auth-main-form-forgot-psw>a {
+    text-decoration: underline;
+    transition: .15s;
+}
+.auth-main-form-forgot-psw>a:hover {
+    color: #ffffff;
+}
+
 .auth-main-form-btn {
     font-size: .16rem;
     font-weight: 400;
@@ -253,6 +292,14 @@ a {
 
 .form-btn-sign-up::before {
     content: "Create an account"
+}
+
+.form-btn-sign-in::before {
+    content: "Sign in"
+}
+
+.form-btn-reset-psw::before {
+    content: "Send password reset email";
 }
 
 .form-btn-sign-up-info {
