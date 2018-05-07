@@ -37,11 +37,7 @@ a {
 }
 
 .auth-page.dark-style {
-    /*background-image: -webkit-radial-gradient(circle farthest-corner at center 80%, #3a3c42, #1f2022);
-    background-image: -moz-radial-gradient(circle farthest-corner at center 80%, #34353a, #222327);
-    background-image: -o-radial-gradient(circle farthest-corner at center 80%, #34353a, #222327);
-    background-image: radial-gradient(circle farthest-corner at center 80%, #666666, #333333);*/
-    background-color: #282a2d;
+    background: #1c1c1e radial-gradient(circle farthest-corner at center 80%, #34353a,#1c1c1e);
 }
 
 .auth-head {
@@ -109,7 +105,7 @@ a {
     transform: translateY(-1px);
     color: #ffffff;
     background-color: rgba(52, 54, 58, 0.8);
-    box-shadow: 0 10px 10px rgba(38, 39, 39,.6);
+    box-shadow: 1px 2px 10px rgba(0, 0, 0,.15);
 }
 
 .auth-head-to-other.to-sign-up div:last-child::before {
@@ -248,7 +244,7 @@ a {
 .auth-main-form-btn div:first-child:hover {
     color: #ffffff;
     background-color: #4d91f9;
-    box-shadow: 0 10px 10px rgba(38, 39, 39,.9);
+    box-shadow: 1px 2px 8px rgba(38, 39, 39,.8);
 }
 
 .auth-main-form-btn div:first-child:active {
