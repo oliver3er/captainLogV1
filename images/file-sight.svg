@@ -1,0 +1,13 @@
+<svg version='1.1' id='file-sight-svg' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+													 width='72.759px' height='82.005px' viewBox='0 0 72.759 82.005' enableBackground='new 0 0 72.759 82.005' xmlSpace='preserve'>
+												<path fill='none' stroke='#ECECEC' strokeWidth='3.5' strokeMiterlimit='10' d='M69.875,31.457
+													c-19.25,0-34.125,9.625-34.125,9.625s-15.125-9.625-34-9.625c0,0,0,36.125,0,39.375c18.875,0,34,9.125,34,9.125
+													s14.875-9.125,34.125-9.125C69.875,64.332,69.875,35.207,69.875,31.457z'/>
+												<path id='file-sight-movepath' fill='none' stroke='#ECECEC' strokeWidth='2' strokeMiterlimit='10' d='M6,18.154c12.285,0.178,29.812,8.875,29.812,8.875
+													s17.938-8.875,29.312-8.867'/> 
+												<path fill='none' stroke='#ECECEC' strokeWidth='2' strokeMiterlimit='10' d='M2.938,24.457c15.25,0,32.875,8.875,32.875,8.875
+													s17.75-8.875,32.875-8.875'/>
+												<rect x='8.428' y='44.706' fill='none' width='64.331' height='23.252'/>
+												<text transform='matrix(1 0 0 1 8.4277 62.9648)' fill='#ECECEC' fontFamily='NuevaStd-Bold' fontSize='22'>E=MC</text>
+												<text transform='matrix(0.583 0 0 0.583 59.1592 55.6387)' fill='#ECECEC' fontFamily='NuevaStd-Bold' fontSize='22'>2</text>
+											</svg>

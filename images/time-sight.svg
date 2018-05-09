@@ -1,0 +1,46 @@
+<svg id='time-sight-svg' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+											 viewBox='0 0 100.52 98.611' enableBackground='new 0 0 100.52 98.611' xmlSpace='preserve'>
+											<g id='time-sight-layer1'>
+											<path fill='none' stroke='#ECECEC' strokeWidth='3' d='M68.885,61.8L44.54,86.146c-8.726,8.727-22.874,8.727-31.6,0l0,0
+												c-8.726-8.726-8.726-22.874,0-31.601l27.151-27.149'/>
+												
+												
+											<path className='time-sight-static' fill='none' stroke='#ECECEC' strokeWidth='2' d='M2.587,60.611
+												c1.295-3.607,3.383-6.987,6.266-9.87L50.69,8.903'/>	
+											<path className='time-sight-static' fill='none' stroke='#ECECEC' strokeWidth='2' d='M1.032,71.078c-0.064-1.339-0.031-2.681,0.102-4.015'/>
+											<path className='time-sight-static' fill='none' stroke='#ECECEC' strokeWidth='2' d='M14.141,93.337c-1.66-1.06-3.232-2.315-4.685-3.768L9.07,89.184
+												c-4.411-4.41-7.016-9.938-7.809-15.65'/>
+											<path className='time-sight-static' fill='none' stroke='#ECECEC' strokeWidth='2' d='M24.128,97.226c-1.458-0.257-2.9-0.633-4.311-1.127'/>
+											<path className='time-sight-static' fill='none' stroke='#ECECEC' strokeWidth='2' d='M41.57,94.484c-3.571,1.905-7.488,2.948-11.446,3.128'/>
+											<path className='time-sight-static' fill='none' stroke='#ECECEC' strokeWidth='2' d='M64.799,72.887L47.9,89.787c-0.882,0.883-1.812,1.69-2.78,2.425'/>
+											<line className='time-sight-static' fill='none' stroke='#ECECEC' strokeWidth='2' x1='80.424' y1='57.262' x2='71.737' y2='65.95'/>
+				
+											<g className='time-sight-icon-core'>
+												<path fill='#ECECEC' d='M42.134,75.298c-1.978,5.711-7.403,9.812-13.787,9.812c-8.056,0-14.587-6.531-14.587-14.588
+													c0-6.34,4.044-11.734,9.693-13.746C16.987,70.45,30.737,81.45,42.134,75.298z'/>
+												<circle fill='none' stroke='#ECECEC' strokeWidth='3' cx='28.348' cy='70.522' r='16.072'/>
+											</g>
+											
+											
+											<line className='time-sight-static' fill='none' stroke='#ECECEC' strokeWidth='2' x1='73.362' y1='21.377' x2='77.888' y2='16.851'/>
+											<line className='time-sight-static' fill='none' stroke='#ECECEC' strokeWidth='2' x1='89.237' y1='40.059' x2='99.813' y2='29.482'/>
+											
+											<line id='time-sight-short-path1' className='time-sight-short-path' fill='none' stroke='#ECECEC' strokeWidth='2' x1='52.961' y1='23.319' x2='75.284' y2='0.997'/>
+											<line id='time-sight-short-path2' className='time-sight-short-path' fill='none' stroke='#ECECEC' strokeWidth='2' x1='69.947' y1='24.41' x2='91.653' y2='2.7'/>
+											<line id='time-sight-short-path3' className='time-sight-short-path' fill='none' stroke='#ECECEC' strokeWidth='2' x1='81.227' y1='30.46' x2='96.893' y2='14.794'/>
+											<line id='time-sight-short-path4' className='time-sight-short-path' fill='none' stroke='#ECECEC' strokeWidth='2' x1='89.237' y1='40.059' x2='95.854' y2='33.442'/>
+											</g>
+											<g id='time-sight-layer2'>
+												<path id='time-sight-path1' fill='none' stroke='#ECECEC' strokeWidth='2' d='M1.129,67.063c0.646-6.674,3.769-13.139,9.397-17.997L52.68,6.909'/>
+												<path id='time-sight-path2' fill='none' stroke='#ECECEC' strokeWidth='2' d='M100.331,37.356l-8.603,8.6L49.573,88.111c-3.505,3.885-14.086,13.214-29.755,7.988'/>
+											<path id='time-sight-wave' fill='none' stroke='#ECECEC' strokeWidth='3' d='M69.437,52.458c1.197-1.194,3.136-1.195,4.331,0l0,0
+												c1.197,1.197,1.257,3.215,0.06,4.41l-6.346,6.295 M76.869,35.979c1.3-1.298,1.365-3.34,0.147-4.559l0,0
+												c-1.219-1.219-3.26-1.152-4.56,0.146L61.115,42.909 M76.869,35.979L56.734,56.285c-1.298,1.301-1.363,3.344-0.145,4.562l0,0
+												c1.219,1.219,3.262,1.154,4.561-0.146l8.265-8.261 M56.697,38.492c-1.299,1.299-1.355,3.348-0.127,4.579l0,0
+												c1.229,1.229,3.279,1.172,4.578-0.128 M56.703,38.499l3.893-3.894c1.301-1.299,1.342-3.365,0.092-4.614l0,0
+												c-1.248-1.249-3.312-1.207-4.613,0.092L43.719,42.439 M44.219,32.844l-5.047,5.047c-1.299,1.299-1.332,3.373-0.072,4.633l0,0
+												c1.257,1.259,3.332,1.226,4.63-0.075 M39.183,37.904l5.048-5.05c1.299-1.299,1.273-3.432-0.059-4.764l0,0
+												c-1.332-1.332-3.464-1.358-4.766-0.059l-5.25,5.259'>
+											</path>
+											</g>
+											</svg>
