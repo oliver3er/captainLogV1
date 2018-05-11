@@ -2253,6 +2253,7 @@ input:focus {
 	display: table;
 	position:relative;
 	margin-left: 20px;
+	white-space: nowrap;
 }
 
 .logs-commend-items div:first-child {
@@ -2423,6 +2424,7 @@ input:focus {
 	border-radius: 50%;
 	border: 1px solid rgba(47,49,54,.6);
 	cursor: pointer;
+	z-index: 100;
 	transition: border 0.1s, background 0.1s, transform 0.12s ease-out;
 }
 
@@ -2557,14 +2559,14 @@ input:focus {
 	transition: background .12s ease,border .1s, box-shadow .1s;
 }
 
-.content-log-item:hover {
+/*.content-log-item:hover {
 	border: 1px solid rgba(219, 209, 209, 0.2);
 }
 
 .content-log-item:hover .content-log-divider-line,
 .content-log-item:hover+.content-log-item .content-log-divider-line {
 	visibility: hidden;
-}
+}*/
 
 .content-log-item:active {
 	box-shadow: inset 0 0 3px rgba(219, 209, 209, 0.74);
