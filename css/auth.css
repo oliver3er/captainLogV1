@@ -1,0 +1,322 @@
+html {
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 100px;
+}
+
+body {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 100px;
+    overflow: hidden;
+    background: transparent;
+}
+
+a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6, html, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+
+a {
+    color: inherit;
+    font-size: inherit;
+}
+
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.auth-page.dark-style {
+    background: #1c1c1e radial-gradient(circle farthest-corner at center 80%, #34353a,#1c1c1e);
+}
+
+.auth-head {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 1.2rem;
+    height: 20%;
+    margin-left: 60px;
+    margin-right: 60px;
+    background: transparent;
+
+    font-size: .14rem;
+    color: #b8b8b8;
+    font-weight: 400;
+}
+
+.auth-head-back-home, .auth-head-to-other {
+    display: flex;
+    align-items: center;
+}
+.auth-head-back-home {
+    cursor: pointer;
+}
+
+.auth-head-back-home div {
+    margin-right: 6px;
+}
+.auth-head-back-home div:first-child {
+    width: 8px;
+    height: 16px;
+    background: url("../images/arrow-back-auth.svg") no-repeat center center;
+    background-size: auto 12px;
+}
+.auth-head-back-home:hover div:first-child {
+    background: url("../images/arrow-back-auth1.svg") no-repeat center center;
+}
+.auth-head-back-home:hover div:last-child {
+    color: #ffffff;
+}
+
+
+.auth-head-to-other.to-sign-up div:first-child::before {
+    content: "Need an account?";
+}
+
+.auth-head-to-other.to-sign-in div:first-child::before {
+    content: "Already have an account?";
+}
+
+.auth-head-to-other div:last-child {
+    width: 112px;
+    height: 40px;
+    margin-left: 14px;
+    text-align: center;
+    line-height: 40px;
+    color: #dadada;
+    border-radius: 4px;
+    background-color: rgba(52, 54, 58, 0.5);
+    transition: box-shadow .1s,background-color .1s,transform .2s;
+    cursor: pointer;
+}
+.auth-head-to-other div:last-child:hover {
+    transform: translateY(-1px);
+    color: #ffffff;
+    background-color: rgba(52, 54, 58, 0.8);
+    box-shadow: 1px 2px 10px rgba(0, 0, 0,.15);
+}
+
+.auth-head-to-other.to-sign-up div:last-child::before {
+    content: "Sign up";
+}
+.auth-head-to-other.to-sign-in div:last-child::before {
+    content: "Sign in";
+}
+
+.auth-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80%;
+    overflow-y: auto;
+}
+
+.auth-main::-webkit-scrollbar {
+    width: 12px;
+    border: 2px solid rgba(45,46,51,.75);
+    background-color: rgba(45,46,51,.75);
+    border-radius: 10px;
+}
+
+.auth-main::-webkit-scrollbar-thumb {
+    border: 2px solid rgba(45,46,51,.75);
+    border-radius: 10px;
+    background-color: rgba(30,33,36,0.6);
+}
+
+.auth-main-logo {
+    flex-shrink: 0;
+    height: 140px;
+    min-height: 60px;
+    max-height: 40%;
+    margin-bottom: 20px;
+}
+
+.auth-main-logo>div {
+    width: 50px;
+    height: 50px;
+    border: 11px solid #498cf3;
+}
+
+.auth-main-content {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    height: 60%;
+}
+
+.auth-main-form, .auth-main-forgot-form  {
+    width: 360px;
+    text-align: center;
+}
+
+.auth-main-form-title {
+    height: 70px;
+    color: #ffffff;
+    font-size: .24rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.auth-main-forgot-form .auth-main-form-title {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    height: 46px;
+    letter-spacing: 2px;
+}
+
+.auth-main-form-title-info {
+    margin-bottom: 36px;
+    width: 360px;
+    font-size: .16rem;
+    font-weight: 300;
+    color: #bdbebf;
+    text-align: left;
+}
+
+.auth-main-form-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /*margin-bottom: 28px;*/
+    font-size: .14rem;
+    font-weight: 400;
+    color: #dadada;
+}
+
+.auth-main-form>div:nth-child(3) {
+    margin-top: 28px;
+}
+
+.auth-main-form-item-label {
+    margin-bottom: 8px;
+}
+
+.auth-main-form-item-input input {
+    width: 360px;
+    height: 40px;
+    box-sizing: border-box;
+    padding-left: 6px;
+    padding-right: 10px;
+    background-color: rgba(59,60,65,.6);
+    border: 1px solid rgba(81,83,89,.3);
+    border-radius: 6px;
+    font-size: .14rem;
+    font-weight: 400;
+    color: #ececec;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all .2s;
+}
+
+.auth-main-form-item-input input:hover, .auth-main-form-item-input input:focus {
+    border-color: #717376;
+    background-color: #36373c;
+    box-shadow: 1px 0 5px rgba(97,99,103,.75);
+}
+
+.auth-main-form-item-input input::-webkit-input-placeholder{
+    color: #696c70;
+    letter-spacing: 0;
+    transition: color .15s;
+}
+
+.auth-main-form-item-input input:focus::-webkit-input-placeholder {
+    color: #36373c;
+}
+
+.auth-main-form-forgot-psw {
+    margin-top: 10px;
+    width: 100%;
+    height: .14rem;
+    color: #bdbebf;
+    font-size: .14rem;
+    font-weight: 400;
+    text-align: left;
+}
+
+.auth-main-form-forgot-psw>a {
+    text-decoration: underline;
+    transition: .15s;
+}
+.auth-main-form-forgot-psw>a:hover {
+    color: #ffffff;
+}
+
+.auth-main-form-btn {
+    font-size: .16rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #ececec;
+}
+.auth-main-form-btn div:first-child {
+    margin-top: 36px;
+    width: 360px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 6px;
+    border: 0;
+    background-color: #498cf3;
+    cursor: pointer;
+    transition: box-shadow .1s,background-color .1s,transform .2s;
+}
+.auth-main-form-btn div:first-child:hover {
+    color: #ffffff;
+    background-color: #4d91f9;
+    box-shadow: 1px 2px 8px rgba(38, 39, 39,.8);
+}
+
+.auth-main-form-btn div:first-child:active {
+    transform: scale(.98);
+}
+
+.form-btn-sign-up::before {
+    content: "Create an account"
+}
+
+.form-btn-sign-in::before {
+    content: "Sign in"
+}
+
+.form-btn-reset-psw::before {
+    content: "Send password reset email";
+}
+
+.form-btn-sign-up-info {
+    width: 364px;
+    margin-top: 8px;
+    line-height: .14rem;
+    color: #9ea2ab;
+    font-size: .12rem;
+    font-weight: 300;
+    text-align: left;
+}
+
+.form-btn-sign-up-info span {
+    text-decoration:underline;
+    cursor: pointer;
+    transition: color .15s;
+}
+.form-btn-sign-up-info span:hover {
+    color: #ffffff;
+}

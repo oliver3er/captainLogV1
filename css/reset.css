@@ -213,7 +213,11 @@ legend {
 textarea {
     overflow: auto; /* IE 8/9中，去除默认垂直滚动条属性 */
     vertical-align: top; /* 提高所有浏览器中的文本可读性和版式 */
-} 
+}
+
+input,button,select,textarea {
+    outline:none;
+}
 
 optgroup {
   font-weight: bold;
