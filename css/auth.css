@@ -1,6 +1,6 @@
 html {
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-    font-size: 100px;
+    font-size: 10px;
 }
 
 body {
@@ -45,13 +45,13 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-height: 1.2rem;
+    max-height: 12rem;
     height: 20%;
     margin-left: 60px;
     margin-right: 60px;
     background: transparent;
 
-    font-size: .14rem;
+    font-size: 1.4rem;
     color: #b8b8b8;
     font-weight: 400;
 }
@@ -169,7 +169,7 @@ a {
 .auth-main-form-title {
     height: 70px;
     color: #ffffff;
-    font-size: .24rem;
+    font-size: 2.4rem;
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -185,7 +185,7 @@ a {
 .auth-main-form-title-info {
     margin-bottom: 36px;
     width: 360px;
-    font-size: .16rem;
+    font-size: 1.6rem;
     font-weight: 300;
     color: #bdbebf;
     text-align: left;
@@ -197,7 +197,7 @@ a {
     justify-content: center;
     align-items: flex-start;
     /*margin-bottom: 28px;*/
-    font-size: .14rem;
+    font-size: 1.4rem;
     font-weight: 400;
     color: #dadada;
 }
@@ -219,7 +219,7 @@ a {
     background-color: rgba(59,60,65,.6);
     border: 1px solid rgba(81,83,89,.3);
     border-radius: 6px;
-    font-size: .14rem;
+    font-size: 1.4rem;
     font-weight: 400;
     color: #ececec;
     letter-spacing: 1px;
@@ -247,9 +247,9 @@ a {
 .auth-main-form-forgot-psw {
     margin-top: 10px;
     width: 100%;
-    height: .14rem;
+    height: 1.4rem;
     color: #bdbebf;
-    font-size: .14rem;
+    font-size: 1.4rem;
     font-weight: 400;
     text-align: left;
 }
@@ -263,7 +263,7 @@ a {
 }
 
 .auth-main-form-btn {
-    font-size: .16rem;
+    font-size: 1.6rem;
     font-weight: 400;
     letter-spacing: 1px;
     color: #ececec;
@@ -305,9 +305,9 @@ a {
 .form-btn-sign-up-info {
     width: 364px;
     margin-top: 8px;
-    line-height: .14rem;
+    line-height: 1.4rem;
     color: #9ea2ab;
-    font-size: .12rem;
+    font-size: 1.2rem;
     font-weight: 300;
     text-align: left;
 }
