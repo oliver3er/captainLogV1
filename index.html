@@ -12,6 +12,7 @@
 	<script src="js/liquidFillGauge.js" language="JavaScript"></script>
 	<script type="text/javascript">
         $(function (){
+
             //标签设置中上传/选择图标的提示
             $(".with-top-tip").hover(function(){
 				var thisObj = $(this);
@@ -659,6 +660,12 @@
                     }else{
                         $(".content-log-item").eq(0).addClass('log-editing-status').find('.content-log-delete-status').addClass('log-deleting-status-show');
 					}
+				}else if($(this).val()=='first-load') {
+                    //第一次登入系统显示的设置用户信息窗口
+					var firstDialog = $(".first-load-dialog-wrapper");
+					firstDialog.removeClass("dialog-close").removeClass("dialog-open");
+					firstDialog.addClass("dialog-open");
+                    backdropOpen();
 				}
             });
 
@@ -2573,6 +2580,7 @@ test--
 			<option value="close-tool-bar">close the tool bar</option>
 			<option value="open-tool-bar">open the tool bar</option>
 			<option value="delete-hover">hover the delete button</option>
+			<option value="first-load">first load page</option>
 
 
 		</select>
@@ -2611,5 +2619,75 @@ test--
 	</div>
 	<!--tag smart complete dialog end-->
 
+
+	<!--first load page begin-->
+	<div class="first-load-dialog-wrapper dialog-wrapper">
+		<div class="first-load-dialog">
+			<div class="first-load-dialog-head">
+				<div>
+					<h1>Welcome to Midinote</h1>
+					<h2>You are almost done, we need you to finish the final part, please set up your personal info.</h2>
+				</div>
+			</div>
+
+			<div class="first-load-dialog-form">
+				<div class="fld-form-username-item">
+					<div class="fld-form-label label-icon-common">
+						<div class="fld-form-label-icon"></div>
+						<div class="fld-form-label-content">USERNAME</div>
+						<div class="fld-form-error-info"></div>
+					</div>
+					<div class="fld-form-name-input">
+						<input placeholder="What's your name?"/>
+					</div>
+					<div class="fld-form-username-desc">Midinote will create the first TAG named after your name.</div>
+				</div>
+
+				<div class="fld-form-avatar-item">
+					<div class="fld-form-label label-icon-error">
+						<div class="fld-form-label-icon"></div>
+						<div class="fld-form-label-content">AVATAR</div>
+						<div class="fld-form-error-info">The image is too big.</div>
+					</div>
+					<div class="fld-form-avatar">
+						<div class="fld-form-avatar-upload-wrapper"></div>
+						<div class="fld-form-avatar-upload"></div>
+					</div>
+					<div class="fld-form-avatar-desc">We recommend an image of at least 512*512 for your avatar.</div>
+				</div>
+			</div>
+
+			<div class="first-load-dialog-foot">
+				<div class="first-load-dialog-btn">GET STARTED</div>
+			</div>
+
+			<!--演示效果 begin-->
+			<script type="text/javascript">
+                $(function () {
+                    $('#first-load-page-selection').bind('change', function () {
+                        var labelDiv = $('.fld-form-label');
+                        var classStr = $('.fld-form-label').prop('className').split(" ");
+                        if ($(this).val() == 'icon-change-checked') {
+                            labelDiv.removeClass(classStr[1]).addClass("label-icon-checked");
+                        }else if ($(this).val() == 'icon-change-common') {
+                            labelDiv.removeClass(classStr[1]).addClass("label-icon-common");
+                        }else if ($(this).val() == 'icon-change-error') {
+                            labelDiv.removeClass(classStr[1]).addClass("label-icon-error");
+                        }
+                    });
+                });
+                </script>
+
+
+			<select id="first-load-page-selection" style="position:absolute; right: 20px;bottom: 40px;">
+				<option value="none">NONE</option>
+				<option value="icon-change-checked">Icon change green</option>
+				<option value="icon-change-error">Icon change red</option>
+				<option value="icon-change-common">Icon change yellow</option>
+			</select>
+			<!--演示效果 end-->
+		</div>
+	</div>
+	<!--first load page end-->
 </body>
 </html>
