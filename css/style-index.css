@@ -6263,7 +6263,6 @@ input:focus {
 	font-size: 1.4rem;
 	font-weight: 400;
 	color: #7c7e83;
-/*	background-color: #f6f6f6;*/
 	border: 1px solid rgba(28,36,43,.6);
 	box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
 	background: url("../images/settings-bg1.svg") no-repeat 95% 35%,url("../images/settings-bg2.svg") no-repeat 0 15%,#f6f6f6;
@@ -6440,6 +6439,10 @@ input:focus {
 }
 
 .fld-form-avatar-upload-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -6459,15 +6462,42 @@ input:focus {
 	cursor: pointer;
 }
 
+.fld-form-avatar-upload-icon {
+	position: absolute;
+	right: -5px;
+	top: 0px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: url("../images/upload-avatar.svg") no-repeat center center, #dbe4f6/*#d3d4d6*/;
+	background-size: 22px auto;
+	z-index: 200;
+	cursor: pointer;
+}
+
 .fld-form-avatar-upload {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 120px;
 	height: 120px;
 	border-radius: 50%;
-	background-image: radial-gradient(circle at center, #a3a3a3 0, #dbdbdb 70%, #e8e8e8 100%);
+	background: /*url("../images/face-default.svg") no-repeat center center,*/
+	radial-gradient(circle at center, #a3a3a3 0, #dbdbdb 70%, #e8e8e8 100%) no-repeat center center;
+	/*background-size: 70% auto, 100% 100%;*/
 	cursor: pointer;
+}
+
+.fld-form-avatar-upload-wrapper span, .fld-form-avatar-upload span {
+	display: block;
+	color: #ffffff;
+	font-weight: 500;
+	font-size: 1.2rem;
+	line-height: 16px;
 }
 
 .fld-form-avatar-desc {
@@ -6497,7 +6527,7 @@ input:focus {
 .first-load-dialog-btn:hover {
 	color: #ffffff;
 	transform: translateY(-1px);
-	box-shadow: 0 2px 6px rgba(140,140,140,.8);
+	box-shadow: 0 2px 10px rgba(100,100,100,.8);
 }
 
 .first-load-dialog-btn:active {
