@@ -6314,3 +6314,320 @@ input:focus {
 }
 
 /****tag smart complete dialog end****/
+
+
+
+/****first load dialog begin*****/
+.first-load-dialog-wrapper {
+	transform: scale(1) translateZ(0px);
+	visibility: hidden;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.dialog-open.first-load-dialog-wrapper {
+	-webkit-animation-name: dialog-anim-open;
+	animation-name: dialog-anim-open;
+	animation-timing-function: ease-out;
+	animation-duration: .1s;
+	pointer-events: auto;
+}
+
+.dialog-close.first-load-dialog-wrapper {
+	-webkit-animation-name: dialog-anim-close;
+	animation-name: dialog-anim-close;
+	-webkit-animation-duration: 0.1s;
+	animation-duration: 0.1s;
+	pointer-events: none;
+}
+
+.first-load-dialog {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	/*justify-content: center;*/
+	align-items: center;
+	width: 800px;
+	height: 600px;
+	min-height: 1px;
+	max-height: 100%;
+	border-radius: 6px;
+	overflow-y: auto;
+	z-index: 1000;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: #7c7e83;
+	border: 1px solid rgba(28,36,43,.6);
+	box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+	background: url("../images/settings-bg1.svg") no-repeat 95% 35%,url("../images/settings-bg2.svg") no-repeat 0 15%,#f6f6f6;
+	background-size: auto 480px,auto 160px;
+
+}
+
+.first-load-dialog-head {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	height: 28%;
+	min-height: 180px;
+	width: 450px;
+}
+
+.first-load-dialog-head h1 {
+	margin-bottom: 16px;
+	text-align: center;
+	font-size: 4rem;
+	font-weight: 600;
+	color: #2f3136;
+	letter-spacing: 1px;
+}
+.first-load-dialog-head h2 {
+	text-align: center;
+	line-height: 1.6rem;
+	font-size: 1.6rem;
+	font-weight: 400;
+	color: #636568;
+}
+
+.first-load-dialog-form {
+	flex-shrink: 0;
+	width: 430px;
+	height: 274px;
+	border-radius: 4px;
+	border: 1px solid #d7d7d7;
+	background-color: #f6f6f6;
+}
+
+.fld-form-username-item {
+	width: 100%;
+	height: 122px;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	border-bottom: 1px solid #dedede;
+	transition: background-color .15s ease-out,box-shadow .2s cubic-bezier(0.45, 0.01, 0.4, 1.13);
+}
+
+.fld-form-username-item:hover {
+	border-bottom: 0;
+	background-color: #fbfbfb;
+	box-shadow: 0 2px 6px rgba(164,164,164,.8);
+}
+
+.fld-form-label {
+	display: flex;
+	align-items: center;
+	padding-top: 14px;
+	color: #636568;
+	font-size: 1.4rem;
+	font-weight: 500;
+}
+
+.fld-form-label-icon {
+	margin-left: 7px;
+	margin-right: 6px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #faa61a;
+	cursor: default;
+	transition: background-color .15s cubic-bezier(0.03, 0.42, 0.3, 1.33), background-image .2s;
+}
+
+.label-icon-common .fld-form-label-icon {
+	background: url("../images/right-arrow.svg") no-repeat center center, #faa61a;
+	background-size: auto 13px;
+}
+
+.label-icon-checked .fld-form-label-icon {
+	background: url("../images/fld-label-icon.svg") no-repeat center center, #43b581;
+	background-size: 13px auto;
+}
+
+.label-icon-error .fld-form-label-icon {
+	background: url("../images/error-icon.svg") no-repeat center center, #f04747;
+	background-size: auto 15px;
+}
+
+.fld-form-error-info {
+	margin-left: 6px;
+	color: transparent;
+	font-size: 1.2rem;
+	font-weight: 400;
+	text-transform: uppercase;
+	opacity: 0;
+	transition: opacity .2s;
+}
+
+.label-icon-error .fld-form-error-info {
+	color: #f04747;
+	opacity: 1;
+}
+
+
+.fld-form-name-input {
+	width: 100%;
+	margin: 6px auto 8px;
+	text-align: center;
+}
+
+.fld-form-name-input input {
+	width: 360px;
+	height: 40px;
+	border-radius: 4px;
+	border: 1px solid #a0a0a0;
+	padding-left: 6px;
+	padding-right: 10px;
+	color: #232629;
+	letter-spacing: 1px;
+	font-size: 1.6rem;
+	font-weight: 500;
+	transition: all .15s ease;
+}
+
+.fld-form-name-input input:hover {
+	border-color: rgba(73,140,243,.7);
+	box-shadow: 0 0 6px rgba(67,138,246,.75);
+	background-color: #fbfbfb;
+}
+
+.fld-form-name-input input:focus::-webkit-input-placeholder {
+	color: transparent;
+}
+
+.fld-form-name-input input::-webkit-input-placeholder {
+	color: #acacad;
+	letter-spacing: 0;
+	transition: color .15s;
+	font-weight: 400;
+}
+
+.fld-form-username-desc, .fld-form-avatar-desc {
+	margin-left: 35px;
+	font-size: 1.4rem;
+	font-weight: 300;
+	color: #8b8b8b;
+}
+
+.fld-form-avatar-item {
+	position: relative;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	width: 100%;
+	height: 152px;
+	transition: background-color .15s ease-out,box-shadow .2s cubic-bezier(0.45, 0.01, 0.4, 1.13);
+}
+
+.fld-form-avatar-item:hover {
+	background-color: #fbfbfb;
+	box-shadow: 0 2px 6px rgba(164,164,164,.8);
+}
+
+.fld-form-avatar {
+	position: absolute;
+	right: 35px;
+	left: auto;
+	top: 16px;
+	width: 120px;
+	height: 120px;
+}
+
+.fld-form-avatar-upload-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	box-shadow: inset 0 0 120px rgba(0,0,0,.8);
+	opacity: 0;
+	pointer-events: none;
+	transition: all .35s ease;
+	z-index: 100;
+}
+
+.fld-form-avatar:hover .fld-form-avatar-upload-wrapper {
+	opacity: 1;
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.fld-form-avatar-upload-icon {
+	position: absolute;
+	right: -5px;
+	top: 0px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: url("../images/upload-avatar.svg") no-repeat center center, #dbe4f6/*#d3d4d6*/;
+	background-size: 22px auto;
+	z-index: 200;
+	cursor: pointer;
+}
+
+.fld-form-avatar-upload {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	background: /*url("../images/face-default.svg") no-repeat center center,*/
+	radial-gradient(circle at center, #a3a3a3 0, #dbdbdb 70%, #e8e8e8 100%) no-repeat center center;
+	/*background-size: 70% auto, 100% 100%;*/
+	cursor: pointer;
+}
+
+.fld-form-avatar-upload-wrapper span, .fld-form-avatar-upload span {
+	display: block;
+	color: #ffffff;
+	font-weight: 500;
+	font-size: 1.2rem;
+	line-height: 16px;
+}
+
+.fld-form-avatar-desc {
+	margin-top: 24px;
+	width: 260px;
+	line-height: 18px;
+}
+
+.first-load-dialog-foot {
+	margin: 40px auto;
+}
+
+.first-load-dialog-btn {
+	width: 180px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 4px;
+	background-color: #43b581;
+	color: #f6f6f6;
+	font-size: 1.6rem;
+	font-weight: 400;
+	transition: background-color .15s,box-shadow .2s cubic-bezier(0.45, 0.01, 0.4, 1.13), transform .15s cubic-bezier(0.45, 0.01, 0.4, 1.13);
+	cursor: pointer;
+}
+
+.first-load-dialog-btn:hover {
+	color: #ffffff;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 10px rgba(100,100,100,.8);
+}
+
+.first-load-dialog-btn:active {
+	color: #ffffff;
+	background-color: #3aae79;
+	transform: translateY(0);
+	box-shadow: none;
+}
+/****first load dialog end*****/
