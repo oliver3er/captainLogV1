@@ -144,6 +144,10 @@ input:focus {
     display: none;
 }
 
+.dark-style {
+	background: #1c1c1e;
+}
+
 /** index page begin**/
 
 .position-relative {
@@ -156,6 +160,38 @@ input:focus {
 
 .index-page {
 	display: flex;
+}
+
+
+@keyframes index-page-load-anim {
+	from {
+		opacity: 0;
+		transform: scale(.99);
+		visibility: hidden;
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+		visibility: visible;
+	}
+}
+
+.index-page {
+	animation-name: index-page-load-anim;
+	animation-duration: .4s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+	visibility: hidden;
+}
+
+.index-page.first-load {
+	visibility: visible;
+}
+
+.index-page.first-load .callout-backdrop {
+	opacity: 0.85;
+	visibility: visible;
+	pointer-events: auto;
 }
 
 /***************menu style begin*****************/
@@ -538,7 +574,9 @@ input:focus {
 
 
 @keyframes topo-sight-planet-path1-move {
-	transform: rotate(-20deg);
+	to {
+		transform: rotate(-20deg);
+	}
 }
 .sight-bar .topo-sight:hover #topo-sight-planet-path1 {
 	animation: topo-sight-planet-path1-move 3.5s linear infinite;
@@ -2634,7 +2672,7 @@ input:focus {
 	width: 100%;
 	border-top: 1px solid hsla(0,0%,100%,.04);
 	margin-top: -1px;
-	visibility: visible;
+	/*visibility: visible;*/
 	transition: visibility .05s .05s;
 }
 
@@ -2651,7 +2689,7 @@ input:focus {
 	color: rgba(153,170,181,.5);
 	letter-spacing: 0;
 	background: #36393e;
-	visibility: visible;
+	/*visibility: visible;*/
 	transition: background .12s .05s ;
 }
 
@@ -6234,14 +6272,15 @@ input:focus {
 .dialog-open.first-load-dialog-wrapper {
 	-webkit-animation-name: dialog-anim-open;
 	animation-name: dialog-anim-open;
-	animation-timing-function: ease-out;
-	animation-duration: .1s;
+	animation-timing-function: cubic-bezier(0.32, -0.26, 0.58, 1.24);
+	animation-duration: .3s;
 	pointer-events: auto;
 }
 
 .dialog-close.first-load-dialog-wrapper {
 	-webkit-animation-name: dialog-anim-close;
 	animation-name: dialog-anim-close;
+	animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
 	-webkit-animation-duration: 0.1s;
 	animation-duration: 0.1s;
 	pointer-events: none;
