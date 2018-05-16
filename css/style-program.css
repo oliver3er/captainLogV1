@@ -106,3 +106,12 @@
         -webkit-transform: scale(1)
     }
 }
+
+
+/* The class the disable some :before :after,cuz sometimes css have some 
+ * text in content (using before), and it has problem with i18n
+ * so , using this class to disable it
+ * */
+.no-before:before{
+	content		: none !important;
+}
