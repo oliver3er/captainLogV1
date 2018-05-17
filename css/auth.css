@@ -29,16 +29,100 @@ a {
     font-size: inherit;
 }
 
+.dark-style {
+    background: #1c1c1e;
+}
+
+.dark-style .auth-page {
+    background: radial-gradient(circle farthest-corner at center 80%, #34353a,#1c1c1e), #1c1c1e;
+}
+
 .auth-page {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100vh;
+    transform-origin: 50% 80%;
+    animation-name: page-load-anim;
+    animation-duration: .2s;
+    animation-delay: .1s;
+    animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+    animation-fill-mode: forwards;
+    visibility: hidden;
 }
 
-.auth-page.dark-style {
-    background: #1c1c1e radial-gradient(circle farthest-corner at center 80%, #34353a,#1c1c1e);
+@keyframes page-load-anim {
+    from {
+        visibility: hidden;
+        transform: scale(.2);
+        border-radius: 50%;
+        transform: translateY(100%);
+    }
+    to {
+        visibility: visible;
+        transform: scale(1);
+        border-radius: 0;
+        transform: translateY(0);
+    }
 }
+
+.auth-page>div {
+    animation-name: page-content-load-anim;
+    animation-duration: .5s;
+    animation-delay: .35s;
+    animation-timing-function: cubic-bezier(0.6,0,0.4,1);
+    animation-fill-mode: forwards;
+    visibility: hidden;
+}
+
+@keyframes page-content-load-anim {
+    from {
+        visibility: hidden;
+        opacity: 0;
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.auth-page.sign-in .auth-main-form,
+.auth-page.sign-up .auth-main-register-form,
+.auth-page.forgot .auth-main-forgot-form {
+    animation-name: change-content-anim;
+    animation-duration: .25s;
+    animation-timing-function: cubic-bezier(0.09, 0.44, 0.43, 1.18);
+    animation-fill-mode: forwards;
+}
+
+.auth-page.sign-in .auth-main-forgot-form, .auth-page.sign-in .auth-main-register-form {
+    display: none;
+}
+
+.auth-page.sign-up .auth-main-form, .auth-page.sign-up .auth-main-forgot-form {
+    display: none;
+}
+
+.auth-page.forgot .auth-main-form, .auth-page.forgot .auth-main-register-form {
+    display: none;
+}
+
+
+@keyframes change-content-anim {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+        transform: translateY(-15%);
+        display: none;
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        transform: translateY(0);
+        display: block;
+    }
+}
+
 
 .auth-head {
     flex-shrink: 0;
@@ -80,12 +164,12 @@ a {
     color: #ffffff;
 }
 
-
-.auth-head-to-other.to-sign-up div:first-child::before {
+.auth-page.sign-in .auth-head-to-other div:first-child::before,
+.auth-page.forgot .auth-head-to-other div:first-child::before {
     content: "Need an account?";
 }
 
-.auth-head-to-other.to-sign-in div:first-child::before {
+.auth-page.sign-up .auth-head-to-other div:first-child::before {
     content: "Already have an account?";
 }
 
@@ -98,20 +182,28 @@ a {
     color: #dadada;
     border-radius: 4px;
     background-color: rgba(52, 54, 58, 0.5);
-    transition: box-shadow .1s,background-color .1s,transform .2s;
+    transition: box-shadow .1s,background-color .1s,transform .25s;
     cursor: pointer;
 }
 .auth-head-to-other div:last-child:hover {
     transform: translateY(-1px);
     color: #ffffff;
     background-color: rgba(52, 54, 58, 0.8);
-    box-shadow: 1px 2px 10px rgba(0, 0, 0,.15);
+    box-shadow: 4px 6px 10px rgba(0, 0, 0,.15);
 }
 
-.auth-head-to-other.to-sign-up div:last-child::before {
+.auth-head-to-other div:last-child:active {
+    transform: translateY(1px);
+    color: #ffffff;
+    background-color: rgba(52, 54, 58, 1);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0,.3);
+}
+
+.auth-page.sign-in .auth-head-to-other div:last-child::before,
+.auth-page.forgot .auth-head-to-other div:last-child::before {
     content: "Sign up";
 }
-.auth-head-to-other.to-sign-in div:last-child::before {
+.auth-page.sign-up .auth-head-to-other div:last-child::before {
     content: "Sign in";
 }
 
@@ -155,13 +247,12 @@ a {
     flex-grow: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     min-height: 300px;
     height: 60%;
 }
 
-.auth-main-form, .auth-main-forgot-form  {
+.auth-main-form, .auth-main-forgot-form, .auth-main-register-form  {
     width: 360px;
     text-align: center;
 }
@@ -183,7 +274,7 @@ a {
 }
 
 .auth-main-form-title-info {
-    margin-bottom: 36px;
+    margin-bottom: 40px;
     width: 360px;
     font-size: 1.6rem;
     font-weight: 300;
@@ -202,12 +293,38 @@ a {
     color: #dadada;
 }
 
-.auth-main-form>div:nth-child(3) {
+.auth-main-form>div:nth-child(3), .auth-main-register-form>div:nth-child(3) {
     margin-top: 28px;
 }
 
 .auth-main-form-item-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
     margin-bottom: 8px;
+    transition: color .15s ease-in-out;
+}
+
+.auth-main-form-item-label.auth-form-item-value-error {
+    color: #f04747;
+}
+
+.auth-main-form-value-info {
+    opacity: 0;
+    margin-left: 8px;
+    color: #f04747;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transform: translateY(4px);
+    transition: opacity .2s ease-in-out, transform .12s ease;
+}
+
+.auth-form-item-value-error .auth-main-form-value-info {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .auth-main-form-item-input input {
@@ -278,29 +395,22 @@ a {
     border: 0;
     background-color: #498cf3;
     cursor: pointer;
-    transition: box-shadow .1s,background-color .1s,transform .2s;
+    transition: box-shadow .1s,background-color .1s,transform .25s;
 }
 .auth-main-form-btn div:first-child:hover {
+    transform: translateY(-1px);
     color: #ffffff;
-    background-color: #4d91f9;
-    box-shadow: 1px 2px 8px rgba(38, 39, 39,.8);
+    background-color: rgba(120,169,243,1);
+    box-shadow: 8px 8px 12px rgba(0, 0, 0,.2);
 }
 
 .auth-main-form-btn div:first-child:active {
-    transform: scale(.98);
+    transform: translateY(1px);
+    color: #ffffff;
+    background-color: rgba(120,169,243,1);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0,.5);
 }
 
-.form-btn-sign-up::before {
-    content: "Create an account"
-}
-
-.form-btn-sign-in::before {
-    content: "Sign in"
-}
-
-.form-btn-reset-psw::before {
-    content: "Send password reset email";
-}
 
 .form-btn-sign-up-info {
     width: 364px;
