@@ -26,6 +26,15 @@
                     $(".auth-page").removeClass('forgot').addClass('sign-up');
                 }
             });
+
+            $(".auth-main-form-item-input").bind('click',function(){
+                if($(".auth-form-item-value-error").length==0) {
+                    $(this).parent(".auth-main-form-item").find(".auth-main-form-item-label").addClass("auth-form-item-value-error")
+                }
+                else {
+                    $(".auth-form-item-value-error").removeClass("auth-form-item-value-error");
+                }
+            });
         });
     </script>
 </head>
@@ -52,13 +61,19 @@
                     <div class="auth-main-form">
                         <div class="auth-main-form-title">WELCOME BACK!</div>
                         <div class="auth-main-form-item">
-                            <div class="auth-main-form-item-label">EMAIL</div>
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">EMAIL</div>
+                                <div class="auth-main-form-value-info">it's not an email address</div>
+                            </div>
                             <div class="auth-main-form-item-input">
                                 <input placeholder="Your email address." />
                             </div>
                         </div>
                         <div class="auth-main-form-item">
-                            <div class="auth-main-form-item-label">PASSWORD</div>
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">PASSWORD</div>
+                                <div class="auth-main-form-value-info"></div>
+                            </div>
                             <div class="auth-main-form-item-input">
                                 <input placeholder="Your account password." />
                             </div>
@@ -83,7 +98,10 @@
                         </div>
 
                         <div class="auth-main-form-item">
-                            <div class="auth-main-form-item-label">EMAIL</div>
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">EMAIL</div>
+                                <div class="auth-main-form-value-info"></div>
+                            </div>
                             <div class="auth-main-form-item-input">
                                 <input placeholder="Your email address." />
                             </div>
@@ -99,13 +117,19 @@
                     <div class="auth-main-register-form">
                         <div class="auth-main-form-title">SIGN UP</div>
                         <div class="auth-main-form-item">
-                            <div class="auth-main-form-item-label">EMAIL</div>
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">EMAIL</div>
+                                <div class="auth-main-form-value-info"></div>
+                            </div>
                             <div class="auth-main-form-item-input">
                                 <input placeholder="Your email address." />
                             </div>
                         </div>
                         <div class="auth-main-form-item">
-                            <div class="auth-main-form-item-label">PASSWORD</div>
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">PASSWORD</div>
+                                <div class="auth-main-form-value-info"></div>
+                            </div>
                             <div class="auth-main-form-item-input">
                                 <input placeholder="Use at least six characters." />
                             </div>
