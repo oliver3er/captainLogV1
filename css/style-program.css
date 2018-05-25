@@ -49,18 +49,22 @@
 	display: inline-block;
 	font-size: 1.4rem;
 	line-height: 1.5rem;
-	color : rgba(233,69,69,1);
-	background : rgba(255,172,191,1);
+	color : white;
+	background : rgba(233,69,69,1);
 	text-decoration: underline;
+	opacity		: 1;
+	animation	: animation-breathing 1s ease-in infinite normal;
 }
 
 .log-item-title .log-item-tag-words-temp {
 	display: inline-block;
 	font-size: 1.6rem;
 	line-height: 1.6rem;
-	color : rgba(233,69,69,1);
-	background : rgba(255,172,191,1);
+	color : white;
+	background : rgba(233,69,69,1);
 	text-decoration: underline;
+	opacity		: 1;
+	animation	: animation-breathing 1s ease-in infinite normal;
 }
 
 
@@ -114,4 +118,60 @@
  * */
 .no-before:before{
 	content		: none !important;
+}
+
+/* To remove the border (shadow) of the editor */
+.content-log-item.log-editing-status {
+	border: 0px solid rgba(34, 35, 36, 0.54);
+	box-shadow: none;
+	background: none;
+	cursor: auto;
+}
+
+.content-log-item.editor-add {
+	animation-name		: animation-editor-add;
+	animation-duration	: .3s;
+	animation-timing-function		: ease;
+}
+
+@keyframes animation-editor-add{
+	from	{
+		visibility	: hidden;
+		opacity		: 0;
+	}
+	to		{ 
+		visibility	: visible;
+		opacity		: 1;
+	}
+}
+
+/* Below CSS is used to fade in / fade out the component */
+.component-enter {
+  opacity: 0.01;
+}
+
+.component-enter.component-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.component-leave {
+  opacity: 1;
+}
+
+.component-leave.component-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+
+/* To breathing the temp tag */
+.breathing {
+	opacity		: 1;
+	animation	: animation-breathing 1.5s ease-in infinite normal;
+}
+
+@keyframes animation-breathing{
+	0% { opacity : 1;}
+	50% { opacity : 0.8;}
 }
