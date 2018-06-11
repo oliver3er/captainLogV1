@@ -315,3 +315,36 @@
 .hide-by-opacity {
 	opacity		: 0;
 }
+
+.tag-command-textarea-div0{
+	transition	: border .3s ease;
+}
+
+.tag-command-textarea-div0:hover{
+	border	: 1px solid #e8c9cf;
+}
+
+.tag-command-textarea-div0:focus-within{
+	background	: red;
+}
+.tag-command-textarea-div0:focus{
+	background	: red;
+}
+.tag-command-textarea-div0:active{
+	background	: red;
+}
+.tag-command-textarea-div0:selection{
+	background	: red;
+}
+.tag-command-textarea-div0::selection {
+	  color: gold;
+	    background: red;
+	} 
+
+.tag-command-textarea-div0.read-only:hover{
+	border	: 1px solid rgba(42,46,50,.8);
+}
+
+.tag-command-textarea-div0.highlight{
+	border	: 1px solid #e8c9cf;
+}
