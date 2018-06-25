@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Captain Logger</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+    <title>Midinote Home</title>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+
+            $(".homeDiv").bind('click',function(){
+                window.location='login.html';
+            });
+
+            $("#btn1").bind('click',function(){
+                $("#homeImg").attr('src',"images/logger-test-logo1.png");
+            });
+            $("#btn2").bind('click',function(){
+                $("#homeImg").attr('src',"images/logger-test-logo2.png");
+            });
+            $("#btn3").bind('click',function(){
+                $("#homeImg").attr('src',"images/logger-test-logo3.png");
+            });
+            $("#btn4").bind('click',function(){
+                $("#homeImg").attr('src',"images/logger-test-logo4.png");
+            });
+            $("#btn5").bind('click',function(){
+                $("#homeImg").attr('src',"images/logger-test-logo5.png");
+            });
+            $("#btn6").bind('click',function(){
+                $("#homeImg").attr('src',"images/logger-test-logo6.png");
+            });
+            $("#btn7").bind('click',function(){
+                $("#homeImg").attr('src',"images/logger-test-logo7.png");
+            });
+            $("#btn8").bind('click',function(){
+                $("#homeImg").attr('src',"images/logger-test-logo8.png");
+            });
+            $("#btn9").bind('click',function(){
+                $("#homeImg").attr('src',"images/logger-test-logo9.png");
+            });
+
+
+
+
+
+
+
+        });
+    </script>
+</head>
+<body>
+<div style="position: relative;">
+    <div style="position:absolute;right: 0; top: 42px;">
+        <input id="btn1" type="button" value="1" />
+        <input id="btn2" type="button" value="2" />
+        <input id="btn3" type="button" value="3" />
+        <input id="btn4" type="button" value="4" />
+        <input id="btn5" type="button" value="5" />
+        <input id="btn6" type="button" value="6" />
+        <input id="btn7" type="button" value="7" />
+        <input id="btn8" type="button" value="8" />
+        <input id="btn9" type="button" value="9" />
+    </div>
+
+    <div class="homeDiv" style="width:100%;height:100%;">
+        <img id="homeImg" src="images/logger-test-logo1.png" />
+    </div>
+</div>
+</body>
+</html>
