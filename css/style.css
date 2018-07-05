@@ -487,6 +487,26 @@
 
 /******************big image show end********************/
 
+@-webkit-keyframes hover-open-animation-downward {
+    0% { opacity: 0;  visibility: hidden; -webkit-transform: translateY(-20px); }
+    100% { opacity: 1; visibility: visible; -webkit-transform: translateY(0); }
+}
+
+@keyframes hover-open-animation-downward {
+    0% { opacity: 0; visibility: hidden; -webkit-transform: translateY(-20px); transform: translateY(-20px); }
+    100% { opacity: 1; visibility: visible; -webkit-transform: translateY(0); transform: translateY(0); }
+}
+
+@-webkit-keyframes hover-close-animation-downward {
+    0% { visibility: visible; opacity: 1;}
+    100% { visibility: hidden; opacity: 0; -webkit-transform: translateY(-20px); }
+}
+
+@keyframes hover-close-animation-downward {
+    0% { visibility: visible; opacity: 1;}
+    100% { visibility: hidden; opacity: 0; -webkit-transform: translateY(-20px); transform: translateY(-20px); }
+}
+
 /***************common style begin*****************/
 
 
@@ -1637,6 +1657,11 @@
     font-size: .14rem;
     visibility: hidden;
     z-index: 10;
+    pointer-events: none;
+
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    transform-origin: 0 0 0;
 }
 
 .tag-info-dialog.vertical-layout {
@@ -1652,19 +1677,23 @@
 }
 
 .__open.tag-info-dialog {
-    visibility: visible;
+    -webkit-animation-name: hover-open-animation-downward;
+    animation-name: hover-open-animation-downward;
+    -webkit-animation-duration: 0.15s;
+    animation-duration: 0.15s;
+    -webkit-animation-timing-function: cubic-bezier(0.05, 0.14, 0.29, 1.35);
+    animation-timing-function: cubic-bezier(0.05, 0.14, 0.29, 1.35);
+    pointer-events: auto;
 }
 
 .__close.tag-info-dialog {
-    visibility: hidden;
-}
-
-.__open .tag-info-dialog-head, .__close .tag-info-dialog-main, .__close .tag-info-dialog-foot {
-    display: block;
-}
-
-.__close .tag-info-dialog-head, .__close .tag-info-dialog-main, .__close .tag-info-dialog-foot {
-    display: none;
+    -webkit-animation-name: hover-close-animation-downward;
+    animation-name: hover-close-animation-downward;
+    -webkit-animation-duration: .1s;
+    animation-duration: .1s;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    pointer-events: none;
 }
 
 .tag-info-dialog-arrow {

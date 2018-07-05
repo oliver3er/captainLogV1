@@ -318,7 +318,7 @@
                     $(".tag-info-dialog").addClass("small-head");
                     $(".tag-info-dialog").addClass("__open");
                 }else if($(this).val() == 'close-hover-tag'){
-                    $(".tag-info-dialog").removeClass("__open").removeClass("__close").removeClass("vertical-layout").removeClass("horizontal-layout").removeClass("small-head");
+                    $(".tag-info-dialog").removeClass("__open").removeClass("__close");
                     $(".tag-info-dialog").addClass("__close");
                 }
 
