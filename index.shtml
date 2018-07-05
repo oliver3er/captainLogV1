@@ -333,6 +333,10 @@
                 }else if($(this).val() == 'hover-tag3'){
                     $(".tag-info-dialog").removeClass("__open").removeClass("__close").removeClass("vertical-layout").removeClass("horizontal-layout").removeClass("small-head");
                     $(".tag-info-dialog").addClass("small-head");
+
+                    $(".tag-info-dialog-arrow").removeClass("bottom-right").removeClass("top-left");
+                    $(".tag-info-dialog-arrow").addClass("top-left");
+
                     $(".tag-info-dialog").addClass("__open");
                 }else if($(this).val() == 'close-hover-tag'){
                     $(".tag-info-dialog").removeClass("__open").removeClass("__close");

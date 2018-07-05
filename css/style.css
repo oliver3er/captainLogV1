@@ -1723,7 +1723,7 @@
     top: 20%;
     left: 30%;
     min-width: 240px;
-    background-color: #d6dbe5;
+    background-color: transparent;
     border-radius: 3px;
     font-size: .14rem;
     visibility: hidden;
@@ -1745,6 +1745,10 @@
     justify-content: flex-end;
     align-items: center;
     height: 240px;
+}
+
+.tag-info-dialog.small-head {
+    width: 260px;
 }
 
 .__open.tag-info-dialog {
@@ -1769,28 +1773,57 @@
 
 .tag-info-dialog-arrow {
     position: absolute;
-    width: 24px;
-    height: 24px;
-    border-width: 12px;
-    border-style: solid;
+    width: 16px;
+    height: 16px;
+    z-index: -1;
+}
+
+.tag-info-dialog-arrow:before {
+    position: absolute;
+    content: '';
+    border: 8px solid transparent;
+}
+
+.tag-info-dialog-arrow:after {
+    position: absolute;
+    content: '';
+    border: 8px solid transparent;
 }
 
 .tag-info-dialog-arrow.bottom-right {
-    bottom: -24px;
+    bottom: -16px;
     right: 12px;
-    border-color: #d6dbe5 transparent transparent transparent;
 }
 
 .tag-info-dialog-arrow.top-left {
-    top: -24px;
+    top: -16px;
     left: 12px;
-    border-color: transparent transparent #d6dbe5 transparent;
+}
+
+.tag-info-dialog-arrow.top-left:before {
+    top: 0;
+    border-bottom-color: #a2a9b1;
+}
+
+.tag-info-dialog-arrow.top-left:after {
+    top: 1px;
+    border-bottom-color: #d6dbe5;
+}
+
+.tag-info-dialog-arrow.bottom-right:before {
+    bottom: 0;
+    border-top-color: #a2a9b1;
+}
+
+.tag-info-dialog-arrow.bottom-right:after {
+    bottom: 1px;
+    border-top-color: #d6dbe5;
 }
 
 .tag-info-dialog-head {
     width: 100%;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    /*border-top-left-radius: 3px;
+    border-top-right-radius: 3px;*/
     background-color: inherit;
 }
 
@@ -1842,10 +1875,11 @@
 
 .vertical-layout .tag-info-dialog-name {
     position: absolute;
-    left: 12px;
-    bottom: -32px;
-    height: 30px;
-    line-height: 30px;
+    left: 0;
+    bottom: -30px;
+    height: 40px;
+    padding: 14px 0 10px 12px;
+    width: 100%;
     background-color: #d6dbe5;
     cursor: default;
     z-index: 2;
@@ -1856,8 +1890,8 @@
     justify-content: center;
     align-items: center;
     width: 260px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    /*border-top-left-radius: 3px;
+    border-top-right-radius: 3px;*/
 }
 
 .vertical-layout .tag-info-dialog-icon img {
@@ -1873,8 +1907,8 @@
 
 .horizontal-layout .tag-info-dialog-main .tag-info-dialog-name {
     display: block;
-    margin-top: 10px;
-    margin-bottom: 6px;
+    margin-top: 14px;
+    margin-bottom: 10px;
 }
 
 .horizontal-layout .tag-info-dialog-icon {
@@ -1887,7 +1921,16 @@
 }
 
 .tag-info-dialog-main {
-    margin: 12px 12px 2px 12px;
+    padding: 12px 12px 2px 12px;
+    background-color: #d6dbe5;
+}
+
+.horizontal-layout .tag-info-dialog-main {
+    height: 240px;
+}
+
+.vertical-layout .tag-info-dialog-main, .horizontal-layout .tag-info-dialog-main {
+    padding-top: 0;
 }
 
 .tag-info-detail-item {
@@ -1927,15 +1970,7 @@
 }
 
 .horizontal-layout .tag-info-definition {
-    margin-top: 12px;
-    max-height: 80px;
     max-width: 240px;
-    color: #2e3035;
-    overflow: hidden;
-    line-height: .16rem;
-    white-space: normal;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 .tag-info-dialog-foot {
