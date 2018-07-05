@@ -449,6 +449,8 @@
     background-color: #2e3035;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+    font-size: .14rem;
+    font-weight: 400;
 }
 
 /******************big image show begin******************/
@@ -507,6 +509,33 @@
     100% { visibility: hidden; opacity: 0; -webkit-transform: translateY(-20px); transform: translateY(-20px); }
 }
 
+
+
+@keyframes title-move-to-top {
+    0% {
+        transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-20%);
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+@keyframes title-move-to-bottom {
+    0% {
+        transform: translateY(-20%);
+        visibility: hidden;
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
+    }
+}
 /***************common style begin*****************/
 
 
@@ -839,7 +868,7 @@
     cursor: auto;
 }
 
-.move-to-top.head-location-nav-current {
+.__open.head-location-nav-current {
     -webkit-animation-name: move-to-top;
     animation-name: move-to-top;
     animation-timing-function: cubic-bezier(0.29, 0.68, 0.44, 1.38);
@@ -859,7 +888,7 @@
     }
 }
 
-.move-to-bottom.head-location-nav-current {
+.__close.head-location-nav-current {
     -webkit-animation-name: move-to-bottom;
     animation-name: move-to-bottom;
     animation-timing-function: ease-out;
@@ -1205,14 +1234,14 @@
     font-size: .14rem;
 }
 
-.main-content-title-tag {
+.main-content-title-block {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     flex: 1;
 }
 
-.main-content-title-tag .title-tag-name {
+.main-content-title-block .title-tag-name {
     height: 40px;
     line-height: 40px;
     font-size: .28rem;
@@ -1220,15 +1249,29 @@
     letter-spacing: 1.2px;
 }
 
-.main-content-title-tag .tag-name {
+.main-content-title-block .tag-name {
     padding: 0 4px;
 }
 
-.main-content-title-tag .title-tag-def {
+.main-content-title-block .title-tag-def {
     font-size: .16rem;
     font-weight: 300;
     line-height: .2rem;
     cursor: default;
+}
+
+.__close.main-content-title-tag {
+    -webkit-animation-name: title-move-to-top;
+    animation-name: title-move-to-top;
+    animation-timing-function: ease-in;
+    animation-duration: .2s;
+}
+
+.__open.main-content-title-tag {
+    -webkit-animation-name: title-move-to-bottom;
+    animation-name: title-move-to-bottom;
+    animation-timing-function: cubic-bezier(0.44, 0.55, 0.14, 1.43);
+    animation-duration: .3s;
 }
 
 .main-content-add-title {
@@ -1495,6 +1538,34 @@
     fill: #EC4F4F;
 }
 
+/**************hash-tag setting begin****************/
+.tag-setting-dialog-wrapper {
+    position: absolute;
+    width: 520px;
+    height: 620px;
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 1000;
+    font-size: .14rem;
+    font-weight: 400;
+    background-color: #36393e;
+    color: #bcbcbc;
+}
+
+.tag-setting-dialog .dialog-title {
+    padding: 0 28px;
+}
+
+.tag-setting-dialog .dialog-main {
+    padding: 0 28px;
+    margin-bottom: 20px;
+}
+
+.tag-setting-dialog .dialog-buttons {
+    padding: 0 28px;
+}
+
+/**************hash-tag setting end******************/
 
 /***************hash-tag style begin*****************/
 .tag-name {
