@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Midinote</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            //点击菜单（最左侧）
+            $(".main-menu-li-icon").bind("click",function(){
+                if($(this).parent('.main-menu-li-selected').length==0) {
+                    $(".main-menu-li-selected").removeClass("main-menu-li-selected");
+                    $(this).parent(".main-menu-li").addClass("main-menu-li-selected");
+                }
+            });
+
+            //点击打开关闭widget的按钮
+            $(".main-head-button-widget").bind("click",function(){
+                if($(this).hasClass("main-widget-opened")) {
+                    $(this).removeClass("main-widget-opened").addClass("main-widget-closed");
+                    $(".main-content-widget").addClass("main-widget-close");
+                } else if ($(this).hasClass("main-widget-closed")) {
+                    $(this).removeClass("main-widget-closed").addClass("main-widget-opened");
+                    $(".main-content-widget").removeClass("main-widget-close");
+                }
+            });
+
+            //列表内容排序选择 点击事件
+            //begin
+            $(".list-sort-box").bind("click",function(){
+                if($(this).hasClass("list-sort-box-default")) {
+                    $(".list-sort-box li").css("transition","top .1s ease-in, visibility .05s");
+                    $(this).removeClass("list-sort-box-default").addClass("list-sort-box-expansion");
+                } else if($(this).hasClass("list-sort-box-expansion")) {
+                    $(this).removeClass("list-sort-box-expansion").addClass("list-sort-box-default");
+                }
+
+            });
+
+            $(".list-sort-box-recent").bind("click",function(){
+                if($(this).hasClass("list-sort-selected")) {
+                    $(".list-sort-box li").css("transition","none");
+                    return;
+                }
+                $(".list-sort-box li").css("transition","top .1s ease-in, visibility .05s");
+                $(".list-sort-box-early").removeClass("list-sort-selected");
+                $(this).addClass("list-sort-selected");
+            });
+            $(".list-sort-box-early").bind("click",function(){
+                if($(this).hasClass("list-sort-selected")) {
+                    $(".list-sort-box li").css("transition","none");
+                    return;
+                }
+                $(".list-sort-box li").css("transition","top .1s ease-in, visibility .05s");
+                $(".list-sort-box-recent").removeClass("list-sort-selected");
+                $(this).addClass("list-sort-selected");
+            });
+            //end
+
+
+            //笔记列表显示方式转换按钮点击
+            $(".main-content-list-view>div").bind('click',function(){
+                var viewBtn = $(this);
+                if(viewBtn.hasClass("view-selected")){
+                    return;
+                }
+                if($(this).hasClass("view-list")) {
+                    $(".view-card").removeClass("view-selected");
+                    $(this).addClass("view-selected");
+                }
+                if($(this).hasClass("view-card")) {
+                    $(".view-list").removeClass("view-selected");
+                    $(this).addClass("view-selected");
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div class="dark-style">
+    <div class="page-body">
+        <div class="main-menu main-menu-wrapper">
+            <div class="main-menu-bar">
+                <div class="flex-vertical">
+                    <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
+                    <div class="main-menu-ul">
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li main-menu-li-selected">
+                            <div class="main-menu-li-icon main-menu-li-notes">
+                                <!--#include virtual='images/menu-notes.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-map">
+                                <!--#include virtual='images/menu-map.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-tags">
+                                <!--#include virtual='images/menu-tags.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-search">
+                                <!--#include virtual='images/menu-search.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-user">
+                <div class="main-menu-user-icon"></div>
+            </div>
+        </div>
+        <div class="main-block">
+            <div class="main-head">
+                <div class="main-head-location">
+                    <div class="main-head-title">SEARCH MY NOTES</div>
+                </div>
+                <div class="main-head-buttons">
+                    <div class="main-head-button-widget main-widget-opened"></div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="main-content-center">
+                    <div class="main-content-notes"></div>
+                    <div class="main-content-options">
+                        <div class="main-content-list-amount">Notes:<span class="list-amount-value">78</span></div>
+                        <div class="main-content-list-options">
+                            <div class="main-content-list-sort">
+                                <div class="list-sort-label">Sort by:</div>
+                                <div class="list-sort-box list-sort-box-default">
+                                    <li class="list-sort-box-recent list-sort-selected">Most recent</li>
+                                    <li class="list-sort-box-early">Earliest</li>
+                                </div>
+                            </div>
+                            <div class="main-content-list-view">
+                                <div class="view-list view-selected"></div>
+                                <div class="view-card"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-content-widget"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

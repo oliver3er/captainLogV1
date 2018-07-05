@@ -1,0 +1,116 @@
+<!--按钮等元素的提示框（小）-->
+<div class="small-tip">
+    <div class="small-tip-wrapper">
+        <div class="small-tip-main"></div>
+        <div class="small-tip-arrow"></div>
+    </div>
+</div>
+
+<!--笔记中出现的警告信息-->
+<div class="message-tip">
+    <div class="message-tip-wrapper">
+        <div class="message-tip-main">
+            <div>This note need one or and some hashtag to convenient for assort.</div>
+        </div>
+        <div class="message-tip-arrow"></div>
+    </div>
+</div>
+
+<!--普通菜单 （用于 头部的前进后退按钮关联的菜单）-->
+<div class="pop-menu" style="display:none;">
+    <div class="pop-menu-lis">
+        <li>
+            <div class="pop-menu-li-icon"><img src="images/temp/laugh-face.png" alt=" "/></div>
+            <div class="pop-menu-li-name">#11111</div>
+        </li>
+        <li><div class="pop-menu-li-name">#如果说我要放中文呢</div></li>
+        <li><div class="pop-menu-li-name">#33333</div></li>
+    </div>
+</div>
+
+<!--弹出窗口的背景幕布-->
+<div class="backdrop"></div>
+
+
+<!--显示笔记中的图片 大图模式窗口-->
+<div class="message-dialog big-image-dialog">
+    <div class="big-image-dialog-wrapper">
+        <div class="big-image-dialog-image"><img src="" alt=""/></div>
+        <div class="big-image-dialog-link"><a href="images/temp/example1.jpg" target="_blank">Open original</a></div>
+    </div>
+</div>
+
+
+<!--删除笔记提示框-->
+<div class="message-dialog delete-confirm-dialog">
+    <div class="delete-confirm-dialog-wrapper">
+        <div class="dialog-title">DELETE NOTE</div>
+        <div class="dialog-main">
+            <div class="dialog-main-message">Are you sure to delete this note?</div>
+            <div class="dialog-main-info">
+                <div class="dialog-note-info">
+                    <div class="single-note-title">
+                        This is a <span class="tag-name">#title</span>
+                    </div>
+                    <div class="single-note-detail">
+                        I don’t known how can I make a perfect work.<span class="tag-name">#V1.0</span>
+                        That sad moment you
+                        before <span class="tag-name">#school</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-buttons">
+            <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+            <div class="dialog-button-delete btn-delete">Delete</div>
+        </div>
+    </div>
+</div>
+
+<!--标签hover信息框-->
+<div class="tag-info-dialog"><!-- vertical-layout \horizontal\small-head-->
+    <div class="tag-info-dialog-arrow"></div>
+    <div class="tag-info-dialog-head">
+        <div class="tag-info-dialog-name">#Midinote</div>
+        <div class="tag-info-dialog-icon">
+            <img src="images/temp/example2.jpg" />
+        </div>
+    </div>
+
+    <div class="tag-info-dialog-main">
+        <div class="tag-info-dialog-name">#Midinote</div>
+        <div class="tag-info-detail">
+            <div class="tag-info-detail-item">
+                <div class="item-label">Created Date:</div>
+                <div class="item-value">03/05/2018</div>
+            </div>
+            <div class="tag-info-detail-item">
+                <div class="item-label">Related Notes:</div>
+                <div class="item-value">86</div>
+            </div>
+            <div class="tag-info-detail-item">
+                <div class="item-label">Alias:</div>
+                <div class="item-value">
+                    <span>#NoteBook</span>
+                    <span>#Good-Book</span>
+                </div>
+            </div>
+            <div class="tag-info-detail-item">
+                <div class="item-label">Triggered by:</div>
+                <div class="item-value">
+                    <span>#Write-Something</span>
+                    <span>#bo</span>
+                    <span>#Note</span>
+                </div>
+            </div>
+        </div>
+        <div class="tag-info-definition">
+            dlkj lakjlja ldjfa kjflkaj aljfla gsdf sdfadsdf asdf adfa dsafasdfa sdf asdf sf asdfa asd asdfasd asdfasdfas asdfasd dflkajd fkldja ahd jhadkh hkjhf lajdf
+        </div>
+
+        <div class="tag-info-dialog-foot">
+            <div class="tag-info-dialog-setting"></div>
+            <div class="tag-info-dialog-to-top"></div>
+        </div>
+    </div>
+</div>
