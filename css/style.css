@@ -1669,13 +1669,22 @@
 
 .tag-info-dialog-arrow {
     position: absolute;
-    bottom: -24px;
-    right: 12px;
     width: 24px;
     height: 24px;
     border-width: 12px;
     border-style: solid;
+}
+
+.tag-info-dialog-arrow.bottom-right {
+    bottom: -24px;
+    right: 12px;
     border-color: #d6dbe5 transparent transparent transparent;
+}
+
+.tag-info-dialog-arrow.top-left {
+    top: -24px;
+    left: 12px;
+    border-color: transparent transparent #d6dbe5 transparent;
 }
 
 .tag-info-dialog-head {
@@ -1764,7 +1773,8 @@
 
 .horizontal-layout .tag-info-dialog-main .tag-info-dialog-name {
     display: block;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 6px;
 }
 
 .horizontal-layout .tag-info-dialog-icon {
@@ -1789,7 +1799,7 @@
 }
 
 .horizontal-layout .tag-info-detail-item {
-    max-width: 220px;
+    max-width: 240px;
 }
 
 .tag-info-detail-item .item-label {
@@ -1818,8 +1828,8 @@
 
 .horizontal-layout .tag-info-definition {
     margin-top: 12px;
-    max-height: 100px;
-    max-width: 220px;
+    max-height: 80px;
+    max-width: 240px;
     color: #2e3035;
     overflow: hidden;
     line-height: .16rem;

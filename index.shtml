@@ -296,12 +296,22 @@
                 }else if($(this).val() == 'hover-tag1'){
                     $(".tag-info-dialog").removeClass("__open").removeClass("__close").removeClass("vertical-layout").removeClass("horizontal-layout").removeClass("small-head");
                     $(".tag-info-dialog").addClass("vertical-layout");
+
                     $(".tag-info-dialog").find("img").eq(0).attr('src',"images/temp/example2.jpg");
+
+                    $(".tag-info-dialog-arrow").removeClass("bottom-right").removeClass("top-left");
+                    $(".tag-info-dialog-arrow").addClass("bottom-right");
+
                     $(".tag-info-dialog").addClass("__open");
                 }else if($(this).val() == 'hover-tag2'){
                     $(".tag-info-dialog").removeClass("__open").removeClass("__close").removeClass("vertical-layout").removeClass("horizontal-layout").removeClass("small-head");
                     $(".tag-info-dialog").addClass("horizontal-layout");
+
                     $(".tag-info-dialog").find("img").eq(0).attr('src',"images/temp/president.jpg");
+
+                    $(".tag-info-dialog-arrow").removeClass("bottom-right").removeClass("top-left");
+                    $(".tag-info-dialog-arrow").addClass("top-left");
+
                     $(".tag-info-dialog").addClass("__open");
                 }else if($(this).val() == 'hover-tag3'){
                     $(".tag-info-dialog").removeClass("__open").removeClass("__close").removeClass("vertical-layout").removeClass("horizontal-layout").removeClass("small-head");
