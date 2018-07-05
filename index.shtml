@@ -629,9 +629,9 @@
         <option value="close-note-img">Close Note IMG</option>
         <option value="delete-note">Delete The Note</option>
         <option value="cancel-delete-note">Cancel Delete Note</option>
-        <option value="hover-tag1">Hover one Hashtag (大图纵向)</option>
-        <option value="hover-tag2">Hover one Hashtag2 (大图横向)</option>
-        <option value="hover-tag3">Hover one Hashtag3  (小图)</option>
+        <option value="hover-tag1">Hover one Hash-tag (大图纵向)</option>
+        <option value="hover-tag2">Hover one Hash-tag2 (大图横向)</option>
+        <option value="hover-tag3">Hover one Hash-tag3  (小图)</option>
         <option value="close-hover-tag">Close Hover one Hashtag</option>
     </select>
 </div>
