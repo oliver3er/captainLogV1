@@ -1648,17 +1648,23 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
     align-items: center;
-    height: 300px;
+    height: 240px;
 }
 
 .__open.tag-info-dialog {
-
     visibility: visible;
 }
 
 .__close.tag-info-dialog {
-
     visibility: hidden;
+}
+
+.__open .tag-info-dialog-head, .__close .tag-info-dialog-main, .__close .tag-info-dialog-foot {
+    display: block;
+}
+
+.__close .tag-info-dialog-head, .__close .tag-info-dialog-main, .__close .tag-info-dialog-foot {
+    display: none;
 }
 
 .tag-info-dialog-arrow {
@@ -1697,7 +1703,7 @@
 }
 
 .horizontal-layout .tag-info-dialog-head {
-    height: 300px;
+    height: 240px;
 }
 
 .tag-info-dialog-name {
@@ -1762,12 +1768,12 @@
 }
 
 .horizontal-layout .tag-info-dialog-icon {
-    height: 300px;
+    height: 240px;
 }
 
 .horizontal-layout .tag-info-dialog-icon img {
     display: block;
-    height: 300px;
+    height: 240px;
 }
 
 .tag-info-dialog-main {
@@ -1783,7 +1789,7 @@
 }
 
 .horizontal-layout .tag-info-detail-item {
-    max-width: 240px;
+    max-width: 220px;
 }
 
 .tag-info-detail-item .item-label {
@@ -1813,7 +1819,7 @@
 .horizontal-layout .tag-info-definition {
     margin-top: 12px;
     max-height: 100px;
-    max-width: 240px;
+    max-width: 220px;
     color: #2e3035;
     overflow: hidden;
     line-height: .16rem;
