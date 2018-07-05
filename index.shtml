@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Midinote</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            //点击菜单（最左侧）
+            $(".main-menu-li-icon").bind("click",function(){
+                if($(this).parent('.main-menu-li-selected').length==0) {
+                    $(".main-menu-li-selected").removeClass("main-menu-li-selected");
+                    $(this).parent(".main-menu-li").addClass("main-menu-li-selected");
+                }
+            });
+
+            //点击打开关闭widget的按钮
+            $(".main-head-button-widget").bind("click",function(){
+                if($(this).hasClass("main-widget-opened")) {
+                    $(this).removeClass("main-widget-opened").addClass("main-widget-closed");
+                    $(".main-content-widget").addClass("main-widget-close");
+                } else if ($(this).hasClass("main-widget-closed")) {
+                    $(this).removeClass("main-widget-closed").addClass("main-widget-opened");
+                    $(".main-content-widget").removeClass("main-widget-close");
+                }
+            });
+
+            //列表内容排序选择 点击事件
+            //begin
+            $(".list-sort-box").bind("click",function(){
+                if($(this).hasClass("list-sort-box-default")) {
+                    $(".list-sort-box li").css("transition","top .1s ease-in, visibility .05s");
+                    $(this).removeClass("list-sort-box-default").addClass("list-sort-box-expansion");
+                } else if($(this).hasClass("list-sort-box-expansion")) {
+                    $(this).removeClass("list-sort-box-expansion").addClass("list-sort-box-default");
+                }
+
+            });
+
+            $(".list-sort-box-recent").bind("click",function(){
+                if($(this).hasClass("list-sort-selected")) {
+                    $(".list-sort-box li").css("transition","none");
+                    return;
+                }
+                $(".list-sort-box li").css("transition","top .1s ease-in, visibility .05s");
+                $(".list-sort-box-early").removeClass("list-sort-selected");
+                $(this).addClass("list-sort-selected");
+            });
+            $(".list-sort-box-early").bind("click",function(){
+                if($(this).hasClass("list-sort-selected")) {
+                    $(".list-sort-box li").css("transition","none");
+                    return;
+                }
+                $(".list-sort-box li").css("transition","top .1s ease-in, visibility .05s");
+                $(".list-sort-box-recent").removeClass("list-sort-selected");
+                $(this).addClass("list-sort-selected");
+            });
+            //end
+
+
+            //笔记列表显示方式转换按钮点击
+            $(".main-content-list-view>div").bind('click',function(){
+                var viewBtn = $(this);
+                if(viewBtn.hasClass("view-selected")){
+                    return;
+                }
+                if($(this).hasClass("view-list")) {
+                    $(".view-card").removeClass("view-selected");
+                    $(this).addClass("view-selected");
+                }
+                if($(this).hasClass("view-card")) {
+                    $(".view-list").removeClass("view-selected");
+                    $(this).addClass("view-selected");
+                }
+            });
+
+            //输入框focus事件,和focusout事件 （增加笔记标题输入框）
+            $(".main-content-add-title input").focus(function(){
+                $(".main-content-add-title").addClass("add-input-focus");
+            });
+            $(".main-content-add-title input").blur(function(){
+                $(".main-content-add-title").removeClass("add-input-focus");
+            });
+
+
+            //标签hover方法
+            $(".tag-name").hover(function(){
+                var tag = $(this);
+                var tagColor = tag.css("color");
+                tagColor = tagColor.substring(tagColor.indexOf('(')+1,tagColor.indexOf(')'));
+                var colorArr = tagColor.split(",");
+                tag.css("background-color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",.7)");
+                tag.css("color","rgba(236,236,236,1)");
+            },function(){
+                var tag = $(this);
+                var tagBgColor = tag.css("background-color");
+                tagBgColor = tagBgColor.substring(tagBgColor.indexOf('(')+1,tagBgColor.indexOf(')'));
+                var colorArr = tagBgColor.split(",");
+                tag.css("color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",1)");
+                tag.css("background-color","transparent");
+            });
+
+
+            //标签置顶
+            $(".note-option-top").bind("click",function(){
+                if($(this).hasClass("note-at-top")) {
+                    $(this).removeClass("note-at-top");
+                }else {
+                    $(this).addClass("note-at-top");
+                }
+            });
+
+
+            //信息提示框
+            $(".with-top-tip").hover(function(){
+                var thisObj = $(this);
+                //插入消息内容
+                var tipMg = thisObj.attr("tip-message");
+                var theTip = $(".small-tip");
+                var theArrow = theTip.find(".small-tip-arrow");
+                theTip.find(".small-tip-main").empty().append("<span>"+tipMg+"</span>");
+                //获取目标对象位置
+                var objX = thisObj.offset().left;
+                var objY = thisObj.offset().top;
+
+                var tipWidth = theTip.width();
+                var tipX = objX+thisObj.width()/2-tipWidth/2;
+
+                theTip.css("left",tipX);
+                theTip.css("top",(objY-theTip.height()-8));
+                theTip.css("visibility","visible");
+
+                theArrow.css("bottom","-12px");
+                theArrow.css("top","auto");
+                theArrow.css("border-color", "#0b0b0b transparent transparent transparent");
+
+            }
+            , function(){
+                $(".small-tip").css("visibility","hidden");
+            });
+
+            $(".with-bottom-tip").hover(function(){
+                    var thisObj = $(this);
+                    //插入消息内容
+                    var tipMg = thisObj.attr("tip-message");
+                    var theTip = $(".small-tip");
+                    var theArrow = theTip.find(".small-tip-arrow");
+
+                    theTip.find(".small-tip-main").empty().append("<span>"+tipMg+"</span>");
+                    //获取目标对象位置
+                    var objX = thisObj.offset().left;
+                    var objY = thisObj.offset().top;
+
+                    var tipWidth = theTip.width();
+                    var tipX = objX+thisObj.width()/2-tipWidth/2;
+
+                    theTip.css("left",tipX);
+                    theTip.css("top",(objY+thisObj.height()+10));
+
+                    theTip.css("visibility","visible");
+
+                    theArrow.css("top","-12px");
+                    theArrow.css("bottom","auto");
+                    theArrow.css("border-color", "transparent transparent #0b0b0b transparent");
+                }
+                , function(){
+                    $(".small-tip").css("visibility","hidden");
+            });
+
+
+            $(".note-option-warning").hover(function(){
+                var theTip = $(".message-tip");
+                var thisObj = $(this);
+                //获取目标对象位置
+                var objX = thisObj.offset().left;
+                var objY = thisObj.offset().top;
+
+                theTip.css("left",(objX-theTip.width()+29));
+                theTip.css("top", (objY+30));
+
+                theTip.addClass("warning-message");
+                theTip.css("visibility","visible");
+            }, function(){
+                $(".message-tip").css("visibility","hidden");
+            });
+
+
+            //点击单条笔记效果
+            $(".content-notes-list-note").bind("click",function(){
+                if($(this).hasClass("list-one-selected")) {
+                    $(this).removeClass("list-one-selected");
+                }else {
+                    $(this).addClass("list-one-selected");
+                }
+            });
+
+
+            //弹出窗口的背景幕布控制
+            function backdropClose(){
+                var backdrop = $(".backdrop");
+                backdrop.removeClass("__close").removeClass("__open");
+                backdrop.addClass("__close");
+            }
+
+            function backdropOpen(){
+                var backdrop = $(".backdrop");
+                backdrop.removeClass("__close").removeClass("__open");
+                backdrop.addClass("__open");
+            }
+
+
+            //点击笔记中的图片事件
+            //显示更大图片
+            $(".note-detail-image-hover-bg").bind('click',function(){
+                var imgDialog = $(".big-image-dialog");
+                $(".big-image-dialog .big-image-dialog-image img").attr("src","images/temp/example1.jpg")
+                imgDialog.removeClass("__close").removeClass("__open");
+                imgDialog.addClass("__open");
+                backdropOpen();
+            });
+            //关闭更大图片页
+            $(".big-image-dialog").bind('click',function(event){
+                var imgBg = $(this);
+                if(imgBg.hasClass("__open")){
+                    var e=window.event || event;
+                    if($(e.target).closest(".big-image-dialog-wrapper").length == 0){
+                        imgBg.removeClass("__open").removeClass("__close");
+                        imgBg.addClass("__close");
+
+                        backdropClose();
+                    }
+                }
+            });
+
+
+
+            $('#options').bind('change',function(){
+                var msgTip = $('.message-tip');
+                if($(this).val()=='nothing') {
+                    msgTip.css("visibility","hidden");
+                    $(".pop-menu").removeClass("pop-menu-open");
+                    $(".pop-menu").addClass("pop-menu-close");
+                }
+
+                if($(this).val()=='warring-in-note') {
+                    msgTip.css('left', '413px');
+                    msgTip.css('top', '164px');
+                    msgTip.addClass("warning-message");
+                    msgTip.css("visibility","visible");
+                }else if($(this).val()=='bf-menu'){
+                    var menu = $(".pop-menu");
+                    menu.css("left","101px");
+                    $(".pop-menu").show();
+                    $(".pop-menu").removeClass("pop-menu-close");
+                    $(".pop-menu").addClass("pop-menu-open");
+                }else if($(this).val()=="open-tool-bar") {
+                    $('.main-content-toolbar').removeClass('__close').addClass('__open');
+                }else if($(this).val() == 'close-tool-bar') {
+                    $('.main-content-toolbar').removeClass('__open').addClass('__close');
+                }else if($(this).val() == 'click-one-note') {     //点击单条笔记效果
+                    var noteObj = $('.main-content-notes-list').children('div:eq(1)');
+                    if(noteObj.hasClass("list-one-selected")){
+                        noteObj.removeClass("list-one-selected");
+                    }else{
+                        noteObj.addClass("list-one-selected");
+                    }
+                }else if($(this).val() == 'click-note-img') {     //点击笔记中的图片效果
+                    var imgDialog = $(".big-image-dialog");
+                    $(".big-image-dialog .big-image-dialog-image img").attr("src","images/temp/example1.jpg")
+                    imgDialog.removeClass("__close").removeClass("__open");
+                    imgDialog.addClass("__open");
+                    backdropOpen();
+                }else if ($(this).val() == 'close-note-img'){
+                    var imgBg  = $(".big-image-dialog");
+                    if(imgBg.length>0 && imgBg.hasClass("__open")){
+                        imgBg.removeClass("__open").removeClass("__close");
+                        imgBg.addClass("__close");
+
+                        backdropClose();
+                    }
+                }else if($(this).val() == 'delete-note') {
+                    var msDialog = $(".delete-confirm-dialog");
+                    msDialog.removeClass("__close").removeClass("__open");
+                    msDialog.addClass("__open");
+
+                    backdropOpen();
+                }else if($(this).val() == 'cancel-delete-note') {
+                    var msDialog = $(".delete-confirm-dialog");
+                    msDialog.removeClass("__close").removeClass("__open");
+                    msDialog.addClass("__close");
+
+                    backdropClose();
+                }else if($(this).val() == 'hover-tag1'){
+                    $(".tag-info-dialog").removeClass("__open").removeClass("__close").removeClass("vertical-layout").removeClass("horizontal-layout").removeClass("small-head");
+                    $(".tag-info-dialog").addClass("vertical-layout");
+                    $(".tag-info-dialog").find("img").eq(0).attr('src',"images/temp/example2.jpg");
+                    $(".tag-info-dialog").addClass("__open");
+                }else if($(this).val() == 'hover-tag2'){
+                    $(".tag-info-dialog").removeClass("__open").removeClass("__close").removeClass("vertical-layout").removeClass("horizontal-layout").removeClass("small-head");
+                    $(".tag-info-dialog").addClass("horizontal-layout");
+                    $(".tag-info-dialog").find("img").eq(0).attr('src',"images/temp/president.jpg");
+                    $(".tag-info-dialog").addClass("__open");
+                }else if($(this).val() == 'hover-tag3'){
+                    $(".tag-info-dialog").removeClass("__open").removeClass("__close").removeClass("vertical-layout").removeClass("horizontal-layout").removeClass("small-head");
+                    $(".tag-info-dialog").addClass("small-head");
+                    $(".tag-info-dialog").addClass("__open");
+                }else if($(this).val() == 'close-hover-tag'){
+                    $(".tag-info-dialog").removeClass("__open").removeClass("__close").removeClass("vertical-layout").removeClass("horizontal-layout").removeClass("small-head");
+                    $(".tag-info-dialog").addClass("__close");
+                }
+
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<div class="dark-style">
+    <div class="page-body">
+        <div class="main-menu main-menu-wrapper">
+            <div class="main-menu-bar">
+                <div class="flex-vertical">
+                    <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
+                    <div class="main-menu-ul">
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li main-menu-li-selected">
+                            <div class="main-menu-li-icon main-menu-li-notes">
+                                <!--#include virtual='images/menu-notes.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-map">
+                                <!--#include virtual='images/menu-map.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-tags">
+                                <!--#include virtual='images/menu-tags.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-search">
+                                <!--#include virtual='images/menu-search.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-user">
+                <div class="main-menu-user-icon"></div>
+            </div>
+        </div>
+        <div class="main-block">
+            <div class="main-head">
+                <div class="main-head-location">
+                    <div class="head-location-fb">
+                        <div class="location-fb-backward button-svg-icon-valid">
+                            <div class="location-fb-backward-icon"></div>
+                        </div>
+                        <div class="location-fb-forward button-svg-icon-invalid">
+                            <div class="location-fb-forward-icon"></div>
+                        </div>
+                    </div>
+                    <div class="head-location-nav">
+                        <div class="head-location-nav-i">#olivepop</div>
+                        <div class="head-location-nav-i">#Reading</div>
+                        <div class="head-location-nav-current">#HitlerAscent</div>
+                    </div>
+                </div>
+                <div class="main-head-buttons">
+                    <div class="main-head-button-search">
+                        <div class="head-button-search-input">
+                            <input class="search-input" placeholder="Search">
+                        </div>
+                        <div class="head-button-search-icon"></div>
+                    </div>
+                    <div class="head-button-separate-line"></div>
+                    <div class="main-head-button-status"></div>
+                    <div class="main-head-button-widget main-widget-opened"></div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="main-content-center position-relative">
+                    <!--tool bar begin-->
+                    <div class="main-content-toolbar __close">
+                        <div class="toolbar-buttons">
+                            <div class="toolbar-button toolbar-pic">
+                                <!--#include virtual='images/tool-pic-icon.svg' -->
+                            </div>
+                            <div class="toolbar-button toolbar-check">
+                                <!--#include virtual='images/tool-checkbox-icon.svg' -->
+                            </div>
+                            <div class="toolbar-button toolbar-command">
+                                <!--#include virtual='images/tool-command-icon.svg' -->
+                            </div>
+                            <div class="toolbar-button toolbar-code">
+                                <!--#include virtual='images/tool-code-icon.svg' -->
+                            </div>
+                            <div class="toolbar-button toolbar-attach">
+                                <!--#include virtual='images/tool-attach-icon.svg' -->
+                            </div>
+                            <div class="toolbar-button toolbar-tag">
+                                <!--#include virtual='images/tool-tag-icon.svg' -->
+                            </div>
+                            <div class="toolbar-button toolbar-tag2">
+                                <!--#include virtual='images/tool-tag2-icon.svg' -->
+                            </div>
+                            <div class="toolbar-button toolbar-line"></div>
+                        </div>
+                        <div class="toolbar-commend-words position-relative">
+                            <div class="toolbar-commend-pre btn-valid"></div>
+
+                            <div class="toolbar-commend-items">
+                                <div class="toolbar-commend-item commend-item-with-num">
+                                    <div class="commend-item-name">
+                                        <span class="tag-name" style="color: rgb(124, 82, 32);">#Commend</span>
+                                    </div>
+                                </div>
+                                <div class="toolbar-commend-item commend-item-with-num">
+                                    <div class="commend-item-name">
+                                        <span class="tag-name" style="color: rgb(176, 199, 66);">#venture</span>
+                                    </div>
+                                </div>
+                                <div class="toolbar-commend-item commend-item-with-num">
+                                    <div class="commend-item-name">
+                                        <span class="tag-name" style="color: rgb(233, 69, 69);">#PuffedFood</span>
+                                    </div>
+                                </div>
+                                <div class="toolbar-commend-item commend-item-with-num">
+                                    <div class="commend-item-name">
+                                        <span class="tag-name" style="color: rgb(36, 196, 134);">#expire-date</span>
+                                    </div>
+                                </div>
+                                <div class="toolbar-commend-item commend-item-with-num">
+                                    <div class="commend-item-name">
+                                        <span class="tag-name" style="color: rgb(121, 178, 234);">#Shelf</span>
+                                    </div>
+                                </div>
+                                <div class="toolbar-commend-item">
+                                    <div class="commend-item-name">
+                                        <span class="tag-name" style="color: rgb(190, 201, 70);">#Reading-notes</span>
+                                    </div>
+                                </div>
+                                <div class="toolbar-commend-item">
+                                    <div class="commend-item-name">
+                                        <span class="tag-name" style="color: rgb(172, 70, 197);">#Projects</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="toolbar-commend-next btn-valid"></div>
+                        </div>
+                    </div>
+                    <!--tool bar end-->
+
+                    <!--notes list begin-->
+                    <div class="main-content-notes">
+                        <div class="main-content-notes-title">
+                            <div class="main-content-title-tag">
+                                <div class="title-tag-name"><span class="tag-name">#Midinote</span></div>
+                                <div class="title-tag-def">Good one. A useful notebook.</div>
+                                <div class="main-content-add-title">
+                                    <div class="edit-icon"></div>
+                                    <div class="input-subscript-icon"></div>
+                                    <input placeholder="Your title here" />
+                                </div>
+                            </div>
+                            <div class="main-content-title-icon tag-big-icon">   <!--tag-big-icon-->
+                                <div class="title-tag-icon"><img src="images/temp/big-avatar.png" alt="avatar"/></div>
+                            </div>
+
+                        </div>
+                        <div class="main-content-notes-list">
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Maybe the description of this book is more objective and real
+                                </div>
+                                <div class="content-list-note-detail">
+                                    I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                </div>
+                                <div class="content-list-note-detail">
+                                    In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                    <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    <span class="tag-name">#Midinote</span>!
+                                </div>
+
+                                <div class="content-list-note-date">03/06/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-warning"></div>
+                                    <div class="note-option-top note-at-top with-bottom-tip" tip-message="To-top"><!--#include virtual='images/note-top-icon.svg' --></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Officially named:
+                                    <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
+                                        #Midinote
+                                    </span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    Finally chose this name: Midinote from Sutter
+                                    </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
+                                </div>
+                                <div class="content-list-note-date">02/18/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-warning"></div>
+                                    <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include virtual='images/note-top-icon.svg' --></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Tragic <span class="tag-name" style="color:rgba(113,189,126,1)">#lesson</span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    Released to the online version of the development, resulting in the version of oliver is not available, looking for a long time to find that I was in the development of a index to join, but it is manually added, so there is no online version of oliver this thing The result is incorrect.
+                                    to sum up: <span class="tag-name">#Midinote</span>
+
+                                    The more artificial things, the more possibilities I make mistakes, and the more I get the program to do things, the more reliable and labor-saving I am.
+                                </div>
+                                <div class="content-list-note-date">02/18/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include virtual='images/note-top-icon.svg' --></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Maybe real
+                                </div>
+                                <div class="content-list-note-detail">
+                                    I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                    </br><span class="tag-name">#Midinote</span>!
+                                </div>
+                                <div class="content-list-note-date">03/06/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include virtual='images/note-top-icon.svg' --></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Let's try it now!
+                                </div>
+                                <div class="content-list-note-detail">
+                                    I think this description is probably the most realistic description, <span class="tag-name">#Midinote</span>.reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                </div>
+                                <div class="content-list-note-detail note-detail-image">
+                                    <img src='images/temp/example1.jpg' alt='picture'/>
+                                    <div class="note-detail-image-hover">
+                                        <div class="note-detail-image-hover-bg"></div>
+                                        <div class="note-detail-image-delete with-bottom-tip" tip-message="Delete">
+                                            <!--#include virtual='images/cross-icon.svg' -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content-list-note-date">03/06/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include virtual='images/note-top-icon.svg' --></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="main-content-to-top"></div>
+                    </div>
+                    <!---notes list end--->
+
+                    <div class="main-content-options">
+                        <div class="main-content-list-amount">Notes:<span class="list-amount-value">78</span></div>
+                        <div class="main-content-list-options">
+                            <div class="main-content-list-sort">
+                                <div class="list-sort-label">Sort by:</div>
+                                <div class="list-sort-box list-sort-box-default" >
+                                    <li class="list-sort-box-recent list-sort-selected">Most recent</li>
+                                    <li class="list-sort-box-early">Earliest</li>
+                                </div>
+                            </div>
+                            <div class="main-content-list-view">
+                                <div class="view-list view-selected with-top-tip" tip-message="View by List"></div>
+                                <div class="view-card with-top-tip" tip-message="View by Card"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content-widget"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--#include virtual='common.shtml' -->
+
+
+<div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
+    <select id="options" style="height: 30px;">
+        <option value="nothing">Nothing</option>
+        <option value="warring-in-note">Warning tip (in a note)</option>
+        <option value="bf-menu">backward-and-forward-menu</option>
+        <option value="open-tool-bar">Open Tool-Bar</option>
+        <option value="close-tool-bar">Close Tool-Bar</option>
+        <option value="click-one-note">Click one Note</option>
+        <option value="click-note-img">Click Note IMG</option>
+        <option value="close-note-img">Close Note IMG</option>
+        <option value="delete-note">Delete The Note</option>
+        <option value="cancel-delete-note">Cancel Delete Note</option>
+        <option value="hover-tag1">Hover one Hashtag (大图纵向)</option>
+        <option value="hover-tag2">Hover one Hashtag2 (大图横向)</option>
+        <option value="hover-tag3">Hover one Hashtag3  (小图)</option>
+        <option value="close-hover-tag">Close Hover one Hashtag</option>
+    </select>
+</div>
+
+</body>
+</html>
