@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body
+	style='background:black;'
+	>
+<!--#include file='tooltip.shtml' -->
     <div>
         <!--#include virtual='images/arrow1.svg' -->
     </div>
-
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200"><image xlink:href='images/temp/640px-The_Vyne_House.jpg' class="mwe-popups-is-not-tall" x="0" y="-20" width="320" height="240" clip-path="url(#mwe-popups-mask)"></image></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200"><image xlink:href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/The_Vyne_House.jpg/640px-The_Vyne_House.jpg" class="mwe-popups-is-not-tall" x="0" y="-20" width="320" height="240" clip-path="url(#mwe-popups-mask)"></image></svg>
 </body>
 </html>

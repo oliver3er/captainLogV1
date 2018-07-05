@@ -72,7 +72,7 @@
     <div class="tag-info-dialog-arrow"></div>
     <div class="tag-info-dialog-head">
         <div class="tag-info-dialog-name">#Midinote</div>
-        <div class="tag-info-dialog-icon">
+        <div class="tag-info-dialog-icon" >
             <img src="images/temp/example2.jpg" />
         </div>
     </div>
