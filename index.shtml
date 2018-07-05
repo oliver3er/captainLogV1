@@ -9,6 +9,8 @@
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
         $(function (){
+            var pScrollTop = 0;
+
             //点击菜单（最左侧）
             $(".main-menu-li-icon").bind("click",function(){
                 if($(this).parent('.main-menu-li-selected').length==0) {
@@ -236,6 +238,21 @@
             });
 
 
+            //滚动条向上滚动时，title变化
+            $('.main-content-notes').bind('scroll',function(event){
+                var scrollTop = $('.main-content-notes').scrollTop();
+
+                if(pScrollTop < scrollTop && scrollTop > 60){
+                    $('.main-content-title-tag').removeClass('__open').addClass('__close');
+                    $('.head-location-nav-current').removeClass('__close').addClass("__open");
+                }
+                if(pScrollTop > scrollTop && scrollTop < 40){
+                    $('.main-content-title-tag').removeClass('__close').addClass('__open');
+                    $('.head-location-nav-current').removeClass("__open").addClass("__close");
+                }
+                pScrollTop = scrollTop;
+            });
+
 
             $('#options').bind('change',function(){
                 var msgTip = $('.message-tip');
@@ -320,6 +337,18 @@
                 }else if($(this).val() == 'close-hover-tag'){
                     $(".tag-info-dialog").removeClass("__open").removeClass("__close");
                     $(".tag-info-dialog").addClass("__close");
+                }else if($(this).val() == 'open-tag-setting') {
+                    var msDialog = $(".tag-setting-dialog");
+                    msDialog.removeClass("__close").removeClass("__open");
+                    msDialog.addClass("__open");
+
+                    backdropOpen();
+                }else if($(this).val() == 'close-tag-setting') {
+                    var msDialog = $(".tag-setting-dialog");
+                    msDialog.removeClass("__close").removeClass("__open");
+                    msDialog.addClass("__close");
+
+                    backdropClose();
                 }
 
             });
@@ -380,7 +409,7 @@
                     <div class="head-location-nav">
                         <div class="head-location-nav-i">#olivepop</div>
                         <div class="head-location-nav-i">#Reading</div>
-                        <div class="head-location-nav-current">#HitlerAscent</div>
+                        <div class="head-location-nav-current">#Midinote</div>
                     </div>
                 </div>
                 <div class="main-head-buttons">
@@ -473,9 +502,11 @@
                     <!--notes list begin-->
                     <div class="main-content-notes">
                         <div class="main-content-notes-title">
-                            <div class="main-content-title-tag">
-                                <div class="title-tag-name"><span class="tag-name">#Midinote</span></div>
-                                <div class="title-tag-def">Good one. A useful notebook.</div>
+                            <div class="main-content-title-block">
+                                <div class="main-content-title-tag">
+                                    <div class="title-tag-name"><span class="tag-name">#Midinote</span></div>
+                                    <div class="title-tag-def">Good one. A useful notebook.</div>
+                                </div>
                                 <div class="main-content-add-title">
                                     <div class="edit-icon"></div>
                                     <div class="input-subscript-icon"></div>
@@ -633,6 +664,8 @@
         <option value="hover-tag2">Hover one Hash-tag2 (大图横向)</option>
         <option value="hover-tag3">Hover one Hash-tag3  (小图)</option>
         <option value="close-hover-tag">Close Hover one Hashtag</option>
+        <option value="open-tag-setting">Open Tag Setting</option>
+        <option value="close-tag-setting">Close Tag Setting</option>
     </select>
 </div>
 

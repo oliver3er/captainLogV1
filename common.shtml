@@ -114,3 +114,22 @@
         </div>
     </div>
 </div>
+
+
+<!--标签设置窗口-->
+<div class="message-dialog tag-setting-dialog __open">
+    <div class="tag-setting-dialog-wrapper">
+        <div class="dialog-title">HASHTAG SETTING</div>
+
+        <div class="dialog-main">
+            <div class="main-tag-name">
+                <span class="tag-name">#WorldWarII</span>
+                <span>Created at 10/06/2018</span>
+            </div>
+        </div>
+        <div class="dialog-buttons">
+            <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+            <div class="dialog-button-ok btn-ok">Save</div>
+        </div>
+    </div>
+</div>
