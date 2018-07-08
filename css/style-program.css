@@ -282,7 +282,20 @@
 .content-log-item.log-editing-status .rest-number.error{
 	color: #ff5151;
 }
+.content-log-item.log-editing-status .button-delete {
+	position: absolute;
+	right: 5px;
+	top: 3px;
+	color		: white;
+	background	: transparent;
+	transition	: all .5s ease;
+	cursor		: pointer;
+}
 
+.content-log-item.log-editing-status .button-delete:hover {
+	background-color		: white;
+	color					: black;
+}
 
 .fade-in {
 	animation	: fade-in 1s ease forwards;
