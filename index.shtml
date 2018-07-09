@@ -119,6 +119,7 @@
             //信息提示框
             $(".with-top-tip").hover(function(){
                 var thisObj = $(this);
+                //alert("1");
                 //插入消息内容
                 var tipMg = thisObj.attr("tip-message");
                 var theTip = $(".small-tip");
@@ -130,6 +131,7 @@
 
                 var tipWidth = theTip.width();
                 var tipX = objX+thisObj.width()/2-tipWidth/2;
+                    //alert("2");
 
                 theTip.css("left",tipX);
                 theTip.css("top",(objY-theTip.height()-8));
@@ -138,6 +140,8 @@
                 theArrow.css("bottom","-12px");
                 theArrow.css("top","auto");
                 theArrow.css("border-color", "#0b0b0b transparent transparent transparent");
+
+                    //alert("3");
 
             }
             , function(){
@@ -262,17 +266,25 @@
                     $(".pop-menu").addClass("pop-menu-close");
                 }
 
+
                 if($(this).val()=='warring-in-note') {
                     msgTip.css('left', '413px');
                     msgTip.css('top', '164px');
                     msgTip.addClass("warning-message");
                     msgTip.css("visibility","visible");
-                }else if($(this).val()=='bf-menu'){
-                    var menu = $(".pop-menu");
-                    menu.css("left","101px");
-                    $(".pop-menu").show();
-                    $(".pop-menu").removeClass("pop-menu-close");
-                    $(".pop-menu").addClass("pop-menu-open");
+                }else if($(this).val()=='bf-menu') {
+                    var menu = $(".bf-menu");
+                    menu.css("left", "101px");
+                    menu.show();
+                    menu.removeClass("pop-menu-close");
+                    menu.addClass("pop-menu-open");
+                }else if ($(this).val()=='smart-tip-menu'){
+                    var menu = $(".smart-tip-menu");
+                    menu.css("left","300px");
+                    menu.show();
+                    menu.removeClass("pop-menu-close");
+                    menu.addClass("pop-menu-open");
+
                 }else if($(this).val()=="open-tool-bar") {
                     $('.main-content-toolbar').removeClass('__close').addClass('__open');
                 }else if($(this).val() == 'close-tool-bar') {
@@ -675,6 +687,7 @@
         <option value="nothing">Nothing</option>
         <option value="warring-in-note">Warning tip (in a note)</option>
         <option value="bf-menu">backward-and-forward-menu</option>
+        <option value="smart-tip-menu">Smart-Tip-Menu</option>
         <option value="open-tool-bar">Open Tool-Bar</option>
         <option value="close-tool-bar">Close Tool-Bar</option>
         <option value="click-one-note">Click one Note</option>

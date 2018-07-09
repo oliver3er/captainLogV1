@@ -17,7 +17,7 @@
 </div>
 
 <!--普通菜单 （用于 头部的前进后退按钮关联的菜单）-->
-<div class="pop-menu" style="display:none;">
+<div class="pop-menu bf-menu" style="display:none;">
     <div class="pop-menu-lis">
         <li>
             <div class="pop-menu-li-icon"><img src="images/temp/laugh-face.png" alt=" "/></div>
@@ -25,6 +25,30 @@
         </li>
         <li><div class="pop-menu-li-name">#如果说我要放中文呢</div></li>
         <li><div class="pop-menu-li-name">#33333</div></li>
+    </div>
+</div>
+
+<!--普通菜单 （用于输入笔记标题时的智能提示信息）-->
+<div class="pop-menu smart-tip-menu" style="display:none;">
+    <div class="pop-menu-lis">
+        <li>
+            <div class="pop-menu-li-name"><span class="tag-name">#logger</span></div>
+            <div class="pop-menu-li-icon"><img src="images/temp/laugh-face.png" alt=" "/></div>
+            <div class="pop-menu-li-account">(26 notes)</div>
+            <div class="pop-menu-li-definition">The first cooperant project</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-name"><span class="tag-name" style="color: rgb(225, 41, 119);">#logger-design</span></div>
+            <div class="pop-menu-li-icon"><img src="images/temp/president.jpg" alt=" "/></div>
+            <div class="pop-menu-li-account">(26 notes)</div>
+            <div class="pop-menu-li-definition">Design and Make</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-name"><span class="tag-name" style="color: rgb(176, 199, 66);">#logger-development</span></div>
+            <div class="pop-menu-li-icon"><img src="images/temp/small-avatar.png" alt=" "/></div>
+            <div class="pop-menu-li-account">(26 notes)</div>
+            <div class="pop-menu-li-definition">development</div>
+        </li>
     </div>
 </div>
 
@@ -116,15 +140,205 @@
 </div>
 
 
-<!--标签设置窗口-->
+<!--标签设置窗口-->_
 <div class="message-dialog tag-setting-dialog">
-    <div class="tag-setting-dialog-wrapper">
+    <div class="message-dialog-wrapper tag-setting-dialog-wrapper">
         <div class="dialog-title">HASHTAG SETTING</div>
 
         <div class="dialog-main">
             <div class="main-tag-name">
-                <span class="tag-name">#WorldWarII</span>
-                <span>Created at 10/06/2018</span>
+                <span class="tag-name" style="color:rgb(213,71,71);">#WorldWarII</span>
+                <span class="descriptive-info">Created at 10/06/2018</span>
+            </div>
+
+            <div class="main-tag-collection">
+                <div class="main-tag-collection-L">
+                    <div class="main-tag-color-selection">
+                        <div class="tag-color-blank position-relative">  <!--style="background-color: red;"-->
+                            <div class="tag-color-blank-icon"></div>
+                        </div>
+                        <div class="tag-color-supply">
+                            <div class="tag-color-supply-column">
+                                <div class="_color1"></div>
+                                <div class="_color1_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color2"></div>
+                                <div class="_color2_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color3"></div>
+                                <div class="_color3_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color4"></div>
+                                <div class="_color4_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color5"></div>
+                                <div class="_color5_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color6"></div>
+                                <div class="_color6_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color7"></div>
+                                <div class="_color7_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color8"></div>
+                                <div class="_color8_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color9"></div>
+                                <div class="_color9_"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-tag-show-way-selection form-item">
+                        <div class="form-item-label">SHOW WAY</div>
+                        <div class="form-selection">
+
+                            <script type="text/javascript">
+                                $(function (){
+                                    $(".form-selection-outer .form-selection-option").bind("click",function(){
+
+                                        var selectionObj = $(this).parent();
+
+                                        if(!$(this).hasClass("__selected")){
+
+                                            selectionObj.find(".form-selection-option").removeClass("__selected");
+                                            $(this).addClass("__selected");
+                                        }
+                                        selectionObj.parent().find(".form-selection-control").removeClass("__open");
+                                        selectionObj.removeClass("__open");
+                                    });
+
+                                    $(".form-selection-control").bind("click",function(){
+
+                                        if(!$(this).hasClass("__selected")) {
+                                            $(this).addClass("__selected");
+                                        }
+
+                                        if($(this).hasClass("__open")) {
+                                            $(this).removeClass("__open");
+                                            //隐藏下拉内容
+                                            $(this).parent().find(".form-selection-outer").removeClass("__open");
+                                        }else {
+                                            $(this).addClass("__open");
+                                            //显示下拉内容
+                                            $(this).parent().find(".form-selection-outer").addClass("__open");
+                                        }
+                                    });
+
+                                    $(document).bind("click",function(event) {
+                                        var e = window.event || event;
+                                        //点击除此下拉框的位置，改变该下拉框显示模式
+                                        if ($(e.target).closest(".form-selection").length == 0) {
+                                            $(".form-selection-outer").removeClass("__open");
+                                            $(".form-selection-control").removeClass("__open");
+                                            $(".form-selection-control").removeClass("__selected");
+                                        }
+                                    });
+                                });
+                            </script>
+
+                            <div class="form-selection-control">
+                                <div class="selected-value">
+                                    <div>words</div>
+                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                </div>
+                                <div class="selection-arrow"></div>
+                            </div>
+                            <div class="form-selection-outer">
+                                <div class="form-selection-option __selected">
+                                    <div>words</div>
+                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                </div>
+                                <div class="form-selection-option">
+                                    <div>icon</div>
+                                    <div class="descriptive-info">e.g. </div>
+                                    <div class="descriptive-icon">
+                                        <img src="images/temp/laugh-face.png" />
+                                    </div>
+                                </div>
+                                <div class="form-selection-option">
+                                    <div>word + icon</div>
+                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                    <div class="descriptive-icon">
+                                        <img src="images/temp/laugh-face.png" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-tag-collection-R">
+                    <div class="main-tag-avatar">
+                        <div class="tag-avatar-backdrop">
+                            <div class="drag-drop-icon-block">
+                                <div>Drag&Drop</div>
+                                <div>upload your picture.</div>
+                            </div>
+                            <div class="select-upload-icon-block">
+                                <div class="tag-select-icon with-top-tip"  tip-message="select an icon"></div>
+                                <div class="tag-upload-icon with-top-tip" tip-message="upload an icon"></div>
+                            </div>
+                        </div>
+                        <div class="tag-avatar-icon __picture-img-tall">   <!--__picture-img-tall\__picture-svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" >
+                                <defs>
+                                    <clipPath id="tag-setting-form-icon-mask" transform="matrix(1 0 0 1 0 0)">
+                                        <path d="M126.5,121.322c0,2.859-2.318,5.178-5.178,5.178H5.678c-2.86,0-5.178-2.318-5.178-5.178V5.678
+	C0.5,2.818,2.818,0.5,5.678,0.5h115.644c2.859,0,5.178,2.318,5.178,5.178V121.322z"/>
+                                    </clipPath>
+                                </defs>
+                                <img src="images/temp/president.jpg" x="0" y="0" clip-path="url(#tag-setting-form-icon-mask)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-tag-definition form-item position-relative">
+                <div class="form-item-label">DEFINITION<div class="form-item-help"></div></div>
+                <div class="form-input">
+                    <input type="text" name="tag-definition-value"
+                           value="This is a complicated thing" placeholder="" maxlength="999" />
+                </div>
+                <div class="form-input-foot-right">
+                    <div class="tag-commend-words">
+                        <span class="tag-name" style="color:rgb(20,135,187);">#complicated</span>
+                    </div>
+                    <div class="form-item-separate-line"></div>
+                    <div class="input-remainder-account">100</div>
+                </div>
+            </div>
+
+            <div class="main-tag-definition form-item">
+                <div class="form-item-label">ALIAS</div>
+                <div class="form-input">
+                    <input type="text" name="tag-alias-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
+            </div>
+
+            <div class="main-tag-definition form-item">
+                <div class="form-item-label">TRIGGER</div>
+                <div class="form-input">
+                    <input type="text" name="tag-trigger-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
+            </div>
+
+            <div class="main-tag-definition form-item">
+                <div class="form-item-label">EQUAL TO<div class="form-item-help"></div></div>
+                <div class="form-input">
+                    <input type="text" name="tag-equal-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
             </div>
         </div>
         <div class="dialog-buttons">
@@ -132,4 +346,216 @@
             <div class="dialog-button-ok btn-ok">Save</div>
         </div>
     </div>
+
+</div>
+
+
+
+<!--标签值设置窗口-->_
+<div class="message-dialog tag-value-setting-dialog">
+    <div class="tag-v-setting-dialog-wrapper">
+        <div class="dialog-title">HASHTAG VALUE SETTING</div>
+
+        <div class="dialog-main">
+            <div class="main-tag-name">
+                <span class="tag-name" style="color:rgb(213,71,71);">#WorldWarII</span>
+                <span class="descriptive-info">Created at 10/06/2018</span>
+            </div>
+
+            <div class="main-tag-collection">
+                <div class="main-tag-collection-L">
+                    <div class="main-tag-color-selection">
+                        <div class="tag-color-blank position-relative">  <!--style="background-color: red;"-->
+                            <div class="tag-color-blank-icon"></div>
+                        </div>
+                        <div class="tag-color-supply">
+                            <div class="tag-color-supply-column">
+                                <div class="_color1"></div>
+                                <div class="_color1_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color2"></div>
+                                <div class="_color2_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color3"></div>
+                                <div class="_color3_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color4"></div>
+                                <div class="_color4_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color5"></div>
+                                <div class="_color5_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color6"></div>
+                                <div class="_color6_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color7"></div>
+                                <div class="_color7_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color8"></div>
+                                <div class="_color8_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color9"></div>
+                                <div class="_color9_"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-tag-show-way-selection form-item">
+                        <div class="form-item-label">SHOW WAY</div>
+                        <div class="form-selection">
+
+                            <script type="text/javascript">
+                                $(function (){
+                                    $(".form-selection-outer .form-selection-option").bind("click",function(){
+
+                                        var selectionObj = $(this).parent();
+
+                                        if(!$(this).hasClass("__selected")){
+
+                                            selectionObj.find(".form-selection-option").removeClass("__selected");
+                                            $(this).addClass("__selected");
+                                        }
+                                        selectionObj.parent().find(".form-selection-control").removeClass("__open");
+                                        selectionObj.removeClass("__open");
+                                    });
+
+                                    $(".form-selection-control").bind("click",function(){
+
+                                        if(!$(this).hasClass("__selected")) {
+                                            $(this).addClass("__selected");
+                                        }
+
+                                        if($(this).hasClass("__open")) {
+                                            $(this).removeClass("__open");
+                                            //隐藏下拉内容
+                                            $(this).parent().find(".form-selection-outer").removeClass("__open");
+                                        }else {
+                                            $(this).addClass("__open");
+                                            //显示下拉内容
+                                            $(this).parent().find(".form-selection-outer").addClass("__open");
+                                        }
+                                    });
+
+                                    $(document).bind("click",function(event) {
+                                        var e = window.event || event;
+                                        //点击除此下拉框的位置，改变该下拉框显示模式
+                                        if ($(e.target).closest(".form-selection").length == 0) {
+                                            $(".form-selection-outer").removeClass("__open");
+                                            $(".form-selection-control").removeClass("__open");
+                                            $(".form-selection-control").removeClass("__selected");
+                                        }
+                                    });
+                                });
+                            </script>
+
+                            <div class="form-selection-control">
+                                <div class="selected-value">
+                                    <div>words</div>
+                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                </div>
+                                <div class="selection-arrow"></div>
+                            </div>
+                            <div class="form-selection-outer">
+                                <div class="form-selection-option __selected">
+                                    <div>words</div>
+                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                </div>
+                                <div class="form-selection-option">
+                                    <div>icon</div>
+                                    <div class="descriptive-info">e.g. </div>
+                                    <div class="descriptive-icon">
+                                        <img src="images/temp/laugh-face.png" />
+                                    </div>
+                                </div>
+                                <div class="form-selection-option">
+                                    <div>word + icon</div>
+                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                    <div class="descriptive-icon">
+                                        <img src="images/temp/laugh-face.png" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-tag-collection-R">
+                    <div class="main-tag-avatar">
+                        <div class="tag-avatar-backdrop">
+                            <div class="drag-drop-icon-block">
+                                <div>Drag&Drop</div>
+                                <div>upload your picture.</div>
+                            </div>
+                            <div class="select-upload-icon-block">
+                                <div class="tag-select-icon with-top-tip"  tip-message="select an icon"></div>
+                                <div class="tag-upload-icon with-top-tip" tip-message="upload an icon"></div>
+                            </div>
+                        </div>
+                        <div class="tag-avatar-icon __picture-img-tall">   <!--__picture-img-tall\__picture-svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" >
+                                <defs>
+                                    <clipPath id="tag-setting-form-icon-mask" transform="matrix(1 0 0 1 0 0)">
+                                        <path d="M126.5,121.322c0,2.859-2.318,5.178-5.178,5.178H5.678c-2.86,0-5.178-2.318-5.178-5.178V5.678
+	C0.5,2.818,2.818,0.5,5.678,0.5h115.644c2.859,0,5.178,2.318,5.178,5.178V121.322z"/>
+                                    </clipPath>
+                                </defs>
+                                <img src="images/temp/president.jpg" x="0" y="0" clip-path="url(#tag-setting-form-icon-mask)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-tag-definition form-item position-relative">
+                <div class="form-item-label">DEFINITION<div class="form-item-help"></div></div>
+                <div class="form-input">
+                    <input type="text" name="tag-definition-value"
+                           value="This is a complicated thing" placeholder="" maxlength="999" />
+                </div>
+                <div class="form-input-foot-right">
+                    <div class="tag-commend-words">
+                        <span class="tag-name" style="color:rgb(20,135,187);">#complicated</span>
+                    </div>
+                    <div class="form-item-separate-line"></div>
+                    <div class="input-remainder-account">100</div>
+                </div>
+            </div>
+
+            <div class="main-tag-definition form-item">
+                <div class="form-item-label">ALIAS</div>
+                <div class="form-input">
+                    <input type="text" name="tag-alias-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
+            </div>
+
+            <div class="main-tag-definition form-item">
+                <div class="form-item-label">TRIGGER</div>
+                <div class="form-input">
+                    <input type="text" name="tag-trigger-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
+            </div>
+
+            <div class="main-tag-definition form-item">
+                <div class="form-item-label">EQUAL TO<div class="form-item-help"></div></div>
+                <div class="form-input">
+                    <input type="text" name="tag-equal-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
+            </div>
+        </div>
+        <div class="dialog-buttons">
+            <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+            <div class="dialog-button-ok btn-ok">Save</div>
+        </div>
+    </div>
+
 </div>
