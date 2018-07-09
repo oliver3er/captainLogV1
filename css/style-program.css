@@ -282,17 +282,23 @@
 .content-log-item.log-editing-status .rest-number.error{
 	color: #ff5151;
 }
-.content-log-item.log-editing-status .button-delete {
+
+.content-log-item.log-editing-status .tiny-toolbar{
 	position: absolute;
 	right: 5px;
 	top: 3px;
+	display		: flex;
+}
+
+.content-log-item.log-editing-status .tiny-toolbar .button {
 	color		: white;
 	background	: transparent;
 	transition	: all .5s ease;
 	cursor		: pointer;
+	margin		: 0 5px;
 }
 
-.content-log-item.log-editing-status .button-delete:hover {
+.content-log-item.log-editing-status .tiny-toolbar .button:hover {
 	background-color		: white;
 	color					: black;
 }
@@ -426,3 +432,10 @@
 	border-right	: 3px solid transparent;
 	border-left		: 3px solid transparent;
 }
+
+.content-log-tiny {
+	position	: absolute;
+	top			: 0;
+	right		: 0;
+}
+
