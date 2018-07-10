@@ -381,6 +381,18 @@
                     msDialog.addClass("__close");
 
                     backdropClose();
+                }else if($(this).val() == 'open-tag-value-setting') {
+                    var msDialog = $(".tag-value-setting-dialog");
+                    msDialog.removeClass("__close").removeClass("__open");
+                    msDialog.addClass("__open");
+
+                    backdropOpen();
+                }else if($(this).val() == 'close-tag-value-setting') {
+                    var msDialog = $(".tag-value-setting-dialog");
+                    msDialog.removeClass("__close").removeClass("__open");
+                    msDialog.addClass("__close");
+
+                    backdropClose();
                 }
 
             });
@@ -702,6 +714,8 @@
         <option value="close-hover-tag">Close Hover one Hashtag</option>
         <option value="open-tag-setting">Open Tag Setting</option>
         <option value="close-tag-setting">Close Tag Setting</option>
+        <option value="open-tag-value-setting">Open Tag Value Setting</option>
+        <option value="close-tag-value-setting">Close Tag Value Setting</option>
     </select>
 </div>
 

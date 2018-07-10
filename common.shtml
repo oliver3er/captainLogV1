@@ -317,7 +317,7 @@
                 </div>
             </div>
 
-            <div class="main-tag-definition form-item">
+            <div class="main-tag-alias form-item">
                 <div class="form-item-label">ALIAS</div>
                 <div class="form-input">
                     <input type="text" name="tag-alias-value"
@@ -325,7 +325,7 @@
                 </div>
             </div>
 
-            <div class="main-tag-definition form-item">
+            <div class="main-tag-trigger form-item">
                 <div class="form-item-label">TRIGGER</div>
                 <div class="form-input">
                     <input type="text" name="tag-trigger-value"
@@ -333,7 +333,7 @@
                 </div>
             </div>
 
-            <div class="main-tag-definition form-item">
+            <div class="main-tag-equal form-item">
                 <div class="form-item-label">EQUAL TO<div class="form-item-help"></div></div>
                 <div class="form-input">
                     <input type="text" name="tag-equal-value"
@@ -353,204 +353,193 @@
 
 <!--标签值设置窗口-->_
 <div class="message-dialog tag-value-setting-dialog">
-    <div class="tag-v-setting-dialog-wrapper">
+    <div class="message-dialog-wrapper tag-v-setting-dialog-wrapper">
         <div class="dialog-title">HASHTAG VALUE SETTING</div>
 
         <div class="dialog-main">
             <div class="main-tag-name">
-                <span class="tag-name" style="color:rgb(213,71,71);">#WorldWarII</span>
+                <span class="tag-name" style="color:rgb(213,71,71);">#Recipe</span>
                 <span class="descriptive-info">Created at 10/06/2018</span>
             </div>
 
-            <div class="main-tag-collection">
-                <div class="main-tag-collection-L">
-                    <div class="main-tag-color-selection">
-                        <div class="tag-color-blank position-relative">  <!--style="background-color: red;"-->
-                            <div class="tag-color-blank-icon"></div>
-                        </div>
-                        <div class="tag-color-supply">
-                            <div class="tag-color-supply-column">
-                                <div class="_color1"></div>
-                                <div class="_color1_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color2"></div>
-                                <div class="_color2_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color3"></div>
-                                <div class="_color3_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color4"></div>
-                                <div class="_color4_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color5"></div>
-                                <div class="_color5_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color6"></div>
-                                <div class="_color6_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color7"></div>
-                                <div class="_color7_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color8"></div>
-                                <div class="_color8_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color9"></div>
-                                <div class="_color9_"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="main-tag-show-way-selection form-item">
-                        <div class="form-item-label">SHOW WAY</div>
-                        <div class="form-selection">
-
-                            <script type="text/javascript">
-                                $(function (){
-                                    $(".form-selection-outer .form-selection-option").bind("click",function(){
-
-                                        var selectionObj = $(this).parent();
-
-                                        if(!$(this).hasClass("__selected")){
-
-                                            selectionObj.find(".form-selection-option").removeClass("__selected");
-                                            $(this).addClass("__selected");
-                                        }
-                                        selectionObj.parent().find(".form-selection-control").removeClass("__open");
-                                        selectionObj.removeClass("__open");
-                                    });
-
-                                    $(".form-selection-control").bind("click",function(){
-
-                                        if(!$(this).hasClass("__selected")) {
-                                            $(this).addClass("__selected");
-                                        }
-
-                                        if($(this).hasClass("__open")) {
-                                            $(this).removeClass("__open");
-                                            //隐藏下拉内容
-                                            $(this).parent().find(".form-selection-outer").removeClass("__open");
-                                        }else {
-                                            $(this).addClass("__open");
-                                            //显示下拉内容
-                                            $(this).parent().find(".form-selection-outer").addClass("__open");
-                                        }
-                                    });
-
-                                    $(document).bind("click",function(event) {
-                                        var e = window.event || event;
-                                        //点击除此下拉框的位置，改变该下拉框显示模式
-                                        if ($(e.target).closest(".form-selection").length == 0) {
-                                            $(".form-selection-outer").removeClass("__open");
-                                            $(".form-selection-control").removeClass("__open");
-                                            $(".form-selection-control").removeClass("__selected");
-                                        }
-                                    });
-                                });
-                            </script>
-
-                            <div class="form-selection-control">
-                                <div class="selected-value">
-                                    <div>words</div>
-                                    <div class="descriptive-info">e.g. #Midinote</div>
-                                </div>
-                                <div class="selection-arrow"></div>
-                            </div>
-                            <div class="form-selection-outer">
-                                <div class="form-selection-option __selected">
-                                    <div>words</div>
-                                    <div class="descriptive-info">e.g. #Midinote</div>
-                                </div>
-                                <div class="form-selection-option">
-                                    <div>icon</div>
-                                    <div class="descriptive-info">e.g. </div>
-                                    <div class="descriptive-icon">
-                                        <img src="images/temp/laugh-face.png" />
-                                    </div>
-                                </div>
-                                <div class="form-selection-option">
-                                    <div>word + icon</div>
-                                    <div class="descriptive-info">e.g. #Midinote</div>
-                                    <div class="descriptive-icon">
-                                        <img src="images/temp/laugh-face.png" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="main-tag-collection-R">
-                    <div class="main-tag-avatar">
-                        <div class="tag-avatar-backdrop">
-                            <div class="drag-drop-icon-block">
-                                <div>Drag&Drop</div>
-                                <div>upload your picture.</div>
-                            </div>
-                            <div class="select-upload-icon-block">
-                                <div class="tag-select-icon with-top-tip"  tip-message="select an icon"></div>
-                                <div class="tag-upload-icon with-top-tip" tip-message="upload an icon"></div>
-                            </div>
-                        </div>
-                        <div class="tag-avatar-icon __picture-img-tall">   <!--__picture-img-tall\__picture-svg-->
-                            <svg xmlns="http://www.w3.org/2000/svg" >
-                                <defs>
-                                    <clipPath id="tag-setting-form-icon-mask" transform="matrix(1 0 0 1 0 0)">
-                                        <path d="M126.5,121.322c0,2.859-2.318,5.178-5.178,5.178H5.678c-2.86,0-5.178-2.318-5.178-5.178V5.678
-	C0.5,2.818,2.818,0.5,5.678,0.5h115.644c2.859,0,5.178,2.318,5.178,5.178V121.322z"/>
-                                    </clipPath>
-                                </defs>
-                                <img src="images/temp/president.jpg" x="0" y="0" clip-path="url(#tag-setting-form-icon-mask)"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+            <div class="main-tag-descriptive-info">
+                if you enjoy cooking and eating different kinds of food,like a foodie,maybee need a set of instructions for cooking a particular type of food.
             </div>
 
-            <div class="main-tag-definition form-item position-relative">
-                <div class="form-item-label">DEFINITION<div class="form-item-help"></div></div>
+            <div class="form-item">
+                <div class="form-item-label">DISH NAME</div>
                 <div class="form-input">
-                    <input type="text" name="tag-definition-value"
-                           value="This is a complicated thing" placeholder="" maxlength="999" />
-                </div>
-                <div class="form-input-foot-right">
-                    <div class="tag-commend-words">
-                        <span class="tag-name" style="color:rgb(20,135,187);">#complicated</span>
-                    </div>
-                    <div class="form-item-separate-line"></div>
-                    <div class="input-remainder-account">100</div>
-                </div>
-            </div>
-
-            <div class="main-tag-definition form-item">
-                <div class="form-item-label">ALIAS</div>
-                <div class="form-input">
-                    <input type="text" name="tag-alias-value"
+                    <input type="text" name="dish-name-value"
                            value="" placeholder="" maxlength="999" />
                 </div>
             </div>
 
-            <div class="main-tag-definition form-item">
-                <div class="form-item-label">TRIGGER</div>
-                <div class="form-input">
-                    <input type="text" name="tag-trigger-value"
-                           value="" placeholder="" maxlength="999" />
+            <div class="form-item">
+                <div class="form-item-label">DATE<div class="form-item-help"></div></div>
+                <div class="form-date position-relative">
+                    <script type="text/javascript">
+                        $(function (){
+                            $(".form-date").bind("click",function(){
+                                var dateBox = $(this);
+                                if(dateBox.hasClass("__selected")){
+                                    return;
+                                }
+                                dateBox.addClass("__selected");
+                                dateBox.find(".form-date-input").focus();
+                            });
+
+                            $(document).bind("click",function(event) {
+                                var e = window.event || event;
+                                //点击除此文本框的位置，改变该文本框显示模式
+                                if ($(e.target).closest(".form-date").length == 0) {
+                                    $(".form-date").removeClass("__selected");
+                                    $(".form-date").find(".form-date-input").blur();
+                                }
+                            });
+                        });
+                    </script>
+                    <div class="form-date-icon"></div>
+                    <div class="form-date-icon-line"></div>
+                    <input type="text" class="form-date-input" name="date" value="2017-10-28" placeholder="" maxlength="100" />
                 </div>
             </div>
 
-            <div class="main-tag-definition form-item">
-                <div class="form-item-label">EQUAL TO<div class="form-item-help"></div></div>
-                <div class="form-input">
-                    <input type="text" name="tag-equal-value"
-                           value="" placeholder="" maxlength="999" />
+            <div class="form-item">
+                <div class="form-item-label">STYLE</div>
+                <div class="form-selection">
+                    <div class="form-selection-control">
+                        <div class="selected-value">
+                            <div>China</div>
+                            <div class="descriptive-info">e.g. dumpling</div>
+                        </div>
+                        <div class="selection-arrow"></div>
+                    </div>
+                    <div class="form-selection-outer">
+                        <div class="form-selection-option __selected">
+                            <div>China</div>
+                            <div class="descriptive-info">e.g. dumpling</div>
+                        </div>
+                        <div class="form-selection-option">
+                            <div>US</div>
+                            <div class="descriptive-info">e.g. </div>
+                            <div class="descriptive-icon">
+                                <img src="images/temp/laugh-face.png" />
+                            </div>
+                        </div>
+                        <div class="form-selection-option">
+                            <div>UK</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="form-item">
+                <div class="form-item-label">COVER</div>
+                <div class="form-upload-img position-relative">
+                    <div class="form-upload-description descriptive-info">You can upload your dish’s photos,they will tell how tasty your dish is.</div>
+                    <div class="form-upload-box"></div>
+                    <div class="form-upload-img-float-layer">
+                        <div class="form-upload-img-float-layer-bd"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">CHECKBOX EXAMPLE</div>
+                <div class="form-checkboxes">
+                    <script type="text/javascript">
+                        $(function (){
+                            $(".form-checkbox").bind('click',function(){
+                                var showValue = $(this);
+                                var checkedItem = $(this).find(".checkbox-inner [type='checkbox']");
+                                var checkedSpan = $(this).find(".checkbox-inner span");
+
+                                if(checkedItem.attr("checked")){
+                                    showValue.css("background-color","#32353a");
+                                    checkedItem.attr("checked", false);
+                                    checkedSpan.css("background-color","#32353a");
+                                    checkedSpan.find("svg").remove();
+                                }else {
+                                    showValue.css("background-color","#4682f7");
+                                    checkedItem.attr("checked", true);
+                                    checkedSpan.css("background-color","#ececec");
+                                    checkedSpan.append('<svg name="Check-mark" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><polyline stroke="#4682f7" stroke-width="2" points="3.5 9.5 7 13 15 5"></polyline></g></svg>');
+                                }
+
+                            });
+                        });
+                    </script>
+                    <div class="form-checkbox">
+                        <div class="checkbox">
+                            <div class="checkbox-inner">
+                                <input type="checkbox" value="on"/>
+                                <span></span>
+                            </div>
+                            <span>option1</span>
+                        </div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <div class="checkbox">
+                            <div class="checkbox-inner">
+                                <input type="checkbox" value="on"/>
+                                <span></span>
+                            </div>
+                            <span>option2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">RADIO BOX</div>
+                <div class="main-tag-descriptive-info">
+                    This dish is good for your dinner or breakfast,recording the answer is helpful.
+                </div>
+                <div class="form-radio-boxes">
+                    <script type="text/javascript">
+                        $(function (){
+                            $(".form-radio-box .form-radio-control").bind('click',function(){
+                                var contrl = $(this);
+                                if(contrl.hasClass("__checked")){
+                                    contrl.removeClass("__checked").addClass("__unchecked");
+                                    return -1;
+                                }
+                                if(contrl.hasClass("__unchecked")){
+                                    contrl.removeClass("__unchecked").addClass("__checked");
+                                    return -1;
+                                }
+                            });
+                        });
+                    </script>
+                    <div class="form-radio-box">
+                        <div class="form-radio-name">
+                            <div class="form-radio-label">Breakfast</div>
+                            <div class="form-radio-description descriptive-info">if there is nothing,never mind.</div>
+                        </div>
+                        <div class="form-radio-control  __unchecked">
+                            <input type="checkbox" class="form-radio-value" value="off" />
+                        </div>
+                    </div>
+
+                    <div class="form-radio-box">
+                        <div class="form-radio-name">
+                            <div class="form-radio-label">Dinner</div>
+                            <div class="form-radio-description"></div>
+                        </div>
+                        <div class="form-radio-control  __checked">
+                            <input type="checkbox" class="form-radio-value" value="off" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">DESCRIPTION</div>
+
+                <textarea placeholder="click to add a note" spellcheck="false" maxlength="256" class="form-text-area edit-value"></textarea>
+            </div>
+
         </div>
         <div class="dialog-buttons">
             <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>

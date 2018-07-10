@@ -106,7 +106,18 @@
 /*********************form begin********************/
 .form-item {
     margin-top: 18px;
+    font-size: .14rem;
+    color: #ececec;
+    font-weight: 400;
 }
+
+.form-item input::-webkit-input-placeholder,
+.form-item textarea::-webkit-input-placeholder {
+    color: #6d7178;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
 
 .form-item-label {
     margin-bottom: 8px;
@@ -289,12 +300,10 @@
     border-bottom-right-radius: 4px;
 }
 
-
 .form-input {
     font-size: .14rem;
     font-weight: 400;
     color: #ececec;
-
 }
 
 .form-input input {
@@ -310,14 +319,357 @@
     transition: border .15s ease, box-shadow .15s ease-in-out;
 }
 
-.form-input input:hover {
+.form-input input:hover, .form-text-area:hover {
     border-color: rgba(0,0,0,.5);
     box-shadow: 0 0 1px rgba(0,0,0,.3);
 }
 
-.form-input input:focus {
+.form-input input:focus, .form-text-area:focus {
     border: 1px solid #6998f1;
     box-shadow: 0 2px 10px 0 rgba(105,152,241,.2);
+}
+
+.form-date {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.3);
+    background-color: #32353a;
+
+    color: #ececec;
+    outline: none;
+    font-size: .14rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+    transition: border .15s ease, box-shadow .15s ease-in-out;
+}
+
+.form-date:hover {
+    border-color: rgba(0,0,0,.5);
+    box-shadow: 0 0 1px rgba(0,0,0,.3);
+}
+
+.form-date:active, .__selected.form-date {
+    border: 1px solid #6998f1;
+    box-shadow: 0 2px 10px 0 rgba(105,152,241,.2);
+}
+
+.form-date-icon {
+    width: 40px;
+    height: 100%;
+    background: url("../images/date-icon.svg") center center no-repeat;
+    background-size: 16px;
+    opacity: .4;
+    z-index: 2;
+
+    cursor: pointer;
+
+    transition: opacity .15s ease-in-out;
+}
+
+.form-date-icon:hover {
+    opacity: 1;
+}
+
+.form-date-icon-line {
+    width: 1px;
+    height: 20px;
+    background-color: #4b4d4f;
+}
+
+.form-date-input {
+    height: 40px;
+    width: 100%;
+    border: 0;
+
+    padding-left: 12px;
+    padding-right: 10px;
+    outline: none;
+}
+
+.form-upload-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+.form-upload-description {
+    flex-shrink: 1;
+    width: 100%;
+    height: 100px;
+    background: url("../images/upload-description-bg.svg") bottom center no-repeat;
+    background-size: auto 90px;
+    margin-bottom: 8px;
+
+    overflow: hidden;
+}
+
+.form-upload-box {
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+
+    width: 170px;
+    height: 100px;
+    /*border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.3);*/
+    background: url("../images/upload-image-bg.svg") center center no-repeat, #32353a;
+    background-size: auto 90px;
+    cursor: pointer;
+}
+
+/*.form-upload-box:hover {
+    border-color: rgba(0,0,0,.5);
+    box-shadow: 0 0 1px rgba(0,0,0,.3);
+}*/
+
+.form-upload-img-float-layer {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/rocket-stream.svg') 216px 53px no-repeat;
+    -webkit-background-size: auto 38px;
+    background-size: auto 38px;
+    z-index: 0;
+}
+
+.form-upload-img-float-layer-bd {
+    width: 170px;
+    height: 100px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.3);
+    cursor: pointer;
+    transition: border .15s ease, box-shadow .15s ease-in-out;
+}
+
+.form-upload-img-float-layer-bd:hover {
+    border-color: rgba(0,0,0,.5);
+    box-shadow: 0 0 1px rgba(0,0,0,.3);
+}
+
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background-color: #32353a;
+    border: 1px solid rgba(0,0,0,.3);
+    color: #ececec;
+    outline: none;
+    font-size: .14rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+}
+
+.checkbox {
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.checkbox .checkbox-inner {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    height: 22px;
+    position: relative;
+    vertical-align: top;
+    width: 22px;
+}
+.checkbox .checkbox-inner:after, .checkbox .checkbox-inner:before {
+    content: "";
+}
+
+.checkbox .checkbox-inner span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    -webkit-box-sizing: border-box;
+    -webkit-transition: .24s;
+    border: 1px solid #8a8f99;
+    border-radius: 4px;
+    bottom: 0;
+    box-sizing: border-box;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: background-color .1s ease;
+}
+
+.checkbox .checkbox-inner+span {
+    margin-left: 10px;
+}
+
+.checkbox .checkbox-inner input[type=checkbox] {
+    display: none;
+}
+
+.form-radio-box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-bottom: 6px;
+    color: #ececec;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    font-size: .14rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.form-radio-label {
+    margin-top: 2px;
+    margin-bottom: 4px;
+    color: #ececec;
+}
+
+.form-radio-description {
+    margin-top: 4px;
+    line-height: .14rem;
+    max-height: 28px;
+    overflow: hidden;
+}
+
+.form-radio-control {
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+
+    border-radius: 14px;
+    height: 24px;
+    width: 42px;
+    margin-left: 10px;
+    background-color: #686a70;
+    box-shadow: inset 0 1px 1px rgba(47,49,54,.3);
+    box-sizing: border-box;
+
+    -webkit-transition: background .15s ease-in-out,border .15s ease-in-out,opacity .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: background .15s ease-in-out,border .15s ease-in-out,opacity .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: background .15s ease-in-out,box-shadow .15s ease-in-out,border .15s ease-in-out,opacity .15s ease-in-out;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.form-radio-control.__checked {
+    background-color: #4682f7;
+}
+
+.form-radio-control::before {
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.form-radio-control::after {
+    left: 0;
+    top: 0;
+    border-radius: 9px;
+    height: 18px;
+    margin: 3px;
+    width: 18px;
+    background-color: #fff;
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    -webkit-box-shadow: 0 2px 4px rgba(47,49,54,.6);
+    box-shadow: 0 2px 4px rgba(47,49,54,.6);
+    -webkit-transition: width .1s ease-in-out,left .1s ease-in-out,-webkit-transform .15s ease-in-out;
+
+    transition: width .1s ease-in-out,left .1s ease-in-out,-webkit-transform .15s ease-in-out;
+    transition: transform .15s ease-in-out,width .1s ease-in-out,left .1s ease-in-out;
+}
+
+.form-radio-control:active::after {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+    background-color: rgb(246, 246, 247);
+}
+
+.form-radio-control.__unchecked:active::after {
+    width: 26px;
+}
+
+.form-radio-control.__checked:active::after {
+    left: -8px;
+    width: 26px;
+}
+
+.__unchecked::after {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.__checked::after {
+    -webkit-transform: translate3d(15px,0,0);
+    transform: translate3d(15px,0,0);
+}
+
+.form-radio-value {
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.form-text-area {
+    padding: 4px 10px 4px 12px;
+    height: 60px;
+    max-height: 60px;
+    width: 100%;
+    color: #ececec;
+    line-height: .18rem;
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 4px;
+    background-color: #32353a;
+    letter-spacing: 1px;
+    resize: none;
+    overflow-y: auto;
+    transition: border .15s ease, box-shadow .15s ease-in-out;
+    outline: none;
+}
+
+
+
+.form-text-area::-webkit-scrollbar {
+    width: 6px;
+    background-color: #32353a;
+    border-radius: 10px;
+}
+
+.form-text-area::-webkit-scrollbar-thumb {
+    width: 6px;
+    border-radius: 10px;
+    background-color: rgba(30,33,36,0.6);
 }
 
 /*********************form end**********************/
@@ -684,11 +1036,26 @@
     flex: 1 1 0%;
     min-height: 1px;
     height: 100%;
+    padding-right: 4px;
     overflow-y: auto;
     overflow-x: hidden;
 
     font-size: .16rem;
     font-weight: 400;
+}
+
+.dialog-main::-webkit-scrollbar {
+    width: 10px;
+    border: 2px solid #36393e;
+    background-color: rgba(45,46,51,.75);
+    border-radius: 10px;
+}
+
+.dialog-main::-webkit-scrollbar-thumb {
+    width: 10px;
+    border: 2px solid #36393e;
+    border-radius: 10px;
+    background-color: rgba(30,33,36,0.6);
 }
 
 .dialog-main-message {
@@ -1798,11 +2165,11 @@
     fill: #EC4F4F;
 }
 
-/**************hash-tag setting begin****************/
+/**************hash-tag (value) setting begin****************/
 .tag-setting-dialog-wrapper, .tag-v-setting-dialog-wrapper {
     position: absolute;
     width: 520px;
-    max-height: 620px;
+    height: 80vh;
     border-radius: 3px;
     overflow: hidden;
     z-index: 1000;
@@ -1813,18 +2180,21 @@
     color: #bcbcbc;
 }
 
-.tag-setting-dialog .dialog-title {
+.tag-setting-dialog-wrapper {
+    max-height: 620px;
+}
+
+.tag-setting-dialog .dialog-title, .tag-value-setting-dialog .dialog-title {
     padding: 0 28px;
 }
 
-.tag-setting-dialog .dialog-main {
-    padding: 0 24px;
-    margin-bottom: 20px;
+.tag-setting-dialog .dialog-main, .tag-value-setting-dialog .dialog-main {
+    padding: 0 26px 20px;
 }
 
 .dialog-main .descriptive-info {
     font-size: .12rem;
-    color: #96989c;
+    color: #6d7178;
     font-weight: 400;
     letter-spacing: .5px;
 }
@@ -2093,11 +2463,24 @@
 }
 
 
-.tag-setting-dialog .dialog-buttons {
+.tag-setting-dialog .dialog-buttons, .tag-value-setting-dialog .dialog-buttons {
     padding: 0 28px;
 }
 
-/**************hash-tag setting end******************/
+.main-tag-descriptive-info {
+    margin-top: 6px;
+    font-size: .12rem;
+    line-height: .14rem;
+    color: #6d7178;
+    font-weight: 400;
+    letter-spacing: .5px;
+    max-height: 42px;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    overflow: hidden;
+}
+
+/**************hash-tag (value) setting end******************/
 
 /***************hash-tag style begin*****************/
 .tag-name {
