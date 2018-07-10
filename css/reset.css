@@ -1,5 +1,6 @@
 html {
-	font-family: sans-serif;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 100px;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 }
@@ -37,13 +38,30 @@ template {
 	display: none;
 }
 
-body{
+body {
     margin: 0; /* 外边距 */
     padding: 0; /* 内边距 */
     border: 0; /* 边框 */
+    line-height: 1;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    overflow: hidden;
+    background: transparent;
+}
+
+a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5, h6, html, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    vertical-align: baseline;
 }
 
 a {
+    color: inherit;
+    font-size: inherit;
     text-decoration: none; /* 去除默认下划线 */
 }
 
@@ -75,7 +93,7 @@ small, .small {
 }
 
 dfn {
-    font-size:italic; /* 添加斜体样式，应用于Safari 5和chrome */
+    font-style: italic; /* 添加斜体样式，应用于Safari 5和chrome */
 }
 
 hr {    /* 解决其在Firefox中的兼容性问题 */
@@ -124,9 +142,24 @@ svg:not(:root) {
 	overflow: hidden;
 }
 
-/* dean,set figure margin to 0,for editor view */
 figure {
-	margin: 0;
+	margin: 1em 40px;
+}
+
+li {
+    list-style: none;
+}
+
+input{
+    background: none;
+    outline: none;
+    border: 0;
+}
+
+input:focus {
+    background: none;
+    outline: none;
+    border: 0;
 }
 
 button,
@@ -213,11 +246,7 @@ legend {
 textarea {
     overflow: auto; /* IE 8/9中，去除默认垂直滚动条属性 */
     vertical-align: top; /* 提高所有浏览器中的文本可读性和版式 */
-}
-
-input,button,select,textarea {
-    outline:none;
-}
+} 
 
 optgroup {
   font-weight: bold;
@@ -316,4 +345,9 @@ th {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.dark-style {
+    background: #1c1c1e;
+    color: #bcbcbc;
 }
