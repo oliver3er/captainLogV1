@@ -52,6 +52,30 @@
     </div>
 </div>
 
+
+<!--系统设置菜单 （用于 点击用户头像关联的菜单）-->
+<div class="pop-menu setting-menu" style="display:none;">
+    <div class="pop-menu-lis">
+        <li>
+            <div class="pop-menu-li-icon menu-account-setting-icon"></div>
+            <div class="pop-menu-li-name">Account Setting</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-icon menu-user-setting-icon"></div>
+            <div class="pop-menu-li-name">User Setting</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-icon menu-help-icon"></div>
+            <div class="pop-menu-li-name">Help Center</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-icon menu-log-out-icon"></div>
+            <div class="pop-menu-li-name">Log Out</div>
+        </li>
+    </div>
+</div>
+
+
 <!--弹出窗口的背景幕布-->
 <div class="backdrop"></div>
 

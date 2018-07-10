@@ -831,7 +831,7 @@
     background-color: rgba(24,25,27,1);
 }
 
-.pop-menu-open.pop-menu {
+.__open.pop-menu {
     -webkit-animation-name: menu-open-animation;
     animation-name: menu-open-animation;
     -webkit-animation-duration: 0.15s;
@@ -852,7 +852,7 @@
     100% { opacity: 1; visibility: visible; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
 }
 
-.pop-menu-close.pop-menu {
+.__close.pop-menu {
     -webkit-animation-name: menu-close-animation;
     animation-name: menu-close-animation;
     -webkit-animation-duration: .1s;
@@ -862,7 +862,7 @@
     pointer-events: none;
 }
 
-.pop-menu-close.pop-menu li div {
+.__close.pop-menu li div {
     display: none;
 }
 
@@ -945,6 +945,53 @@
     font-size: .12rem;
     color: rgba(188,188,188,.4);
     font-weight: 400;
+}
+
+.setting-menu {
+    border: 1px solid rgba(238,238,238,.3);
+    box-shadow: 0 1px 10px 0 rgba(238,238,238,.4);
+}
+
+.setting-menu.pop-menu {
+    transform-origin: 0 100% 0;
+}
+
+.setting-menu .pop-menu-lis li {
+    height: .38rem;
+    padding: 0 11px 0 13px;
+}
+
+.setting-menu .pop-menu-li-icon {
+    margin-right: 6px;
+    width: 20px;
+    height: 20px;
+    opacity: .55;
+}
+
+.pop-menu-lis li:hover .menu-account-setting-icon, .pop-menu-lis li:hover .menu-user-setting-icon,
+.pop-menu-lis li:hover .menu-help-icon, .pop-menu-lis li:hover .menu-log-out-icon {
+    opacity: 1;
+}
+
+.menu-account-setting-icon {
+    background: url("../images/setting-account-icon.svg") center center no-repeat;
+    background-size: 16px;
+}
+
+.menu-user-setting-icon {
+    background: url("../images/setting-user-icon.svg") center center no-repeat;
+    background-size: 16px;
+}
+
+.menu-help-icon {
+    background: url("../images/help-center-icon.svg") center center no-repeat;
+    background-size: auto 16px;
+}
+
+.menu-log-out-icon {
+    margin-left: 2px;
+    background: url("../images/log-out-icon.svg") center center no-repeat;
+    background-size: 16px;
 }
 
 /*********************pop menu end***********************/
@@ -1362,6 +1409,19 @@
 }
 
 .main-menu-user:hover .main-menu-user-icon {
+    border-radius: 24px;
+    width: 48px;
+    height: 48px;
+    margin: 3px;
+    background: url(../images/portrait.png) center center no-repeat,radial-gradient(circle at center, #ababab 0, #eeeeee 70%, #ffffff 100%);
+}
+
+.main-menu-user.__selected {
+    border: 1px solid rgba(238,238,238,0.5);
+    box-shadow: 0 0 1px 1px rgba(238,238,238,0.5);
+}
+
+.main-menu-user.__selected .main-menu-user-icon{
     border-radius: 24px;
     width: 48px;
     height: 48px;

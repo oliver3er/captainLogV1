@@ -265,13 +265,23 @@
                 pScrollTop = scrollTop;
             });
 
+            //点击系统用户头像的操作，头像设置为选中状态的css，并弹出系统设置菜单（菜单显示已在别处实现，此处略）
+            $(".main-menu-user-icon").bind("click",function(){
+                var userP = $(this).parent();
+                if(userP.hasClass("__selected")) {
+                    userP.removeClass("__selected");
+                }else {
+                    userP.addClass("__selected");
+                }
+            });
+
 
             $('#options').bind('change',function(){
                 var msgTip = $('.message-tip');
                 if($(this).val()=='nothing') {
                     msgTip.css("visibility","hidden");
-                    $(".pop-menu").removeClass("pop-menu-open");
-                    $(".pop-menu").addClass("pop-menu-close");
+                    $(".pop-menu").removeClass("__open");
+                    $(".pop-menu").addClass("__close");
                 }
 
 
@@ -289,14 +299,14 @@
                     var menu = $(".bf-menu");
                     menu.css("left", "101px");
                     menu.show();
-                    menu.removeClass("pop-menu-close");
-                    menu.addClass("pop-menu-open");
+                    menu.removeClass("__close");
+                    menu.addClass("__open");
                 }else if ($(this).val()=='smart-tip-menu'){
                     var menu = $(".smart-tip-menu");
                     menu.css("left","300px");
                     menu.show();
-                    menu.removeClass("pop-menu-close");
-                    menu.addClass("pop-menu-open");
+                    menu.removeClass("__close");
+                    menu.addClass("__open");
 
                 }else if($(this).val()=="open-tool-bar") {
                     $('.main-content-toolbar').removeClass('__close').addClass('__open');
@@ -406,7 +416,18 @@
                     msDialog.addClass("__close");
 
                     backdropClose();
+                }else if($(this).val() == "system-setting") {
+                    var menu = $(".setting-menu");
+                    var obj = $(".main-menu-user-icon");
+                    var objX = obj.offset().left;
+                    var objY = obj.offset().top;
+                    menu.css("left",objX+72);
+                    menu.css("top",objY+50-156);
+                    menu.show();
+                    menu.removeClass("__close");
+                    menu.addClass("__open");
                 }
+
 
             });
 
@@ -730,6 +751,7 @@
         <option value="close-tag-setting">Close Tag Setting</option>
         <option value="open-tag-value-setting">Open Tag Value Setting</option>
         <option value="close-tag-value-setting">Close Tag Value Setting</option>
+        <option value="system-setting">System Setting</option>
     </select>
 </div>
 
