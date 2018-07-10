@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Midinote SignIn</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style-auth.css" type="text/css" media="all" />
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $(".auth-main-form-btn").bind('click',function(){
+                window.location='index.shtml';
+            });
+
+            $(".auth-head-to-other-btn").bind('click',function(){
+                var classStr = $('.auth-page').prop('className').split(" ");
+                if(classStr[1]!=null && classStr[1]=='sign-in' ){
+                    $(".auth-page").removeClass('sign-in').addClass('sign-up');
+                }
+                if(classStr[1]!=null && classStr[1]=='sign-up') {
+                    $(".auth-page").removeClass('sign-up').addClass('sign-in');
+                }
+                if(classStr[1]!=null && classStr[1]=='forgot' ){
+                    $(".auth-page").removeClass('forgot').addClass('sign-up');
+                }
+            });
+
+            $(".auth-main-form-item-input").bind('click',function(){
+                if($(".auth-form-item-value-error").length==0) {
+                    $(this).parent(".auth-main-form-item").find(".auth-main-form-item-label").addClass("auth-form-item-value-error")
+                }
+                else {
+                    $(".auth-form-item-value-error").removeClass("auth-form-item-value-error");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="dark-style">
+        <div class="auth-page sign-in">
+            <div class="auth-head">
+                <div class="auth-head-back-home">
+                    <div></div>
+                    <div>Back to home</div>
+                </div>
+                <div class="auth-head-to-other">
+                    <div></div>
+                    <div class="auth-head-to-other-btn"></div>
+                </div>
+            </div>
+
+            <div class="auth-main">
+                <div class="auth-main-logo">
+                    <div></div>
+                </div>
+                <div class="auth-main-content">
+                    <!---------------------------user login form begin--------------------------->
+                    <div class="auth-main-form">
+                        <div class="auth-main-form-title">WELCOME BACK!</div>
+                        <div class="auth-main-form-item">
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">EMAIL</div>
+                                <div class="auth-main-form-value-info">it's not an email address</div>
+                            </div>
+                            <div class="auth-main-form-item-input">
+                                <input placeholder="Your email address." />
+                            </div>
+                        </div>
+                        <div class="auth-main-form-item">
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">PASSWORD</div>
+                                <div class="auth-main-form-value-info"></div>
+                            </div>
+                            <div class="auth-main-form-item-input">
+                                <input placeholder="Your account password." />
+                            </div>
+                        </div>
+                        <div class="auth-main-form-forgot-psw">
+                            <a href="javascript://;">FORGOT YOUR PASSWORD?</a>
+                        </div>
+
+                        <div class="auth-main-form-btn">
+                            <div class="form-btn-sign-in">Sign in</div>
+                        </div>
+                    </div>
+                    <!-----------------------user login form end--------------------------------->
+
+                    <!--------------------user forgot password form begin------------------------>
+                    <div class="auth-main-forgot-form">
+                        <div class="auth-main-form-title">
+                            <span>RESET</span> <span>YOUR</span> <span>PASSWORD</span>
+                        </div>
+                        <div class="auth-main-form-title-info">
+                            Enter your email address and we will send you a link to reset your password.
+                        </div>
+
+                        <div class="auth-main-form-item">
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">EMAIL</div>
+                                <div class="auth-main-form-value-info"></div>
+                            </div>
+                            <div class="auth-main-form-item-input">
+                                <input placeholder="Your email address." />
+                            </div>
+                        </div>
+                        <div class="auth-main-form-btn">
+                            <div class="form-btn-reset-psw">Send password reset email</div>
+                        </div>
+                    </div>
+                    <!----------------------user forgot password form end------------------------>
+
+
+                    <!-----------------------user sign up form begin----------------------------->
+                    <div class="auth-main-register-form">
+                        <div class="auth-main-form-title">SIGN UP</div>
+                        <div class="auth-main-form-item">
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">EMAIL</div>
+                                <div class="auth-main-form-value-info"></div>
+                            </div>
+                            <div class="auth-main-form-item-input">
+                                <input placeholder="Your email address." />
+                            </div>
+                        </div>
+                        <div class="auth-main-form-item">
+                            <div class="auth-main-form-item-label">
+                                <div class="auth-main-form-label-value">PASSWORD</div>
+                                <div class="auth-main-form-value-info"></div>
+                            </div>
+                            <div class="auth-main-form-item-input">
+                                <input placeholder="Use at least six characters." />
+                            </div>
+                        </div>
+                        <div class="auth-main-form-btn">
+                            <div class="form-btn-sign-up">Create an account</div>
+                            <div class="form-btn-sign-up-info">
+                                By creating an account, you agree to our <span>term of service</span> and <span>privacy statement</span>.
+                            </div>
+                        </div>
+                    </div>
+                    <!--------------------------user sign up form end------------------------->
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
