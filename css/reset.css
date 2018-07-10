@@ -346,3 +346,8 @@ th {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+.dark-style {
+    background: #1c1c1e;
+    color: #bcbcbc;
+}

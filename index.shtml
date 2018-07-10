@@ -9,6 +9,14 @@
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
         $(function (){
+
+            //此处为了演示第一次登录后的界面  需要设置用户名、头像信息
+            /*var firstDialog = $(".first-load-dialog");
+            firstDialog.removeClass("__close").removeClass("__open");
+            firstDialog.addClass("__open");*/
+            //演示第一次登录后的界面 -------    结束
+
+
             var pScrollTop = 0;
 
             //点击菜单（最左侧）
@@ -267,7 +275,12 @@
                 }
 
 
-                if($(this).val()=='warring-in-note') {
+                if($(this).val()=='first-page') {
+                    var firstDialog = $(".first-load-dialog");
+                    firstDialog.removeClass("__close").removeClass("__open");
+                    firstDialog.addClass("__open");
+                    backdropOpen();
+                }else if($(this).val()=='warring-in-note') {
                     msgTip.css('left', '413px');
                     msgTip.css('top', '164px');
                     msgTip.addClass("warning-message");
@@ -697,6 +710,7 @@
 <div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
     <select id="options" style="height: 30px;">
         <option value="nothing">Nothing</option>
+        <option value="first-page">The First Load-in Page</option>
         <option value="warring-in-note">Warning tip (in a note)</option>
         <option value="bf-menu">backward-and-forward-menu</option>
         <option value="smart-tip-menu">Smart-Tip-Menu</option>
