@@ -3198,13 +3198,10 @@
     flex-shrink: 0;
     min-width: 310px;
     background: url("../images/bg-unit.svg") repeat, #2e3035;
-    transform: translateX(0);
     visibility: visible;
-    transition: transform .05s ease-in-out,visibility .05s;
 }
 
 .main-content-widget.__close {
-    transform: translateX(500px);
     visibility: hidden;
     min-width: 0;
     width: 0;
