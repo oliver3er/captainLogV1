@@ -9,6 +9,21 @@
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
         $(function (){
+
+            $(function (){
+                $(".main-menu-li-notes").bind('click',function(){
+                    window.location='index.shtml';
+                });
+
+                $(".main-menu-li-map").bind('click',function(){
+                    window.location='mindMap.shtml';
+                });
+
+                $(".main-menu-li-tags").bind('click',function(){
+                    window.location='hashTag.shtml';
+                });
+            });
+
             //点击菜单（最左侧）
             $(".main-menu-li-icon").bind("click",function(){
                 if($(this).parent('.main-menu-li-selected').length==0) {
@@ -89,7 +104,7 @@
                     <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
                     <div class="main-menu-ul">
                         <div class="main-menu-separate-line"></div>
-                        <div class="main-menu-li main-menu-li-selected">
+                        <div class="main-menu-li">
                             <div class="main-menu-li-icon main-menu-li-notes">
                                 <!--#include virtual='images/menu-notes.svg' -->
                             </div>
@@ -105,7 +120,7 @@
                             </div>
                         </div>
                         <div class="main-menu-separate-line"></div>
-                        <div class="main-menu-li">
+                        <div class="main-menu-li main-menu-li-selected">
                             <div class="main-menu-li-icon main-menu-li-search">
                                 <!--#include virtual='images/menu-search.svg' -->
                             </div>
@@ -130,7 +145,15 @@
 
             <div class="main-content">
                 <div class="main-content-center">
-                    <div class="main-content-notes"></div>
+                    <div class="main-content-notes main-content-search">
+                        <div class="main-content-search-area">
+                            <div class="main-content-search-input">
+                                <input class="search-input" placeholder="" />
+                                <div class="search-input-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="main-content-options">
                         <div class="main-content-list-amount">Notes:<span class="list-amount-value">78</span></div>
                         <div class="main-content-list-options">
@@ -148,6 +171,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="main-content-widget"></div>
             </div>
         </div>

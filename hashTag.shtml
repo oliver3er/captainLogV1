@@ -8,13 +8,60 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
+        $(function (){
+            $(".main-menu-li-notes").bind('click',function(){
+                window.location='index.shtml';
+            });
 
+            $(".main-menu-li-map").bind('click',function(){
+                window.location='mindMap.shtml';
+            });
+
+            $(".main-menu-li-search").bind('click',function(){
+                window.location='search.shtml';
+            });
+        });
     </script>
 </head>
 <body>
 <div class="dark-style">
     <div class="page-body">
-        <div class="main-menu main-menu-wrapper"></div>
+        <div class="main-menu main-menu-wrapper">
+            <div class="main-menu-bar">
+                <div class="flex-vertical">
+                    <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
+                    <div class="main-menu-ul">
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-notes">
+                                <!--#include file='images/menu-notes.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-map">
+                                <!--#include file='images/menu-map.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li main-menu-li-selected">
+                            <div class="main-menu-li-icon main-menu-li-tags">
+                                <!--#include file='images/menu-tags.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-search">
+                                <!--#include file='images/menu-search.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-user">
+                <div class="main-menu-user-icon"></div>
+            </div>
+        </div>
+
         <div class="main-block">
             <div class="main-head"></div>
             <div class="main-content">

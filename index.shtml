@@ -148,13 +148,11 @@
                 theArrow.css("bottom","-12px");
                 theArrow.css("top","auto");
                 theArrow.css("border-color", "#0b0b0b transparent transparent transparent");
-
-                    //alert("3");
-
             }
             , function(){
                 $(".small-tip").css("visibility","hidden");
             });
+
 
             $(".with-bottom-tip").hover(function(){
                     var thisObj = $(this);
@@ -283,6 +281,18 @@
                 $('.widget-map-view-type .map-view-type1').empty().append(icon2.prop('outerHTML'));
             });
 
+
+            $(".main-menu-li-map").bind('click',function(){
+                window.location='mindMap.shtml';
+            });
+
+            $(".main-menu-li-tags").bind('click',function(){
+                window.location='hashTag.shtml';
+            });
+
+            $(".main-menu-li-search").bind('click',function(){
+                window.location='search.shtml';
+            });
 
 
 
