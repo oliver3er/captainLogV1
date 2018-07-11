@@ -7,7 +7,7 @@
 </div>
 
 <!--笔记中出现的警告信息-->
-<div class="message-tip">
+<div class="message-tip warning-message">
     <div class="message-tip-wrapper">
         <div class="message-tip-main">
             <div>This note need one or and some hashtag to convenient for assort.</div>
@@ -15,6 +15,19 @@
         <div class="message-tip-arrow"></div>
     </div>
 </div>
+
+<!--   tag detail info tip in mind-map begin  -->
+<div class="tag-info-message-tip">
+        <div class="tag-info-message-tip-main" style="border-color:rgba(211,165,112,.75);box-shadow:0 0 6px rgba(211,165,112,.65);">
+            <div class="message-tip-main-title">#logger</div>
+            <div class="message-tip-main-info">
+                <span>Created at 15/12/2017.</span>
+                <span class="rows-content">this hashtag is root of the others, it means the user.</span>
+                <span>385 relevant notes.</span>
+            </div>
+        </div>
+</div>
+<!--   tag detail info dialog in mind-map end  -->
 
 <!--普通菜单 （用于 头部的前进后退按钮关联的菜单）-->
 <div class="pop-menu bf-menu" style="display:none;">
