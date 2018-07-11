@@ -29,12 +29,12 @@
 
             //点击打开关闭widget的按钮
             $(".main-head-button-widget").bind("click",function(){
-                if($(this).hasClass("main-widget-opened")) {
-                    $(this).removeClass("main-widget-opened").addClass("main-widget-closed");
-                    $(".main-content-widget").addClass("main-widget-close");
-                } else if ($(this).hasClass("main-widget-closed")) {
-                    $(this).removeClass("main-widget-closed").addClass("main-widget-opened");
-                    $(".main-content-widget").removeClass("main-widget-close");
+                if($(this).hasClass("__open")) {
+                    $(this).removeClass("__open").addClass("__close");
+                    $(".main-content-widget").addClass("__close");
+                } else if ($(this).hasClass("__close")) {
+                    $(this).removeClass("__close").addClass("__open");
+                    $(".main-content-widget").removeClass("__close");
                 }
             });
 
@@ -530,7 +530,7 @@
                     </div>
                     <div class="head-button-separate-line"></div>
                     <div class="main-head-button-status"></div>
-                    <div class="main-head-button-widget main-widget-opened"></div>
+                    <div class="main-head-button-widget __open"></div>
                 </div>
             </div>
 

@@ -1736,10 +1736,10 @@
     transition: opacity .15s ease-in;
 }
 
-.main-head-button-widget.main-widget-opened {
+.main-head-button-widget.__open {
     opacity: .8;
 }
-.main-head-button-widget.main-widget-closed {
+.main-head-button-widget.__close {
     opacity: .45;
 }
 
@@ -3203,7 +3203,7 @@
     transition: transform .05s ease-in-out,visibility .05s;
 }
 
-.main-content-widget.main-widget-close {
+.main-content-widget.__close {
     transform: translateX(500px);
     visibility: hidden;
     min-width: 0;
