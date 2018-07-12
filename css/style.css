@@ -974,23 +974,23 @@
 }
 
 .menu-account-setting-icon {
-    background: url("../images/setting-account-icon.svg") center center no-repeat;
+    /* background: url("../images/setting-account-icon.svg") center center no-repeat;*/
     background-size: 16px;
 }
 
 .menu-user-setting-icon {
-    background: url("../images/setting-user-icon.svg") center center no-repeat;
+    /*background: url("../images/setting-user-icon.svg") center center no-repeat;*/
     background-size: 16px;
 }
 
 .menu-help-icon {
-    background: url("../images/help-center-icon.svg") center center no-repeat;
+    /*background: url("../images/help-center-icon.svg") center center no-repeat;*/
     background-size: auto 16px;
 }
 
 .menu-log-out-icon {
     margin-left: 2px;
-    background: url("../images/log-out-icon.svg") center center no-repeat;
+    /*background: url("../images/log-out-icon.svg") center center no-repeat;*/
     background-size: 16px;
 }
 
