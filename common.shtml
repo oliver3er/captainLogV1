@@ -342,8 +342,9 @@
             <div class="main-tag-definition form-item position-relative">
                 <div class="form-item-label">DEFINITION<div class="form-item-help"></div></div>
                 <div class="form-input">
-                    <input type="text" name="tag-definition-value"
-                           value="This is a complicated thing" placeholder="" maxlength="999" />
+                    <!--<input type="text" name="tag-definition-value"
+                           value="This is a complicated thing" placeholder="" maxlength="999" />-->
+                    <div class="__input" value="This is a complicated thing" placeholder="" maxlength="999" name="tag-definition-value" contenteditable="true"></div>
                 </div>
                 <div class="form-input-foot-right">
                     <div class="tag-commend-words">
@@ -666,3 +667,78 @@
     </div>
 </div>
 <!--first load page end-->
+
+
+
+<!----------search page begin---------->
+<!--search tag dialog (when search input something) begin-->
+<div class="search-tag-dialog">
+    <div class="search-tag-list">
+        <div class="search-tag-list-title">SEARCH OPTIONS</div>
+        <div class="search-select-content">
+            <div class="search-select-tag-type">SYSTEM HASHTAG</div>
+            <ul class="search-select-tags">
+                <li>
+                    <div class="search-select-tag-info">
+                        <div>#createtime</div><div>specific date</div>
+                    </div>
+                </li>
+                <li><div class="search-select-tag-info"><div>#Todo</div><div>todo list</div></div></li>
+                <li><div class="search-select-tag-info"><div>#Code</div><div>code section</div></div></li>
+            </ul>
+
+            <div class="search-select-tag-type">FREQUENLY USED HASHTAG</div>
+            <ul class="search-select-tags">
+                <li><div class="search-select-tag-info"><div>#Logger</div><div>my first project that...</div></div></li>
+                <li><div class="search-select-tag-info"><div>#projects</div><div>my design projects</div></div></li>
+                <li><div class="search-select-tag-info"><div>#projects</div><div>my design projects</div></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="search-tag-words-list">
+        <div class="search-select-title">SEARCH FOR:
+            <span class="search-tag-title-value">logger</span>
+        </div>
+        <div class="search-select-content">
+            <ul class="search-select-words">
+                <li>
+                    <div class="search-select-word-info">
+                        <div class="search-select-word-tag">#LoggerRecords</div>
+                        <div class="search-select-word-tag-des">my first project that kslakjd lajdlf ladjlf</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-select-word-info">
+                        <div class="search-select-word-log">This logger is important so much</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-select-word-info">
+                        <div class="search-select-word-tag">#Logger</div>
+                        <div class="search-select-word-tag-des">designing </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-select-word-info">
+                        <div class="search-select-word-log">logger of my all</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-select-word-info">
+                        <div class="search-select-word-tag">#LoggerRecords</div>
+                        <div class="search-select-word-tag-des">my first project </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-select-word-info">
+                        <div class="search-select-word-log">logger will online on this Thursday logger will online on this Thursday</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--search tag dialog (when search input something) end-->
+
+<!----------search page end------------>

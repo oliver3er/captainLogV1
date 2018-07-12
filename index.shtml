@@ -88,10 +88,10 @@
             });
 
             //输入框focus事件,和focusout事件 （增加笔记标题输入框）
-            $(".main-content-add-title input").focus(function(){
+            $(".main-content-add-title .__input").focus(function(){
                 $(".main-content-add-title").addClass("add-input-focus");
             });
-            $(".main-content-add-title input").blur(function(){
+            $(".main-content-add-title .__input").blur(function(){
                 $(".main-content-add-title").removeClass("add-input-focus");
             });
 
@@ -629,7 +629,8 @@
                                 <div class="main-content-add-title">
                                     <div class="edit-icon"></div>
                                     <div class="input-subscript-icon"></div>
-                                    <input placeholder="Your title here" />
+                                    <div class="__input" placeholder="Your title here" maxlength="999" contenteditable="true"></div>
+                                    <!--<input placeholder="Your title here" />-->
                                 </div>
                             </div>
                             <div class="main-content-title-icon tag-big-icon">   <!--tag-big-icon-->
