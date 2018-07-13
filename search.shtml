@@ -185,18 +185,6 @@
             }
 
 
-            //点击搜索部分
-            $(".search-input").bind('click',function(){
-                //搜索框点击后出现tag选择框
-                //获取光标位置(略)
-                if($(".search-tag-dialog").hasClass("__open")){
-                    $(".search-tag-dialog").removeClass("__open").addClass("__close");
-                }else {
-                    $(".search-tag-dialog").removeClass("__close").addClass("__open");
-                }
-            });
-
-
             var pScrollTop = 0;
             //滚动条向上滚动时，title变化
             $('.main-content-notes').bind('scroll',function(event){
@@ -211,6 +199,37 @@
                     $('.main-head-title').removeClass("__open").addClass("__close");
                 }
                 pScrollTop = scrollTop;
+            });
+
+
+            $('#options-search').bind('change',function(){
+                if($(this).val()=='nothing') {
+                    $(".search-tag-dialog").removeClass("__open").addClass("__close");
+
+                } else if($(this).val()=='select-tag') {
+                    $(".search-tag-words").hide();
+                    $(".search-tags").show();
+                    if($(".search-tag-dialog").hasClass("__open")){
+                        $(".search-tag-dialog").removeClass("__open").addClass("__close");
+                    }else {
+                        $(".search-tag-dialog").removeClass("__close").addClass("__open");
+                    }
+                } else if($(this).val()=='select-key-words') {
+                    $(".search-tag-words").show();
+                    $(".search-tags").hide();
+
+                    if($(".search-tag-dialog").hasClass("__open")){
+                        $(".search-tag-dialog").removeClass("__open").addClass("__close");
+                    }else {
+                        $(".search-tag-dialog").removeClass("__close").addClass("__open");
+                    }
+                } else if($(this).val() == 'set-tag-value') {
+                    if($(".search-setting-value-dialog").hasClass("__open")){
+                        $(".search-setting-value-dialog").removeClass("__open").addClass("__close");
+                    }else {
+                        $(".search-setting-value-dialog").removeClass("__close").addClass("__open");
+                    }
+                }
             });
 
         });
@@ -409,5 +428,14 @@
 </div>
 
 <!--#include file='common.shtml' -->
+
+<div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
+    <select id="options-search" style="height: 30px;">
+        <option value="nothing">DEFAULT STATUS</option>
+        <option value="select-tag">SEARCH--Select Tag</option>
+        <option value="select-key-words">SEARCH--Select Key Words</option>
+        <option value="set-tag-value">Set Tag Value Dialog</option>
+    </select>
+</div>
 </body>
 </html>
