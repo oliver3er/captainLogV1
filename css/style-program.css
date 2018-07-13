@@ -468,3 +468,44 @@
 	font-size	: 14px;
 	cursor		: pointer;
 }
+
+.main-content-add-title .content-list-note-title {
+    margin-right: inherit;
+    padding: inherit;
+    line-height: inherit;
+    font-size: .16rem;
+    color: #ececec;
+    letter-spacing: 1px;
+}
+
+.tag-setting-dialog .content-list-note-title {
+    margin-right: inherit;
+    padding: inherit;
+    line-height: inherit;
+    font-size: .16rem;
+    color: #ececec;
+    letter-spacing: 1px;
+}
+
+.error-boundary{    
+	background: red;
+    height: 100%;
+	width	: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	color		: white;
+	font-size	: 14px;
+	padding		: 10px;
+}
+
+.error-boundary-full {    
+	background: #37393e;
+    height: 100vh;
+	width	: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	color		: gray;
+	font-size	: 64px;
+}
