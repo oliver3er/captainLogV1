@@ -463,3 +463,8 @@
 .controller-container {
 	font-size	: 14px;
 }
+
+.sync {
+	font-size	: 14px;
+	cursor		: pointer;
+}
