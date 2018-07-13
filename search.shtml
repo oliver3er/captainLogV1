@@ -9,6 +9,21 @@
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
         $(function (){
+
+            $(function (){
+                $(".main-menu-li-notes").bind('click',function(){
+                    window.location='index.shtml';
+                });
+
+                $(".main-menu-li-map").bind('click',function(){
+                    window.location='mindMap.shtml';
+                });
+
+                $(".main-menu-li-tags").bind('click',function(){
+                    window.location='hashTag.shtml';
+                });
+            });
+
             //点击菜单（最左侧）
             $(".main-menu-li-icon").bind("click",function(){
                 if($(this).parent('.main-menu-li-selected').length==0) {
@@ -19,14 +34,33 @@
 
             //点击打开关闭widget的按钮
             $(".main-head-button-widget").bind("click",function(){
-                if($(this).hasClass("main-widget-opened")) {
-                    $(this).removeClass("main-widget-opened").addClass("main-widget-closed");
-                    $(".main-content-widget").addClass("main-widget-close");
-                } else if ($(this).hasClass("main-widget-closed")) {
-                    $(this).removeClass("main-widget-closed").addClass("main-widget-opened");
-                    $(".main-content-widget").removeClass("main-widget-close");
+                if($(this).hasClass("__open")) {
+                    $(this).removeClass("__open").addClass("__close");
+                    $(".main-content-widget").addClass("__close");
+                } else if ($(this).hasClass("__close")) {
+                    $(this).removeClass("__close").addClass("__open");
+                    $(".main-content-widget").removeClass("__close");
                 }
             });
+
+
+            //标签hover方法
+            $(".tag-name").hover(function(){
+                var tag = $(this);
+                var tagColor = tag.css("color");
+                tagColor = tagColor.substring(tagColor.indexOf('(')+1,tagColor.indexOf(')'));
+                var colorArr = tagColor.split(",");
+                tag.css("background-color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",.7)");
+                tag.css("color","rgba(236,236,236,1)");
+            },function(){
+                var tag = $(this);
+                var tagBgColor = tag.css("background-color");
+                tagBgColor = tagBgColor.substring(tagBgColor.indexOf('(')+1,tagBgColor.indexOf(')'));
+                var colorArr = tagBgColor.split(",");
+                tag.css("color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",1)");
+                tag.css("background-color","transparent");
+            });
+
 
             //列表内容排序选择 点击事件
             //begin
@@ -77,6 +111,108 @@
                 }
             });
 
+
+            //信息提示框
+            $(".with-top-tip").hover(function(){
+                    var thisObj = $(this);
+                    //alert("1");
+                    //插入消息内容
+                    var tipMg = thisObj.attr("tip-message");
+                    var theTip = $(".small-tip");
+                    var theArrow = theTip.find(".small-tip-arrow");
+                    theTip.find(".small-tip-main").empty().append("<span>"+tipMg+"</span>");
+                    //获取目标对象位置
+                    var objX = thisObj.offset().left;
+                    var objY = thisObj.offset().top;
+
+                    var tipWidth = theTip.width();
+                    var tipX = objX+thisObj.width()/2-tipWidth/2;
+                    //alert("2");
+
+                    theTip.css("left",tipX);
+                    theTip.css("top",(objY-theTip.height()-8));
+                    theTip.css("visibility","visible");
+
+                    theArrow.css("bottom","-12px");
+                    theArrow.css("top","auto");
+                    theArrow.css("border-color", "#0b0b0b transparent transparent transparent");
+                }
+                , function(){
+                    $(".small-tip").css("visibility","hidden");
+                });
+
+
+            $(".with-bottom-tip").hover(function(){
+                    var thisObj = $(this);
+                    //插入消息内容
+                    var tipMg = thisObj.attr("tip-message");
+                    var theTip = $(".small-tip");
+                    var theArrow = theTip.find(".small-tip-arrow");
+
+                    theTip.find(".small-tip-main").empty().append("<span>"+tipMg+"</span>");
+                    //获取目标对象位置
+                    var objX = thisObj.offset().left;
+                    var objY = thisObj.offset().top;
+
+                    var tipWidth = theTip.width();
+                    var tipX = objX+thisObj.width()/2-tipWidth/2;
+
+                    theTip.css("left",tipX);
+                    theTip.css("top",(objY+thisObj.height()+10));
+
+                    theTip.css("visibility","visible");
+
+                    theArrow.css("top","-12px");
+                    theArrow.css("bottom","auto");
+                    theArrow.css("border-color", "transparent transparent #0b0b0b transparent");
+                }
+                , function(){
+                    $(".small-tip").css("visibility","hidden");
+                });
+
+
+            //弹出窗口的背景幕布控制
+            function backdropClose(){
+                var backdrop = $(".backdrop");
+                backdrop.removeClass("__close").removeClass("__open");
+                backdrop.addClass("__close");
+            }
+
+            function backdropOpen(){
+                var backdrop = $(".backdrop");
+                backdrop.removeClass("__close").removeClass("__open");
+                backdrop.addClass("__open");
+            }
+
+
+            //点击搜索部分
+            $(".search-input").bind('click',function(){
+                //搜索框点击后出现tag选择框
+                //获取光标位置(略)
+                if($(".search-tag-dialog").hasClass("__open")){
+                    $(".search-tag-dialog").removeClass("__open").addClass("__close");
+                }else {
+                    $(".search-tag-dialog").removeClass("__close").addClass("__open");
+                }
+            });
+
+
+            var pScrollTop = 0;
+            //滚动条向上滚动时，title变化
+            $('.main-content-notes').bind('scroll',function(event){
+                var scrollTop = $('.main-content-notes').scrollTop();
+
+                if(pScrollTop < scrollTop && scrollTop > 60){
+                    $('.main-content-search-area').removeClass('__open').addClass('__close');
+                    $('.main-head-title').removeClass('__close').addClass("__open");
+                }
+                if(pScrollTop > scrollTop && scrollTop < 40){
+                    $('.main-content-search-area').removeClass('__close').addClass('__open');
+                    $('.main-head-title').removeClass("__open").addClass("__close");
+                }
+                pScrollTop = scrollTop;
+            });
+
         });
     </script>
 </head>
@@ -89,7 +225,7 @@
                     <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
                     <div class="main-menu-ul">
                         <div class="main-menu-separate-line"></div>
-                        <div class="main-menu-li main-menu-li-selected">
+                        <div class="main-menu-li">
                             <div class="main-menu-li-icon main-menu-li-notes">
                                 <!--#include virtual='images/menu-notes.svg' -->
                             </div>
@@ -105,7 +241,7 @@
                             </div>
                         </div>
                         <div class="main-menu-separate-line"></div>
-                        <div class="main-menu-li">
+                        <div class="main-menu-li main-menu-li-selected">
                             <div class="main-menu-li-icon main-menu-li-search">
                                 <!--#include virtual='images/menu-search.svg' -->
                             </div>
@@ -124,16 +260,133 @@
                     <div class="main-head-title">SEARCH MY NOTES</div>
                 </div>
                 <div class="main-head-buttons">
-                    <div class="main-head-button-widget main-widget-opened"></div>
+                    <div class="main-head-button-widget __open"></div>
                 </div>
             </div>
 
             <div class="main-content">
                 <div class="main-content-center">
-                    <div class="main-content-notes"></div>
+                    <div class="main-content-notes main-content-search">
+                        <div class="main-content-search-area">
+                            <div class="main-content-search-input">
+                                <input class="search-input" placeholder="" />
+                                <div class="search-input-icon"></div>
+                            </div>
+                        </div>
+
+                        <div class="main-content-notes-list">
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Maybe the description of this book is more objective and real
+                                </div>
+                                <div class="content-list-note-detail">
+                                    I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                </div>
+                                <div class="content-list-note-detail">
+                                    In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                    <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    <span class="tag-name">#Midinote</span>!
+                                </div>
+
+                                <div class="content-list-note-date">03/06/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Officially named:
+                                    <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
+                                        #Midinote
+                                    </span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    Finally chose this name: Midinote from Sutter
+                                    </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
+                                </div>
+                                <div class="content-list-note-date">02/18/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Tragic <span class="tag-name" style="color:rgba(113,189,126,1)">#lesson</span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    Released to the online version of the development, resulting in the version of oliver is not available, looking for a long time to find that I was in the development of a index to join, but it is manually added, so there is no online version of oliver this thing The result is incorrect.
+                                    to sum up: <span class="tag-name">#Midinote</span>
+
+                                    The more artificial things, the more possibilities I make mistakes, and the more I get the program to do things, the more reliable and labor-saving I am.
+                                </div>
+                                <div class="content-list-note-date">02/18/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Maybe real
+                                </div>
+                                <div class="content-list-note-detail">
+                                    I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                    </br><span class="tag-name">#Midinote</span>!
+                                </div>
+                                <div class="content-list-note-date">03/06/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Maybe the description of this book is more objective and real
+                                </div>
+                                <div class="content-list-note-detail">
+                                    I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                </div>
+                                <div class="content-list-note-detail">
+                                    In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                    <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    <span class="tag-name">#Midinote</span>!
+                                </div>
+
+                                <div class="content-list-note-date">03/06/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Officially named:
+                                    <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
+                                        #Midinote
+                                    </span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    Finally chose this name: Midinote from Sutter
+                                    </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
+                                </div>
+                                <div class="content-list-note-date">02/18/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div class="main-content-options">
-                        <div class="main-content-list-amount">Notes:<span class="list-amount-value">78</span></div>
+                        <div class="main-content-list-amount">Notes:<span class="list-amount-value">188</span></div>
                         <div class="main-content-list-options">
+                            <div class="main-content-list-save with-top-tip" tip-message="Save Searches"></div>
                             <div class="main-content-list-sort">
                                 <div class="list-sort-label">Sort by:</div>
                                 <div class="list-sort-box list-sort-box-default">
@@ -142,16 +395,19 @@
                                 </div>
                             </div>
                             <div class="main-content-list-view">
-                                <div class="view-list view-selected"></div>
-                                <div class="view-card"></div>
+                                <div class="view-list view-selected with-top-tip" tip-message="View by List"></div>
+                                <div class="view-card with-top-tip" tip-message="View by Card"></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="main-content-widget"></div>
             </div>
         </div>
     </div>
 </div>
+
+<!--#include file='common.shtml' -->
 </body>
 </html>
