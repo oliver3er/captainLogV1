@@ -250,7 +250,7 @@
                                             $(this).addClass("__selected");
                                         }
                                         selectionObj.parent().find(".form-selection-control").removeClass("__open");
-                                        selectionObj.removeClass("__open");
+                                        selectionObj.removeClass("__open").addClass("__close");
                                     });
 
                                     $(".form-selection-control").bind("click",function(){
@@ -262,11 +262,11 @@
                                         if($(this).hasClass("__open")) {
                                             $(this).removeClass("__open");
                                             //隐藏下拉内容
-                                            $(this).parent().find(".form-selection-outer").removeClass("__open");
+                                            $(this).parent().find(".form-selection-outer").removeClass("__open").addClass("__close");
                                         }else {
                                             $(this).addClass("__open");
                                             //显示下拉内容
-                                            $(this).parent().find(".form-selection-outer").addClass("__open");
+                                            $(this).parent().find(".form-selection-outer").removeClass("__close").addClass("__open");
                                         }
                                     });
 
@@ -274,7 +274,7 @@
                                         var e = window.event || event;
                                         //点击除此下拉框的位置，改变该下拉框显示模式
                                         if ($(e.target).closest(".form-selection").length == 0) {
-                                            $(".form-selection-outer").removeClass("__open");
+                                            $(".form-selection-outer").removeClass("__open").addClass("__close");
                                             $(".form-selection-control").removeClass("__open");
                                             $(".form-selection-control").removeClass("__selected");
                                         }
@@ -673,66 +673,64 @@
 <!----------search page begin---------->
 <!--search tag dialog (when search input something) begin-->
 <div class="search-tag-dialog">
-    <div class="search-tag-list">
-        <div class="search-tag-list-title">SEARCH OPTIONS</div>
-        <div class="search-select-content">
-            <div class="search-select-tag-type">SYSTEM HASHTAG</div>
-            <ul class="search-select-tags">
+    <div class="search-tags">
+        <div class="search-tag-dialog-title">SEARCH OPTIONS</div>
+        <div class="search-tag-dialog-main">
+            <div class="search-dialog-main-subtitle">SYSTEM HASHTAG</div>
+            <ul class="search-dialog-main-content">
                 <li>
-                    <div class="search-select-tag-info">
+                    <div class="search-content-tag-info">
                         <div>#createtime</div><div>specific date</div>
                     </div>
                 </li>
-                <li><div class="search-select-tag-info"><div>#Todo</div><div>todo list</div></div></li>
-                <li><div class="search-select-tag-info"><div>#Code</div><div>code section</div></div></li>
+                <li><div class="search-content-tag-info"><div>#Todo</div><div>todo list</div></div></li>
+                <li><div class="search-content-tag-info"><div>#Code</div><div>code section</div></div></li>
             </ul>
 
-            <div class="search-select-tag-type">FREQUENLY USED HASHTAG</div>
-            <ul class="search-select-tags">
-                <li><div class="search-select-tag-info"><div>#Logger</div><div>my first project that...</div></div></li>
-                <li><div class="search-select-tag-info"><div>#projects</div><div>my design projects</div></div></li>
-                <li><div class="search-select-tag-info"><div>#projects</div><div>my design projects</div></div></li>
+            <div class="search-dialog-main-subtitle">FREQUENLY USED HASHTAG</div>
+            <ul class="search-dialog-main-content">
+                <li><div class="search-content-tag-info"><div>#Logger</div><div>my first project that...</div></div></li>
+                <li><div class="search-content-tag-info"><div>#projects</div><div>my design projects do my best.</div></div></li>
+                <li><div class="search-content-tag-info"><div>#projects</div><div>my design projects</div></div></li>
             </ul>
         </div>
     </div>
 
-    <div class="search-tag-words-list">
-        <div class="search-select-title">SEARCH FOR:
-            <span class="search-tag-title-value">logger</span>
-        </div>
-        <div class="search-select-content">
-            <ul class="search-select-words">
+    <div class="search-tag-words">
+        <div class="search-tag-dialog-title">SEARCH FOR:<span>logger</span></div>
+        <div class="search-tag-dialog-main">
+            <ul class="search-dialog-main-content">
                 <li>
-                    <div class="search-select-word-info">
-                        <div class="search-select-word-tag">#LoggerRecords</div>
-                        <div class="search-select-word-tag-des">my first project that kslakjd lajdlf ladjlf</div>
+                    <div class="search-content-tag-info">
+                        <div>#LoggerRecords</div>
+                        <div>my first project that kslakjd lajdlf ladjlf</div>
                     </div>
                 </li>
                 <li>
-                    <div class="search-select-word-info">
-                        <div class="search-select-word-log">This logger is important so much</div>
+                    <div class="search-content-tag-info">
+                        <div>This logger is important so much</div>
                     </div>
                 </li>
                 <li>
-                    <div class="search-select-word-info">
-                        <div class="search-select-word-tag">#Logger</div>
-                        <div class="search-select-word-tag-des">designing </div>
+                    <div class="search-content-tag-info">
+                        <div>#Logger</div>
+                        <div>designing </div>
                     </div>
                 </li>
                 <li>
-                    <div class="search-select-word-info">
-                        <div class="search-select-word-log">logger of my all</div>
+                    <div class="search-content-tag-info">
+                        <div>logger of my all</div>
                     </div>
                 </li>
                 <li>
-                    <div class="search-select-word-info">
-                        <div class="search-select-word-tag">#LoggerRecords</div>
-                        <div class="search-select-word-tag-des">my first project </div>
+                    <div class="search-content-tag-info">
+                        <div>#LoggerRecords</div>
+                        <div>my first project </div>
                     </div>
                 </li>
                 <li>
-                    <div class="search-select-word-info">
-                        <div class="search-select-word-log">logger will online on this Thursday logger will online on this Thursday</div>
+                    <div class="search-content-tag-info">
+                        <div>logger will online on this Thursday logger will online on this Thursday</div>
                     </div>
                 </li>
             </ul>
@@ -740,5 +738,89 @@
     </div>
 </div>
 <!--search tag dialog (when search input something) end-->
+
+
+<!--set tag value for search dialog (when search a system tag) begin-->
+<div class="search-setting-value-dialog message-dialog-wrapper">
+    <div class="dialog-title">#createtime</div>
+    <div class="dialog-main">
+        <div class="form-item">
+            <!--<div class="form-item-label">RADIO BOX</div>
+            <div class="main-tag-descriptive-info">
+                This dish is good for your dinner or breakfast,recording the answer is helpful.
+            </div>-->
+            <div class="form-radio-boxes">
+                <div class="form-radio-box">
+                    <div class="form-radio-name">
+                        <div class="form-radio-label">EXCLUDE</div>
+                        <div class="form-radio-description descriptive-info">Find all logs those exclude this tag.</div>
+                    </div>
+                    <div class="form-radio-control  __unchecked">
+                        <input type="checkbox" class="form-radio-value" value="off" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-item search-setting-value-item">
+            <div class="search-setting-value-label">VALUE</div>
+            <div class="form-selection">
+                <div class="form-selection-control">
+                    <div class="selected-value">
+                        <div>China</div>
+                        <div class="descriptive-info">e.g. dumpling</div>
+                    </div>
+                    <div class="selection-arrow"></div>
+                </div>
+                <div class="form-selection-outer">
+                    <div class="form-selection-option __selected">
+                        <div>China</div>
+                        <div class="descriptive-info">e.g. dumpling</div>
+                    </div>
+                    <div class="form-selection-option">
+                        <div>US</div>
+                        <div class="descriptive-info">e.g. </div>
+                        <div class="descriptive-icon">
+                            <img src="images/temp/laugh-face.png" />
+                        </div>
+                    </div>
+                    <div class="form-selection-option">
+                        <div>UK</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-item search-setting-value-item">
+            <div class="search-setting-value-label">VALUE</div>
+            <div class="date-range">
+                <div class="date-range-part">
+                    <div class="search-date-range-part-input">
+                        <span>from:</span>
+                        <input type="text" name="dateFrom" value="2017-3-10" placeholder="" maxlength="24" />
+                    </div>
+
+                    <div class="date-range-selection"><img src="images/temp/date-range1.png"/></div>
+                </div>
+
+                <div class="date-range-part">
+                    <div class="search-date-range-part-input">
+                        <span>to:</span>
+                        <input type="text" name="dateTo" value="2017-10-18" placeholder="" maxlength="24" />
+                    </div>
+
+                    <div class="date-range-selection"><img src="images/temp/date-range2.png"/></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="dialog-buttons">
+        <div class=""><span>BACK</span></div>
+        <div class="dialog-button-ok btn-ok">OK</div>
+    </div>
+</div>
+
+<!--set tag value for search dialog (when search a system tag) end-->
 
 <!----------search page end------------>

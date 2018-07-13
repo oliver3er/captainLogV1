@@ -250,6 +250,11 @@
 	animation	: animation-warning 1s ;
 }
 
+/* The note editor cursor must be a 'I', not pointer */
+.content-notes-list-note.note-editor {
+	cursor	: inherit;
+}
+
 @keyframes animation-warning{
 	0%,
 	100% {
