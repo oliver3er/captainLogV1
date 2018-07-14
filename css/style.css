@@ -4020,9 +4020,10 @@
 }
 
 .search-tag-dialog-title {
-    padding: 0 16px;
-    height: 40px;
-    color: #bcbcbc;
+    margin: 0 16px;
+    height: 44px;
+    color: #ececec;
+    border-bottom: 1px solid hsla(0,0%,100%,.06);
     font-size: .12rem;
     line-height: 56px;
     letter-spacing: 1px;
@@ -4044,7 +4045,7 @@
     min-height: 200px;
     height: 100%;
     padding: 5px 16px;
-    color: #dddddd;
+    color: #ececec;
     letter-spacing: 1px;
     font-weight: 400;
     overflow-y: auto;
@@ -4083,7 +4084,7 @@
 
 .search-dialog-main-subtitle {
     margin: 12px 0 5px 0;
-    color: #96979b;
+    color: rgba(180,181,186,.65);
     font-size: .12rem;
     letter-spacing: .5px;
     font-weight: 500;
@@ -4140,7 +4141,7 @@
 .search-content-tag-info div:nth-child(2) {
     flex: 1 1 auto;
     margin-left: 15px;
-    color: rgba(150,151,155,.75);
+    color: rgba(180,181,186,.55);
     font-weight: 400;
     width: 120px;
     min-width: 0;
@@ -4244,7 +4245,40 @@
     font-size: .14rem;
     font-weight: 400;
     color: #ececec;
-    letter-spacing: 1px;
+    letter-spacing: .5px;
+
+    -webkit-transform: translateZ(0);
+}
+
+.date-range-part-input .date-input-delete {
+    position: absolute;
+    right: 3px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    cursor: pointer;
+
+    transition: background-color .15s ease;
+}
+
+.date-range-part-input .date-input-delete svg {
+    display: block;
+    margin: 4px auto;
+    width: 8px;
+    height: auto;
+}
+
+.date-range-part-input .date-input-delete svg * {
+    fill: rgba(236,236,236,.4);
+}
+
+.date-range-part-input .date-input-delete:hover {
+    background-color: rgba(236,236,236,.05);
+}
+
+.date-range-part-input .date-input-delete:hover svg * {
+    fill: rgba(236,236,236,1);
 }
 
 .date-range-part-input span {
@@ -4252,7 +4286,7 @@
     color: #96979b;
 }
 
-.date-range-part-input input {
+.date-range-part-input .__input {
     margin-left: 6px;
     padding-left: 6px;
     padding-right: 4px;
@@ -4266,16 +4300,17 @@
     white-space: nowrap;
     outline: none;
     overflow: hidden;
+    -webkit-transform: translateZ(0);
 
     transition: border .15s ease, box-shadow .15s ease-in-out;
 }
 
-.date-range-part-input input:hover {
+.date-range-part-input .__input:hover {
     border-color: rgba(0,0,0,.5);
     box-shadow: 0 0 1px 0 rgba(0,0,0,.3);
 }
 
-.date-range-part-input input:focus {
+.date-range-part-input .__input:focus {
     border: 1px solid #6998f1;
     box-shadow: 0 2px 10px 0 rgba(105,152,241,.2);
 }
