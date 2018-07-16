@@ -643,14 +643,14 @@
                                 <div class="content-list-note-title">
                                     Maybe the description of this book is more objective and real
                                 </div>
-                                <div>
+                                <div class="content-list-note-detail">
                                     I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
                                 </div>
-                                <div>
+                                <div class="content-list-note-detail">
                                     In the foreword of the “Code of Work” of the political organization of the Socialist Party
                                     <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
                                 </div>
-                                <div>
+                                <div class="content-list-note-detail">
                                     <span class="tag-name">#Midinote</span>!
                                 </div>
 
@@ -669,7 +669,7 @@
                                         #Midinote
                                     </span>
                                 </div>
-                                <div>
+                                <div class="content-list-note-detail">
                                     Finally chose this name: Midinote from Sutter
                                     </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
                                 </div>
@@ -838,9 +838,18 @@
     </div>
 </div>
 
-<!--#include file='common.shtml' -->
 
-
+<div id='commonDiv' ></div>
+<!-- to load common html -->
+<script type="text/javascript">
+    console.log('where is jQuery:',$)
+    $(document).ready(function(){
+        console.log('begin load common html')
+        $('#commonDiv').load('common.shtml',function(){
+            console.log('finished')
+        })
+    })
+</script>
 
 <div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
     <select id="options" style="height: 30px;">

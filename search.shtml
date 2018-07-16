@@ -37,9 +37,16 @@
                 if($(this).hasClass("__open")) {
                     $(this).removeClass("__open").addClass("__close");
                     $(".main-content-widget").addClass("__close");
+
+                    //根据页面大小设置搜索card模式显示的宽度
+                    $(".view-card").addClass("__whole-view");
+
                 } else if ($(this).hasClass("__close")) {
                     $(this).removeClass("__close").addClass("__open");
                     $(".main-content-widget").removeClass("__close");
+
+                    //根据页面大小设置搜索card模式显示的宽度
+                    $(".view-card").removeClass("__whole-view");
                 }
             });
 
@@ -190,13 +197,27 @@
             $('.main-content-notes').bind('scroll',function(event){
                 var scrollTop = $('.main-content-notes').scrollTop();
 
-                if(pScrollTop < scrollTop && scrollTop > 60){
+                if(pScrollTop < scrollTop && scrollTop > 50){
+                    if($('.main-head-title').hasClass("__open")){
+                        return;
+                    }
+
+                    if($('.main-content-search-area').find(".search-input-item").length == 0){
+                        return;
+                    }
+
                     $('.main-content-search-area').removeClass('__open').addClass('__close');
                     $('.main-head-title').removeClass('__close').addClass("__open");
+                    $('.main-head-title').html($('.main-content-search-items').prop("outerHTML"));
                 }
                 if(pScrollTop > scrollTop && scrollTop < 40){
+                    if($('.main-head-title').find(".main-content-search-items").length == 0){
+                        return;
+                    }
+
                     $('.main-content-search-area').removeClass('__close').addClass('__open');
                     $('.main-head-title').removeClass("__open").addClass("__close");
+                    $('.main-head-title').html('SEARCH MY NOTES');
                 }
                 pScrollTop = scrollTop;
             });
@@ -235,6 +256,42 @@
                     }else {
                         $(".search-setting-value-dialog").removeClass("__close").addClass("__open");
                     }
+                } else if($(this).val() == 'add-search-con1') {
+                    var pObj = $(".main-content-search-items");
+                    pObj.append($("#cond1"));
+                    $("#cond1").show();
+
+                    if($(".search-input-icon").hasClass("search-input-icon-delete")) {
+                        $(".search-input-icon").addClass("search-input-icon-search").removeClass("search-input-icon-delete");
+                    }else {
+                        $(".search-input-icon").addClass("search-input-icon-delete").removeClass("search-input-icon-search");
+                    }
+                } else if($(this).val() == 'add-search-con2') {
+                    var pObj = $(".main-content-search-items");
+                    pObj.append($("#cond2"));
+                    $("#cond2").show();
+
+                    if($(".search-input-icon").hasClass("search-input-icon-delete")) {
+                        $(".search-input-icon").addClass("search-input-icon-search").removeClass("search-input-icon-delete");
+                    }else {
+                        $(".search-input-icon").addClass("search-input-icon-delete").removeClass("search-input-icon-search");
+                    }
+                } else if($(this).val() == 'add-search-con3') {
+                    var pObj = $(".main-content-search-items");
+                    pObj.append($("#cond3"));
+                    $("#cond3").show();
+
+                    if($(".search-input-icon").hasClass("search-input-icon-delete")) {
+                        $(".search-input-icon").addClass("search-input-icon-search").removeClass("search-input-icon-delete");
+                    }else {
+                        $(".search-input-icon").addClass("search-input-icon-delete").removeClass("search-input-icon-search");
+                    }
+                } else if($(this).val() == 'search-list-view') {
+                    var obj = $(".main-content-notes-list");
+                    obj.removeClass("view-card").removeClass("view-list").addClass("view-list");
+                } else if($(this).val() == 'search-card-view') {
+                    var obj = $(".main-content-notes-list");
+                    obj.removeClass("view-card").removeClass("view-list").addClass("view-card");
                 }
             });
 
@@ -293,35 +350,39 @@
                 <div class="main-content-center">
                     <div class="main-content-notes main-content-search">
                         <div class="main-content-search-area">
-                            <div class="main-content-search-input">
-                                <input class="search-input" placeholder="" />
-                                <div class="search-input-icon"></div>
+                            <div class="main-content-search-input position-relative">
+                                <div class="main-content-search-items"></div>
+                                <input class="search-input" />
+                                <div class="search-input-icon search-input-icon-search"></div>
                             </div>
                         </div>
 
                         <div class="main-content-notes-list">
-                            <div class="content-notes-list-note">
-                                <div class="content-list-note-title">
-                                    Maybe the description of this book is more objective and real
-                                </div>
-                                <div class="content-list-note-detail">
-                                    I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
-                                </div>
-                                <div class="content-list-note-detail">
-                                    In the foreword of the “Code of Work” of the political organization of the Socialist Party
-                                    <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
-                                </div>
-                                <div class="content-list-note-detail">
-                                    <span class="tag-name">#Midinote</span>!
-                                </div>
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Maybe the description of this book is more objective and real
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                        <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        <span class="tag-name">#Midinote</span>!
+                                    </div>
 
-                                <div class="content-list-note-date">03/06/2018</div>
-                                <div class="content-list-note-options">
-                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    <div class="content-list-note-date">03/06/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="content-notes-list-note">
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Officially named:
                                     <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
@@ -337,7 +398,10 @@
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
                                 </div>
                             </div>
-                            <div class="content-notes-list-note">
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Tragic <span class="tag-name" style="color:rgba(113,189,126,1)">#lesson</span>
                                 </div>
@@ -352,8 +416,10 @@
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
                                 </div>
                             </div>
+                            </div>
 
-                            <div class="content-notes-list-note">
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Maybe real
                                 </div>
@@ -366,8 +432,10 @@
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
                                 </div>
                             </div>
+                            </div>
 
-                            <div class="content-notes-list-note">
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Maybe the description of this book is more objective and real
                                 </div>
@@ -387,8 +455,10 @@
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
                                 </div>
                             </div>
+                            </div>
 
-                            <div class="content-notes-list-note">
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Officially named:
                                     <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
@@ -402,6 +472,64 @@
                                 <div class="content-list-note-date">02/18/2018</div>
                                 <div class="content-list-note-options">
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Tragic <span class="tag-name" style="color:rgba(113,189,126,1)">#lesson</span>
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        Released to the online version of the development, resulting in the version of oliver is not available, looking for a long time to find that I was in the development of a index to join, but it is manually added, so there is no online version of oliver this thing The result is incorrect.
+                                        to sum up: <span class="tag-name">#Midinote</span>
+
+                                        The more artificial things, the more possibilities I make mistakes, and the more I get the program to do things, the more reliable and labor-saving I am.
+                                    </div>
+                                    <div class="content-list-note-date">02/18/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Maybe real
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                        </br><span class="tag-name">#Midinote</span>!
+                                    </div>
+                                    <div class="content-list-note-date">03/06/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Maybe the description of this book is more objective and real
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                        <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        <span class="tag-name">#Midinote</span>!
+                                    </div>
+
+                                    <div class="content-list-note-date">03/06/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -433,7 +561,8 @@
     </div>
 </div>
 
-<!--#include file='common.shtml' -->
+<!-- here to put common html fragments -->
+<div id='commonDiv' ></div>
 
 <div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
     <select id="options-search" style="height: 30px;">
@@ -441,104 +570,24 @@
         <option value="select-tag">SEARCH--Select Tag</option>
         <option value="select-key-words">SEARCH--Select Key Words</option>
         <option value="set-tag-value">Set Tag Value Dialog</option>
+        <option value="add-search-con1">Add 1st Search Condition</option>
+        <option value="add-search-con2">Add 2nd Search Condition</option>
+        <option value="add-search-con3">Add 3rd Search Condition</option>
+        <option value="search-list-view">Search List View</option>
+        <option value="search-card-view">Search Card View</option>
     </select>
 </div>
 
-
-<!--set tag value for search dialog (when search a system tag) begin-->
-<div class="search-setting-value-dialog message-dialog-wrapper">
-    <div class="dialog-title">#createtime</div>
-    <div class="dialog-main">
-        <div class="form-item">
-            <div class="form-item-label">Search condition</div>
-            <!--<div class="main-tag-descriptive-info">
-                Search with this condition.
-            </div>-->
-            <div class="form-radio-boxes">
-                <div class="form-radio-box">
-                    <div class="form-radio-name">
-                        <div class="form-radio-label">Exclude</div>
-                        <div class="form-radio-description descriptive-info">Find all notes those exclude this tag.</div>
-                    </div>
-                    <div class="form-radio-control  __unchecked">
-                        <input type="checkbox" class="form-radio-value" value="off" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-item">
-            <div class="form-item-label">VALUE</div>
-            <div class="form-selection">
-                <div class="form-selection-control">
-                    <div class="selected-value">
-                        <div>China</div>
-                        <div class="descriptive-info">e.g. dumpling</div>
-                    </div>
-                    <div class="selection-arrow"></div>
-                </div>
-                <div class="form-selection-outer">
-                    <div class="form-selection-option __selected">
-                        <div>China</div>
-                        <div class="descriptive-info">e.g. dumpling</div>
-                    </div>
-                    <div class="form-selection-option">
-                        <div>US</div>
-                        <div class="descriptive-info">e.g. </div>
-                        <div class="descriptive-icon">
-                            <img src="images/temp/laugh-face.png" />
-                        </div>
-                    </div>
-                    <div class="form-selection-option">
-                        <div>UK</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-item">
-            <div class="form-item-label">VALUE</div>
-            <div class="date-range">
-                <div class="date-range-part">
-                    <div class="date-range-part-input">
-                        <span>from:</span>
-                        <!--<input type="text" name="dateFrom" value="2017-3-10" placeholder="" maxlength="24" />-->
-                        <div class="__input position-relative" name="dateFrom" placeholder="" contenteditable="true">
-                            2017-3-10
-                            <div class="date-input-delete">
-                                <!--#include file='images/cross-icon.svg' -->
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="date-range-selection"><img src="images/temp/date-range-black.png"/></div>
-                </div>
-
-                <div class="date-range-part">
-                    <div class="date-range-part-input">
-                        <span>to:</span>
-                        <!--<input type="text" name="dateTo" value="2017-10-18" placeholder="" maxlength="24" />-->
-                        <div class="__input position-relative" name="dateTo" placeholder="" contenteditable="true">
-                            2017-10-18
-                            <div class="date-input-delete">
-                                <!--#include file='images/cross-icon.svg' -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="date-range-selection"><img src="images/temp/date-range-black.png"/></div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="dialog-buttons">
-        <div class="dialog-button-back btn-back"><span>BACK</span></div>
-        <div class="dialog-button-ok btn-ok">OK</div>
-    </div>
-</div>
-
-<!--set tag value for search dialog (when search a system tag) end-->
 </body>
 </html>
+
+<!-- to load common html -->
+<script type="text/javascript">
+    console.log('where is jQuery:',$)
+    $(document).ready(function(){
+        console.log('begin load common html')
+        $('#commonDiv').load('common.shtml',function(){
+            console.log('finished')
+        })
+    })
+</script>

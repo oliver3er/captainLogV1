@@ -739,7 +739,153 @@
 </div>
 <!--search tag dialog (when search input something) end-->
 
+<!--set tag value for search dialog (when search a system tag) begin-->
+<div class="search-setting-value-dialog message-dialog-wrapper">
+    <div class="dialog-title">#createtime</div>
+    <div class="dialog-main">
+        <div class="form-item">
+            <div class="form-item-label">Search condition</div>
+            <!--<div class="main-tag-descriptive-info">
+                Search with this condition.
+            </div>-->
+            <div class="form-radio-boxes">
+                <div class="form-radio-box">
+                    <div class="form-radio-name">
+                        <div class="form-radio-label">Exclude</div>
+                        <div class="form-radio-description descriptive-info">Find all notes those exclude this tag.</div>
+                    </div>
+                    <div class="form-radio-control  __unchecked">
+                        <input type="checkbox" class="form-radio-value" value="off" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <div class="form-item-label">VALUE</div>
+            <div class="form-selection">
+                <div class="form-selection-control">
+                    <div class="selected-value">
+                        <div>China</div>
+                        <div class="descriptive-info">e.g. dumpling</div>
+                    </div>
+                    <div class="selection-arrow"></div>
+                </div>
+                <div class="form-selection-outer">
+                    <div class="form-selection-option __selected">
+                        <div>China</div>
+                        <div class="descriptive-info">e.g. dumpling</div>
+                    </div>
+                    <div class="form-selection-option">
+                        <div>US</div>
+                        <div class="descriptive-info">e.g. </div>
+                        <div class="descriptive-icon">
+                            <img src="images/temp/laugh-face.png" />
+                        </div>
+                    </div>
+                    <div class="form-selection-option">
+                        <div>UK</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <div class="form-item-label">VALUE</div>
+            <div class="date-range">
+                <div class="date-range-part">
+                    <div class="date-range-part-content">
+                        <span>from:</span>
+                        <div class="date-range-part-input">
+                            <input type="text" name="dateFrom" value="2017-3-10" placeholder="" maxlength="24" />
+                            <div class="date-input-delete">
+                                <!--#include file='images/cross-icon.svg' -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="date-range-selection"><img src="images/temp/date-range-black.png"/></div>
+                </div>
+
+                <div class="date-range-part">
+                    <div class="date-range-part-content">
+                        <span>to:</span>
+                        <div class="date-range-part-input">
+                            <input type="text" name="dateTo" value="2017-10-18" placeholder="" maxlength="24" />
+
+                            <div class="date-input-delete">
+                                <!--#include file='images/cross-icon.svg' -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="date-range-selection"><img src="images/temp/date-range-black.png"/></div>
+                </div>
+
+                <script type="text/javascript">
+                    $(function (){
+                        $(".date-range-part-input").bind("click",function(){
+                            var dateBox = $(this);
+                            if(dateBox.hasClass("__selected")){
+                                return;
+                            }
+                            dateBox.addClass("__selected");
+                            dateBox.find(".date-range-part-input input").focus();
+                        });
+
+                        $(document).bind("click",function(event) {
+                            var e = window.event || event;
+                            //点击除此文本框的位置，改变该文本框显示模式
+                            if ($(e.target).closest(".date-range-part-input").length == 0) {
+                                $(".date-range-part-input").removeClass("__selected");
+                                $(".date-range-part-input").find("input").blur();
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+
+    </div>
+    <div class="dialog-buttons">
+        <div class="dialog-button-back btn-back"><span>BACK</span></div>
+        <div class="dialog-button-ok btn-ok">OK</div>
+    </div>
+</div>
+
+<!--set tag value for search dialog (when search a system tag) end-->
+
+<!-------search tags in input style begin------->
+<div id="cond1" class="search-input-item search-input-tag search-plus" style='background-color:rgba(15,130,230,.75);'>  <!--search-input-words    search-minus-->
+    <div class='search-input-item-content'>
+        <div class="search-input-item-method"></div>
+        <div class='search-input-item-name'>#createtime</div>
+        <div class='search-input-item-value'><span class="__symbol-equal">=</span><span>3/10/2017—18/10/2017</span></div>
+    </div>
+</div>
+
+<div id="cond2" class="search-input-item search-input-tag search-minus" style='background-color:rgba(233,69,69,.75);'>  <!--search-input-words    search-minus-->
+    <div class='search-input-item-content'>
+        <div class="search-input-item-method"></div>
+        <div class='search-input-item-name'>#Big-Man</div>
+        <div class='search-input-item-value'></div>
+    </div>
+</div>
+
+<div id="cond3" class="search-input-item search-input-words">  <!--search-input-words    search-minus-->
+    <div class='search-input-item-content'>
+        <div class="search-input-item-method"></div>
+        <div class='search-input-item-name'>Midinote</div>
+        <div class='search-input-item-value'></div>
+    </div>
+</div>
+<!-------search tags in input style end--------->
 
 
+<!-------search tag edit dialog style begin------->
+<div>
+
+</div>
+<!-------search tag edit dialog style end--------->
 
 <!----------search page end------------>
