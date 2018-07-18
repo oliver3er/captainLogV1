@@ -1118,7 +1118,7 @@
     background-color: rgb(0, 0, 0);
     transform: translateZ(0px);
     z-index: 1000;
-    transition: all .1s ease-out;
+    transition: all .12s ease-out;
     pointer-events: none;
 }
 
@@ -1147,8 +1147,6 @@
     transform: scale(1) translateZ(0px);
     visibility: hidden;
 
-    -webkit-animation-duration: 0.1s;
-    animation-duration: 0.1s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
@@ -1164,8 +1162,8 @@
 .__close.message-dialog {
     -webkit-animation-name: dialog-close-animation;
     animation-name: dialog-close-animation;
-    -webkit-animation-duration: 0.12s;
-    animation-duration: 0.12s;
+    -webkit-animation-duration: 0.1s;
+    animation-duration: 0.1s;
     pointer-events: none;
 }
 
@@ -2026,7 +2024,7 @@
     align-items: center;
     min-width: 1px;
     margin: 0 22px;
-    line-height: .19rem;
+    line-height: .2rem;
     overflow-x: auto;
     overflow-y: hidden;
     counter-reset: commend-item-counter 0;
@@ -2289,6 +2287,42 @@
     margin: 0 0 10px;
 }
 
+
+.main-content-blank {
+    display: none;
+    width: 100%;
+    height: 85%;
+    margin: 40px auto 30px;
+    text-align: center;
+}
+
+.main-content-blank p {
+    width: 370px;
+    height: 50px;
+    line-height: .2rem;
+    text-indent: .1rem;
+    margin: 0 auto;
+    text-align: center;
+    font-size: .16rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #63666b;
+}
+
+.main-content-bg-img {
+    height: 65%;
+    margin-bottom: 40px;
+}
+
+.__no-data .main-content-bg-img {
+    background: url('../images/search-no-result.svg') no-repeat center bottom;
+    background-size: 100% 100%;
+}
+
+.__get-started .main-content-bg-img {
+    background: url('../images/get-started.svg') no-repeat center bottom;
+    background-size: 100% 100%;
+}
 
 @media screen and (min-width: 2286px) {
     .main-content-notes-list.view-card {
@@ -2572,7 +2606,7 @@
 }
 
 .note-detail-image-delete:hover svg * {
-    fill: #EC4F4F;
+    fill: #ec4545;
 }
 
 /**************hash-tag (value) setting begin****************/
@@ -2582,7 +2616,7 @@
     height: 80vh;
     border-radius: 3px;
     overflow: hidden;
-    z-index: 1000;
+    z-index: 10;
     font-size: .14rem;
     font-weight: 400;
     background-color: #36393e;
@@ -4145,16 +4179,14 @@
 
 .search-input-item:hover:after {
     position: absolute;
-    top: -8px;
-    right: -8px;
-    font-size: 8px;
-    font-weight: 400;
+    top: -9px;
+    right: -9px;
     color: transparent;
     content: "X";
     opacity: 1;
     width: 18px;
     height: 18px;
-    border-radius: 9px;
+    border-radius: 50%;
     border: 1px solid rgba(0,0,0,.6);
     background-color: inherit;
     background-image: url('../images/cross-icon.svg');
@@ -4696,5 +4728,228 @@
 
 
 /******search (set tag value) dialog end**********/
+
+
+/******search tag edit dialog style begin********/
+
+.search-tag-edit-dialog-wrapper {
+    position: absolute;
+    width: 800px;
+    height: 420px;
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 10;
+    font-size: .14rem;
+    font-weight: 400;
+    background-color: #36393e;
+    box-shadow: 0 0 1px rgba(0,0,0,1);
+    color: #bcbcbc;
+}
+
+.search-tag-edit-dialog .dialog-title,
+.search-tag-edit-dialog .dialog-main,
+.search-tag-edit-dialog .dialog-buttons {
+    padding: 0 30px;
+}
+
+.search-tag-edit-tool-bar {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    width: 100%;
+    height: 40px;
+    border-top: 1px solid rgba(30,33,37,.95);
+    border-bottom: 1px solid rgba(30,33,37,.95);
+    background-color: rgba(42,44,48,.95);
+    box-sizing: border-box;
+}
+
+.search-tag-edit-tool-bar .toolbar-buttons {
+    margin-left: 30px;
+}
+
+.edit-note {
+    font-size: .14rem;
+    font-weight: 400;
+    color: #bcbcbc;
+}
+
+.edit-note .content-list-note-title {
+    margin: 0;
+}
+
+.search-tag-edit-dialog .edit-note-options {
+    bottom: 70px;
+    right: 30px;
+}
+
+.edit-note-options {
+    position: absolute;
+    bottom: 6px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2px 4px;
+    background-color: rgba(54,57,62,.85);
+    font-size: .12rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+.edit-note-remaining {
+    color: #ececec;
+}
+.edit-note-date {
+    color: rgba(245,245,245,.25);
+}
+
+.edit-note-options .__separate-line {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 12px;
+    width: 1px;
+    background-color: rgba(180,181,186,.3);
+}
+/******search tag edit dialog style end**********/
+
+.main-content-search-records {
+    padding: 20px 26px;
+    width: 100%;
+    color: #ececec;
+    font-size: .14rem;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+.search-records-title {
+    height: 45px;
+    line-height: 45px;
+    letter-spacing: 1px;
+    margin-bottom: -1px;
+    border-bottom: 1px solid rgba(115,117,121,.4);
+    font-size: .16rem;
+    color: #fff;
+}
+
+.search-records.main-content-search-records {
+    display: flex;
+}
+
+.search-records-content {
+    flex: 1 1 auto;
+    z-index: 2;
+}
+
+.search-records-remaining {
+    flex-shrink: 1;
+    width: 100%;
+}
+
+.search-records-bg {
+    position: absolute;
+    right: 40px;
+    bottom: 70px;
+    opacity: .6;
+}
+
+.search-records-bg svg {
+    width: 260px;
+    height: auto;
+}
+
+.search-record-item-wrapper {
+    box-shadow: 0 1px 0 0 rgba(115,117,121,.4);
+    border-top: 1px solid transparent;
+    transition: border-color .12s ease, background-color .15s ease-out, box-shadow .12s ease;
+}
+
+.search-record-item-wrapper:hover {
+    border-top: 1px solid rgba(0,0,0,.4);
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.25);
+    background-color: rgba(0,0,0,.1);
+}
+
+.search-record-item-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: -10px;
+    top: -12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.2);
+    background-color: #303338;
+    visibility: hidden;
+    z-index: 20;
+    box-sizing: content-box;
+    cursor: auto;
+
+    transition: visibility .12s ease;
+}
+.search-record-item-delete svg {
+    width: 8px;
+}
+.search-record-item-delete svg * {
+    fill: #EC4545;
+}
+.search-record-item-delete:hover {
+    background-color: #36393e;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,.6);
+}
+
+.search-record-item-wrapper:hover .search-record-item-delete {
+    visibility: visible;
+    cursor: pointer;
+}
+
+.search-record-item {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.search-record-item-icon {
+    width: 30px;
+    height: 30px;
+    opacity: .5;
+}
+
+.search-saved.search-record-item-icon {
+    background: url("../images/search-saved-icon.svg") center center no-repeat;
+    background-size: 18px;
+}
+.search-history.search-record-item-icon {
+    background: url("../images/search-history-icon.svg") center center no-repeat;
+    background-size: 19px;
+}
+
+.search-record-item-content {
+    display: flex;
+    align-items: center;
+    margin: 0 8px;
+    overflow: hidden;
+}
+
+.search-record-condition {
+    height: 28px;
+    border-radius: 3px;
+    cursor: inherit;
+}
+
+.search-record-condition.search-input-words {
+    font-size: .16rem;
+}
+
 
 /*********************search page style end ************************/

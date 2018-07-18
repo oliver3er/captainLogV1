@@ -883,8 +883,105 @@
 
 
 <!-------search tag edit dialog style begin------->
-<div>
+<div class="message-dialog search-tag-edit-dialog">
+    <div class="message-dialog-wrapper search-tag-edit-dialog-wrapper position-relative">
+        <div class="dialog-title">EDIT THE NOTE</div>
+        <div class="search-tag-edit-tool-bar">
+            <div class="toolbar-buttons">
+                <div class="toolbar-button toolbar-pic">
+                    <!--#include file='images/tool-pic-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-check">
+                    <!--#include file='images/tool-checkbox-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-command">
+                    <!--#include file='images/tool-command-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-code">
+                    <!--#include file='images/tool-code-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-attach">
+                    <!--#include file='images/tool-attach-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-tag">
+                    <!--#include file='images/tool-tag-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-tag2">
+                    <!--#include file='images/tool-tag2-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-line"></div>
+            </div>
+            <div class="toolbar-commend-words position-relative">
+                <div class="toolbar-commend-pre btn-valid"></div>
 
+                <div class="toolbar-commend-items">
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(124, 82, 32);">#Commend</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(176, 199, 66);">#venture</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(233, 69, 69);">#PuffedFood</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(36, 196, 134);">#expire-date</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(121, 178, 234);">#Shelf</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(190, 201, 70);">#Reading-notes</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(172, 70, 197);">#Projects</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toolbar-commend-next btn-valid"></div>
+            </div>
+        </div>
+
+        <div class="dialog-main">
+            <div class="edit-note">
+                <div class="content-list-note-title">
+                    Officially named:
+                    <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
+                                        #Midinote
+                                    </span>
+                </div>
+                <div class="content-list-note-detail">
+                    Finally chose this name: Midinote from Sutter
+                    </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="edit-note-options">
+            <div class="edit-note-remaining">210</div>
+            <div class="__separate-line"></div>
+            <div class="edit-note-date">01/05/2018</div>
+        </div>
+
+        <div class="dialog-buttons">
+        <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+        <div class="dialog-button-ok btn-ok">Save</div>
+    </div>
+    </div>
 </div>
 <!-------search tag edit dialog style end--------->
 

@@ -292,6 +292,42 @@
                 } else if($(this).val() == 'search-card-view') {
                     var obj = $(".main-content-notes-list");
                     obj.removeClass("view-card").removeClass("view-list").addClass("view-card");
+                } else if($(this).val()=='search-edit-note') {
+                    var obj = $(".search-tag-edit-dialog");
+                    if(obj.hasClass("__open")){
+                        obj.removeClass("__open").addClass("__close");
+                        backdropClose();
+                    }else {
+                        obj.addClass("__open").removeClass("__close");
+                        backdropOpen();
+                    }
+                } else if($(this).val()=='search-edit-note-close') {
+                    var obj = $(".search-tag-edit-dialog");
+                    if(obj.hasClass("__open")){
+                        obj.removeClass("__open").addClass("__close");
+                        backdropClose();
+                    }else {
+                        obj.addClass("__open").removeClass("__close");
+                        backdropOpen();
+                    }
+                } else if($(this).val() == 'search-record') {
+                    $(".main-content-notes-list").hide();
+                    $(".main-content-search-records").show();
+                    $(".main-content-blank").hide();
+                } else if($(this).val() == 'search-result') {
+                    $(".main-content-search-records").hide();
+                    $(".main-content-notes-list").show();
+                    $(".main-content-blank").hide();
+                } else if($(this).val() == 'search-no-result') {
+                    $(".main-content-search-records").hide();
+                    $(".main-content-notes-list").hide();
+                    $(".main-content-blank.__no-data").show();
+                    $(".main-content-blank.__get-started").hide();
+                } else if($(this).val() == 'search-start') {
+                    $(".main-content-search-records").hide();
+                    $(".main-content-notes-list").hide();
+                    $(".main-content-blank.__no-data").hide();
+                    $(".main-content-blank.__get-started").show();
                 }
             });
 
@@ -347,7 +383,7 @@
             </div>
 
             <div class="main-content">
-                <div class="main-content-center">
+                <div class="main-content-center position-relative">
                     <div class="main-content-notes main-content-search">
                         <div class="main-content-search-area">
                             <div class="main-content-search-input position-relative">
@@ -532,8 +568,140 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+                        <!--0 search result display part-->
+                        <div class="main-content-blank __no-data">
+                            <div class="main-content-bg-img"></div>
+                            <p>We have searched the entire galaxy,
+                                but sorry,we did’nt find what your want.</p>
+                        </div>
+
+
+                        <!--search get started-->
+                        <div class="main-content-blank __get-started">
+                            <div class="main-content-bg-img"></div>
+                            <p>LET'S GET STARTED!</p>
+                        </div>
+
+
+                        <!--search saved records-->
+                        <div class="main-content-search-records search-records" style="display:none;">
+                            <div class="search-records-content">
+                                <div class="search-records-title">
+                                    <span>Saved search & History search</span>
+                                </div>
+
+                                <div class="search-records-list">
+                                    <div class="search-record-item-wrapper position-relative" >
+                                        <div class="search-record-item">
+                                            <div class="search-record-item-icon search-saved"></div>   <!--search-history-->
+                                            <div class="search-record-item-content">
+                                                <div class="search-record-condition search-input-tag search-plus" style='background-color:rgba(15,130,230,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#createtime</div>
+                                                        <div class='search-input-item-value'><span class="__symbol-equal">=</span><span>3/10/2017—18/10/2017</span></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-tag search-minus" style='background-color:rgba(233,69,69,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#Big-Man</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-words">
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>Midinote</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="search-record-item-delete">
+                                            <!--#include file='images/cross-light-icon.svg' -->
+                                        </div>
+                                    </div>
+
+                                    <div class="search-record-item-wrapper position-relative" >
+                                        <div class="search-record-item">
+                                            <div class="search-record-item-icon search-saved"></div>
+                                            <div class="search-record-item-content">
+                                                <div class="search-record-condition search-input-tag search-plus" style='background-color:rgba(206,27,251,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#WebDesign</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-words">
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>so-much</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-tag search-minus" style='background-color:rgba(0,146,78,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#abandoned</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="search-record-item-delete">
+                                            <!--#include file='images/cross-light-icon.svg' -->
+                                        </div>
+                                    </div>
+
+                                    <div class="search-record-item-wrapper position-relative" >
+                                        <div class="search-record-item">
+                                            <div class="search-record-item-icon search-history"></div>
+                                            <div class="search-record-item-content">
+                                                <div class="search-record-condition search-input-tag search-plus" style='background-color:rgba(250,166,26,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#WebDesign</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-tag search-minus" style='background-color:rgba(67,181,129,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#abandoned</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="search-record-item-delete">
+                                            <!--#include file='images/cross-light-icon.svg' -->
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="search-records-remaining"></div>
+
+                            <div class="search-records-bg">
+                                <!--#include file='images/search-records-bg.svg' -->
+                            </div>
+                        </div>
+
+
                     </div>
 
                     <div class="main-content-options">
@@ -575,6 +743,12 @@
         <option value="add-search-con3">Add 3rd Search Condition</option>
         <option value="search-list-view">Search List View</option>
         <option value="search-card-view">Search Card View</option>
+        <option value="search-edit-note">Edit A Note</option>
+        <option value="search-edit-note-close">Close Edit A Note</option>
+        <option value="search-record">Show Search Records list</option>
+        <option value="search-start">Show Search Start</option>
+        <option value="search-result">Show Search Result list</option>
+        <option value="search-no-result">Show Search NO Result</option>
     </select>
 </div>
 
