@@ -520,3 +520,12 @@
 .hashtag-node {
 	cursor	: pointer;
 }
+
+
+/* the note as document */
+.content-notes-list-note.document .content-list-note-title{
+    line-height: 40px;
+    font-size: .28rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
