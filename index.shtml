@@ -315,11 +315,22 @@
                     msgTip.css('left', '413px');
                     msgTip.css('top', '164px');
                     msgTip.css("visibility","visible");
-                }else if($(this).val() == 'tag-info-message') {
+                }else if($(this).val() == 'tag-info-message1') {
                     msgTip = $(".tag-info-message-tip");
                     msgTip.css('right', '100px');
                     msgTip.css('top', '264px');
-                    msgTip.css("visibility","visible");
+
+                    //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
+                    msgTip.removeClass("__close").removeClass("__open");
+                    msgTip.addClass("__open").addClass("__top-tip").removeClass("__bottom-tip");
+                }else if($(this).val() == 'tag-info-message2') {
+                    var msgTip = $(".tag-info-message-tip");
+                    msgTip.css('right', '100px');
+                    msgTip.css('top', '264px');
+
+                    //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
+                    msgTip.removeClass("__close").removeClass("__open");
+                    msgTip.addClass("__open").addClass("__bottom-tip").removeClass("__top-tip");
                 }else if($(this).val()=='bf-menu') {
                     var menu = $(".bf-menu");
                     menu.css("left", "101px");
@@ -856,7 +867,8 @@
         <option value="nothing">Nothing</option>
         <option value="first-page">The First Load-in Page</option>
         <option value="warring-in-note">Warning tip (in a note)</option>
-        <option value="tag-info-message">Tag Info Tip (in mind map)</option>
+        <option value="tag-info-message1">Tag Info Tip (in mind map + On the Top)</option>
+        <option value="tag-info-message2">Tag Info Tip (in mind map + On the Bottom)</option>
         <option value="bf-menu">backward-and-forward-menu</option>
         <option value="smart-tip-menu">Smart-Tip-Menu</option>
         <option value="open-tool-bar">Open Tool-Bar</option>
