@@ -2517,6 +2517,7 @@
     opacity: .5;
 
     transition: opacity .15s ease-in-out;
+	cursor		: pointer;
 }
 
 .tag-color-blank:hover .tag-color-blank-icon {
@@ -2535,6 +2536,7 @@
     width: 20px;
     height: 20px;
     border-radius: 2px;
+	cursor		: pointer;
 }
 
 ._color1 {

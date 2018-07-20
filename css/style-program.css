@@ -529,3 +529,64 @@
     font-weight: 800;
     letter-spacing: 1.2px;
 }
+
+.temp-hashtag-search {
+	font-size : 24px;
+	margin		: 20px;
+}
+
+.temp-hashtag-search input{
+	width	: 100%;
+	color	: white;
+	border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.temp-hashtag-create {
+	color	: gray;
+	font-size	: 18px;
+	margin	: 10px;
+}
+
+.temp-hashtag-recent h4{
+	color: gray;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.temp-hashtag-index>div {
+	display	: flex;
+	flex-wrap	: wrap;
+}
+
+.temp-hashtag-index>div>div{
+	width	: 30%;
+	margin	: 5px;
+}
+
+.temp-hashtag-index h4{
+	color: gray;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.temp-hashtag-title {
+	font-size: 36px;
+	text-align: left;
+	vertical-align: center;
+	padding: 10px 30px;
+	color	: gray;
+}
+
+/* substituting hover, make visible directly */
+.content-list-note-options {
+	visibility	: visible;
+}
+
+/* For the note option button, use character as button icon */
+.temp-note-option-char {
+	display		: flex;
+	justify-content	: center;
+	align-items		: center;
+}
