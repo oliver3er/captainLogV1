@@ -986,3 +986,107 @@
 <!-------search tag edit dialog style end--------->
 
 <!----------search page end------------>
+
+
+
+<!----------mind map page begin------------>
+
+<!--add tag for one map node dialog (mind map add a tag) begin-->
+<div class="map-add-tag-dialog">
+    <div class="map-add-tag-dialog-wrapper message-dialog-wrapper position-relative">
+        <div class="map-add-tag-add">
+            <div class="dialog-title">ADD A HASHTAG<span class="dialog-title-description">related to #技术线</span></div>
+            <div class="dialog-main">
+                <div class="map-add-tag-form-item">
+                    <div class="form-item-label">#</div>
+                    <div class="form-input">
+                        <input type="text" name="map-add-tag-name"
+                               value="" placeholder="" maxlength="200" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-buttons">
+                <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                <div class="dialog-button-ok btn-ok">Next</div>
+            </div>
+        </div>
+
+        <div class="map-add-tag-exist">
+            <div class="dialog-title">ADD A HASHTAG<span class="dialog-title-description">related to #技术线</span></div>
+            <div class="dialog-main">
+                <div class="map-add-tag-content">
+                    <div class="">#MidiNote</div>
+                    <div class="">
+                        This hash-tag is exist.
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-buttons">
+                <div class="dialog-button-back btn-back"><span>BACK</span></div>
+                <div class="dialog-button-right-part">
+                    <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                    <div class="dialog-button-ok btn-ok">OK</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-add-tag-new">
+            <div class="dialog-title">ADD A HASHTAG<span class="dialog-title-description">related to #技术线</span></div>
+            <div class="dialog-main">
+                <div class="map-add-tag-content">
+                    <div class="">#MM-Note</div>
+                    <div class="">
+                        This hash-tag is new one.
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-buttons">
+                <div class="dialog-button-back btn-back"><span>BACK</span></div>
+                <div class="dialog-button-right-part">
+                    <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                    <div class="dialog-button-ok btn-ok">OK</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--add tag for one map node dialog (mind map add a tag) end-->
+
+<!--tag circle menu begin-->
+<div class="tag-menu-dialog message-dialog">
+    <div class="tag-menu-dialog-wrapper">
+        <ul class="map-tag-menu">
+            <li class="tag-menu-setting">
+                <!--#include file='images/setting-icon.svg'-->
+            </li>
+
+            <li class="tag-menu-delete">
+                <!--#include file='images/tag-menu-delete.svg'-->
+            </li>
+
+            <li class="tag-menu-doc">
+                <!--#include file='images/menu-notes.svg'-->
+            </li>
+
+            <li class="tag-menu-paste tag-menu-invalid-btn">
+                <!--#include file='images/tag-menu-paste.svg'-->
+            </li>
+            <li class="tag-menu-cut">
+                <!--#include file='images/tag-menu-cut.svg'-->
+            </li>
+            <li class="tag-menu-focus">
+                <!--#include file='images/tag-menu-focus.svg'-->
+            </li>
+            <li class="tag-menu-add">
+                <!--#include file='images/tag-menu-delete.svg'-->
+            </li>
+        </ul>
+    </div>
+</div>
+<!--tag circle menu end-->
+
+<!----------mind map page end-------------->

@@ -36,14 +36,8 @@
 
             $('#options-mind-map').bind('change',function(){
                 if($(this).val()=='nothing') {
-                    /*$(".tag-info-message-tip").css("visibility","hidden");*/
                     $(".tag-info-message-tip").addClass("__close").removeClass("__open");
-                    if($(".search-tag-dialog").hasClass("__open")) {
-                        $(".search-tag-dialog").removeClass("__open").addClass("__close");
-                    }
-                    if($(".search-setting-value-dialog").hasClass("__open")){
-                        $(".search-setting-value-dialog").removeClass("__open").addClass("__close");
-                    }
+
 
                 } else if($(this).val() == 'tag-info-message1') {
                     var msgTip = $(".tag-info-message-tip");
@@ -52,7 +46,7 @@
 
                     //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
                     msgTip.removeClass("__close").removeClass("__open");
-                    msgTip.addClass("__open").addClass("__top-tip").removeClass("__bottom-tip");
+                    msgTip.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
                 } else if($(this).val() == 'tag-info-message2') {
                     var msgTip = $(".tag-info-message-tip");
                     msgTip.css('left', '300px');
@@ -60,7 +54,51 @@
 
                     //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
                     msgTip.removeClass("__close").removeClass("__open");
-                    msgTip.addClass("__open").addClass("__bottom-tip").removeClass("__top-tip");
+                    msgTip.addClass("__open").addClass("__bottom-top").removeClass("__top-bottom");
+                } else if($(this).val() == 'add-tag'){
+                    var obj = $(".map-add-tag-dialog");
+                    obj.css('left', '400px');
+                    obj.css('top', '320px');
+
+                    //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
+                    obj.removeClass("__close").removeClass("__open");
+                    obj.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
+                } else if($(this).val() == 'add-tag2'){
+                    var obj = $(".map-add-tag-dialog");
+                    if(obj.hasClass("__open")){
+
+                    }else {
+                        obj.removeClass("__close").removeClass("__open");
+                        obj.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
+                    }
+
+                    $(".map-add-tag-exist").removeClass("__close").removeClass("__open").addClass("__open");
+                    $(".map-add-tag-new").removeClass("__close").removeClass("__open");
+                    $(".map-add-tag-add").removeClass("__close").removeClass("__back").addClass("__close");
+                } else if($(this).val() == 'add-tag3'){
+                    var obj = $(".map-add-tag-dialog");
+                    if(obj.hasClass("__open")){
+
+                    }else {
+                        obj.removeClass("__close").removeClass("__open");
+                        obj.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
+                    }
+
+                    $(".map-add-tag-new").removeClass("__close").removeClass("__open").addClass("__open");
+                    $(".map-add-tag-exist").removeClass("__close").removeClass("__open");
+                    $(".map-add-tag-add").removeClass("__close").removeClass("__back").addClass("__close");
+                } else if($(this).val() == 'close-add-tag'){
+                    var obj = $(".map-add-tag-dialog");
+                    obj.removeClass("__close").removeClass("__open")
+                        .removeClass("__top-bottom").removeClass("__bottom-top");
+                    obj.addClass("__close").addClass("__top-bottom");
+
+                } else if($(this).val() == 'tag-menu'){
+                    $(".tag-menu-dialog").removeClass("__open").removeClass("__close");
+                    $(".tag-menu-dialog").addClass("__open");
+                } else if($(this).val() == 'close-tag-menu'){
+                    $(".tag-menu-dialog").removeClass("__open").removeClass("__close");
+                    $(".tag-menu-dialog").addClass("__close");
                 }
             });
         });
@@ -218,12 +256,12 @@
         <option value="nothing">DEFAULT STATUS</option>
         <option value="tag-info-message1">Tag Info Tip (On the Top)</option>
         <option value="tag-info-message2">Tag Info Tip (On the Bottom)</option>
-        <option value="select-key-words">SEARCH--Select Key Words</option>
-        <option value="set-tag-value">Set Tag Value Dialog</option>
-        <option value="add-search-con1">Add 1st Search Condition</option>
-        <option value="add-search-con2">Add 2nd Search Condition</option>
-        <option value="add-search-con3">Add 3rd Search Condition</option>
-        <option value="search-list-view">Search List View</option>
+        <option value="add-tag">Show Add Hashtag Dialog</option>
+        <option value="add-tag2">Show Add Hashtag Dialog-2</option>
+        <option value="add-tag3">Show Add Hashtag Dialog-3</option>
+        <option value="tag-menu">Show Hashtag Menu</option>
+        <option value="close-tag-menu">Close Hashtag Menu</option>
+
     </select>
 </div>
 </body>

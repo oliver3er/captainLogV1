@@ -322,7 +322,7 @@
 
                     //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
                     msgTip.removeClass("__close").removeClass("__open");
-                    msgTip.addClass("__open").addClass("__top-tip").removeClass("__bottom-tip");
+                    msgTip.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
                 }else if($(this).val() == 'tag-info-message2') {
                     var msgTip = $(".tag-info-message-tip");
                     msgTip.css('right', '100px');
@@ -330,7 +330,7 @@
 
                     //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
                     msgTip.removeClass("__close").removeClass("__open");
-                    msgTip.addClass("__open").addClass("__bottom-tip").removeClass("__top-tip");
+                    msgTip.addClass("__open").addClass("__bottom-top").removeClass("__top-bottom");
                 }else if($(this).val()=='bf-menu') {
                     var menu = $(".bf-menu");
                     menu.css("left", "101px");
@@ -462,21 +462,6 @@
                     menu.show();
                     menu.removeClass("__close");
                     menu.addClass("__open");
-                }else if($(this).val() == 'mind-map-tip') {
-                    var detailInfoTip = $('.map-tag-detail-tip-wrapper');
-                    var detailInfo = $('.map-tag-detail-tip');
-                    if($(this).val()=='open'){
-                        detailInfoTip.css('left','140px');
-                        detailInfoTip.css('top','200px');
-                        detailInfo.css("border-color","rgba(211,165,112,.75)");
-                        detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
-
-                        detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
-                        detailInfoTip.addClass("dialog-open");
-                    }else if ($(this).val()=='close'){
-                        detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
-                        detailInfoTip.addClass("dialog-close");
-                    }
                 }
 
 
@@ -888,7 +873,6 @@
         <option value="open-tag-value-setting">Open Tag Value Setting</option>
         <option value="close-tag-value-setting">Close Tag Value Setting</option>
         <option value="system-setting">System Setting</option>
-        <option value="mind-map-tip">Mind Map Tag-Tip</option>
     </select>
 </div>
 
