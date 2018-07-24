@@ -103,7 +103,13 @@
     100% { opacity: 0; visibility: hidden; -webkit-transform: scale3d(0.5, 0.5, 1); transform: scale3d(0.5, 0.5, 1); }
 }
 
+.__text-green {
+    color: #45c087;
+}
 
+.__text-red {
+    color: #f04747;
+}
 /*********************form begin********************/
 .form-item {
     margin-top: 18px;
@@ -118,7 +124,16 @@
     font-weight: 400;
     letter-spacing: 1px;
 }
-
+.__required {
+    position: relative;
+}
+.__required:after {
+    position: absolute;
+    content: '*';
+    margin-left: 6px;
+    color: #f04747;
+    font-size: .14rem;
+}
 
 .form-item-label {
     margin-bottom: 8px;
@@ -2159,14 +2174,14 @@
     flex-direction: column;
 }
 
-.main-content-notes::-webkit-scrollbar {
+.main-content-notes::-webkit-scrollbar, .setting-main-content::-webkit-scrollbar {
     width: 14px;
     border: 3px solid #36393e;
     background-color: rgba(45,46,51,.75);
     border-radius: 10px;
 }
 
-.main-content-notes::-webkit-scrollbar-thumb {
+.main-content-notes::-webkit-scrollbar-thumb, .setting-main-content::-webkit-scrollbar-thumb {
     width: 14px;
     border: 3px solid #36393e;
     border-radius: 10px;
@@ -5655,3 +5670,392 @@
 }
 
 /******************** hash-tag page style end **********************/
+
+
+
+
+/******************** setting page style begin ********************/
+.setting-main {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    background-color: #36393e;
+}
+
+.setting-main-menu {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1 0 230px;
+    width: 35%;
+    min-width: 230px;
+    min-height: 0;
+    background-color: #2e3035;
+    font-size: .14rem;
+    color: #bcbcbc;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.setting-main-menu::-webkit-scrollbar {
+    width: 12px;
+    border: 3px solid #2e3035;
+    background-color: #2e3035;
+    border-radius: 10px;
+}
+
+.setting-main-menu::-webkit-scrollbar-thumb {
+    width: 12px;
+    border: 3px solid #2e3035;
+    border-radius: 10px;
+    background-color: rgba(30,33,36,0.6);
+}
+
+
+.setting-main-content {
+    flex: 1 1 800px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.setting-main-menu-wrapper {
+    width: 200px;
+    margin-right: 10px;
+    padding: 70px 6px 60px 20px;
+    height: 100%;
+}
+
+.setting-main-menu-grp {
+    padding: 0 10px 6px 10px;
+    color: #63666b;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .12rem;
+}
+
+.setting-main-menu-li {
+    margin-bottom: 2px;
+    padding: 6px 10px;
+    border-radius: 3px;
+    line-height: .2rem;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+
+    transition: background-color .15s ease, color .12s ;
+}
+
+.setting-main-menu-li:hover {
+    color: #fff;
+    background-color: #484b4f;
+}
+
+.__selected.setting-main-menu-li {
+    color: #fff;
+    background-color: #4582f6;
+}
+
+.setting-main-separate-line {
+    margin: 10px 10px 16px 10px;
+    height: 1px;
+    background-color: rgba(115,117,121,.4);
+}
+
+.setting-main-content-wrapper {
+    flex: 1 0 450px;
+    padding: 70px 40px 80px;
+    max-width: 700px;
+    min-width: 450px;
+    height: 100vh;
+}
+
+.setting-main-content-email {
+    height: 100%;
+    min-height: 380px;
+}
+
+.setting-main-content-title {
+    flex: 0;
+    margin-bottom: 40px;
+    font-size: .16rem;
+    color: #ececec;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.__edit .setting-edit-form {
+    animation-name: height-change-show;
+    animation-duration: .15s;
+    animation-timing-function: ease-out;
+}
+
+.__show .setting-edit-form {
+    animation-name: height-change-hide;
+    animation-duration: .1s;
+    animation-timing-function: ease-in;
+}
+
+.setting-edit-form {
+    visibility: hidden;
+    position: absolute;
+    top: 38px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    z-index: 2;
+
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes height-change-show {
+    0% { height: 80px; visibility: hidden;}
+    100% { height: 240px; visibility: visible; }
+}
+@-webkit-keyframes height-change-hide {
+    0% { height: 240px; visibility: visible; }
+    100% { height: 80px; visibility: hidden; }
+}
+@keyframes height-change-show {
+    0% { height: 80px; visibility: hidden;}
+    100% { height: 240px; visibility: visible; }
+}
+@keyframes height-change-hide {
+    0% { height: 240px; visibility: visible; }
+    100% { height: 80px; visibility: hidden; }
+}
+
+
+@-webkit-keyframes show-animation {
+    0% { visibility: hidden;}
+    100% { visibility: visible; }
+}
+@-webkit-keyframes hide-animation {
+    0% { visibility: visible; }
+    100% { visibility: hidden; }
+}
+@keyframes show-animation {
+    0% { visibility: hidden;}
+    100% { visibility: visible; }
+}
+@keyframes hide-animation {
+    0% { visibility: visible; }
+    100% { visibility: hidden; }
+}
+
+.setting-form-separate-line {
+    position: absolute;
+    top: 116px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: rgba(115,117,121,.4);
+    z-index: 3;
+
+    transition: top .15s ease-out;
+}
+
+.__edit .setting-form-separate-line {
+    top: 215px;
+}
+.__show .setting-form-separate-line {
+    top: 116px;
+}
+
+.setting-show-form {
+    visibility: visible;
+    z-index: 1;
+}
+.__show .setting-show-form {
+    animation-name: show-animation;
+    animation-duration: .15s;
+    animation-timing-function: ease;
+}
+.__edit .setting-show-form {
+    animation-name: hide-animation;
+    animation-duration: .05s;
+    animation-timing-function: ease;
+}
+
+.setting-email-value {
+    height: 42px;
+    line-height: 42px;
+    padding-left: 12px;
+    padding-right: 84px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    outline: none;
+}
+
+.setting-edit-button.btn-ok {
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: 0;
+    padding: 8px 16px;
+    background-color: #4582f6;
+}
+
+.setting-edit-button:hover {
+    background-color: #6fa5f6;
+}
+
+.setting-main-content-bg {
+    position: absolute;
+    bottom: 22px;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.setting-main-content-bg-img svg {
+    width: 160px;
+    height: auto;
+}
+
+.setting-main-content-description {
+    flex: 1 1 170px;
+    max-width: 240px;
+    line-height: 20px;
+    color: #6d7178;
+    font-size: .12rem;
+}
+
+.setting-form-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.setting-form-buttons .btn-ok {
+    padding: 8px 16px;
+    font-size: .14rem;
+}
+
+.setting-main-content-psw {
+    display: none;
+    height: 100%;
+    min-height: 460px;
+}
+
+.setting-pwd-form-buttons {
+    border-top: 1px solid rgba(115,117,121,.4);
+}
+
+.setting-main-content-psw-bg {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    display: flex;
+    overflow: hidden;
+}
+
+.sub-page-close {
+    position: absolute;
+    right: -10px;
+    top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #777b81;
+    transform-origin: 50% 50%;
+    cursor: pointer;
+
+    transition: background-color .15s ease, transform .1s;
+}
+
+.sub-page-close:hover {
+    background-color: rgba(255,255,255,.07);
+}
+.sub-page-close:hover svg * {
+    fill: #fff;
+}
+
+.sub-page-close:active {
+    transform: translateY(1px);
+}
+
+.sub-page-close svg * {
+    fill: #ececec;
+}
+
+.sub-page-close svg {
+    display: block;
+    width: 8px;
+    height: 8px;
+}
+
+.setting-message-dialog {
+    position: absolute;
+    bottom: 24px;
+    left: auto;
+    padding: 20px;
+    width: calc(100% - 80px);
+    border-radius: 4px;
+    background-color: rgba(33,36,39,.8);/*#212427;*/
+    color: #ececec;
+    font-size: .14rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    z-index: 4;
+}
+
+.__open.setting-message-dialog {
+    animation: bottom-top-appear .15s ease-out;
+    animation-fill-mode: forwards;
+}
+.__close.setting-message-dialog {
+    animation: bottom-top-disappear .1s ease;
+    animation-fill-mode: forwards;
+}
+
+.setting-message-main-info {
+    font-size: .16rem;
+    line-height: .28rem;
+    font-weight: 600;
+}
+
+.setting-message-detail-info {
+    line-height: .22rem;
+}
+
+.setting-message-dialog-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -14px;
+    top: -14px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    transition: background-color .15s ease;
+}
+
+.setting-message-dialog-close:hover {
+    background-color: rgba(54,57,62,.6);
+}
+
+.setting-message-dialog-close svg {
+    display: block;
+    width: 10px;
+    height: 10px;
+}
+
+.setting-message-dialog-close svg * {
+    fill: #777b81;
+}
+/******************** setting page style end **********************/
