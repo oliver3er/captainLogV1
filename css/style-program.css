@@ -236,7 +236,7 @@
 }
 
 .content-notes-list-note.list-one-selected{
-	transition	: background .5s ease-in-out;
+	transition	: background .3s ease-in-out;
 }
 
 .content-notes-list-note.list-one-selected.editing{
@@ -244,7 +244,7 @@
 }
 
 .content-notes-list-note.list-one-selected.warning{
-	animation	: animation-warning 1s ;
+	animation	: animation-warning .3s ;
 }
 
 /* The note editor cursor must be a 'I', not pointer */
@@ -579,14 +579,22 @@
 	color	: gray;
 }
 
-/* substituting hover, make visible directly */
-.content-list-note-options {
-	visibility	: visible;
-}
 
 /* For the note option button, use character as button icon */
 .temp-note-option-char {
 	display		: flex;
 	justify-content	: center;
 	align-items		: center;
+}
+
+.temp-button {
+	margin			: 0px 5px;
+	font-size		: 12px;
+	cursor			: pointer;
+	text-decoration		: underline;
+}
+
+.temp-error {
+	margin	: 5px;
+	color	: red;
 }

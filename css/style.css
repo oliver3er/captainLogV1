@@ -2329,9 +2329,11 @@
     bottom: -1px;
 }
 
+/* Removed by dean, the icon should be shown always 
 .content-notes-list-note:hover .content-list-note-options {
     visibility: visible;
 }
+*/
 
 /*.content-notes-list-note:active {
     background: rgba(42,44,48,.5);
@@ -2799,7 +2801,7 @@
     top: 12px;
     display: flex;
     justify-content: flex-end;
-    visibility: hidden;
+    /* Removed by dean  visibility: hidden;*/
     transition: visibility .15s ease .05s;
     z-index: 1;
 }
