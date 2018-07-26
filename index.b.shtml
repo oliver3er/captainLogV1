@@ -315,22 +315,11 @@
                     msgTip.css('left', '413px');
                     msgTip.css('top', '164px');
                     msgTip.css("visibility","visible");
-                }else if($(this).val() == 'tag-info-message1') {
+                }else if($(this).val() == 'tag-info-message') {
                     msgTip = $(".tag-info-message-tip");
                     msgTip.css('right', '100px');
                     msgTip.css('top', '264px');
-
-                    //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
-                    msgTip.removeClass("__close").removeClass("__open");
-                    msgTip.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
-                }else if($(this).val() == 'tag-info-message2') {
-                    var msgTip = $(".tag-info-message-tip");
-                    msgTip.css('right', '100px');
-                    msgTip.css('top', '264px');
-
-                    //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
-                    msgTip.removeClass("__close").removeClass("__open");
-                    msgTip.addClass("__open").addClass("__bottom-top").removeClass("__top-bottom");
+                    msgTip.css("visibility","visible");
                 }else if($(this).val()=='bf-menu') {
                     var menu = $(".bf-menu");
                     menu.css("left", "101px");
@@ -462,6 +451,21 @@
                     menu.show();
                     menu.removeClass("__close");
                     menu.addClass("__open");
+                }else if($(this).val() == 'mind-map-tip') {
+                    var detailInfoTip = $('.map-tag-detail-tip-wrapper');
+                    var detailInfo = $('.map-tag-detail-tip');
+                    if($(this).val()=='open'){
+                        detailInfoTip.css('left','140px');
+                        detailInfoTip.css('top','200px');
+                        detailInfo.css("border-color","rgba(211,165,112,.75)");
+                        detailInfo.css("box-shadow","0 0 6px rgba(211,165,112,.65)");
+
+                        detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                        detailInfoTip.addClass("dialog-open");
+                    }else if ($(this).val()=='close'){
+                        detailInfoTip.removeClass("dialog-close").removeClass("dialog-open");
+                        detailInfoTip.addClass("dialog-close");
+                    }
                 }
 
 
@@ -639,14 +643,14 @@
                                 <div class="content-list-note-title">
                                     Maybe the description of this book is more objective and real
                                 </div>
-                                <div class="content-list-note-detail">
+                                <div>
                                     I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
                                 </div>
-                                <div class="content-list-note-detail">
+                                <div>
                                     In the foreword of the “Code of Work” of the political organization of the Socialist Party
                                     <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
                                 </div>
-                                <div class="content-list-note-detail">
+                                <div>
                                     <span class="tag-name">#Midinote</span>!
                                 </div>
 
@@ -665,7 +669,7 @@
                                         #Midinote
                                     </span>
                                 </div>
-                                <div class="content-list-note-detail">
+                                <div>
                                     Finally chose this name: Midinote from Sutter
                                     </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
                                 </div>
@@ -835,25 +839,13 @@
 </div>
 
 
-<div id='commonDiv' ></div>
-<!-- to load common html -->
-<script type="text/javascript">
-    console.log('where is jQuery:',$)
-    $(document).ready(function(){
-        console.log('begin load common html')
-        $('#commonDiv').load('common.shtml',function(){
-            console.log('finished')
-        })
-    })
-</script>
 
 <div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
     <select id="options" style="height: 30px;">
         <option value="nothing">Nothing</option>
         <option value="first-page">The First Load-in Page</option>
         <option value="warring-in-note">Warning tip (in a note)</option>
-        <option value="tag-info-message1">Tag Info Tip (in mind map + On the Top)</option>
-        <option value="tag-info-message2">Tag Info Tip (in mind map + On the Bottom)</option>
+        <option value="tag-info-message">Tag Info Tip (in mind map)</option>
         <option value="bf-menu">backward-and-forward-menu</option>
         <option value="smart-tip-menu">Smart-Tip-Menu</option>
         <option value="open-tool-bar">Open Tool-Bar</option>
@@ -873,8 +865,23 @@
         <option value="open-tag-value-setting">Open Tag Value Setting</option>
         <option value="close-tag-value-setting">Close Tag Value Setting</option>
         <option value="system-setting">System Setting</option>
+        <option value="mind-map-tip">Mind Map Tag-Tip</option>
     </select>
 </div>
 
+<!-- here to put common html fragments -->
+<div id='commonDiv' ></div>
+
 </body>
 </html>
+<!-- to load common html -->
+<script type="text/javascript">
+	console.log('where is jQuery:',$)
+	$(document).ready(function(){
+		console.log('begin load common html')
+		$('#commonDiv').load('common.shtml',function(){
+			console.log('finished')
+		})
+	})
+</script>
+

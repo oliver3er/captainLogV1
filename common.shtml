@@ -739,21 +739,20 @@
 </div>
 <!--search tag dialog (when search input something) end-->
 
-
 <!--set tag value for search dialog (when search a system tag) begin-->
 <div class="search-setting-value-dialog message-dialog-wrapper">
     <div class="dialog-title">#createtime</div>
     <div class="dialog-main">
         <div class="form-item">
-            <!--<div class="form-item-label">RADIO BOX</div>
-            <div class="main-tag-descriptive-info">
-                This dish is good for your dinner or breakfast,recording the answer is helpful.
+            <div class="form-item-label">Search condition</div>
+            <!--<div class="main-tag-descriptive-info">
+                Search with this condition.
             </div>-->
             <div class="form-radio-boxes">
                 <div class="form-radio-box">
                     <div class="form-radio-name">
-                        <div class="form-radio-label">EXCLUDE</div>
-                        <div class="form-radio-description descriptive-info">Find all logs those exclude this tag.</div>
+                        <div class="form-radio-label">Exclude</div>
+                        <div class="form-radio-description descriptive-info">Find all notes those exclude this tag.</div>
                     </div>
                     <div class="form-radio-control  __unchecked">
                         <input type="checkbox" class="form-radio-value" value="off" />
@@ -762,8 +761,8 @@
             </div>
         </div>
 
-        <div class="form-item search-setting-value-item">
-            <div class="search-setting-value-label">VALUE</div>
+        <div class="form-item">
+            <div class="form-item-label">VALUE</div>
             <div class="form-selection">
                 <div class="form-selection-control">
                     <div class="selected-value">
@@ -791,36 +790,303 @@
             </div>
         </div>
 
-        <div class="form-item search-setting-value-item">
-            <div class="search-setting-value-label">VALUE</div>
+        <div class="form-item">
+            <div class="form-item-label">VALUE</div>
             <div class="date-range">
                 <div class="date-range-part">
-                    <div class="search-date-range-part-input">
+                    <div class="date-range-part-content">
                         <span>from:</span>
-                        <input type="text" name="dateFrom" value="2017-3-10" placeholder="" maxlength="24" />
+                        <div class="date-range-part-input">
+                            <input type="text" name="dateFrom" value="2017-3-10" placeholder="" maxlength="24" />
+                            <div class="date-input-delete">
+                                <!--#include file='images/cross-icon.svg' -->
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="date-range-selection"><img src="images/temp/date-range1.png"/></div>
+                    <div class="date-range-selection"><img src="images/temp/date-range-black.png"/></div>
                 </div>
 
                 <div class="date-range-part">
-                    <div class="search-date-range-part-input">
+                    <div class="date-range-part-content">
                         <span>to:</span>
-                        <input type="text" name="dateTo" value="2017-10-18" placeholder="" maxlength="24" />
+                        <div class="date-range-part-input">
+                            <input type="text" name="dateTo" value="2017-10-18" placeholder="" maxlength="24" />
+
+                            <div class="date-input-delete">
+                                <!--#include file='images/cross-icon.svg' -->
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="date-range-selection"><img src="images/temp/date-range2.png"/></div>
+                    <div class="date-range-selection"><img src="images/temp/date-range-black.png"/></div>
                 </div>
+
+                <script type="text/javascript">
+                    $(function (){
+                        $(".date-range-part-input").bind("click",function(){
+                            var dateBox = $(this);
+                            if(dateBox.hasClass("__selected")){
+                                return;
+                            }
+                            dateBox.addClass("__selected");
+                            dateBox.find(".date-range-part-input input").focus();
+                        });
+
+                        $(document).bind("click",function(event) {
+                            var e = window.event || event;
+                            //点击除此文本框的位置，改变该文本框显示模式
+                            if ($(e.target).closest(".date-range-part-input").length == 0) {
+                                $(".date-range-part-input").removeClass("__selected");
+                                $(".date-range-part-input").find("input").blur();
+                            }
+                        });
+                    });
+                </script>
             </div>
         </div>
 
     </div>
     <div class="dialog-buttons">
-        <div class=""><span>BACK</span></div>
+        <div class="dialog-button-back btn-back"><span>BACK</span></div>
         <div class="dialog-button-ok btn-ok">OK</div>
     </div>
 </div>
 
 <!--set tag value for search dialog (when search a system tag) end-->
 
+<!-------search tags in input style begin------->
+<div id="cond1" class="search-input-item search-input-tag search-plus" style='background-color:rgba(15,130,230,.75);'>  <!--search-input-words    search-minus-->
+    <div class='search-input-item-content'>
+        <div class="search-input-item-method"></div>
+        <div class='search-input-item-name'>#createtime</div>
+        <div class='search-input-item-value'><span class="__symbol-equal">=</span><span>3/10/2017—18/10/2017</span></div>
+    </div>
+</div>
+
+<div id="cond2" class="search-input-item search-input-tag search-minus" style='background-color:rgba(233,69,69,.75);'>  <!--search-input-words    search-minus-->
+    <div class='search-input-item-content'>
+        <div class="search-input-item-method"></div>
+        <div class='search-input-item-name'>#Big-Man</div>
+        <div class='search-input-item-value'></div>
+    </div>
+</div>
+
+<div id="cond3" class="search-input-item search-input-words">  <!--search-input-words    search-minus-->
+    <div class='search-input-item-content'>
+        <div class="search-input-item-method"></div>
+        <div class='search-input-item-name'>Midinote</div>
+        <div class='search-input-item-value'></div>
+    </div>
+</div>
+<!-------search tags in input style end--------->
+
+
+<!-------search tag edit dialog style begin------->
+<div class="message-dialog search-tag-edit-dialog">
+    <div class="message-dialog-wrapper search-tag-edit-dialog-wrapper position-relative">
+        <div class="dialog-title">EDIT THE NOTE</div>
+        <div class="search-tag-edit-tool-bar">
+            <div class="toolbar-buttons">
+                <div class="toolbar-button toolbar-pic">
+                    <!--#include file='images/tool-pic-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-check">
+                    <!--#include file='images/tool-checkbox-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-command">
+                    <!--#include file='images/tool-command-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-code">
+                    <!--#include file='images/tool-code-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-attach">
+                    <!--#include file='images/tool-attach-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-tag">
+                    <!--#include file='images/tool-tag-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-tag2">
+                    <!--#include file='images/tool-tag2-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-line"></div>
+            </div>
+            <div class="toolbar-commend-words position-relative">
+                <div class="toolbar-commend-pre btn-valid"></div>
+
+                <div class="toolbar-commend-items">
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(124, 82, 32);">#Commend</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(176, 199, 66);">#venture</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(233, 69, 69);">#PuffedFood</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(36, 196, 134);">#expire-date</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(121, 178, 234);">#Shelf</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(190, 201, 70);">#Reading-notes</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(172, 70, 197);">#Projects</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toolbar-commend-next btn-valid"></div>
+            </div>
+        </div>
+
+        <div class="dialog-main">
+            <div class="edit-note">
+                <div class="content-list-note-title">
+                    Officially named:
+                    <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
+                                        #Midinote
+                                    </span>
+                </div>
+                <div class="content-list-note-detail">
+                    Finally chose this name: Midinote from Sutter
+                    </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="edit-note-options">
+            <div class="edit-note-remaining">210</div>
+            <div class="__separate-line"></div>
+            <div class="edit-note-date">01/05/2018</div>
+        </div>
+
+        <div class="dialog-buttons">
+        <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+        <div class="dialog-button-ok btn-ok">Save</div>
+    </div>
+    </div>
+</div>
+<!-------search tag edit dialog style end--------->
+
 <!----------search page end------------>
+
+
+
+<!----------mind map page begin------------>
+
+<!--add tag for one map node dialog (mind map add a tag) begin-->
+<div class="map-add-tag-dialog">
+    <div class="map-add-tag-dialog-wrapper message-dialog-wrapper position-relative">
+        <div class="map-add-tag-add">
+            <div class="dialog-title">ADD A HASHTAG<span class="dialog-title-description">related to #技术线</span></div>
+            <div class="dialog-main">
+                <div class="map-add-tag-form-item">
+                    <div class="form-item-label">#</div>
+                    <div class="form-input">
+                        <input type="text" name="map-add-tag-name"
+                               value="" placeholder="" maxlength="200" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-buttons">
+                <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                <div class="dialog-button-ok btn-ok">Next</div>
+            </div>
+        </div>
+
+        <div class="map-add-tag-exist">
+            <div class="dialog-title">ADD A HASHTAG<span class="dialog-title-description">related to #技术线</span></div>
+            <div class="dialog-main">
+                <div class="map-add-tag-content">
+                    <div class="">#MidiNote</div>
+                    <div class="">
+                        This hash-tag is exist.
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-buttons">
+                <div class="dialog-button-back btn-back"><span>BACK</span></div>
+                <div class="dialog-button-right-part">
+                    <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                    <div class="dialog-button-ok btn-ok">OK</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-add-tag-new">
+            <div class="dialog-title">ADD A HASHTAG<span class="dialog-title-description">related to #技术线</span></div>
+            <div class="dialog-main">
+                <div class="map-add-tag-content">
+                    <div class="">#MM-Note</div>
+                    <div class="">
+                        This hash-tag is new one.
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-buttons">
+                <div class="dialog-button-back btn-back"><span>BACK</span></div>
+                <div class="dialog-button-right-part">
+                    <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                    <div class="dialog-button-ok btn-ok">OK</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--add tag for one map node dialog (mind map add a tag) end-->
+
+<!--tag circle menu begin-->
+<div class="tag-menu-dialog message-dialog">
+    <div class="tag-menu-dialog-wrapper">
+        <ul class="map-tag-menu">
+            <li class="tag-menu-setting">
+                <!--#include file='images/setting-icon.svg'-->
+            </li>
+
+            <li class="tag-menu-delete">
+                <!--#include file='images/tag-menu-delete.svg'-->
+            </li>
+
+            <li class="tag-menu-doc">
+                <!--#include file='images/menu-notes.svg'-->
+            </li>
+
+            <li class="tag-menu-paste tag-menu-invalid-btn">
+                <!--#include file='images/tag-menu-paste.svg'-->
+            </li>
+            <li class="tag-menu-cut">
+                <!--#include file='images/tag-menu-cut.svg'-->
+            </li>
+            <li class="tag-menu-focus">
+                <!--#include file='images/tag-menu-focus.svg'-->
+            </li>
+            <li class="tag-menu-add">
+                <!--#include file='images/tag-menu-delete.svg'-->
+            </li>
+        </ul>
+    </div>
+</div>
+<!--tag circle menu end-->
+
+<!----------mind map page end-------------->

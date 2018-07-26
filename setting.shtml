@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Midinote</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $('#options-setting').bind('change',function(){
+                if($(this).val()=='nothing') {
+                    $(".setting-main-content-email").show();
+                    $(".setting-main-content-form").removeClass("__edit").removeClass("__show");
+                    $(".setting-main-content-psw").hide();
+                } else if($(this).val() == 'email') {
+                    $(".setting-main-content-psw").hide();
+                    var obj = $(".setting-main-content-email");
+                    obj.show();
+                    if(obj.find(".setting-main-content-form").length != 0){
+                        obj.find(".setting-main-content-form").removeClass("__edit").addClass("__show");
+                    }
+                } else if($(this).val() == 'setting-email') {
+                    $(".setting-main-content-psw").hide();
+                    var obj = $(".setting-main-content-form");
+                    if(obj.length == 0) {
+                        return;
+                    }else {
+                        obj.removeClass("__edit").removeClass("__show").addClass("__edit");
+                    }
+                } else if($(this).val() == 'password') {
+                    $(".setting-main-content-email").hide();
+                    $(".setting-main-content-psw").show();
+                } else if ($(this).val() == 'message') {
+                    $(".setting-message-dialog").removeClass("__open").removeClass("__close").addClass("__open");
+                } else if($(this).val() == 'close-message') {
+                    $(".setting-message-dialog").removeClass("__open").removeClass("__close").addClass("__close")
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="dark-style">
+    <div class="page-body">
+        <div class="setting-main">
+            <div class="setting-main-menu">
+                <div class="setting-main-menu-wrapper">
+                    <div class="setting-main-menu-grp">ACCOUNT SETTINGS</div>
+                    <ul>
+                        <li class="setting-main-menu-li __selected">Email Address</li>
+                        <li class="setting-main-menu-li">Change Password</li>
+                    </ul>
+                    <div class="setting-main-separate-line"></div>
+                    <div class="setting-main-menu-grp">SYSTEM SETTINGS</div>
+                    <ul>
+                        <li class="setting-main-menu-li">Language</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="setting-main-content">
+                <div class="setting-main-content-wrapper position-relative">
+
+                    <div class="setting-main-content-email position-relative">
+                        <div class="setting-main-content-title">MY EMAIL</div>
+                        <div class="setting-main-content-form">   <!--__edit-->
+
+                            <div class="form-item setting-show-form">
+                                <div class="form-item-label">EMAIL</div>
+                                <div class="form-input position-relative">
+                                    <div class="setting-email-value">zhangtm26@126.com</div>
+                                    <div class="setting-edit-button btn-ok">Edit</div>
+                                </div>
+                            </div>
+
+                            <div class="setting-form-separate-line"></div>
+
+                            <div class="setting-edit-form">
+                                <div class="form-item">
+                                    <div class="form-item-label __required">EMAIL</div>
+                                    <div class="form-input">
+                                        <input name="setting-email-input" value="zhangtm26@126.com"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-item">
+                                    <div class="form-item-label __required">CURRENT PASSWORD</div>
+                                    <div class="form-input">
+                                        <input name="setting-password-input" type="password"/>
+                                    </div>
+                                </div>
+
+                                <div class="setting-form-buttons">
+                                    <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                                    <div class="dialog-button-ok btn-ok">Save</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-main-content-bg">
+                            <div class="setting-main-content-description">
+                                You can change your email address here.
+                                We will send a email to your new mailbox.
+                            </div>
+                            <div class="setting-main-content-bg-img">
+                                <!--#include file='images/mailbox.svg' -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="setting-main-content-psw position-relative">
+                        <div class="setting-main-content-title">CHANGE PASSWORD</div>
+                        <div class="setting-main-content-form">
+                            <div class="form-item">
+                                <div class="form-item-label __required">CURRENT PASSWORD</div>
+                                <div class="form-input">
+                                    <input name="setting-password-input" type="password"/>
+                                </div>
+                            </div>
+
+                            <div class="form-item">
+                                <div class="form-item-label __required">NEW PASSWORD</div>
+                                <div class="form-input">
+                                    <input name="setting-password-input" type="password"/>
+                                </div>
+                            </div>
+
+                            <div class="form-item">
+                                <div class="form-item-label __required">CONFIRM PASSWORD</div>
+                                <div class="form-input">
+                                    <input name="setting-password-input" type="password"/>
+                                </div>
+                            </div>
+
+                            <div class="setting-form-buttons setting-pwd-form-buttons">
+                                <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                                <div class="dialog-button-ok btn-ok">Save</div>
+                            </div>
+                        </div>
+
+                        <div class="setting-main-content-psw-bg">
+                            <div class="setting-main-content-bg-img">
+                                <!--#include file='images/account-key.svg' -->
+                            </div>
+                            <div class="setting-main-content-description">
+                                Protect your Midinote account.
+                                Once changed password you'll sign in again.
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="sub-page-close">
+                        <!--#include file='images/cross-light-icon.svg' -->
+                    </div>
+
+                    <div class="setting-message-dialog __close">
+                        <div class="position-relative">
+                            <div class="setting-message-main-info __text-green">  <!--__text-red-->
+                                Change Email Address Success!
+                            </div>
+
+                            <div class="setting-message-detail-info">
+                                We sent a confirm email to your postbox, please check it .
+                            </div>
+
+                            <div class="setting-message-dialog-close">
+                                <!--#include file='images/cross-icon.svg' -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
+    <select id="options-setting" style="height: 30px;">
+        <option value="nothing">DEFAULT STATUS</option>
+        <option value="email">Show Email Setting Page</option>
+        <option value="setting-email">Edit Email Address</option>
+        <option value="password">Show PSW Setting Page</option>
+        <option value="message">Show Setting Message</option>
+        <option value="close-message">Close Setting Message</option>
+    </select>
+</div>
+</body>
+</html>

@@ -37,9 +37,16 @@
                 if($(this).hasClass("__open")) {
                     $(this).removeClass("__open").addClass("__close");
                     $(".main-content-widget").addClass("__close");
+
+                    //根据页面大小设置搜索card模式显示的宽度
+                    $(".view-card").addClass("__whole-view");
+
                 } else if ($(this).hasClass("__close")) {
                     $(this).removeClass("__close").addClass("__open");
                     $(".main-content-widget").removeClass("__close");
+
+                    //根据页面大小设置搜索card模式显示的宽度
+                    $(".view-card").removeClass("__whole-view");
                 }
             });
 
@@ -190,13 +197,27 @@
             $('.main-content-notes').bind('scroll',function(event){
                 var scrollTop = $('.main-content-notes').scrollTop();
 
-                if(pScrollTop < scrollTop && scrollTop > 60){
+                if(pScrollTop < scrollTop && scrollTop > 50){
+                    if($('.main-head-title').hasClass("__open")){
+                        return;
+                    }
+
+                    if($('.main-content-search-area').find(".search-input-item").length == 0){
+                        return;
+                    }
+
                     $('.main-content-search-area').removeClass('__open').addClass('__close');
                     $('.main-head-title').removeClass('__close').addClass("__open");
+                    $('.main-head-title').html($('.main-content-search-items').prop("outerHTML"));
                 }
                 if(pScrollTop > scrollTop && scrollTop < 40){
+                    if($('.main-head-title').find(".main-content-search-items").length == 0){
+                        return;
+                    }
+
                     $('.main-content-search-area').removeClass('__close').addClass('__open');
                     $('.main-head-title').removeClass("__open").addClass("__close");
+                    $('.main-head-title').html('SEARCH MY NOTES');
                 }
                 pScrollTop = scrollTop;
             });
@@ -204,7 +225,13 @@
 
             $('#options-search').bind('change',function(){
                 if($(this).val()=='nothing') {
-                    $(".search-tag-dialog").removeClass("__open").addClass("__close");
+
+                    if($(".search-tag-dialog").hasClass("__open")) {
+                        $(".search-tag-dialog").removeClass("__open").addClass("__close");
+                    }
+                    if($(".search-setting-value-dialog").hasClass("__open")){
+                        $(".search-setting-value-dialog").removeClass("__open").addClass("__close");
+                    }
 
                 } else if($(this).val()=='select-tag') {
                     $(".search-tag-words").hide();
@@ -229,6 +256,78 @@
                     }else {
                         $(".search-setting-value-dialog").removeClass("__close").addClass("__open");
                     }
+                } else if($(this).val() == 'add-search-con1') {
+                    var pObj = $(".main-content-search-items");
+                    pObj.append($("#cond1"));
+                    $("#cond1").show();
+
+                    if($(".search-input-icon").hasClass("search-input-icon-delete")) {
+                        $(".search-input-icon").addClass("search-input-icon-search").removeClass("search-input-icon-delete");
+                    }else {
+                        $(".search-input-icon").addClass("search-input-icon-delete").removeClass("search-input-icon-search");
+                    }
+                } else if($(this).val() == 'add-search-con2') {
+                    var pObj = $(".main-content-search-items");
+                    pObj.append($("#cond2"));
+                    $("#cond2").show();
+
+                    if($(".search-input-icon").hasClass("search-input-icon-delete")) {
+                        $(".search-input-icon").addClass("search-input-icon-search").removeClass("search-input-icon-delete");
+                    }else {
+                        $(".search-input-icon").addClass("search-input-icon-delete").removeClass("search-input-icon-search");
+                    }
+                } else if($(this).val() == 'add-search-con3') {
+                    var pObj = $(".main-content-search-items");
+                    pObj.append($("#cond3"));
+                    $("#cond3").show();
+
+                    if($(".search-input-icon").hasClass("search-input-icon-delete")) {
+                        $(".search-input-icon").addClass("search-input-icon-search").removeClass("search-input-icon-delete");
+                    }else {
+                        $(".search-input-icon").addClass("search-input-icon-delete").removeClass("search-input-icon-search");
+                    }
+                } else if($(this).val() == 'search-list-view') {
+                    var obj = $(".main-content-notes-list");
+                    obj.removeClass("view-card").removeClass("view-list").addClass("view-list");
+                } else if($(this).val() == 'search-card-view') {
+                    var obj = $(".main-content-notes-list");
+                    obj.removeClass("view-card").removeClass("view-list").addClass("view-card");
+                } else if($(this).val()=='search-edit-note') {
+                    var obj = $(".search-tag-edit-dialog");
+                    if(obj.hasClass("__open")){
+                        obj.removeClass("__open").addClass("__close");
+                        backdropClose();
+                    }else {
+                        obj.addClass("__open").removeClass("__close");
+                        backdropOpen();
+                    }
+                } else if($(this).val()=='search-edit-note-close') {
+                    var obj = $(".search-tag-edit-dialog");
+                    if(obj.hasClass("__open")){
+                        obj.removeClass("__open").addClass("__close");
+                        backdropClose();
+                    }else {
+                        obj.addClass("__open").removeClass("__close");
+                        backdropOpen();
+                    }
+                } else if($(this).val() == 'search-record') {
+                    $(".main-content-notes-list").hide();
+                    $(".main-content-search-records").show();
+                    $(".main-content-blank").hide();
+                } else if($(this).val() == 'search-result') {
+                    $(".main-content-search-records").hide();
+                    $(".main-content-notes-list").show();
+                    $(".main-content-blank").hide();
+                } else if($(this).val() == 'search-no-result') {
+                    $(".main-content-search-records").hide();
+                    $(".main-content-notes-list").hide();
+                    $(".main-content-blank.__no-data").show();
+                    $(".main-content-blank.__get-started").hide();
+                } else if($(this).val() == 'search-start') {
+                    $(".main-content-search-records").hide();
+                    $(".main-content-notes-list").hide();
+                    $(".main-content-blank.__no-data").hide();
+                    $(".main-content-blank.__get-started").show();
                 }
             });
 
@@ -284,38 +383,42 @@
             </div>
 
             <div class="main-content">
-                <div class="main-content-center">
+                <div class="main-content-center position-relative">
                     <div class="main-content-notes main-content-search">
                         <div class="main-content-search-area">
-                            <div class="main-content-search-input">
-                                <input class="search-input" placeholder="" />
-                                <div class="search-input-icon"></div>
+                            <div class="main-content-search-input position-relative">
+                                <div class="main-content-search-items"></div>
+                                <input class="search-input" />
+                                <div class="search-input-icon search-input-icon-search"></div>
                             </div>
                         </div>
 
                         <div class="main-content-notes-list">
-                            <div class="content-notes-list-note">
-                                <div class="content-list-note-title">
-                                    Maybe the description of this book is more objective and real
-                                </div>
-                                <div class="content-list-note-detail">
-                                    I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
-                                </div>
-                                <div class="content-list-note-detail">
-                                    In the foreword of the “Code of Work” of the political organization of the Socialist Party
-                                    <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
-                                </div>
-                                <div class="content-list-note-detail">
-                                    <span class="tag-name">#Midinote</span>!
-                                </div>
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Maybe the description of this book is more objective and real
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                        <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        <span class="tag-name">#Midinote</span>!
+                                    </div>
 
-                                <div class="content-list-note-date">03/06/2018</div>
-                                <div class="content-list-note-options">
-                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    <div class="content-list-note-date">03/06/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="content-notes-list-note">
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Officially named:
                                     <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
@@ -331,7 +434,10 @@
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
                                 </div>
                             </div>
-                            <div class="content-notes-list-note">
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Tragic <span class="tag-name" style="color:rgba(113,189,126,1)">#lesson</span>
                                 </div>
@@ -346,8 +452,10 @@
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
                                 </div>
                             </div>
+                            </div>
 
-                            <div class="content-notes-list-note">
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Maybe real
                                 </div>
@@ -360,8 +468,10 @@
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
                                 </div>
                             </div>
+                            </div>
 
-                            <div class="content-notes-list-note">
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Maybe the description of this book is more objective and real
                                 </div>
@@ -381,8 +491,10 @@
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
                                 </div>
                             </div>
+                            </div>
 
-                            <div class="content-notes-list-note">
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Officially named:
                                     <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
@@ -398,8 +510,198 @@
                                     <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
                                 </div>
                             </div>
+                            </div>
 
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Tragic <span class="tag-name" style="color:rgba(113,189,126,1)">#lesson</span>
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        Released to the online version of the development, resulting in the version of oliver is not available, looking for a long time to find that I was in the development of a index to join, but it is manually added, so there is no online version of oliver this thing The result is incorrect.
+                                        to sum up: <span class="tag-name">#Midinote</span>
+
+                                        The more artificial things, the more possibilities I make mistakes, and the more I get the program to do things, the more reliable and labor-saving I am.
+                                    </div>
+                                    <div class="content-list-note-date">02/18/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Maybe real
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                        </br><span class="tag-name">#Midinote</span>!
+                                    </div>
+                                    <div class="content-list-note-date">03/06/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Maybe the description of this book is more objective and real
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                        <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        <span class="tag-name">#Midinote</span>!
+                                    </div>
+
+                                    <div class="content-list-note-date">03/06/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!--0 search result display part-->
+                        <div class="main-content-blank __no-data">
+                            <div class="main-content-bg-img"></div>
+                            <p>We have searched the entire galaxy,
+                                but sorry,we did’nt find what your want.</p>
+                        </div>
+
+
+                        <!--search get started-->
+                        <div class="main-content-blank __get-started">
+                            <div class="main-content-bg-img"></div>
+                            <p>LET'S GET STARTED!</p>
+                        </div>
+
+
+                        <!--search saved records-->
+                        <div class="main-content-search-records search-records" style="display:none;">
+                            <div class="search-records-content">
+                                <div class="search-records-title">
+                                    <span>Saved search & History search</span>
+                                </div>
+
+                                <div class="search-records-list">
+                                    <div class="search-record-item-wrapper position-relative" >
+                                        <div class="search-record-item">
+                                            <div class="search-record-item-icon search-saved"></div>   <!--search-history-->
+                                            <div class="search-record-item-content">
+                                                <div class="search-record-condition search-input-tag search-plus" style='background-color:rgba(15,130,230,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#createtime</div>
+                                                        <div class='search-input-item-value'><span class="__symbol-equal">=</span><span>3/10/2017—18/10/2017</span></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-tag search-minus" style='background-color:rgba(233,69,69,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#Big-Man</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-words">
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>Midinote</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="search-record-item-delete">
+                                            <!--#include file='images/cross-light-icon.svg' -->
+                                        </div>
+                                    </div>
+
+                                    <div class="search-record-item-wrapper position-relative" >
+                                        <div class="search-record-item">
+                                            <div class="search-record-item-icon search-saved"></div>
+                                            <div class="search-record-item-content">
+                                                <div class="search-record-condition search-input-tag search-plus" style='background-color:rgba(206,27,251,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#WebDesign</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-words">
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>so-much</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-tag search-minus" style='background-color:rgba(0,146,78,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#abandoned</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="search-record-item-delete">
+                                            <!--#include file='images/cross-light-icon.svg' -->
+                                        </div>
+                                    </div>
+
+                                    <div class="search-record-item-wrapper position-relative" >
+                                        <div class="search-record-item">
+                                            <div class="search-record-item-icon search-history"></div>
+                                            <div class="search-record-item-content">
+                                                <div class="search-record-condition search-input-tag search-plus" style='background-color:rgba(250,166,26,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#WebDesign</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-tag search-minus" style='background-color:rgba(67,181,129,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#abandoned</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="search-record-item-delete">
+                                            <!--#include file='images/cross-light-icon.svg' -->
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="search-records-remaining"></div>
+
+                            <div class="search-records-bg">
+                                <!--#include file='images/search-records-bg.svg' -->
+                            </div>
+                        </div>
+
+
                     </div>
 
                     <div class="main-content-options">
@@ -427,7 +729,8 @@
     </div>
 </div>
 
-<!--#include file='common.shtml' -->
+<!-- here to put common html fragments -->
+<div id='commonDiv' ></div>
 
 <div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
     <select id="options-search" style="height: 30px;">
@@ -435,7 +738,30 @@
         <option value="select-tag">SEARCH--Select Tag</option>
         <option value="select-key-words">SEARCH--Select Key Words</option>
         <option value="set-tag-value">Set Tag Value Dialog</option>
+        <option value="add-search-con1">Add 1st Search Condition</option>
+        <option value="add-search-con2">Add 2nd Search Condition</option>
+        <option value="add-search-con3">Add 3rd Search Condition</option>
+        <option value="search-list-view">Search List View</option>
+        <option value="search-card-view">Search Card View</option>
+        <option value="search-edit-note">Edit A Note</option>
+        <option value="search-edit-note-close">Close Edit A Note</option>
+        <option value="search-record">Show Search Records list</option>
+        <option value="search-start">Show Search Start</option>
+        <option value="search-result">Show Search Result list</option>
+        <option value="search-no-result">Show Search NO Result</option>
     </select>
 </div>
+
 </body>
 </html>
+
+<!-- to load common html -->
+<script type="text/javascript">
+    console.log('where is jQuery:',$)
+    $(document).ready(function(){
+        console.log('begin load common html')
+        $('#commonDiv').load('common.shtml',function(){
+            console.log('finished')
+        })
+    })
+</script>
