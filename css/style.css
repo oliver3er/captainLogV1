@@ -5631,7 +5631,6 @@
     animation-fill-mode: forwards;
 
     transition: box-shadow .15s ease-in-out;
-    pointer-events: none;
     cursor: default;
 }
 
