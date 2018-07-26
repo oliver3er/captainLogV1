@@ -5646,7 +5646,6 @@
     -webkit-animation-timing-function: cubic-bezier(0.18, 0.38, 0.49, 1.47);
     animation-timing-function: cubic-bezier(0.18, 0.38, 0.49, 1.47);
     pointer-events: auto;
-
 }
 
 .main-content-tags-nothing:hover {
