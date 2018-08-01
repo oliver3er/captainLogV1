@@ -598,3 +598,8 @@
 	margin	: 5px;
 	color	: red;
 }
+
+.highlight	{
+	background	: yellow;
+	color		: black;
+}
