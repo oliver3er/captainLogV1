@@ -603,3 +603,13 @@
 	background	: yellow;
 	color		: black;
 }
+
+.mind-map-content-main{
+	/* The mindmap cursor should be grab to tell user it can be moved */
+	cursor		: grab;
+}
+
+.main-content-widget-content{
+	/* The mindmap cursor should be grab to tell user it can be moved */
+	cursor		: grab;
+}
