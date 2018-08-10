@@ -3198,7 +3198,7 @@
     visibility: hidden;
     z-index: 10;
     pointer-events: none;
-    box-shadow: 0 30px 90px -20px rgba(0,0,0,.3), 0 0 1px #a2a9b1;
+    box-shadow: 0 30px 90px -20px rgba(0,0,0,.3);  /*, 0 0 1px #a2a9b1*/
 
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
@@ -3260,35 +3260,48 @@
     border: 8px solid transparent;
 }
 
-.tag-info-dialog-arrow.bottom-right {
-    bottom: -16px;
-    right: 12px;
-}
-
 .tag-info-dialog-arrow.top-left {
     top: -16px;
     left: 12px;
 }
 
-.tag-info-dialog-arrow.top-left:before {
+.tag-info-dialog-arrow.top-left:before, .tag-info-dialog-arrow.top-right:before {
     top: 0;
     border-bottom-color: #a2a9b1;
 }
 
-.tag-info-dialog-arrow.top-left:after {
+.tag-info-dialog-arrow.top-left:after, .tag-info-dialog-arrow.top-right:after {
     top: 1px;
     border-bottom-color: #d6dbe5;
 }
 
-.tag-info-dialog-arrow.bottom-right:before {
+.tag-info-dialog-arrow.top-right {
+    top: -16px;
+    right: 12px;
+}
+
+
+.tag-info-dialog-arrow.bottom-right {
+    bottom: -16px;
+    right: 12px;
+}
+
+.tag-info-dialog-arrow.bottom-left {
+    bottom: -16px;
+    left: 12px;
+}
+
+.tag-info-dialog-arrow.bottom-right:before, .tag-info-dialog-arrow.bottom-left:before {
     bottom: 0;
     border-top-color: #a2a9b1;
 }
 
-.tag-info-dialog-arrow.bottom-right:after {
+.tag-info-dialog-arrow.bottom-right:after, .tag-info-dialog-arrow.bottom-left:after {
     bottom: 1px;
     border-top-color: #d6dbe5;
 }
+
+
 
 .tag-info-dialog-head {
     width: 100%;
