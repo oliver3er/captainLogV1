@@ -3194,7 +3194,7 @@
     visibility: hidden;
     z-index: 10;
     pointer-events: none;
-    box-shadow: 0 30px 90px -20px rgba(0,0,0,.3), 0 0 1px #a2a9b1;
+    box-shadow: 0 30px 90px -20px rgba(0,0,0,.3);  /*, 0 0 1px #a2a9b1*/
 
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
