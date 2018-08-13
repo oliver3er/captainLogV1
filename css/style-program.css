@@ -276,6 +276,20 @@
 	color: #ff5151;
 }
 
+.edit-note .rest-number {
+	position: absolute;
+	right: 5px;
+	bottom: 3px;
+	color: #8dbee8;
+	transition	: all .5s ease;
+}
+.edit-note .rest-number.warning {
+	color: #e6aa23;
+}
+.edit-note .rest-number.error{
+	color: #ff5151;
+}
+
 .content-notes-list-note.list-one-selected .tiny-toolbar{
 	position: absolute;
 	right: 5px;
@@ -612,4 +626,34 @@
 .main-content-widget-content{
 	/* The mindmap cursor should be grab to tell user it can be moved */
 	cursor		: grab;
+}
+
+.temp-sticky-icon {
+	border	: 1px solid gray;
+	border-radius	: 2px;
+}
+
+.temp-hashtag-sticky{
+    position: absolute;
+    display: flex;
+    right: 160px;
+    top: 17px;
+}
+
+.temp-sticky {
+	position	: relative;
+}
+
+.temp-sticky-button {
+	position	: absolute;
+	right		: 0;
+	top			: 0;
+	background	: white;
+	color		: black;
+	cursor		: pointer;
+}
+
+.temp-sticky-button:hover{
+	background	: black;
+	color		: white;
 }
