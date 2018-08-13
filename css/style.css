@@ -2373,6 +2373,7 @@
 
 .main-content-notes-list {
     margin: 0 0 10px;
+    z-index: 1;
 }
 
 
@@ -2401,6 +2402,23 @@
     height: 65%;
     margin-bottom: 40px;
 }
+
+
+.few-note-decoration {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    width: 240px;
+    height: auto;
+    z-index: 0;
+}
+
+.few-note-decoration svg {
+    width: 240px;
+    height: auto;
+}
+
 
 .__no-data .main-content-bg-img {
     background: url('../images/search-no-result.svg') no-repeat center bottom;
