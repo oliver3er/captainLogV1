@@ -462,6 +462,9 @@
                     menu.show();
                     menu.removeClass("__close");
                     menu.addClass("__open");
+                }else if($(this).val() == 'few-content') {
+                    $(".main-content-notes-list .content-notes-list-note:not(:first-child)").remove();
+                    $(".few-note-decoration").show();
                 }
 
 
@@ -634,7 +637,7 @@
                             </div>
 
                         </div>
-                        <div class="main-content-notes-list">
+                        <div class="main-content-notes-list position-relative">
                             <div class="content-notes-list-note">
                                 <div class="content-list-note-title">
                                     Maybe the description of this book is more objective and real
@@ -753,6 +756,15 @@
                             </div>-->
                         </div>
                     </div>
+
+
+
+                    <!--decoration when big space blank-->
+                    <div class="few-note-decoration">
+                        <!--#include file='images/fist.svg' -->
+                    </div>
+
+
                 </div>
                 <!-----------widget begin------------>
                 <div class="main-content-widget">
@@ -859,6 +871,7 @@
         <option value="open-tool-bar">Open Tool-Bar</option>
         <option value="close-tool-bar">Close Tool-Bar</option>
         <option value="click-one-note">Click one Note</option>
+        <option value="few-content">Only One Note Here</option>
         <option value="click-note-img">Click Note IMG</option>
         <option value="close-note-img">Close Note IMG</option>
         <option value="delete-note">Delete The Note</option>
