@@ -1243,12 +1243,11 @@
 }
 
 .dialog-main {
-    flex: 1 1 0%;
+    flex: 1 1 auto;
     min-height: 1px;
-    height: 100%;
     padding-right: 4px;
-    /*overflow-y: overlay;*/
     overflow-y: auto;
+    overflow-y: overlay;
     overflow-x: hidden;
 
     font-size: .16rem;
@@ -1355,7 +1354,6 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    position: absolute;
     max-height: 82vh;
     max-width: 90%;
     border-radius: 1px;
@@ -1712,7 +1710,6 @@
     transition: opacity .15s;
 }
 
-
 .head-location-fb .button-svg-icon-valid div {
     opacity: .65;
 }
@@ -2000,7 +1997,7 @@
     border-bottom-right-radius: 4px;
     background-color: rgba(42,44,48,.95);
     box-sizing: border-box;
-    z-index: 1;
+    z-index: 10;
 
     height: 0;
     transition: height .15s ease-out;
@@ -2321,10 +2318,10 @@
     box-sizing: border-box;
     padding-left: 6px;
     padding-right: 16px;
+    padding-top: 10px;
     color: #f4f4f4;
     font-size: .16rem;
     letter-spacing: 1px;
-    line-height: 36px;
     white-space: nowrap;
     overflow: hidden;
     transition: all .2s;
@@ -2386,13 +2383,21 @@
 .main-content-blank {
     display: none;
     width: 100%;
-    height: 85%;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 170px);
     margin: 40px auto 30px;
     text-align: center;
 }
 
+.main-content-blank-wrapper {
+    width: 100%;
+    height: 85%;
+}
+
 .main-content-blank p {
-    width: 370px;
+    max-width: 370px;
     height: 50px;
     line-height: .2rem;
     text-indent: .1rem;
@@ -2422,7 +2427,7 @@
 
 .few-note-decoration svg {
     width: 240px;
-    height: auto;
+    max-height: 220px;
 }
 
 
@@ -2723,8 +2728,8 @@
 
 /**************hash-tag (value) setting begin****************/
 .tag-setting-dialog-wrapper, .tag-v-setting-dialog-wrapper {
-    position: absolute;
     width: 520px;
+    max-width: 520px;
     height: 80vh;
     border-radius: 3px;
     overflow: hidden;
@@ -3151,7 +3156,6 @@
 
 /********delete note confirm dialog begin*******/
 .delete-confirm-dialog-wrapper {
-    position: absolute;
     width: 440px;
     border-radius: 3px;
     overflow: hidden;
@@ -3931,7 +3935,7 @@
 }
 
 .map-detail .map-detail-info {
-    font-size: .1rem;
+    font-size: .12rem;
     font-weight: 400;
     line-height: 16px;
 }
@@ -3960,7 +3964,6 @@
 /***************The first load-in page style begin******************/
 
 .first-load-dialog-wrapper {
-    position: absolute;
     width: 800px;
     min-height: 1px;
     max-height: 100%;
@@ -3973,9 +3976,6 @@
     color: #7c7e83;
     border: 1px solid rgba(28,36,43,.6);
     box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
-    /*background: url("../images/settings-bg1.svg") no-repeat 95% 35%,url("../images/settings-bg2.svg") no-repeat 0 15%,#f6f6f6;*/
-    /*background: url("../images/welcome1.svg") no-repeat center center, #cae0f9;*/
-    /*background-size: auto 480px,auto 160px;*/
 }
 
 .first-load-dialog-main {
@@ -3984,7 +3984,7 @@
     align-items: center;
     height: 600px;
     width: 100%;
-    background: url("../images/welcome1.svg") no-repeat center center, #cae0f9;
+    background: url("../images/welcome.svg") no-repeat center center, #cae0f9;
 }
 
 .first-load-dialog-head {
@@ -4439,7 +4439,6 @@
     flex: 1 1 auto;
     width: 100%;
     height: 50px;
-    line-height: 50px;
     padding-right: 50px;
     border-radius: 6px;
     font-size: .18rem;
@@ -4885,8 +4884,8 @@
 /******search tag edit dialog style begin********/
 
 .search-tag-edit-dialog-wrapper {
-    position: absolute;
     width: 800px;
+    max-width: 800px;
     height: 420px;
     border-radius: 3px;
     overflow: hidden;
@@ -5293,7 +5292,6 @@
 .map-add-tag-form-item {
     display: flex;
     align-items: center;
-    height: 100%;
     padding-bottom: 24px;
 }
 
@@ -5314,10 +5312,6 @@
     display: flex;
     flex-direction: row;
     flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    min-height: 1px;
-    height: 100%;
 }
 
 .map-add-tag-new .dialog-buttons, .map-add-tag-exist .dialog-buttons {
@@ -5621,7 +5615,7 @@
 
 .list-tag-head-main-related svg {
     width: 16px;
-    height: auto;
+    height: 16px;
 }
 
 .list-tag-head-main-related .tag-info {
@@ -5662,9 +5656,11 @@
 }
 
 .main-content-tags-nothing {
+    display: none;
     visibility: hidden;
     position: absolute;
-    display: flex;
+    top: 0;
+
     flex-direction: column;
     align-items: stretch;
     margin: 20px 24px;
@@ -5682,6 +5678,8 @@
 }
 
 .__open.main-content-tags-nothing {
+    display: flex;
+    top: auto;
     -webkit-animation-name: dialog-appear-from-top;
     animation-name: dialog-appear-from-top;
     -webkit-animation-duration: 0.15s;
