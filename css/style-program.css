@@ -674,3 +674,15 @@
     text-align: center;
 	padding-top	: 5px;
 }
+
+.temp-viewer-doc-editor {
+	font-size	: 14px;
+	background	: white;
+	color		: black;
+}
+
+.rdw-editor .public-DraftEditor-content {
+	min-height		: 500px;
+	max-height		: 80vh;
+	overflow		: auto;
+}
