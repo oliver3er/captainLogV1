@@ -3,16 +3,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px"
 	 height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
-<g id="orign" display="none">
-	<path display="inline" fill="#498CF3" d="M40,36.04c0,2.203-1.785,3.988-3.987,3.988H3.988C1.786,40.028,0,38.243,0,36.04V4.015
-		c0-2.202,1.786-3.988,3.988-3.988h32.024C38.215,0.027,40,1.813,40,4.015V36.04z"/>
-	<g display="inline">
-		<path d="M18.007,40l2.545-11.502h-4.909L13.044,40H8.497l2.6-11.502H5.412l0.956-4.445h5.703l1.831-8.161H8.405l0.956-4.445h5.544
-			L17.5-0.001h4.547l-2.595,11.448h4.957l2.54-11.448h4.576l-2.569,11.448h5.634l-0.956,4.445h-5.701l-1.786,8.161h5.705
-			l-1.002,4.445H25.1L22.553,40H18.007z M21.575,24.053l1.813-8.161h-4.915l-1.853,8.161H21.575z"/>
-	</g>
-</g>
-<g id="图层_2">
+<g>
 	<g>
 		<polygon fill="#498CF3" points="27.068,0 21.917,0 19.425,10.993 24.63,10.993 		"/>
 		<polygon fill="#498CF3" points="18.397,15.66 16.452,24.228 21.654,24.228 23.558,15.66 		"/>
