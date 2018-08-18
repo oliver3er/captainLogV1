@@ -686,3 +686,26 @@
 	max-height		: 80vh;
 	overflow		: auto;
 }
+
+.temp-trigger-container {
+	display		: flex;
+}
+
+.temp-trigger-container > div{
+    background: white;
+	color		: black;
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+	margin: 5px;
+	position	: relative;
+	padding		: 10px;
+}
+
+.temp-trigger-container > div > div{
+	position	: absolute;
+	right		: 2px;
+	top			: 2px;
+	cursor		: pointer;
+	font-size	: 12px;
+}
