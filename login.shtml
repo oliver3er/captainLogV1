@@ -53,7 +53,7 @@
 
             <div class="auth-main">
                 <div class="auth-main-logo">
-                    <div></div>
+                    <!--#include file='images/logo.svg' -->
                 </div>
                 <div class="auth-main-content">
                     <!---------------------------user login form begin--------------------------->
