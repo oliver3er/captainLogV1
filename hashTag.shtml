@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Midinote</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $(".main-menu-li-notes").bind('click',function(){
+                window.location='index.shtml';
+            });
+
+            $(".main-menu-li-map").bind('click',function(){
+                window.location='mindMap.shtml';
+            });
+
+            $(".main-menu-li-search").bind('click',function(){
+                window.location='search.shtml';
+            });
+
+
+
+            var pScrollTop = 0;
+            //滚动条向上滚动时，title变化
+            $('.main-content-notes').bind('scroll',function(event){
+                var scrollTop = $('.main-content-notes').scrollTop();
+
+                if(pScrollTop < scrollTop && scrollTop > 50){
+                    if($('.main-head-title').hasClass("__open")){
+                        return;
+                    }
+
+                    if($('.main-content-search-area').find(".search-input").val() == ''){
+                        return;
+                    }
+
+                    $('.main-content-search-area').removeClass('__open').addClass('__close');
+                    $('.main-head-title').removeClass('__close').addClass("__open");
+                    $('.main-head-title').html($('.search-input').val());
+                }
+                if(pScrollTop > scrollTop && scrollTop < 40){
+                    if($('.main-head-title').html() == ''){
+                        return;
+                    }
+
+                    $('.main-content-search-area').removeClass('__close').addClass('__open');
+                    $('.main-head-title').removeClass("__open").addClass("__close");
+                    $('.main-head-title').html('SEARCH MY NOTES');
+                }
+                pScrollTop = scrollTop;
+            });
+
+
+            $('#options-tag').bind('change',function(){
+                if($(this).val()=='nothing') {
+                    $(".main-content-tags").show();
+                    $(".main-content-tags-list").hide();
+                    $(".main-content-tags-nothing").removeClass("__open");
+                } else if($(this).val() == 'tag-result') {
+                    $(".main-content-tags").hide();
+                    $(".main-content-tags-list").show();
+                    $(".main-content-tags-nothing").removeClass("__open");
+                } else if($(this).val() == 'add-tag') {
+                    $(".main-content-tags").hide();
+                    $(".main-content-tags-list").hide();
+                    $(".main-content-tags-nothing").addClass("__open");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="dark-style">
+    <div class="page-body">
+        <div class="main-menu main-menu-wrapper">
+            <div class="main-menu-bar">
+                <div class="flex-vertical">
+                    <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
+                    <div class="main-menu-ul">
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-notes">
+                                <!--#include file='images/menu-notes.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-map">
+                                <!--#include file='images/menu-map.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li main-menu-li-selected">
+                            <div class="main-menu-li-icon main-menu-li-tags">
+                                <!--#include file='images/menu-tags.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-search">
+                                <!--#include file='images/menu-search.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-user">
+                <div class="main-menu-user-icon"></div>
+            </div>
+        </div>
+
+        <div class="main-block">
+            <div class="main-head">
+                <div class="main-head-location">
+                    <div class="main-head-title">SEARCH MY HASHTAGS</div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="main-content-center position-relative">
+                    <div class="main-content-notes main-content-tag position-relative">
+                        <div class="main-content-search-area">
+                            <div class="main-content-search-input">
+                                <div class="main-content-search-items"></div>
+                                <input class="search-input" />
+                            </div>
+                        </div>
+
+                        <div class="main-content-tags" style="display:none;">
+                            <div class="main-content-tags-block">
+                                <div class="main-content-tags-title">
+                                    <div class="tags-frequently-icon"><!--#include file='images/star-icon.svg' --></div>
+                                    <div>Frequently-used</div>
+                                </div>
+                                <div class="main-content-tags-content">
+                                    <div class="tag-name">#Reading</div>
+                                    <div class="tag-name">#HitlerAscent</div>
+                                    <div class="tag-name">#VolkerUlrich</div>
+                                    <div class="tag-name">#Reading</div>
+                                    <div class="tag-name">#HitlerAscent</div>
+                                    <div class="tag-name">#VolkerUlrich</div>
+                                    <div class="tag-name">#Reading</div>
+                                    <div class="tag-name">#HitlerAscent</div>
+                                    <div class="tag-name">#VolkerUlrich</div>
+                                    <div class="tag-name">#Reading</div>
+                                    <div class="tag-name">#HitlerAscent</div>
+                                    <div class="tag-name">#VolkerUlrich</div>
+                                    <div class="tag-name">#Reading</div>
+                                    <div class="tag-name">#HitlerAscent</div>
+                                    <div class="tag-name">#VolkerUlrich</div>
+                                </div>
+                            </div>
+
+                            <div class="main-content-tags-block">
+                                <div class="main-content-tags-title">
+                                    <div class="tags-latest-icon"><!--#include file='images/latest-icon.svg' --></div>
+                                    <div>Latest</div>
+                                </div>
+                                <div class="main-content-tags-content">
+                                    <div class="tag-name">#Reading</div>
+                                    <div class="tag-name">#HitlerAscent</div>
+                                    <div class="tag-name">#VolkerUlrich</div>
+                                </div>
+                            </div>
+
+                            <div class="main-content-tags-block">
+                                <div class="main-content-tags-title">
+                                    <div class="tags-index-icon"><!--#include file='images/index-icon.svg' --></div>
+                                    <div>Keyword index</div>
+                                </div>
+                                <div class="main-content-tags-index">
+                                    <div class="tags-index-name">A</div>
+                                    <div class="tags-index-content"><span class="tag-name">#Reading</span></div>
+                                    <div class="tags-index-content"><span class="tag-name">#HitlerAscent</span></div>
+                                    <div class="tags-index-content"><span class="tag-name">#VolkerUlrich</span></div>
+
+                                    <div class="tags-index-name">B</div>
+                                    <div class="tags-index-content"><span class="tag-name">#Reading</span></div>
+                                    <div class="tags-index-content"><span class="tag-name">#HitlerAscent</span></div>
+                                    <div class="tags-index-content"><span class="tag-name">#VolkerUlrich</span></div>
+
+                                    <div class="tags-index-name">C</div>
+                                    <div class="tags-index-content"><span class="tag-name">#Reading</span></div>
+                                    <div class="tags-index-content"><span class="tag-name">#HitlerAscent</span></div>
+                                    <div class="tags-index-content"><span class="tag-name">#VolkerUlrich</span></div>
+
+                                    <div class="tags-index-name">D</div>
+                                    <div class="tags-index-content"><span class="tag-name">#Reading</span></div>
+                                    <div class="tags-index-content"><span class="tag-name">#HitlerAscent</span></div>
+                                    <div class="tags-index-content"><span class="tag-name">#VolkerUlrich</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-content-tags-list" style="display:none;">
+                            <!--one tag info block begin-->
+                            <div class="content-tags-list-tag">
+                                <div class="list-tag-head">
+                                    <div class="list-tag-head-avatar __picture-img-tall">   <!--__picture-img-tall\__picture-svg-->
+                                        <svg xmlns="http://www.w3.org/2000/svg" >
+                                            <defs>
+                                                <clipPath id="tag-info-avatar-icon-mask" transform="matrix(1 0 0 1 0 0)">
+                                                    <path d="M40,38.881c0,0.619-0.5,1.12-1.119,1.12H1.12C0.501,40.001,0,39.5,0,38.881V1.12C0,0.501,0.501,0,1.12,0h37.76
+	C39.5,0,40,0.501,40,1.12V38.881z"/>
+                                                </clipPath>
+                                            </defs>
+                                            <img src="images/temp/president.jpg" x="0" y="0" clip-path="url(#tag-info-avatar-icon-mask)"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="list-tag-head-main">
+                                        <div class="list-tag-head-main-name">
+                                            <span class="tag-name">#HitlerAscent</span>
+                                        </div>
+                                        <div class="list-tag-head-main-related">
+                                            <div class="tag-info-create-icon">
+                                                <!--#include file='images/create-date-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">3 Jun,2018</div>
+                                            <div class="tag-info-related-icon">
+                                                <!--#include file='images/related-notes-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">35</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-tag-content">
+                                    <div class="list-tag-content-definition">
+                                        It was a global war that lasted from 1939 to 1945, although related conflicts began earlier. The vast majority of the world's countries .
+                                    </div>
+
+                                    <div class="list-tag-content-info">
+                                        <div>Alias:</div>
+                                        <div>
+                                            <span class="tag-name">#Hitler</span>
+                                            <span>#warII</span>
+                                            <span>#The-Great-Dictator</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="list-tag-content-info">
+                                        <div>Equal to:</div>
+                                        <div>
+                                            <span class="tag-name">#Hitler</span>
+                                            <span>#warII</span>
+                                            <span>#The-Great-Dictator</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="list-tag-content-navigation">
+                                        <div>Navigation:</div>
+                                        <div>
+                                            <span>#olivepop > #Reading > #HitlerAscent</span>
+                                            <span>#The-Great-Dictator > #Health > #running</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--one tag info block end-->
+
+                            <div class="content-tags-list-tag">
+                                <div class="list-tag-head">
+                                    <div class="list-tag-head-avatar">   <!--__picture-img-tall\__picture-svg-->
+                                        <svg xmlns="http://www.w3.org/2000/svg" >
+                                            <defs>
+                                                <clipPath id="tag-info-avatar-icon-mask" transform="matrix(1 0 0 1 0 0)">
+                                                    <path d="M40,38.881c0,0.619-0.5,1.12-1.119,1.12H1.12C0.501,40.001,0,39.5,0,38.881V1.12C0,0.501,0.501,0,1.12,0h37.76
+	C39.5,0,40,0.501,40,1.12V38.881z"/>
+                                                </clipPath>
+                                            </defs>
+                                            <img src="images/temp/640px-The_Vyne_House.jpg" x="0" y="0" clip-path="url(#tag-info-avatar-icon-mask)"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="list-tag-head-main">
+                                        <div class="list-tag-head-main-name">
+                                            <span class="tag-name">#HitlerAscent</span>
+                                        </div>
+                                        <div class="list-tag-head-main-related">
+                                            <div class="tag-info-create-icon">
+                                                <!--#include file='images/create-date-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">3 Jun,2018</div>
+                                            <div class="tag-info-related-icon">
+                                                <!--#include file='images/related-notes-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">35</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-tag-content">
+                                    <div class="list-tag-content-definition">
+                                        It was a global war that lasted from 1939 to 1945, although related conflicts began earlier.
+                                    </div>
+
+                                    <div class="list-tag-content-info">
+                                        <div>Alias:</div>
+                                        <div>
+                                            <span class="tag-name">#Hitler</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="list-tag-content-navigation">
+                                        <div>Navigation:</div>
+                                        <div>
+                                            <span>#olivepop > #Reading > #HitlerAscent</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="content-tags-list-tag">
+                                <div class="list-tag-head">
+                                    <div class="list-tag-head-avatar" style="display: none;">   <!--__picture-img-tall\__picture-svg-->
+                                        <svg xmlns="http://www.w3.org/2000/svg" >
+                                            <defs>
+                                                <clipPath id="tag-info-avatar-icon-mask" transform="matrix(1 0 0 1 0 0)">
+                                                    <path d="M40,38.881c0,0.619-0.5,1.12-1.119,1.12H1.12C0.501,40.001,0,39.5,0,38.881V1.12C0,0.501,0.501,0,1.12,0h37.76
+	C39.5,0,40,0.501,40,1.12V38.881z"/>
+                                                </clipPath>
+                                            </defs>
+                                            <img src="images/temp/640px-The_Vyne_House.jpg" x="0" y="0" clip-path="url(#tag-info-avatar-icon-mask)"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="list-tag-head-main">
+                                        <div class="list-tag-head-main-name">
+                                            <span class="tag-name">#HitlerAscent</span>
+                                        </div>
+                                        <div class="list-tag-head-main-related">
+                                            <div class="tag-info-create-icon">
+                                                <!--#include file='images/create-date-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">3 Jun,2018</div>
+                                            <div class="tag-info-related-icon">
+                                                <!--#include file='images/related-notes-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">35</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-tag-content">
+                                    <div class="list-tag-content-definition">
+                                        It was a global war that lasted from 1939 to 1945, although related conflicts began earlier.
+                                    </div>
+
+                                    <div class="list-tag-content-navigation">
+                                        <div>Navigation:</div>
+                                        <div>
+                                            <span>#olivepop > #Reading > #HitlerAscent</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="content-tags-list-tag">
+                                <div class="list-tag-head">
+                                    <div class="list-tag-head-avatar __picture-svg">   <!--__picture-img-tall\__picture-svg-->
+                                        <svg xmlns="http://www.w3.org/2000/svg" >
+                                            <defs>
+                                                <clipPath id="tag-info-avatar-icon-mask" transform="matrix(1 0 0 1 0 0)">
+                                                    <path d="M40,38.881c0,0.619-0.5,1.12-1.119,1.12H1.12C0.501,40.001,0,39.5,0,38.881V1.12C0,0.501,0.501,0,1.12,0h37.76
+	C39.5,0,40,0.501,40,1.12V38.881z"/>
+                                                </clipPath>
+                                            </defs>
+                                            <img src="images/star-icon.svg" x="0" y="0" clip-path="url(#tag-info-avatar-icon-mask)"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="list-tag-head-main">
+                                        <div class="list-tag-head-main-name">
+                                            <span class="tag-name">#HitlerAscent</span>
+                                        </div>
+                                        <div class="list-tag-head-main-related">
+                                            <div class="tag-info-create-icon">
+                                                <!--#include file='images/create-date-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">3 Jun,2018</div>
+                                            <div class="tag-info-related-icon">
+                                                <!--#include file='images/related-notes-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">35</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-tag-content">
+                                    <div class="list-tag-content-definition">
+                                        It was a global war that lasted from 1939 to 1945, although related conflicts began earlier.
+                                    </div>
+
+                                    <div class="list-tag-content-navigation">
+                                        <div>Navigation:</div>
+                                        <div>
+                                            <span>#olivepop > #Reading > #HitlerAscent</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-tags-list-tag">
+                                <div class="list-tag-head">
+                                    <div class="list-tag-head-avatar" style="display: none;">   <!--__picture-img-tall\__picture-svg-->
+                                        <svg xmlns="http://www.w3.org/2000/svg" >
+                                            <defs>
+                                                <clipPath id="tag-info-avatar-icon-mask" transform="matrix(1 0 0 1 0 0)">
+                                                    <path d="M40,38.881c0,0.619-0.5,1.12-1.119,1.12H1.12C0.501,40.001,0,39.5,0,38.881V1.12C0,0.501,0.501,0,1.12,0h37.76
+	C39.5,0,40,0.501,40,1.12V38.881z"/>
+                                                </clipPath>
+                                            </defs>
+                                            <img src="images/temp/640px-The_Vyne_House.jpg" x="0" y="0" clip-path="url(#tag-info-avatar-icon-mask)"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="list-tag-head-main">
+                                        <div class="list-tag-head-main-name">
+                                            <span class="tag-name">#HitlerAscent</span>
+                                        </div>
+                                        <div class="list-tag-head-main-related">
+                                            <div class="tag-info-create-icon">
+                                                <!--#include file='images/create-date-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">3 Jun,2018</div>
+                                            <div class="tag-info-related-icon">
+                                                <!--#include file='images/related-notes-icon.svg' -->
+                                            </div>
+                                            <div class="tag-info">35</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-tag-content">
+                                    <div class="list-tag-content-definition">
+                                        It was a global war that lasted from 1939 to 1945, although related conflicts began earlier.
+                                    </div>
+
+                                    <div class="list-tag-content-navigation">
+                                        <div>Navigation:</div>
+                                        <div>
+                                            <span>#olivepop > #Reading > #HitlerAscent</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="main-content-tags-nothing">
+                            <div class="main-content-new-tag">
+                                No Hashtag named "#Hitler" has been found.
+                                Would you like to create it as a new one?
+                            </div>
+                            <div class="main-content-new-tag-buttons">
+                                <div class="dialog-button-cancel btn-cancel"><span>No</span></div>
+                                <div class="dialog-button-ok btn-ok">Yes</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
+    <select id="options-tag" style="height: 30px;">
+        <option value="nothing">DEFAULT STATUS</option>
+        <option value="tag-result">Show Search Tags Result</option>
+        <option value="add-tag">Show Add New Tag</option>
+    </select>
+</div>
+
+</body>
+</html>

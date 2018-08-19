@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Midinote</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $(".main-menu-li-notes").bind('click',function(){
+                window.location='index.shtml';
+            });
+
+            $(".main-menu-li-tags").bind('click',function(){
+                window.location='hashTag.shtml';
+            });
+
+            $(".main-menu-li-search").bind('click',function(){
+                window.location='search.shtml';
+            });
+
+
+            $('.map-view-type2').bind('click', function () {
+                if($(this).hasClass('__selected')){return;}
+                $('.mind-map-view-type .__selected').removeClass('__selected');
+                $(this).addClass('__selected');
+            });
+            $('.map-view-type1').bind('click', function () {
+                if($(this).hasClass('__selected')){return;}
+                $('.mind-map-view-type .__selected').removeClass('__selected');
+                $(this).addClass('__selected');
+            });
+
+
+            $('#options-mind-map').bind('change',function(){
+                if($(this).val()=='nothing') {
+                    $(".tag-info-message-tip").addClass("__close").removeClass("__open");
+
+
+                } else if($(this).val() == 'tag-info-message1') {
+                    var msgTip = $(".tag-info-message-tip");
+                    msgTip.css('left', '300px');
+                    msgTip.css('top', '264px');
+
+                    //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
+                    msgTip.removeClass("__close").removeClass("__open");
+                    msgTip.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
+                } else if($(this).val() == 'tag-info-message2') {
+                    var msgTip = $(".tag-info-message-tip");
+                    msgTip.css('left', '300px');
+                    msgTip.css('top', '264px');
+
+                    //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
+                    msgTip.removeClass("__close").removeClass("__open");
+                    msgTip.addClass("__open").addClass("__bottom-top").removeClass("__top-bottom");
+                } else if($(this).val() == 'add-tag'){
+                    var obj = $(".map-add-tag-dialog");
+                    obj.css('left', '400px');
+                    obj.css('top', '320px');
+
+                    //如果消息框显示在目标上方，则加__top-tip 下方则加 __bottom-tip
+                    obj.removeClass("__close").removeClass("__open");
+                    obj.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
+                } else if($(this).val() == 'add-tag2'){
+                    var obj = $(".map-add-tag-dialog");
+                    if(obj.hasClass("__open")){
+
+                    }else {
+                        obj.removeClass("__close").removeClass("__open");
+                        obj.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
+                    }
+
+                    $(".map-add-tag-exist").removeClass("__close").removeClass("__open").addClass("__open");
+                    $(".map-add-tag-new").removeClass("__close").removeClass("__open");
+                    $(".map-add-tag-add").removeClass("__close").removeClass("__back").addClass("__close");
+                } else if($(this).val() == 'add-tag3'){
+                    var obj = $(".map-add-tag-dialog");
+                    if(obj.hasClass("__open")){
+
+                    }else {
+                        obj.removeClass("__close").removeClass("__open");
+                        obj.addClass("__open").addClass("__top-bottom").removeClass("__bottom-top");
+                    }
+
+                    $(".map-add-tag-new").removeClass("__close").removeClass("__open").addClass("__open");
+                    $(".map-add-tag-exist").removeClass("__close").removeClass("__open");
+                    $(".map-add-tag-add").removeClass("__close").removeClass("__back").addClass("__close");
+                } else if($(this).val() == 'close-add-tag'){
+                    var obj = $(".map-add-tag-dialog");
+                    obj.removeClass("__close").removeClass("__open")
+                        .removeClass("__top-bottom").removeClass("__bottom-top");
+                    obj.addClass("__close").addClass("__top-bottom");
+
+                } else if($(this).val() == 'tag-menu'){
+                    $(".tag-menu-dialog").removeClass("__open").removeClass("__close");
+                    $(".tag-menu-dialog").addClass("__open");
+                } else if($(this).val() == 'close-tag-menu'){
+                    $(".tag-menu-dialog").removeClass("__open").removeClass("__close");
+                    $(".tag-menu-dialog").addClass("__close");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="dark-style">
+    <div class="page-body">
+        <div class="main-menu main-menu-wrapper">
+            <div class="main-menu-bar">
+                <div class="flex-vertical">
+                    <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
+                    <div class="main-menu-ul">
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-notes">
+                                <!--#include file='images/menu-notes.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li main-menu-li-selected">
+                            <div class="main-menu-li-icon main-menu-li-map">
+                                <!--#include file='images/menu-map.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-tags">
+                                <!--#include file='images/menu-tags.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-search">
+                                <!--#include file='images/menu-search.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-user">
+                <div class="main-menu-user-icon"></div>
+            </div>
+        </div>
+
+        <div class="main-block position-relative">
+            <div class="main-head">
+                <div class="main-head-location">
+                    <div class="head-location-fb">
+                        <div class="location-fb-backward button-svg-icon-valid">
+                            <div class="location-fb-backward-icon"></div>
+                        </div>
+                        <div class="location-fb-forward button-svg-icon-invalid">
+                            <div class="location-fb-forward-icon"></div>
+                        </div>
+                    </div>
+                    <div class="head-location-nav">
+                        <div class="head-location-nav-i">#olivepop</div>
+                        <div class="head-location-nav-i">#Reading</div>
+                        <div class="head-location-nav-current">#Midinote</div>
+                    </div>
+                </div>
+                <div class="main-head-buttons">
+                    <div class="main-head-button-search">
+                        <div class="head-button-search-input">
+                            <input class="search-input" placeholder="Search">
+                        </div>
+                        <div class="head-button-search-icon"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content mind-map-content">
+                <div class="main-content-center">
+                    <div class="mind-map-content-main">
+                        <img style="width: auto;height: 797px;" src="images/temp/mindmap-temp.png" alt="思维导图" ／="">
+                    </div>
+
+                    <div class="main-content-widget-options">
+                        <div class="mind-map-view-type">
+                            <div class="map-view-type1 __selected">
+                                <svg class="map-view-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="19px" height="20px" viewBox="0 0 55.5 58.625" enable-background="new 0 0 55.5 58.625" xml:space="preserve">
+										<g>
+											<circle fill="#ECECEC" cx="9.75" cy="32.875" r="9.75"/>
+											<circle fill="#ECECEC" cx="39.25" cy="9.75" r="9.75"/>
+											<circle fill="#ECECEC" cx="45.75" cy="48.875" r="9.75"/>
+										</g>
+										<rect x="22.5" y="2.571" transform="matrix(0.6169 0.787 -0.787 0.6169 26.1601 -11.1179)" fill="#ECECEC" width="4" height="37.484"/>
+										<rect x="8.052" y="38.875" transform="matrix(0.9138 0.4061 -0.4061 0.9138 18.9926 -7.7474)" fill="#ECECEC" width="39.395" height="3.999"/>
+									</svg>
+                            </div>
+                            <div class="map-view-type2">
+                                <svg version="1.1" class="map-view-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="19px"
+	 height="20px" viewBox="0 0 55.5 58.625" enable-background="new 0 0 55.5 58.625" xml:space="preserve">
+										<g>
+											<circle fill="#888989" cx="44.4" cy="47.525" r="11"/>
+											<ellipse fill="#888989" cx="21.144" cy="25.935" rx="21.144" ry="20.513"/>
+											<circle fill="#888989" cx="42.477" cy="7.5" r="7.5"/>
+										</g>
+									</svg>
+                            </div>
+                        </div>
+
+                        <div class="widget-map-zoom">
+                            <div class="map-zoom-in">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12.001px" viewBox="0.708 0.708 12 12.001" enable-background="new 0.708 0.708 12 12.001" xml:space="preserve">
+									<path fill="#888989" d="M8.051,11.816c0,0.493-0.499,0.894-1.112,0.894H6.478c-0.614,0-1.111-0.4-1.111-0.894V1.603
+										c0-0.494,0.498-0.895,1.111-0.895h0.461c0.615,0,1.112,0.401,1.112,0.895V11.816z"/>
+									<path fill="#888989" d="M11.814,5.366c0.494,0,0.894,0.498,0.894,1.11v0.463c0,0.613-0.399,1.11-0.894,1.11H1.603
+										c-0.495,0-0.895-0.497-0.895-1.11V6.476c0-0.612,0.4-1.11,0.895-1.11H11.814z"/>
+									</svg>
+                            </div>
+                            <div class="map-zoom-line"></div>
+                            <div class="map-zoom-original">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 width="25.75px" height="26px" viewBox="0 0 25.75 26" enable-background="new 0 0 25.75 26" xml:space="preserve">
+									<path fill="none" stroke="#3E4146" stroke-width="2" stroke-miterlimit="10" d="M20.153,7.319c0.671,1.036,1.149,2.22,1.377,3.512
+										c0.638,3.633-0.878,7.146-3.631,9.228"/>
+									</svg>
+
+                            </div>
+
+                            <div class="map-zoom-line"></div>
+                            <div class="map-zoom-out">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 width="12px" height="2.684px" viewBox="0.71 5.368 12 2.684" enable-background="new 0.71 5.368 12 2.684" xml:space="preserve">
+									<path fill="#888989" d="M11.815,5.368c0.495,0,0.895,0.498,0.895,1.11v0.463c0,0.612-0.399,1.11-0.895,1.11H1.604
+										c-0.494,0-0.895-0.498-0.895-1.11V6.479c0-0.613,0.401-1.11,0.895-1.11H11.815z"/>
+									</svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-detail">
+                        <div class="map-detail-name">DEAN CHEN</div>
+                        <div class="map-detail-info"><span>Created at 15/12/2017.</span></br>
+                            <span>this hashtag is root of others, it means the user.</span></br>
+                            <span>385 relevant logs.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- here to put common html fragments -->
+<div id='commonDiv' ></div>
+
+
+<div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
+    <select id="options-mind-map" style="height: 30px;">
+        <option value="nothing">DEFAULT STATUS</option>
+        <option value="tag-info-message1">Tag Info Tip (On the Top)</option>
+        <option value="tag-info-message2">Tag Info Tip (On the Bottom)</option>
+        <option value="add-tag">Show Add Hashtag Dialog</option>
+        <option value="add-tag2">Show Add Hashtag Dialog-2</option>
+        <option value="add-tag3">Show Add Hashtag Dialog-3</option>
+        <option value="tag-menu">Show Hashtag Menu</option>
+        <option value="close-tag-menu">Close Hashtag Menu</option>
+
+    </select>
+</div>
+</body>
+</html>
+
+<!-- to load common html -->
+<script type="text/javascript">
+    console.log('where is jQuery:',$)
+    $(document).ready(function(){
+        console.log('begin load common html')
+        $('#commonDiv').load('common.shtml',function(){
+            console.log('finished')
+        })
+    })
+</script>

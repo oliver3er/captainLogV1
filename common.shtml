@@ -1,0 +1,1092 @@
+<!--按钮等元素的提示框（小）-->
+<div class="small-tip">
+    <div class="small-tip-wrapper">
+        <div class="small-tip-main"></div>
+        <div class="small-tip-arrow"></div>
+    </div>
+</div>
+
+<!--笔记中出现的警告信息-->
+<div class="message-tip warning-message">
+    <div class="message-tip-wrapper">
+        <div class="message-tip-main">
+            <div>This note need one or and some hashtag to convenient for assort.</div>
+        </div>
+        <div class="message-tip-arrow"></div>
+    </div>
+</div>
+
+<!--   tag detail info tip in mind-map begin  -->
+<div class="tag-info-message-tip">
+        <div class="tag-info-message-tip-main" style="border-color:rgba(211,165,112,.75);box-shadow:0 0 6px rgba(211,165,112,.65);">
+            <div class="message-tip-main-title">#logger</div>
+            <div class="message-tip-main-info">
+                <span>Created at 15/12/2017.</span>
+                <span class="rows-content">this hashtag is root of the others, it means the user.</span>
+                <span>385 relevant notes.</span>
+            </div>
+        </div>
+</div>
+<!--   tag detail info dialog in mind-map end  -->
+
+<!--普通菜单 （用于 头部的前进后退按钮关联的菜单）-->
+<div class="pop-menu bf-menu" style="display:none;">
+    <div class="pop-menu-lis">
+        <li>
+            <div class="pop-menu-li-icon"><img src="images/temp/laugh-face.png" alt=" "/></div>
+            <div class="pop-menu-li-name">#11111</div>
+        </li>
+        <li><div class="pop-menu-li-name">#如果说我要放中文呢</div></li>
+        <li><div class="pop-menu-li-name">#33333</div></li>
+    </div>
+</div>
+
+<!--普通菜单 （用于输入笔记标题时的智能提示信息）-->
+<div class="pop-menu smart-tip-menu" style="display:none;">
+    <div class="pop-menu-lis">
+        <li>
+            <div class="pop-menu-li-name"><span class="tag-name">#logger</span></div>
+            <div class="pop-menu-li-icon"><img src="images/temp/laugh-face.png" alt=" "/></div>
+            <div class="pop-menu-li-account">(26 notes)</div>
+            <div class="pop-menu-li-definition">The first cooperant project</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-name"><span class="tag-name" style="color: rgb(225, 41, 119);">#logger-design</span></div>
+            <div class="pop-menu-li-icon"><img src="images/temp/president.jpg" alt=" "/></div>
+            <div class="pop-menu-li-account">(26 notes)</div>
+            <div class="pop-menu-li-definition">Design and Make</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-name"><span class="tag-name" style="color: rgb(176, 199, 66);">#logger-development</span></div>
+            <div class="pop-menu-li-icon"><img src="images/temp/small-avatar.png" alt=" "/></div>
+            <div class="pop-menu-li-account">(26 notes)</div>
+            <div class="pop-menu-li-definition">development</div>
+        </li>
+    </div>
+</div>
+
+
+<!--系统设置菜单 （用于 点击用户头像关联的菜单）-->
+<div class="pop-menu setting-menu" style="display:none;">
+    <div class="pop-menu-lis">
+        <li>
+            <div class="pop-menu-li-icon menu-account-setting-icon"></div>
+            <div class="pop-menu-li-name">Account Setting</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-icon menu-user-setting-icon"></div>
+            <div class="pop-menu-li-name">User Setting</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-icon menu-help-icon"></div>
+            <div class="pop-menu-li-name">Help Center</div>
+        </li>
+        <li>
+            <div class="pop-menu-li-icon menu-log-out-icon"></div>
+            <div class="pop-menu-li-name">Log Out</div>
+        </li>
+    </div>
+</div>
+
+
+<!--弹出窗口的背景幕布-->
+<div class="backdrop"></div>
+
+
+<!--显示笔记中的图片 大图模式窗口-->
+<div class="message-dialog big-image-dialog">
+    <div class="big-image-dialog-wrapper">
+        <div class="big-image-dialog-image"><img src="" alt=""/></div>
+        <div class="big-image-dialog-link"><a href="images/temp/example1.jpg" target="_blank">Open original</a></div>
+    </div>
+</div>
+
+
+<!--删除笔记提示框-->
+<div class="message-dialog delete-confirm-dialog">
+    <div class="delete-confirm-dialog-wrapper">
+        <div class="dialog-title">DELETE NOTE</div>
+        <div class="dialog-main">
+            <div class="dialog-main-message">Are you sure to delete this note?</div>
+            <div class="dialog-main-info">
+                <div class="dialog-note-info">
+                    <div class="single-note-title">
+                        This is a <span class="tag-name">#title</span>
+                    </div>
+                    <div class="single-note-detail">
+                        I don’t known how can I make a perfect work.<span class="tag-name">#V1.0</span>
+                        That sad moment you
+                        before <span class="tag-name">#school</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-buttons">
+            <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+            <div class="dialog-button-delete btn-delete">Delete</div>
+        </div>
+    </div>
+</div>
+
+<!--标签hover信息框-->
+<div class="tag-info-dialog"><!-- vertical-layout \horizontal\small-head-->
+    <div class="tag-info-dialog-arrow"></div>
+    <div class="tag-info-dialog-head">
+        <div class="tag-info-dialog-name">#Midinote</div>
+        <div class="tag-info-dialog-icon" >
+            <img src="images/temp/example2.jpg" />
+        </div>
+    </div>
+
+    <div class="tag-info-dialog-main">
+        <div class="tag-info-dialog-name">#Midinote</div>
+        <div class="tag-info-detail">
+            <div class="tag-info-detail-item">
+                <div class="item-label">Created Date:</div>
+                <div class="item-value">03/05/2018</div>
+            </div>
+            <div class="tag-info-detail-item">
+                <div class="item-label">Related Notes:</div>
+                <div class="item-value">86</div>
+            </div>
+            <div class="tag-info-detail-item">
+                <div class="item-label">Alias:</div>
+                <div class="item-value">
+                    <span>#NoteBook</span>
+                    <span>#Good-Book</span>
+                </div>
+            </div>
+            <div class="tag-info-detail-item">
+                <div class="item-label">Triggered by:</div>
+                <div class="item-value">
+                    <span>#Write-Something</span>
+                    <span>#bo</span>
+                    <span>#Note</span>
+                </div>
+            </div>
+        </div>
+        <div class="tag-info-definition">
+            dlkj lakjlja ldjfa kjflkaj aljfla gsdf sdfadsdf asdf adfa dsafasdfa sdf asdf sf asdfa asd asdfasd asdfasdfas asdfasd dflkajd fkldja ahd jhadkh hkjhf lajdf
+        </div>
+
+        <div class="tag-info-dialog-foot">
+            <div class="tag-info-dialog-setting"></div>
+            <div class="tag-info-dialog-to-top"></div>
+        </div>
+    </div>
+</div>
+
+
+<!--标签设置窗口-->_
+<div class="message-dialog tag-setting-dialog">
+    <div class="message-dialog-wrapper tag-setting-dialog-wrapper">
+        <div class="dialog-title">HASHTAG SETTING</div>
+
+        <div class="dialog-main">
+            <div class="main-tag-name">
+                <span class="tag-name" style="color:rgb(213,71,71);">#WorldWarII</span>
+                <span class="descriptive-info">Created at 10/06/2018</span>
+            </div>
+
+            <div class="main-tag-collection">
+                <div class="main-tag-collection-L">
+                    <div class="main-tag-color-selection">
+                        <div class="tag-color-blank position-relative">  <!--style="background-color: red;"-->
+                            <div class="tag-color-blank-icon"></div>
+                        </div>
+                        <div class="tag-color-supply">
+                            <div class="tag-color-supply-column">
+                                <div class="_color1"></div>
+                                <div class="_color1_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color2"></div>
+                                <div class="_color2_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color3"></div>
+                                <div class="_color3_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color4"></div>
+                                <div class="_color4_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color5"></div>
+                                <div class="_color5_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color6"></div>
+                                <div class="_color6_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color7"></div>
+                                <div class="_color7_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color8"></div>
+                                <div class="_color8_"></div>
+                            </div>
+                            <div class="tag-color-supply-column">
+                                <div class="_color9"></div>
+                                <div class="_color9_"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-tag-show-way-selection form-item">
+                        <div class="form-item-label">SHOW WAY</div>
+                        <div class="form-selection">
+
+                            <script type="text/javascript">
+                                $(function (){
+                                    $(".form-selection-outer .form-selection-option").bind("click",function(){
+
+                                        var selectionObj = $(this).parent();
+
+                                        if(!$(this).hasClass("__selected")){
+
+                                            selectionObj.find(".form-selection-option").removeClass("__selected");
+                                            $(this).addClass("__selected");
+                                        }
+                                        selectionObj.parent().find(".form-selection-control").removeClass("__open");
+                                        selectionObj.removeClass("__open").addClass("__close");
+                                    });
+
+                                    $(".form-selection-control").bind("click",function(){
+
+                                        if(!$(this).hasClass("__selected")) {
+                                            $(this).addClass("__selected");
+                                        }
+
+                                        if($(this).hasClass("__open")) {
+                                            $(this).removeClass("__open");
+                                            //隐藏下拉内容
+                                            $(this).parent().find(".form-selection-outer").removeClass("__open").addClass("__close");
+                                        }else {
+                                            $(this).addClass("__open");
+                                            //显示下拉内容
+                                            $(this).parent().find(".form-selection-outer").removeClass("__close").addClass("__open");
+                                        }
+                                    });
+
+                                    $(document).bind("click",function(event) {
+                                        var e = window.event || event;
+                                        //点击除此下拉框的位置，改变该下拉框显示模式
+                                        if ($(e.target).closest(".form-selection").length == 0) {
+                                            $(".form-selection-outer").removeClass("__open").addClass("__close");
+                                            $(".form-selection-control").removeClass("__open");
+                                            $(".form-selection-control").removeClass("__selected");
+                                        }
+                                    });
+                                });
+                            </script>
+
+                            <div class="form-selection-control">
+                                <div class="selected-value">
+                                    <div>words</div>
+                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                </div>
+                                <div class="selection-arrow"></div>
+                            </div>
+                            <div class="form-selection-outer">
+                                <div class="form-selection-option __selected">
+                                    <div>words</div>
+                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                </div>
+                                <div class="form-selection-option">
+                                    <div>icon</div>
+                                    <div class="descriptive-info">e.g. </div>
+                                    <div class="descriptive-icon">
+                                        <img src="images/temp/laugh-face.png" />
+                                    </div>
+                                </div>
+                                <div class="form-selection-option">
+                                    <div>word + icon</div>
+                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                    <div class="descriptive-icon">
+                                        <img src="images/temp/laugh-face.png" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-tag-collection-R">
+                    <div class="main-tag-avatar">
+                        <div class="tag-avatar-backdrop">
+                            <div class="drag-drop-icon-block">
+                                <div>Drag&Drop</div>
+                                <div>upload your picture.</div>
+                            </div>
+                            <div class="select-upload-icon-block">
+                                <div class="tag-select-icon with-top-tip"  tip-message="select an icon"></div>
+                                <div class="tag-upload-icon with-top-tip" tip-message="upload an icon"></div>
+                            </div>
+                        </div>
+                        <div class="tag-avatar-icon __picture-img-tall">   <!--__picture-img-tall\__picture-svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" >
+                                <defs>
+                                    <clipPath id="tag-setting-form-icon-mask" transform="matrix(1 0 0 1 0 0)">
+                                        <path d="M126.5,121.322c0,2.859-2.318,5.178-5.178,5.178H5.678c-2.86,0-5.178-2.318-5.178-5.178V5.678
+	C0.5,2.818,2.818,0.5,5.678,0.5h115.644c2.859,0,5.178,2.318,5.178,5.178V121.322z"/>
+                                    </clipPath>
+                                </defs>
+                                <img src="images/temp/president.jpg" x="0" y="0" clip-path="url(#tag-setting-form-icon-mask)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-tag-definition form-item position-relative">
+                <div class="form-item-label">DEFINITION<div class="form-item-help"></div></div>
+                <div class="form-input">
+                    <!--<input type="text" name="tag-definition-value"
+                           value="This is a complicated thing" placeholder="" maxlength="999" />-->
+                    <div class="__input" value="This is a complicated thing" placeholder="" maxlength="999" name="tag-definition-value" contenteditable="true"></div>
+                </div>
+                <div class="form-input-foot-right">
+                    <div class="tag-commend-words">
+                        <span class="tag-name" style="color:rgb(20,135,187);">#complicated</span>
+                    </div>
+                    <div class="form-item-separate-line"></div>
+                    <div class="input-remainder-account">100</div>
+                </div>
+            </div>
+
+            <div class="main-tag-alias form-item">
+                <div class="form-item-label">ALIAS</div>
+                <div class="form-input">
+                    <input type="text" name="tag-alias-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
+            </div>
+
+            <div class="main-tag-trigger form-item">
+                <div class="form-item-label">TRIGGER</div>
+                <div class="form-input">
+                    <input type="text" name="tag-trigger-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
+            </div>
+
+            <div class="main-tag-equal form-item">
+                <div class="form-item-label">EQUAL TO<div class="form-item-help"></div></div>
+                <div class="form-input">
+                    <input type="text" name="tag-equal-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
+            </div>
+        </div>
+        <div class="dialog-buttons">
+            <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+            <div class="dialog-button-ok btn-ok">Save</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!--标签值设置窗口-->_
+<div class="message-dialog tag-value-setting-dialog">
+    <div class="message-dialog-wrapper tag-v-setting-dialog-wrapper">
+        <div class="dialog-title">HASHTAG VALUE SETTING</div>
+
+        <div class="dialog-main">
+            <div class="main-tag-name">
+                <span class="tag-name" style="color:rgb(213,71,71);">#Recipe</span>
+                <span class="descriptive-info">Created at 10/06/2018</span>
+            </div>
+
+            <div class="main-tag-descriptive-info">
+                if you enjoy cooking and eating different kinds of food,like a foodie,maybee need a set of instructions for cooking a particular type of food.
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">DISH NAME</div>
+                <div class="form-input">
+                    <input type="text" name="dish-name-value"
+                           value="" placeholder="" maxlength="999" />
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">DATE<div class="form-item-help"></div></div>
+                <div class="form-date position-relative">
+                    <script type="text/javascript">
+                        $(function (){
+                            $(".form-date").bind("click",function(){
+                                var dateBox = $(this);
+                                if(dateBox.hasClass("__selected")){
+                                    return;
+                                }
+                                dateBox.addClass("__selected");
+                                dateBox.find(".form-date-input").focus();
+                            });
+
+                            $(document).bind("click",function(event) {
+                                var e = window.event || event;
+                                //点击除此文本框的位置，改变该文本框显示模式
+                                if ($(e.target).closest(".form-date").length == 0) {
+                                    $(".form-date").removeClass("__selected");
+                                    $(".form-date").find(".form-date-input").blur();
+                                }
+                            });
+                        });
+                    </script>
+                    <div class="form-date-icon"></div>
+                    <div class="form-date-icon-line"></div>
+                    <input type="text" class="form-date-input" name="date" value="2017-10-28" placeholder="" maxlength="100" />
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">STYLE</div>
+                <div class="form-selection">
+                    <div class="form-selection-control">
+                        <div class="selected-value">
+                            <div>China</div>
+                            <div class="descriptive-info">e.g. dumpling</div>
+                        </div>
+                        <div class="selection-arrow"></div>
+                    </div>
+                    <div class="form-selection-outer">
+                        <div class="form-selection-option __selected">
+                            <div>China</div>
+                            <div class="descriptive-info">e.g. dumpling</div>
+                        </div>
+                        <div class="form-selection-option">
+                            <div>US</div>
+                            <div class="descriptive-info">e.g. </div>
+                            <div class="descriptive-icon">
+                                <img src="images/temp/laugh-face.png" />
+                            </div>
+                        </div>
+                        <div class="form-selection-option">
+                            <div>UK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">COVER</div>
+                <div class="form-upload-img position-relative">
+                    <div class="form-upload-description descriptive-info">You can upload your dish’s photos,they will tell how tasty your dish is.</div>
+                    <div class="form-upload-box"></div>
+                    <div class="form-upload-img-float-layer">
+                        <div class="form-upload-img-float-layer-bd"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">CHECKBOX EXAMPLE</div>
+                <div class="form-checkboxes">
+                    <script type="text/javascript">
+                        $(function (){
+                            $(".form-checkbox").bind('click',function(){
+                                var showValue = $(this);
+                                var checkedItem = $(this).find(".checkbox-inner [type='checkbox']");
+                                var checkedSpan = $(this).find(".checkbox-inner span");
+
+                                if(checkedItem.attr("checked")){
+                                    showValue.css("background-color","#32353a");
+                                    checkedItem.attr("checked", false);
+                                    checkedSpan.css("background-color","#32353a");
+                                    checkedSpan.find("svg").remove();
+                                }else {
+                                    showValue.css("background-color","#4682f7");
+                                    checkedItem.attr("checked", true);
+                                    checkedSpan.css("background-color","#ececec");
+                                    checkedSpan.append('<svg name="Check-mark" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><polyline stroke="#4682f7" stroke-width="2" points="3.5 9.5 7 13 15 5"></polyline></g></svg>');
+                                }
+
+                            });
+                        });
+                    </script>
+                    <div class="form-checkbox">
+                        <div class="checkbox">
+                            <div class="checkbox-inner">
+                                <input type="checkbox" value="on"/>
+                                <span></span>
+                            </div>
+                            <span>option1</span>
+                        </div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <div class="checkbox">
+                            <div class="checkbox-inner">
+                                <input type="checkbox" value="on"/>
+                                <span></span>
+                            </div>
+                            <span>option2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">RADIO BOX</div>
+                <div class="main-tag-descriptive-info">
+                    This dish is good for your dinner or breakfast,recording the answer is helpful.
+                </div>
+                <div class="form-radio-boxes">
+                    <script type="text/javascript">
+                        $(function (){
+                            $(".form-radio-box .form-radio-control").bind('click',function(){
+                                var contrl = $(this);
+                                if(contrl.hasClass("__checked")){
+                                    contrl.removeClass("__checked").addClass("__unchecked");
+                                    return -1;
+                                }
+                                if(contrl.hasClass("__unchecked")){
+                                    contrl.removeClass("__unchecked").addClass("__checked");
+                                    return -1;
+                                }
+                            });
+                        });
+                    </script>
+                    <div class="form-radio-box">
+                        <div class="form-radio-name">
+                            <div class="form-radio-label">Breakfast</div>
+                            <div class="form-radio-description descriptive-info">if there is nothing,never mind.</div>
+                        </div>
+                        <div class="form-radio-control  __unchecked">
+                            <input type="checkbox" class="form-radio-value" value="off" />
+                        </div>
+                    </div>
+
+                    <div class="form-radio-box">
+                        <div class="form-radio-name">
+                            <div class="form-radio-label">Dinner</div>
+                            <div class="form-radio-description"></div>
+                        </div>
+                        <div class="form-radio-control  __checked">
+                            <input type="checkbox" class="form-radio-value" value="off" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div class="form-item-label">DESCRIPTION</div>
+
+                <textarea placeholder="click to add a note" spellcheck="false" maxlength="256" class="form-text-area edit-value"></textarea>
+            </div>
+
+        </div>
+        <div class="dialog-buttons">
+            <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+            <div class="dialog-button-ok btn-ok">Save</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!--first load page begin-->
+<div class="first-load-dialog message-dialog">
+    <div class="first-load-dialog-wrapper">
+        <div class="first-load-dialog-head">
+            <div>
+                <h1>Welcome to Midinote</h1>
+                <h2>You are almost done, we need you to finish the final part, please set up your personal info.</h2>
+            </div>
+        </div>
+
+        <div class="first-load-dialog-form">
+            <div class="fld-form-username-item">
+                <div class="fld-form-label label-icon-common">
+                    <div class="fld-form-label-icon"></div>
+                    <div class="fld-form-label-content">USERNAME</div>
+                    <div class="fld-form-error-info"></div>
+                </div>
+                <div class="fld-form-name-input">
+                    <input placeholder="What's your name?"/>
+                </div>
+                <div class="fld-form-username-desc">Midinote will create the first TAG named after your name.</div>
+            </div>
+
+            <div class="fld-form-avatar-item">
+                <div class="fld-form-label label-icon-error">
+                    <div class="fld-form-label-icon"></div>
+                    <div class="fld-form-label-content">AVATAR</div>
+                    <div class="fld-form-error-info">The image is too big.</div>
+                </div>
+                <div class="fld-form-avatar">
+                    <div class="fld-form-avatar-upload-wrapper">
+                        <span>CHANGE</span>
+                        <span>AVATAR</span>
+                    </div>
+                    <div class="fld-form-avatar-upload-icon"></div>
+                    <div class="fld-form-avatar-upload">
+                        <span>CHANGE</span>
+                        <span>AVATAR</span>
+                    </div>
+
+                </div>
+                <div class="fld-form-avatar-desc">We recommend an image of at least 512*512 for your avatar.</div>
+            </div>
+        </div>
+
+        <div class="first-load-dialog-foot">
+            <div class="first-load-dialog-btn">GET STARTED</div>
+        </div>
+
+        <!--演示效果 begin-->
+        <script type="text/javascript">
+            $(function () {
+                $('#first-load-page-selection').bind('change', function () {
+                    var labelDiv = $('.fld-form-label');
+                    var classStr = $('.fld-form-label').prop('className').split(" ");
+                    if ($(this).val() == 'icon-change-checked') {
+                        labelDiv.removeClass(classStr[1]).addClass("label-icon-checked");
+                    }else if ($(this).val() == 'icon-change-common') {
+                        labelDiv.removeClass(classStr[1]).addClass("label-icon-common");
+                    }else if ($(this).val() == 'icon-change-error') {
+                        labelDiv.removeClass(classStr[1]).addClass("label-icon-error");
+                    }
+                });
+            });
+        </script>
+
+
+        <select id="first-load-page-selection" style="position:absolute; right: 20px;bottom: 40px;font-size: .14rem;">
+            <option value="none">NONE</option>
+            <option value="icon-change-checked">Icon change green</option>
+            <option value="icon-change-error">Icon change red</option>
+            <option value="icon-change-common">Icon change yellow</option>
+        </select>
+        <!--演示效果 end-->
+    </div>
+</div>
+<!--first load page end-->
+
+
+
+<!----------search page begin---------->
+<!--search tag dialog (when search input something) begin-->
+<div class="search-tag-dialog">
+    <div class="search-tags">
+        <div class="search-tag-dialog-title">SEARCH OPTIONS</div>
+        <div class="search-tag-dialog-main">
+            <div class="search-dialog-main-subtitle">SYSTEM HASHTAG</div>
+            <ul class="search-dialog-main-content">
+                <li>
+                    <div class="search-content-tag-info">
+                        <div>#createtime</div><div>specific date</div>
+                    </div>
+                </li>
+                <li><div class="search-content-tag-info"><div>#Todo</div><div>todo list</div></div></li>
+                <li><div class="search-content-tag-info"><div>#Code</div><div>code section</div></div></li>
+            </ul>
+
+            <div class="search-dialog-main-subtitle">FREQUENLY USED HASHTAG</div>
+            <ul class="search-dialog-main-content">
+                <li><div class="search-content-tag-info"><div>#Logger</div><div>my first project that...</div></div></li>
+                <li><div class="search-content-tag-info"><div>#projects</div><div>my design projects do my best.</div></div></li>
+                <li><div class="search-content-tag-info"><div>#projects</div><div>my design projects</div></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="search-tag-words">
+        <div class="search-tag-dialog-title">SEARCH FOR:<span>logger</span></div>
+        <div class="search-tag-dialog-main">
+            <ul class="search-dialog-main-content">
+                <li>
+                    <div class="search-content-tag-info">
+                        <div>#LoggerRecords</div>
+                        <div>my first project that kslakjd lajdlf ladjlf</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-content-tag-info">
+                        <div>This logger is important so much</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-content-tag-info">
+                        <div>#Logger</div>
+                        <div>designing </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-content-tag-info">
+                        <div>logger of my all</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-content-tag-info">
+                        <div>#LoggerRecords</div>
+                        <div>my first project </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="search-content-tag-info">
+                        <div>logger will online on this Thursday logger will online on this Thursday</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--search tag dialog (when search input something) end-->
+
+<!--set tag value for search dialog (when search a system tag) begin-->
+<div class="search-setting-value-dialog message-dialog-wrapper">
+    <div class="dialog-title">#createtime</div>
+    <div class="dialog-main">
+        <div class="form-item">
+            <div class="form-item-label">Search condition</div>
+            <!--<div class="main-tag-descriptive-info">
+                Search with this condition.
+            </div>-->
+            <div class="form-radio-boxes">
+                <div class="form-radio-box">
+                    <div class="form-radio-name">
+                        <div class="form-radio-label">Exclude</div>
+                        <div class="form-radio-description descriptive-info">Find all notes those exclude this tag.</div>
+                    </div>
+                    <div class="form-radio-control  __unchecked">
+                        <input type="checkbox" class="form-radio-value" value="off" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <div class="form-item-label">VALUE</div>
+            <div class="form-selection">
+                <div class="form-selection-control">
+                    <div class="selected-value">
+                        <div>China</div>
+                        <div class="descriptive-info">e.g. dumpling</div>
+                    </div>
+                    <div class="selection-arrow"></div>
+                </div>
+                <div class="form-selection-outer">
+                    <div class="form-selection-option __selected">
+                        <div>China</div>
+                        <div class="descriptive-info">e.g. dumpling</div>
+                    </div>
+                    <div class="form-selection-option">
+                        <div>US</div>
+                        <div class="descriptive-info">e.g. </div>
+                        <div class="descriptive-icon">
+                            <img src="images/temp/laugh-face.png" />
+                        </div>
+                    </div>
+                    <div class="form-selection-option">
+                        <div>UK</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <div class="form-item-label">VALUE</div>
+            <div class="date-range">
+                <div class="date-range-part">
+                    <div class="date-range-part-content">
+                        <span>from:</span>
+                        <div class="date-range-part-input">
+                            <input type="text" name="dateFrom" value="2017-3-10" placeholder="" maxlength="24" />
+                            <div class="date-input-delete">
+                                <!--#include file='images/cross-icon.svg' -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="date-range-selection"><img src="images/temp/date-range-black.png"/></div>
+                </div>
+
+                <div class="date-range-part">
+                    <div class="date-range-part-content">
+                        <span>to:</span>
+                        <div class="date-range-part-input">
+                            <input type="text" name="dateTo" value="2017-10-18" placeholder="" maxlength="24" />
+
+                            <div class="date-input-delete">
+                                <!--#include file='images/cross-icon.svg' -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="date-range-selection"><img src="images/temp/date-range-black.png"/></div>
+                </div>
+
+                <script type="text/javascript">
+                    $(function (){
+                        $(".date-range-part-input").bind("click",function(){
+                            var dateBox = $(this);
+                            if(dateBox.hasClass("__selected")){
+                                return;
+                            }
+                            dateBox.addClass("__selected");
+                            dateBox.find(".date-range-part-input input").focus();
+                        });
+
+                        $(document).bind("click",function(event) {
+                            var e = window.event || event;
+                            //点击除此文本框的位置，改变该文本框显示模式
+                            if ($(e.target).closest(".date-range-part-input").length == 0) {
+                                $(".date-range-part-input").removeClass("__selected");
+                                $(".date-range-part-input").find("input").blur();
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+
+    </div>
+    <div class="dialog-buttons">
+        <div class="dialog-button-back btn-back"><span>BACK</span></div>
+        <div class="dialog-button-ok btn-ok">OK</div>
+    </div>
+</div>
+
+<!--set tag value for search dialog (when search a system tag) end-->
+
+<!-------search tags in input style begin------->
+<div id="cond1" class="search-input-item search-input-tag search-plus" style='background-color:rgba(15,130,230,.75);'>  <!--search-input-words    search-minus-->
+    <div class='search-input-item-content'>
+        <div class="search-input-item-method"></div>
+        <div class='search-input-item-name'>#createtime</div>
+        <div class='search-input-item-value'><span class="__symbol-equal">=</span><span>3/10/2017—18/10/2017</span></div>
+    </div>
+</div>
+
+<div id="cond2" class="search-input-item search-input-tag search-minus" style='background-color:rgba(233,69,69,.75);'>  <!--search-input-words    search-minus-->
+    <div class='search-input-item-content'>
+        <div class="search-input-item-method"></div>
+        <div class='search-input-item-name'>#Big-Man</div>
+        <div class='search-input-item-value'></div>
+    </div>
+</div>
+
+<div id="cond3" class="search-input-item search-input-words">  <!--search-input-words    search-minus-->
+    <div class='search-input-item-content'>
+        <div class="search-input-item-method"></div>
+        <div class='search-input-item-name'>Midinote</div>
+        <div class='search-input-item-value'></div>
+    </div>
+</div>
+<!-------search tags in input style end--------->
+
+
+<!-------search tag edit dialog style begin------->
+<div class="message-dialog search-tag-edit-dialog">
+    <div class="message-dialog-wrapper search-tag-edit-dialog-wrapper position-relative">
+        <div class="dialog-title">EDIT THE NOTE</div>
+        <div class="search-tag-edit-tool-bar">
+            <div class="toolbar-buttons">
+                <div class="toolbar-button toolbar-pic">
+                    <!--#include file='images/tool-pic-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-check">
+                    <!--#include file='images/tool-checkbox-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-command">
+                    <!--#include file='images/tool-command-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-code">
+                    <!--#include file='images/tool-code-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-attach">
+                    <!--#include file='images/tool-attach-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-tag">
+                    <!--#include file='images/tool-tag-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-tag2">
+                    <!--#include file='images/tool-tag2-icon.svg' -->
+                </div>
+                <div class="toolbar-button toolbar-line"></div>
+            </div>
+            <div class="toolbar-commend-words position-relative">
+                <div class="toolbar-commend-pre btn-valid"></div>
+
+                <div class="toolbar-commend-items">
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(124, 82, 32);">#Commend</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(176, 199, 66);">#venture</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(233, 69, 69);">#PuffedFood</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(36, 196, 134);">#expire-date</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item commend-item-with-num">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(121, 178, 234);">#Shelf</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(190, 201, 70);">#Reading-notes</span>
+                        </div>
+                    </div>
+                    <div class="toolbar-commend-item">
+                        <div class="commend-item-name">
+                            <span class="tag-name" style="color: rgb(172, 70, 197);">#Projects</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toolbar-commend-next btn-valid"></div>
+            </div>
+        </div>
+
+        <div class="dialog-main">
+            <div class="edit-note">
+                <div class="content-list-note-title">
+                    Officially named:
+                    <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
+                                        #Midinote
+                                    </span>
+                </div>
+                <div class="content-list-note-detail">
+                    Finally chose this name: Midinote from Sutter
+                    </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="edit-note-options">
+            <div class="edit-note-remaining">210</div>
+            <div class="__separate-line"></div>
+            <div class="edit-note-date">01/05/2018</div>
+        </div>
+
+        <div class="dialog-buttons">
+        <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+        <div class="dialog-button-ok btn-ok">Save</div>
+    </div>
+    </div>
+</div>
+<!-------search tag edit dialog style end--------->
+
+<!----------search page end------------>
+
+
+
+<!----------mind map page begin------------>
+
+<!--add tag for one map node dialog (mind map add a tag) begin-->
+<div class="map-add-tag-dialog">
+    <div class="map-add-tag-dialog-wrapper message-dialog-wrapper position-relative">
+        <div class="map-add-tag-add">
+            <div class="dialog-title">ADD A HASHTAG<span class="dialog-title-description">related to #技术线</span></div>
+            <div class="dialog-main">
+                <div class="map-add-tag-form-item">
+                    <div class="form-item-label">#</div>
+                    <div class="form-input">
+                        <input type="text" name="map-add-tag-name"
+                               value="" placeholder="" maxlength="200" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-buttons">
+                <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                <div class="dialog-button-ok btn-ok">Next</div>
+            </div>
+        </div>
+
+        <div class="map-add-tag-exist">
+            <div class="dialog-title">ADD A HASHTAG<span class="dialog-title-description">related to #技术线</span></div>
+            <div class="dialog-main">
+                <div class="map-add-tag-content">
+                    <div class="">#MidiNote</div>
+                    <div class="">
+                        This hash-tag is exist.
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-buttons">
+                <div class="dialog-button-back btn-back"><span>BACK</span></div>
+                <div class="dialog-button-right-part">
+                    <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                    <div class="dialog-button-ok btn-ok">OK</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-add-tag-new">
+            <div class="dialog-title">ADD A HASHTAG<span class="dialog-title-description">related to #技术线</span></div>
+            <div class="dialog-main">
+                <div class="map-add-tag-content">
+                    <div class="">#MM-Note</div>
+                    <div class="">
+                        This hash-tag is new one.
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialog-buttons">
+                <div class="dialog-button-back btn-back"><span>BACK</span></div>
+                <div class="dialog-button-right-part">
+                    <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                    <div class="dialog-button-ok btn-ok">OK</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--add tag for one map node dialog (mind map add a tag) end-->
+
+<!--tag circle menu begin-->
+<div class="tag-menu-dialog message-dialog">
+    <div class="tag-menu-dialog-wrapper">
+        <ul class="map-tag-menu">
+            <li class="tag-menu-setting">
+                <!--#include file='images/setting-icon.svg'-->
+            </li>
+
+            <li class="tag-menu-delete">
+                <!--#include file='images/tag-menu-delete.svg'-->
+            </li>
+
+            <li class="tag-menu-doc">
+                <!--#include file='images/menu-notes.svg'-->
+            </li>
+
+            <li class="tag-menu-paste tag-menu-invalid-btn">
+                <!--#include file='images/tag-menu-paste.svg'-->
+            </li>
+            <li class="tag-menu-cut">
+                <!--#include file='images/tag-menu-cut.svg'-->
+            </li>
+            <li class="tag-menu-focus">
+                <!--#include file='images/tag-menu-focus.svg'-->
+            </li>
+            <li class="tag-menu-add">
+                <!--#include file='images/tag-menu-delete.svg'-->
+            </li>
+        </ul>
+    </div>
+</div>
+<!--tag circle menu end-->
+
+<!----------mind map page end-------------->

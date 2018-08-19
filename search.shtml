@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Midinote</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+
+            $(function (){
+                $(".main-menu-li-notes").bind('click',function(){
+                    window.location='index.shtml';
+                });
+
+                $(".main-menu-li-map").bind('click',function(){
+                    window.location='mindMap.shtml';
+                });
+
+                $(".main-menu-li-tags").bind('click',function(){
+                    window.location='hashTag.shtml';
+                });
+            });
+
+            //点击菜单（最左侧）
+            $(".main-menu-li-icon").bind("click",function(){
+                if($(this).parent('.main-menu-li-selected').length==0) {
+                    $(".main-menu-li-selected").removeClass("main-menu-li-selected");
+                    $(this).parent(".main-menu-li").addClass("main-menu-li-selected");
+                }
+            });
+
+            //点击打开关闭widget的按钮
+            $(".main-head-button-widget").bind("click",function(){
+                if($(this).hasClass("__open")) {
+                    $(this).removeClass("__open").addClass("__close");
+                    $(".main-content-widget").addClass("__close");
+
+                    //根据页面大小设置搜索card模式显示的宽度
+                    $(".view-card").addClass("__whole-view");
+
+                } else if ($(this).hasClass("__close")) {
+                    $(this).removeClass("__close").addClass("__open");
+                    $(".main-content-widget").removeClass("__close");
+
+                    //根据页面大小设置搜索card模式显示的宽度
+                    $(".view-card").removeClass("__whole-view");
+                }
+            });
+
+
+            //标签hover方法
+            $(".tag-name").hover(function(){
+                var tag = $(this);
+                var tagColor = tag.css("color");
+                tagColor = tagColor.substring(tagColor.indexOf('(')+1,tagColor.indexOf(')'));
+                var colorArr = tagColor.split(",");
+                tag.css("background-color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",.7)");
+                tag.css("color","rgba(236,236,236,1)");
+            },function(){
+                var tag = $(this);
+                var tagBgColor = tag.css("background-color");
+                tagBgColor = tagBgColor.substring(tagBgColor.indexOf('(')+1,tagBgColor.indexOf(')'));
+                var colorArr = tagBgColor.split(",");
+                tag.css("color","rgba("+colorArr[0]+","+colorArr[1]+","+colorArr[2]+",1)");
+                tag.css("background-color","transparent");
+            });
+
+
+            //列表内容排序选择 点击事件
+            //begin
+            $(".list-sort-box").bind("click",function(){
+                if($(this).hasClass("list-sort-box-default")) {
+                    $(".list-sort-box li").css("transition","top .1s ease-in, visibility .05s");
+                    $(this).removeClass("list-sort-box-default").addClass("list-sort-box-expansion");
+                } else if($(this).hasClass("list-sort-box-expansion")) {
+                    $(this).removeClass("list-sort-box-expansion").addClass("list-sort-box-default");
+                }
+
+            });
+
+            $(".list-sort-box-recent").bind("click",function(){
+                if($(this).hasClass("list-sort-selected")) {
+                    $(".list-sort-box li").css("transition","none");
+                    return;
+                }
+                $(".list-sort-box li").css("transition","top .1s ease-in, visibility .05s");
+                $(".list-sort-box-early").removeClass("list-sort-selected");
+                $(this).addClass("list-sort-selected");
+            });
+            $(".list-sort-box-early").bind("click",function(){
+                if($(this).hasClass("list-sort-selected")) {
+                    $(".list-sort-box li").css("transition","none");
+                    return;
+                }
+                $(".list-sort-box li").css("transition","top .1s ease-in, visibility .05s");
+                $(".list-sort-box-recent").removeClass("list-sort-selected");
+                $(this).addClass("list-sort-selected");
+            });
+            //end
+
+
+            //笔记列表显示方式转换按钮点击
+            $(".main-content-list-view>div").bind('click',function(){
+                var viewBtn = $(this);
+                if(viewBtn.hasClass("view-selected")){
+                    return;
+                }
+                if($(this).hasClass("view-list")) {
+                    $(".view-card").removeClass("view-selected");
+                    $(this).addClass("view-selected");
+                }
+                if($(this).hasClass("view-card")) {
+                    $(".view-list").removeClass("view-selected");
+                    $(this).addClass("view-selected");
+                }
+            });
+
+
+            //信息提示框
+            $(".with-top-tip").hover(function(){
+                    var thisObj = $(this);
+                    //alert("1");
+                    //插入消息内容
+                    var tipMg = thisObj.attr("tip-message");
+                    var theTip = $(".small-tip");
+                    var theArrow = theTip.find(".small-tip-arrow");
+                    theTip.find(".small-tip-main").empty().append("<span>"+tipMg+"</span>");
+                    //获取目标对象位置
+                    var objX = thisObj.offset().left;
+                    var objY = thisObj.offset().top;
+
+                    var tipWidth = theTip.width();
+                    var tipX = objX+thisObj.width()/2-tipWidth/2;
+                    //alert("2");
+
+                    theTip.css("left",tipX);
+                    theTip.css("top",(objY-theTip.height()-8));
+                    theTip.css("visibility","visible");
+
+                    theArrow.css("bottom","-12px");
+                    theArrow.css("top","auto");
+                    theArrow.css("border-color", "#0b0b0b transparent transparent transparent");
+                }
+                , function(){
+                    $(".small-tip").css("visibility","hidden");
+                });
+
+
+            $(".with-bottom-tip").hover(function(){
+                    var thisObj = $(this);
+                    //插入消息内容
+                    var tipMg = thisObj.attr("tip-message");
+                    var theTip = $(".small-tip");
+                    var theArrow = theTip.find(".small-tip-arrow");
+
+                    theTip.find(".small-tip-main").empty().append("<span>"+tipMg+"</span>");
+                    //获取目标对象位置
+                    var objX = thisObj.offset().left;
+                    var objY = thisObj.offset().top;
+
+                    var tipWidth = theTip.width();
+                    var tipX = objX+thisObj.width()/2-tipWidth/2;
+
+                    theTip.css("left",tipX);
+                    theTip.css("top",(objY+thisObj.height()+10));
+
+                    theTip.css("visibility","visible");
+
+                    theArrow.css("top","-12px");
+                    theArrow.css("bottom","auto");
+                    theArrow.css("border-color", "transparent transparent #0b0b0b transparent");
+                }
+                , function(){
+                    $(".small-tip").css("visibility","hidden");
+                });
+
+
+            //弹出窗口的背景幕布控制
+            function backdropClose(){
+                var backdrop = $(".backdrop");
+                backdrop.removeClass("__close").removeClass("__open");
+                backdrop.addClass("__close");
+            }
+
+            function backdropOpen(){
+                var backdrop = $(".backdrop");
+                backdrop.removeClass("__close").removeClass("__open");
+                backdrop.addClass("__open");
+            }
+
+
+            var pScrollTop = 0;
+            //滚动条向上滚动时，title变化
+            $('.main-content-notes').bind('scroll',function(event){
+                var scrollTop = $('.main-content-notes').scrollTop();
+
+                if(pScrollTop < scrollTop && scrollTop > 50){
+                    if($('.main-head-title').hasClass("__open")){
+                        return;
+                    }
+
+                    if($('.main-content-search-area').find(".search-input-item").length == 0){
+                        return;
+                    }
+
+                    $('.main-content-search-area').removeClass('__open').addClass('__close');
+                    $('.main-head-title').removeClass('__close').addClass("__open");
+                    $('.main-head-title').html($('.main-content-search-items').prop("outerHTML"));
+                }
+                if(pScrollTop > scrollTop && scrollTop < 40){
+                    if($('.main-head-title').find(".main-content-search-items").length == 0){
+                        return;
+                    }
+
+                    $('.main-content-search-area').removeClass('__close').addClass('__open');
+                    $('.main-head-title').removeClass("__open").addClass("__close");
+                    $('.main-head-title').html('SEARCH MY NOTES');
+                }
+                pScrollTop = scrollTop;
+            });
+
+
+            $('#options-search').bind('change',function(){
+                if($(this).val()=='nothing') {
+
+                    if($(".search-tag-dialog").hasClass("__open")) {
+                        $(".search-tag-dialog").removeClass("__open").addClass("__close");
+                    }
+                    if($(".search-setting-value-dialog").hasClass("__open")){
+                        $(".search-setting-value-dialog").removeClass("__open").addClass("__close");
+                    }
+
+                } else if($(this).val()=='select-tag') {
+                    $(".search-tag-words").hide();
+                    $(".search-tags").show();
+                    if($(".search-tag-dialog").hasClass("__open")){
+                        $(".search-tag-dialog").removeClass("__open").addClass("__close");
+                    }else {
+                        $(".search-tag-dialog").removeClass("__close").addClass("__open");
+                    }
+                } else if($(this).val()=='select-key-words') {
+                    $(".search-tag-words").show();
+                    $(".search-tags").hide();
+
+                    if($(".search-tag-dialog").hasClass("__open")){
+                        $(".search-tag-dialog").removeClass("__open").addClass("__close");
+                    }else {
+                        $(".search-tag-dialog").removeClass("__close").addClass("__open");
+                    }
+                } else if($(this).val() == 'set-tag-value') {
+                    if($(".search-setting-value-dialog").hasClass("__open")){
+                        $(".search-setting-value-dialog").removeClass("__open").addClass("__close");
+                    }else {
+                        $(".search-setting-value-dialog").removeClass("__close").addClass("__open");
+                    }
+                } else if($(this).val() == 'add-search-con1') {
+                    var pObj = $(".main-content-search-items");
+                    pObj.append($("#cond1"));
+                    $("#cond1").show();
+
+                    if($(".search-input-icon").hasClass("search-input-icon-delete")) {
+                        $(".search-input-icon").addClass("search-input-icon-search").removeClass("search-input-icon-delete");
+                    }else {
+                        $(".search-input-icon").addClass("search-input-icon-delete").removeClass("search-input-icon-search");
+                    }
+                } else if($(this).val() == 'add-search-con2') {
+                    var pObj = $(".main-content-search-items");
+                    pObj.append($("#cond2"));
+                    $("#cond2").show();
+
+                    if($(".search-input-icon").hasClass("search-input-icon-delete")) {
+                        $(".search-input-icon").addClass("search-input-icon-search").removeClass("search-input-icon-delete");
+                    }else {
+                        $(".search-input-icon").addClass("search-input-icon-delete").removeClass("search-input-icon-search");
+                    }
+                } else if($(this).val() == 'add-search-con3') {
+                    var pObj = $(".main-content-search-items");
+                    pObj.append($("#cond3"));
+                    $("#cond3").show();
+
+                    if($(".search-input-icon").hasClass("search-input-icon-delete")) {
+                        $(".search-input-icon").addClass("search-input-icon-search").removeClass("search-input-icon-delete");
+                    }else {
+                        $(".search-input-icon").addClass("search-input-icon-delete").removeClass("search-input-icon-search");
+                    }
+                } else if($(this).val() == 'search-list-view') {
+                    var obj = $(".main-content-notes-list");
+                    obj.removeClass("view-card").removeClass("view-list").addClass("view-list");
+                } else if($(this).val() == 'search-card-view') {
+                    var obj = $(".main-content-notes-list");
+                    obj.removeClass("view-card").removeClass("view-list").addClass("view-card");
+                } else if($(this).val()=='search-edit-note') {
+                    var obj = $(".search-tag-edit-dialog");
+                    if(obj.hasClass("__open")){
+                        obj.removeClass("__open").addClass("__close");
+                        backdropClose();
+                    }else {
+                        obj.addClass("__open").removeClass("__close");
+                        backdropOpen();
+                    }
+                } else if($(this).val()=='search-edit-note-close') {
+                    var obj = $(".search-tag-edit-dialog");
+                    if(obj.hasClass("__open")){
+                        obj.removeClass("__open").addClass("__close");
+                        backdropClose();
+                    }else {
+                        obj.addClass("__open").removeClass("__close");
+                        backdropOpen();
+                    }
+                } else if($(this).val() == 'search-record') {
+                    $(".main-content-notes-list").hide();
+                    $(".main-content-search-records").show();
+                    $(".main-content-blank").hide();
+                } else if($(this).val() == 'search-result') {
+                    $(".main-content-search-records").hide();
+                    $(".main-content-notes-list").show();
+                    $(".main-content-blank").hide();
+                } else if($(this).val() == 'search-no-result') {
+                    $(".main-content-search-records").hide();
+                    $(".main-content-notes-list").hide();
+                    $(".main-content-blank.__no-data").show();
+                    $(".main-content-blank.__get-started").hide();
+                } else if($(this).val() == 'search-start') {
+                    $(".main-content-search-records").hide();
+                    $(".main-content-notes-list").hide();
+                    $(".main-content-blank.__no-data").hide();
+                    $(".main-content-blank.__get-started").show();
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div class="dark-style">
+    <div class="page-body">
+        <div class="main-menu main-menu-wrapper">
+            <div class="main-menu-bar">
+                <div class="flex-vertical">
+                    <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
+                    <div class="main-menu-ul">
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-notes">
+                                <!--#include virtual='images/menu-notes.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-map">
+                                <!--#include virtual='images/menu-map.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-li">
+                            <div class="main-menu-li-icon main-menu-li-tags">
+                                <!--#include virtual='images/menu-tags.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                        <div class="main-menu-li main-menu-li-selected">
+                            <div class="main-menu-li-icon main-menu-li-search">
+                                <!--#include virtual='images/menu-search.svg' -->
+                            </div>
+                        </div>
+                        <div class="main-menu-separate-line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-menu-user">
+                <div class="main-menu-user-icon"></div>
+            </div>
+        </div>
+        <div class="main-block">
+            <div class="main-head">
+                <div class="main-head-location">
+                    <div class="main-head-title">SEARCH MY NOTES</div>
+                </div>
+                <div class="main-head-buttons">
+                    <div class="main-head-button-widget __open"></div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="main-content-center position-relative">
+                    <div class="main-content-notes main-content-search">
+                        <div class="main-content-search-area">
+                            <div class="main-content-search-input position-relative">
+                                <div class="main-content-search-items"></div>
+                                <input class="search-input" />
+                                <div class="search-input-icon search-input-icon-search"></div>
+                            </div>
+                        </div>
+
+                        <div class="main-content-notes-list">
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Maybe the description of this book is more objective and real
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                        <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        <span class="tag-name">#Midinote</span>!
+                                    </div>
+
+                                    <div class="content-list-note-date">03/06/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Officially named:
+                                    <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
+                                        #Midinote
+                                    </span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    Finally chose this name: Midinote from Sutter
+                                    </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
+                                </div>
+                                <div class="content-list-note-date">02/18/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Tragic <span class="tag-name" style="color:rgba(113,189,126,1)">#lesson</span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    Released to the online version of the development, resulting in the version of oliver is not available, looking for a long time to find that I was in the development of a index to join, but it is manually added, so there is no online version of oliver this thing The result is incorrect.
+                                    to sum up: <span class="tag-name">#Midinote</span>
+
+                                    The more artificial things, the more possibilities I make mistakes, and the more I get the program to do things, the more reliable and labor-saving I am.
+                                </div>
+                                <div class="content-list-note-date">02/18/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Maybe real
+                                </div>
+                                <div class="content-list-note-detail">
+                                    I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                    </br><span class="tag-name">#Midinote</span>!
+                                </div>
+                                <div class="content-list-note-date">03/06/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Maybe the description of this book is more objective and real
+                                </div>
+                                <div class="content-list-note-detail">
+                                    I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                </div>
+                                <div class="content-list-note-detail">
+                                    In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                    <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    <span class="tag-name">#Midinote</span>!
+                                </div>
+
+                                <div class="content-list-note-date">03/06/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                <div class="content-list-note-title">
+                                    Officially named:
+                                    <span class="tag-name with-icon" style="background: url('images/temp/laugh-face.png') center right no-repeat;background-size: 20px 20px;">
+                                        #Midinote
+                                    </span>
+                                </div>
+                                <div class="content-list-note-detail">
+                                    Finally chose this name: Midinote from Sutter
+                                    </br><span class="tag-name" style="color:rgba(209,207,81,1)">#logger</span>
+                                </div>
+                                <div class="content-list-note-date">02/18/2018</div>
+                                <div class="content-list-note-options">
+                                    <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Tragic <span class="tag-name" style="color:rgba(113,189,126,1)">#lesson</span>
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        Released to the online version of the development, resulting in the version of oliver is not available, looking for a long time to find that I was in the development of a index to join, but it is manually added, so there is no online version of oliver this thing The result is incorrect.
+                                        to sum up: <span class="tag-name">#Midinote</span>
+
+                                        The more artificial things, the more possibilities I make mistakes, and the more I get the program to do things, the more reliable and labor-saving I am.
+                                    </div>
+                                    <div class="content-list-note-date">02/18/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Maybe real
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                        </br><span class="tag-name">#Midinote</span>!
+                                    </div>
+                                    <div class="content-list-note-date">03/06/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-notes-list-note-wrapper">
+                                <div class="content-notes-list-note">
+                                    <div class="content-list-note-title">
+                                        Maybe the description of this book is more objective and real
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        In the foreword of the “Code of Work” of the political organization of the Socialist Party
+                                        <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
+                                    </div>
+                                    <div class="content-list-note-detail">
+                                        <span class="tag-name">#Midinote</span>!
+                                    </div>
+
+                                    <div class="content-list-note-date">03/06/2018</div>
+                                    <div class="content-list-note-options">
+                                        <div class="note-option-edit with-top-tip" tip-message="Edit"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--0 search result display part-->
+                        <div class="main-content-blank __no-data">
+                            <div class="main-content-bg-img"></div>
+                            <p>We have searched the entire galaxy,
+                                but sorry,we did’nt find what your want.</p>
+                        </div>
+
+
+                        <!--search get started-->
+                        <div class="main-content-blank __get-started">
+                            <div class="main-content-bg-img"></div>
+                            <p>LET'S GET STARTED!</p>
+                        </div>
+
+
+                        <!--search saved records-->
+                        <div class="main-content-search-records search-records" style="display:none;">
+                            <div class="search-records-content">
+                                <div class="search-records-title">
+                                    <span>Saved search & History search</span>
+                                </div>
+
+                                <div class="search-records-list">
+                                    <div class="search-record-item-wrapper position-relative" >
+                                        <div class="search-record-item">
+                                            <div class="search-record-item-icon search-saved"></div>   <!--search-history-->
+                                            <div class="search-record-item-content">
+                                                <div class="search-record-condition search-input-tag search-plus" style='background-color:rgba(15,130,230,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#createtime</div>
+                                                        <div class='search-input-item-value'><span class="__symbol-equal">=</span><span>3/10/2017—18/10/2017</span></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-tag search-minus" style='background-color:rgba(233,69,69,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#Big-Man</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-words">
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>Midinote</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="search-record-item-delete">
+                                            <!--#include file='images/cross-light-icon.svg' -->
+                                        </div>
+                                    </div>
+
+                                    <div class="search-record-item-wrapper position-relative" >
+                                        <div class="search-record-item">
+                                            <div class="search-record-item-icon search-saved"></div>
+                                            <div class="search-record-item-content">
+                                                <div class="search-record-condition search-input-tag search-plus" style='background-color:rgba(206,27,251,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#WebDesign</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-words">
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>so-much</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-tag search-minus" style='background-color:rgba(0,146,78,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#abandoned</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="search-record-item-delete">
+                                            <!--#include file='images/cross-light-icon.svg' -->
+                                        </div>
+                                    </div>
+
+                                    <div class="search-record-item-wrapper position-relative" >
+                                        <div class="search-record-item">
+                                            <div class="search-record-item-icon search-history"></div>
+                                            <div class="search-record-item-content">
+                                                <div class="search-record-condition search-input-tag search-plus" style='background-color:rgba(250,166,26,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#WebDesign</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="search-record-condition search-input-tag search-minus" style='background-color:rgba(67,181,129,.75);'>
+                                                    <div class='search-input-item-content'>
+                                                        <div class="search-input-item-method"></div>
+                                                        <div class='search-input-item-name'>#abandoned</div>
+                                                        <div class='search-input-item-value'></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="search-record-item-delete">
+                                            <!--#include file='images/cross-light-icon.svg' -->
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="search-records-remaining"></div>
+
+                            <div class="search-records-bg">
+                                <!--#include file='images/search-records-bg.svg' -->
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="main-content-options">
+                        <div class="main-content-list-amount">Notes:<span class="list-amount-value">188</span></div>
+                        <div class="main-content-list-options">
+                            <div class="main-content-list-save with-top-tip" tip-message="Save Searches"></div>
+                            <div class="main-content-list-sort">
+                                <div class="list-sort-label">Sort by:</div>
+                                <div class="list-sort-box list-sort-box-default">
+                                    <li class="list-sort-box-recent list-sort-selected">Most recent</li>
+                                    <li class="list-sort-box-early">Earliest</li>
+                                </div>
+                            </div>
+                            <div class="main-content-list-view">
+                                <div class="view-list view-selected with-top-tip" tip-message="View by List"></div>
+                                <div class="view-card with-top-tip" tip-message="View by Card"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content-widget"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- here to put common html fragments -->
+<div id='commonDiv' ></div>
+
+<div style="position: absolute; bottom: 34px; left: 300px;width: 200px;font-size:.14rem;z-index: 1002;" >
+    <select id="options-search" style="height: 30px;">
+        <option value="nothing">DEFAULT STATUS</option>
+        <option value="select-tag">SEARCH--Select Tag</option>
+        <option value="select-key-words">SEARCH--Select Key Words</option>
+        <option value="set-tag-value">Set Tag Value Dialog</option>
+        <option value="add-search-con1">Add 1st Search Condition</option>
+        <option value="add-search-con2">Add 2nd Search Condition</option>
+        <option value="add-search-con3">Add 3rd Search Condition</option>
+        <option value="search-list-view">Search List View</option>
+        <option value="search-card-view">Search Card View</option>
+        <option value="search-edit-note">Edit A Note</option>
+        <option value="search-edit-note-close">Close Edit A Note</option>
+        <option value="search-record">Show Search Records list</option>
+        <option value="search-start">Show Search Start</option>
+        <option value="search-result">Show Search Result list</option>
+        <option value="search-no-result">Show Search NO Result</option>
+    </select>
+</div>
+
+</body>
+</html>
+
+<!-- to load common html -->
+<script type="text/javascript">
+    console.log('where is jQuery:',$)
+    $(document).ready(function(){
+        console.log('begin load common html')
+        $('#commonDiv').load('common.shtml',function(){
+            console.log('finished')
+        })
+    })
+</script>
