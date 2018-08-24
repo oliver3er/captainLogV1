@@ -690,3 +690,38 @@
 	font-size	: 12px;
 }
 
+.temp-trigger-container > div{
+    background: white;
+	color		: black;
+    border-radius: 5px;
+    height: 30px;
+    vertical-align: middle;
+	margin: 5px;
+	position	: relative;
+	padding		: 10px;
+}
+
+.temp-trigger-container > div > div{
+	position	: absolute;
+	right		: 2px;
+	top			: 2px;
+	cursor		: pointer;
+	font-size	: 12px;
+}
+
+
+.temp-error-message {
+	color	: red;
+}
+
+.temp-alias-edit{
+	position	: absolute;
+	right		: 0;
+	top			: 4px;
+	text-decoration	: underline;
+	cursor		: pointer;
+}
+
+.main-tag-alias {
+	position	: relative;
+}
