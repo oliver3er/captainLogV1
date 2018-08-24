@@ -110,7 +110,7 @@
         <div class="main-menu main-menu-wrapper">
             <div class="main-menu-bar">
                 <div class="flex-vertical">
-                    <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
+                    <div class="main-logo"><a href="index.shtml"><img src="images/logo.svg" alt="logo" /></a></div>
                     <div class="main-menu-ul">
                         <div class="main-menu-separate-line"></div>
                         <div class="main-menu-li">

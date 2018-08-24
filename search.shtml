@@ -321,13 +321,13 @@
                 } else if($(this).val() == 'search-no-result') {
                     $(".main-content-search-records").hide();
                     $(".main-content-notes-list").hide();
-                    $(".main-content-blank.__no-data").show();
+                    $(".main-content-blank.__no-data").css("display", "flex");
                     $(".main-content-blank.__get-started").hide();
                 } else if($(this).val() == 'search-start') {
                     $(".main-content-search-records").hide();
                     $(".main-content-notes-list").hide();
                     $(".main-content-blank.__no-data").hide();
-                    $(".main-content-blank.__get-started").show();
+                    $(".main-content-blank.__get-started").css("display", "flex");
                 }
             });
 
@@ -340,7 +340,7 @@
         <div class="main-menu main-menu-wrapper">
             <div class="main-menu-bar">
                 <div class="flex-vertical">
-                    <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
+                    <div class="main-logo"><a href="index.shtml"><img src="images/logo.svg" alt="logo" /></a></div>
                     <div class="main-menu-ul">
                         <div class="main-menu-separate-line"></div>
                         <div class="main-menu-li">
@@ -572,16 +572,20 @@
 
                         <!--0 search result display part-->
                         <div class="main-content-blank __no-data">
-                            <div class="main-content-bg-img"></div>
-                            <p>We have searched the entire galaxy,
-                                but sorry,we did’nt find what your want.</p>
+                            <div class="main-content-blank-wrapper">
+                                <div class="main-content-bg-img"></div>
+                                <p>We have searched the entire galaxy,
+                                    but sorry,we did’nt find what your want.</p>
+                            </div>
                         </div>
 
 
                         <!--search get started-->
                         <div class="main-content-blank __get-started">
-                            <div class="main-content-bg-img"></div>
-                            <p>LET'S GET STARTED!</p>
+                            <div class="main-content-blank-wrapper">
+                                <div class="main-content-bg-img"></div>
+                                <p>LET'S GET STARTED!</p>
+                            </div>
                         </div>
 
 

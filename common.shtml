@@ -593,52 +593,53 @@
 <!--first load page begin-->
 <div class="first-load-dialog message-dialog">
     <div class="first-load-dialog-wrapper">
-        <div class="first-load-dialog-head">
-            <div>
-                <h1>Welcome to Midinote</h1>
-                <h2>You are almost done, we need you to finish the final part, please set up your personal info.</h2>
-            </div>
-        </div>
-
-        <div class="first-load-dialog-form">
-            <div class="fld-form-username-item">
-                <div class="fld-form-label label-icon-common">
-                    <div class="fld-form-label-icon"></div>
-                    <div class="fld-form-label-content">USERNAME</div>
-                    <div class="fld-form-error-info"></div>
+        <div class="first-load-dialog-main">
+            <div class="first-load-dialog-head">
+                <div>
+                    <h1>Welcome</h1>
+                    <h2>You are almost done, we need you to finish the final part, please set up your personal info.</h2>
                 </div>
-                <div class="fld-form-name-input">
-                    <input placeholder="What's your name?"/>
-                </div>
-                <div class="fld-form-username-desc">Midinote will create the first TAG named after your name.</div>
             </div>
 
-            <div class="fld-form-avatar-item">
-                <div class="fld-form-label label-icon-error">
-                    <div class="fld-form-label-icon"></div>
-                    <div class="fld-form-label-content">AVATAR</div>
-                    <div class="fld-form-error-info">The image is too big.</div>
-                </div>
-                <div class="fld-form-avatar">
-                    <div class="fld-form-avatar-upload-wrapper">
-                        <span>CHANGE</span>
-                        <span>AVATAR</span>
+            <div class="first-load-dialog-form">
+                <div class="fld-form-username-item">
+                    <div class="fld-form-label label-icon-common">
+                        <div class="fld-form-label-icon"></div>
+                        <div class="fld-form-label-content">USERNAME</div>
+                        <div class="fld-form-error-info"></div>
                     </div>
-                    <div class="fld-form-avatar-upload-icon"></div>
-                    <div class="fld-form-avatar-upload">
-                        <span>CHANGE</span>
-                        <span>AVATAR</span>
+                    <div class="fld-form-name-input">
+                        <input placeholder="What's your name?"/>
                     </div>
-
+                    <div class="fld-form-username-desc">Midinote will create the first TAG named after your name.</div>
                 </div>
-                <div class="fld-form-avatar-desc">We recommend an image of at least 512*512 for your avatar.</div>
+
+                <div class="fld-form-avatar-item">
+                    <div class="fld-form-label label-icon-error">
+                        <div class="fld-form-label-icon"></div>
+                        <div class="fld-form-label-content">AVATAR</div>
+                        <div class="fld-form-error-info">The image is too big.</div>
+                    </div>
+                    <div class="fld-form-avatar">
+                        <div class="fld-form-avatar-upload-wrapper">
+                            <span>CHANGE</span>
+                            <span>AVATAR</span>
+                        </div>
+                        <div class="fld-form-avatar-upload-icon"></div>
+                        <div class="fld-form-avatar-upload">
+                            <span>CHANGE</span>
+                            <span>AVATAR</span>
+                        </div>
+
+                    </div>
+                    <div class="fld-form-avatar-desc">We recommend an image of at least 512*512 for your avatar.</div>
+                </div>
+            </div>
+
+            <div class="first-load-dialog-foot">
+                <div class="first-load-dialog-btn">GET STARTED</div>
             </div>
         </div>
-
-        <div class="first-load-dialog-foot">
-            <div class="first-load-dialog-btn">GET STARTED</div>
-        </div>
-
         <!--演示效果 begin-->
         <script type="text/javascript">
             $(function () {
