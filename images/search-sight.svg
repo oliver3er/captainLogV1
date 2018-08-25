@@ -1,0 +1,46 @@
+<svg version='1.1' id='search-sight-svg' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+													 width='90.642px' height='98.009px' viewBox='0 0 90.642 98.009' enableBackground='new 0 0 90.642 98.009' xmlSpace='preserve'>
+												<g id='search-telescope'>
+												<g id='search-telescope-top'>
+												<polyline fill='none' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' points='63.448,21.787 30.896,32.024 
+													36.78,59.634 70.634,52.937 	'/>
+												<polyline fill='none' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' points='31.872,36.608 4.568,45.589 8.579,62.128 
+													35.972,55.838 	'/>
+												<line fill='none' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' x1='45.837' y1='35.496' x2='61.308' y2='31.069'/>
+												<line fill='none' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' x1='35.972' y1='38.319' x2='41.786' y2='36.655'/>
+												<path fill='none' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' d='M7.7,58.507l-1.397,0.37
+													c-1.936,0.513-4.006-0.971-4.627-3.313l0,0c-0.619-2.342,0.448-4.656,2.384-5.168l1.573-0.417L7.7,58.507z'/>
+												<path fill='none' stroke='#ECECEC' strokeWidth='3' strokeLinecap='round' strokeMiterlimit='10' d='M82.481,55.241
+													c-0.195,2.202-1.785,4.124-4.061,4.643l0,0c-2.818,0.643-5.625-1.121-6.268-3.938l-9.145-40.181
+													c-0.639-2.816,1.129-5.618,3.949-6.263l0,0c2.307-0.524,4.607,0.561,5.719,2.517'/>
+												<path fill='#ECECEC' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' d='M72.673,12.025
+													c9.697,4.27,16.469,13.965,16.469,25.24c0,6.866-2.512,13.146-6.664,17.972L72.673,12.025z'/>
+												</g>	
+												<polyline fill='none' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' points='38.308,59.634 38.308,64.319 
+													40.058,64.319 40.058,69.319 48.64,69.319 48.64,64.476 50.765,64.476 50.765,57.819 	'/>
+												<line fill='none' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' x1='40.058' y1='69.319' x2='4.558' y2='104.819'/>
+												<line fill='none' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' x1='48.64' y1='69.319' x2='84.14' y2='104.819'/>
+												<line fill='none' stroke='#ECECEC' strokeWidth='4' strokeMiterlimit='10' x1='44.536' y1='69.319' x2='44.536' y2='104.819'/>
+												</g>
+												<g id='search-telescope-stars'>
+													<circle fill='#ECECEC' cx='5.233' cy='10.606' r='2.301'/>
+													<circle fill='#ECECEC' cx='86.02' cy='45.027' r='1.495'/>
+													<circle fill='#ECECEC' cx='40.671' cy='20.001' r='1.228'/>
+													<path id='search-telescope-stars2' fill='#ECECEC' d='M74.745,66.013c0,1.349,1.091,2.439,2.442,2.439c1.35,0,2.441-1.091,2.441-2.439
+														c0-1.352-1.092-2.442-2.441-2.442C75.836,63.57,74.745,64.661,74.745,66.013z'/>
+													<circle fill='#ECECEC' cx='80.216' cy='4.428' r='2.178'/>
+												</g>
+												<g id='search-telescope-ship'>
+													<path fill='#ECECEC' d='M10.786,11.309c0.485-4.623,3.686-8.848,8.537-10.554l0,0c4.956-1.745,10.223-0.36,13.483,3.106
+														C26.297,4.622,16.914,7.554,10.786,11.309z'/>
+													<path fill='none' stroke='#ECECEC' strokeMiterlimit='10' d='M45.529,3.791c2.848,1.352-7.422,9.675-19.727,14.008
+														c-12.308,4.333-25.427,4.849-24.423,1.863c1.155-3.425,7.877-8.876,20.39-13.227C34.347,2.06,42.328,2.271,45.529,3.791z'/>
+			
+													<ellipse transform='matrix(0.9433 -0.3321 0.3321 0.9433 -4.161 9.1816)' fill='none' stroke='#ECECEC' strokeMiterlimit='10' cx='24.785' cy='16.766' rx='13.835' ry='2.533'/>
+													<circle id='search-telescope-ship-light1' fill='#ECECEC' stroke='#ECECEC' strokeMiterlimit='10' cx='12.241' cy='15.497' r='2.098'/>
+													<path id='search-telescope-ship-light2' fill='#ECECEC' stroke='#ECECEC' strokeMiterlimit='10' d='M25.301,8.899c0.385,1.093-0.188,2.292-1.283,2.675
+														c-1.093,0.386-2.291-0.19-2.677-1.282c-0.382-1.093,0.19-2.291,1.282-2.675C23.718,7.231,24.915,7.807,25.301,8.899z'/>
+													<path id='search-telescope-ship-light3' fill='#ECECEC' stroke='#ECECEC' strokeMiterlimit='10' d='M36.163,7.079c0.383,1.093-0.189,2.291-1.283,2.676
+														c-1.093,0.383-2.289-0.191-2.675-1.283c-0.384-1.093,0.188-2.291,1.281-2.675C34.582,5.411,35.779,5.985,36.163,7.079z'/>
+												</g>
+												</svg>
