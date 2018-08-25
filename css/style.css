@@ -973,7 +973,7 @@
     font-size: .14rem;
     font-weight: 400;
     overflow-y: auto;
-    z-index: 2000;
+    z-index: 10;
     pointer-events: none;
 
     -webkit-animation-fill-mode: forwards;
@@ -1139,23 +1139,23 @@
 }
 
 .menu-account-setting-icon {
-    /* background: url("../images/setting-account-icon.svg") center center no-repeat;*/
+    background: url("../images/setting-account-icon.svg") center center no-repeat;
     background-size: 16px;
 }
 
 .menu-user-setting-icon {
-    /*background: url("../images/setting-user-icon.svg") center center no-repeat;*/
+    background: url("../images/setting-user-icon.svg") center center no-repeat;
     background-size: 16px;
 }
 
 .menu-help-icon {
-    /*background: url("../images/help-center-icon.svg") center center no-repeat;*/
+    background: url("../images/help-center-icon.svg") center center no-repeat;
     background-size: auto 16px;
 }
 
 .menu-log-out-icon {
     margin-left: 2px;
-    /*background: url("../images/log-out-icon.svg") center center no-repeat;*/
+    background: url("../images/log-out-icon.svg") center center no-repeat;
     background-size: 16px;
 }
 
@@ -2638,11 +2638,9 @@
     bottom: -1px;
 }
 
-/* Removed by dean, the icon should be shown always 
 .content-notes-list-note:hover .content-list-note-options {
     visibility: visible;
 }
-*/
 
 /*.content-notes-list-note:active {
     background: rgba(42,44,48,.5);
@@ -3164,7 +3162,6 @@
     opacity: .5;
 
     transition: opacity .15s ease-in-out;
-	cursor		: pointer;
 }
 
 .tag-color-blank:hover .tag-color-blank-icon {
@@ -3183,7 +3180,6 @@
     width: 20px;
     height: 20px;
     border-radius: 2px;
-	cursor		: pointer;
 }
 
 ._color1 {
@@ -3451,7 +3447,7 @@
     top: 12px;
     display: flex;
     justify-content: flex-end;
-    /* Removed by dean  visibility: hidden;*/
+    visibility: hidden;
     transition: visibility .15s ease .05s;
     z-index: 1;
 }
@@ -3461,44 +3457,52 @@
     right: 6px;
 }
 
-.content-list-note-options div {
+.content-list-note-options>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 20px;
     height: 20px;
     border-radius: 2px;
     cursor: pointer;
 }
 
+.content-list-note-options svg * {
+    fill: #929292;
+    transition: fill .12s;
+}
+
 .content-list-note-options div:hover {
     background-color: rgba(79,82,86,.5);
 }
 
-.content-list-note-options .note-option-warning {
-    background: url("../images/note-warning-icon.svg") center center no-repeat;
-    background-size: auto 13px;
+.note-option-delete:hover svg *, .note-option-top:hover svg *,
+.note-option-copy:hover svg * {
+    fill: #ececec;
 }
 
-.content-list-note-options .note-option-top{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.content-list-note-options .note-option-top svg {
-    width: 12px;
+.content-list-note-options .note-option-warning svg,
+.content-list-note-options .note-option-copy svg {
+    width: auto;
     height: 12px;
 }
 
-.content-list-note-options .note-option-top svg * {
-    fill: rgba(73,140,243,.55);
-    transition: fill .15s;
+.content-list-note-options .note-option-warning svg * {
+    fill: #faa61a;
+}
+
+.content-list-note-options .note-option-top svg {
+    width: 12px;
+    height: 12px;
 }
 
 .content-list-note-options .note-option-top.note-at-top svg * {
     fill: rgba(73,140,243,1);
 }
 
-.content-list-note-options .note-option-delete {
-    background: url("../images/note-delete-icon.svg") center center no-repeat;
-    background-size: 11px;
+.content-list-note-options .note-option-delete svg {
+    width: auto;
+    height: 10px;
 }
 
 .content-list-note-options .note-option-edit {
@@ -6045,6 +6049,7 @@
     -webkit-animation-timing-function: cubic-bezier(0.18, 0.38, 0.49, 1.47);
     animation-timing-function: cubic-bezier(0.18, 0.38, 0.49, 1.47);
     pointer-events: auto;
+
 }
 
 .main-content-tags-nothing:hover {
@@ -6461,3 +6466,146 @@
     fill: #777b81;
 }
 /******************** setting page style end **********************/
+
+
+/******************* doc edit page style begin *********************/
+
+.doc-editor-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.doc-page-body {
+    background-color: #eeeeee;
+}
+
+.doc-main-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    background-color: #36393e;
+}
+
+.doc-head-title {
+    display: flex;
+    align-items: center;
+    width: 78%;
+    font-size: .2rem;
+    font-weight: 500;
+    color: #ececec;
+    letter-spacing: 1px;
+}
+
+.doc-head-title-log {
+    margin: 0 20px 0 40px;
+    cursor: pointer;
+}
+
+.doc-head-title-log svg {
+    width: 40px;
+    height: 40px;
+}
+
+.doc-head-title-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 30px;
+}
+
+.doc-head-buttons {
+    margin: 0 40px 0 40px;
+}
+
+.doc-head-button-close {
+    padding: 6px 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(184,184,184,.5);
+    font-size: .14rem;
+    font-weight: 400;
+    color: #b8b8b8;
+    cursor: pointer;
+    transition: border-color .12s, color .15s ease;
+}
+
+.doc-head-button-close:hover {
+    border-color: rgba(184,184,184,1);
+    color: #ececec;
+}
+
+.doc-tool-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 46px;
+    border: 1px solid rgba(184,184,184,.7);
+    border-left: 0;
+    border-right: 0;
+    background-color: #fdfdfd;
+    user-select: none;
+    list-style-type: none;
+}
+
+.doc-tool-bar>div[class^='doc-tool'] {
+    display: -webkit-flex;
+    display: flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+}
+
+.doc-tool-bar svg {
+    display: block;
+    width: 12px;
+    max-height: 12px;
+}
+
+.doc-tool-bar .doc-tool-through svg,
+.doc-tool-bar .doc-tool-unordered svg,
+.doc-tool-bar .doc-tool-ordered svg,
+.doc-tool-bar .doc-tool-indent svg,
+.doc-tool-bar .doc-tool-outdent svg,
+.doc-tool-bar .doc-tool-left svg,
+.doc-tool-bar .doc-tool-center svg,
+.doc-tool-bar .doc-tool-right svg,
+.doc-tool-bar .doc-tool-justify svg,
+.doc-tool-bar .doc-tool-color svg,
+.doc-tool-bar .doc-tool-link svg,
+.doc-tool-bar .doc-tool-unlink svg,
+.doc-tool-bar .doc-tool-eraser svg {
+    display: block;
+    width: 14px;
+    max-height: 14px;
+}
+
+.doc-tool-bar .doc-tool-picture svg {
+    display: block;
+    width: 15px;
+    max-height: 15px;
+}
+
+
+.doc-main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.doc-edit-block {
+    margin: 50px auto;
+    padding: 30px 40px;
+    width: 700px;
+    min-height: 900px;
+    border: 1px solid #b8b8b8;
+    border-radius: 6px;
+    box-shadow: 0 0 3px 1px rgba(184,184,184,.6);
+    background-color: #fff;
+}
+
+/******************** doc edit page style end **********************/

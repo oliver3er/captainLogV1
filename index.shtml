@@ -754,9 +754,10 @@ test--</pre>
 
                                 <div class="content-list-note-date">03/06/2018</div>
                                 <div class="content-list-note-options">
-                                    <div class="note-option-warning"></div>
+                                    <div class="note-option-warning"><!--#include file='images/note-warning-icon.svg' --></div>
                                     <div class="note-option-top note-at-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-copy with-bottom-tip" tip-message="Copy"><!--#include file='images/copy-icon.svg' --></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
@@ -773,9 +774,9 @@ test--</pre>
                                 </div>
                                 <div class="content-list-note-date">02/18/2018</div>
                                 <div class="content-list-note-options">
-                                    <div class="note-option-warning"></div>
+                                    <div class="note-option-warning"><!--#include file='images/note-warning-icon.svg' --></div>
                                     <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
@@ -792,7 +793,7 @@ test--</pre>
                                 <div class="content-list-note-date">02/18/2018</div>
                                 <div class="content-list-note-options">
                                     <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
@@ -807,7 +808,7 @@ test--</pre>
                                 <div class="content-list-note-date">03/06/2018</div>
                                 <div class="content-list-note-options">
                                     <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
@@ -830,7 +831,7 @@ test--</pre>
                                 <div class="content-list-note-date">03/06/2018</div>
                                 <div class="content-list-note-options">
                                     <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
