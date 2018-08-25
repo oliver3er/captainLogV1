@@ -6476,16 +6476,28 @@
 }
 
 .doc-page-body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 2000px;
+    margin: 0 auto;
     background-color: #eeeeee;
 }
 
 .doc-main-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
     height: 60px;
     width: 100%;
     background-color: #36393e;
+}
+
+.doc-main-head-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+    width: 85%;
 }
 
 .doc-head-title {
@@ -6498,12 +6510,12 @@
     letter-spacing: 1px;
 }
 
-.doc-head-title-log {
-    margin: 0 20px 0 40px;
+.doc-head-title-logo {
+    margin: 0 20px 0 20px;
     cursor: pointer;
 }
 
-.doc-head-title-log svg {
+.doc-head-title-logo svg {
     width: 40px;
     height: 40px;
 }
@@ -6516,7 +6528,8 @@
 }
 
 .doc-head-buttons {
-    margin: 0 40px 0 40px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .doc-head-button-close {
@@ -6539,8 +6552,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
-    height: 46px;
+    min-height: 46px;
     border: 1px solid rgba(184,184,184,.7);
     border-left: 0;
     border-right: 0;
@@ -6562,26 +6576,18 @@
 
 .doc-tool-bar svg {
     display: block;
-    width: 12px;
-    max-height: 12px;
-}
-
-.doc-tool-bar .doc-tool-through svg,
-.doc-tool-bar .doc-tool-unordered svg,
-.doc-tool-bar .doc-tool-ordered svg,
-.doc-tool-bar .doc-tool-indent svg,
-.doc-tool-bar .doc-tool-outdent svg,
-.doc-tool-bar .doc-tool-left svg,
-.doc-tool-bar .doc-tool-center svg,
-.doc-tool-bar .doc-tool-right svg,
-.doc-tool-bar .doc-tool-justify svg,
-.doc-tool-bar .doc-tool-color svg,
-.doc-tool-bar .doc-tool-link svg,
-.doc-tool-bar .doc-tool-unlink svg,
-.doc-tool-bar .doc-tool-eraser svg {
-    display: block;
     width: 14px;
     max-height: 14px;
+}
+
+.doc-tool-bar .doc-tool-bold svg,
+.doc-tool-bar .doc-tool-italic svg,
+.doc-tool-bar .doc-tool-underline svg,
+.doc-tool-bar .doc-tool-undo svg,
+.doc-tool-bar .doc-tool-redo svg{
+    display: block;
+    width: 12px;
+    max-height: 12px;
 }
 
 .doc-tool-bar .doc-tool-picture svg {
@@ -6589,7 +6595,6 @@
     width: 15px;
     max-height: 15px;
 }
-
 
 .doc-main-content {
     display: flex;
@@ -6600,11 +6605,11 @@
 .doc-edit-block {
     margin: 50px auto;
     padding: 30px 40px;
-    width: 700px;
+    width: 65%;
     min-height: 900px;
-    border: 1px solid #b8b8b8;
+    border: 1px solid rgba(184,184,184,.7);
     border-radius: 6px;
-    box-shadow: 0 0 3px 1px rgba(184,184,184,.6);
+    box-shadow: 0 0 8px 1px rgba(184,184,184,.4);
     background-color: #fff;
 }
 
