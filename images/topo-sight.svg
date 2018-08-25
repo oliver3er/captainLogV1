@@ -1,0 +1,18 @@
+<svg version='1.1' id='topo-sight-svg' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+													 width='80.637px' height='82.705px' viewBox='0 0 80.637 82.705' enableBackground='new 0 0 80.637 82.705' xmlSpace='preserve'>
+												<g id='topo-sight-svg-planet'>
+													<circle fill='none' stroke='#ECECEC' strokeWidth='3' strokeMiterlimit='10' cx='40.194' cy='50.955' r='30.25'/>
+													<circle fill='#ECECEC' cx='18.319' cy='42.045' r='8.375'/>
+													<circle fill='#ECECEC' cx='46.165' cy='36.37' r='4.12'/>
+													<path fill='#ECECEC' d='M35.08,61.55c-1.058-1.218-1.698-2.808-1.698-4.548c0-3.831,3.106-6.938,6.938-6.938
+														c3.1,0,5.725,2.032,6.614,4.838C45.559,57.75,38.219,61.419,35.08,61.55z'/>
+													<path id='topo-sight-planet-path1' fill='#ECECEC' d='M66.182,25.11c6.934-0.751,11.865,0.299,13.951,3.182c3.801,6.208-14.449,27.583-36.335,37.891
+														c-16.239,9.066-38.864,15.021-43.25,6.75c-1.39-2.385-0.112-6.922,3.527-12.338l1.282,0.309c-2.138,3.495-2.991,6.651-2.348,9.197
+														c1.657,6.562,22.804,1.287,42.496-10.096c19.692-11.381,33.349-24.705,29.779-30.881c-1.227-2.121-4.325-3.124-8.664-3.063
+														L66.182,25.11z'/>
+													<path fill='#ECECEC' d='M70.554,51.916c-0.508,16.263-13.85,29.289-30.235,29.289c-4.98,0-9.679-1.203-13.822-3.335
+														C41.06,75.916,60.383,62.53,70.554,51.916z'/>
+												</g>
+											
+												<circle  id='topo-sight-planet-star' fill='none' stroke='#ECECEC' strokeWidth='2.5' strokeMiterlimit='10' cx='59.71' cy='8.333' r='7.083'/>
+											</svg>

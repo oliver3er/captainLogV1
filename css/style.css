@@ -973,7 +973,7 @@
     font-size: .14rem;
     font-weight: 400;
     overflow-y: auto;
-    z-index: 10;
+    z-index: 2000;
     pointer-events: none;
 
     -webkit-animation-fill-mode: forwards;
@@ -1139,23 +1139,23 @@
 }
 
 .menu-account-setting-icon {
-    background: url("../images/setting-account-icon.svg") center center no-repeat;
+    /* background: url("../images/setting-account-icon.svg") center center no-repeat;*/
     background-size: 16px;
 }
 
 .menu-user-setting-icon {
-    background: url("../images/setting-user-icon.svg") center center no-repeat;
+    /*background: url("../images/setting-user-icon.svg") center center no-repeat;*/
     background-size: 16px;
 }
 
 .menu-help-icon {
-    background: url("../images/help-center-icon.svg") center center no-repeat;
+    /*background: url("../images/help-center-icon.svg") center center no-repeat;*/
     background-size: auto 16px;
 }
 
 .menu-log-out-icon {
     margin-left: 2px;
-    background: url("../images/log-out-icon.svg") center center no-repeat;
+    /*background: url("../images/log-out-icon.svg") center center no-repeat;*/
     background-size: 16px;
 }
 
@@ -2638,9 +2638,11 @@
     bottom: -1px;
 }
 
+/* Removed by dean, the icon should be shown always 
 .content-notes-list-note:hover .content-list-note-options {
     visibility: visible;
 }
+*/
 
 /*.content-notes-list-note:active {
     background: rgba(42,44,48,.5);
@@ -3162,6 +3164,7 @@
     opacity: .5;
 
     transition: opacity .15s ease-in-out;
+	cursor		: pointer;
 }
 
 .tag-color-blank:hover .tag-color-blank-icon {
@@ -3180,6 +3183,7 @@
     width: 20px;
     height: 20px;
     border-radius: 2px;
+	cursor		: pointer;
 }
 
 ._color1 {
@@ -3447,7 +3451,7 @@
     top: 12px;
     display: flex;
     justify-content: flex-end;
-    visibility: hidden;
+    /* Removed by dean  visibility: hidden;*/
     transition: visibility .15s ease .05s;
     z-index: 1;
 }
@@ -6041,7 +6045,6 @@
     -webkit-animation-timing-function: cubic-bezier(0.18, 0.38, 0.49, 1.47);
     animation-timing-function: cubic-bezier(0.18, 0.38, 0.49, 1.47);
     pointer-events: auto;
-
 }
 
 .main-content-tags-nothing:hover {
