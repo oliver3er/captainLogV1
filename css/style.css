@@ -973,7 +973,7 @@
     font-size: .14rem;
     font-weight: 400;
     overflow-y: auto;
-    z-index: 2000;
+    z-index: 10;
     pointer-events: none;
 
     -webkit-animation-fill-mode: forwards;
@@ -1139,23 +1139,23 @@
 }
 
 .menu-account-setting-icon {
-    /* background: url("../images/setting-account-icon.svg") center center no-repeat;*/
+    background: url("../images/setting-account-icon.svg") center center no-repeat;
     background-size: 16px;
 }
 
 .menu-user-setting-icon {
-    /*background: url("../images/setting-user-icon.svg") center center no-repeat;*/
+    background: url("../images/setting-user-icon.svg") center center no-repeat;
     background-size: 16px;
 }
 
 .menu-help-icon {
-    /*background: url("../images/help-center-icon.svg") center center no-repeat;*/
+    background: url("../images/help-center-icon.svg") center center no-repeat;
     background-size: auto 16px;
 }
 
 .menu-log-out-icon {
     margin-left: 2px;
-    /*background: url("../images/log-out-icon.svg") center center no-repeat;*/
+    background: url("../images/log-out-icon.svg") center center no-repeat;
     background-size: 16px;
 }
 
@@ -1243,12 +1243,11 @@
 }
 
 .dialog-main {
-    flex: 1 1 0%;
+    flex: 1 1 auto;
     min-height: 1px;
-    height: 100%;
     padding-right: 4px;
-    /*overflow-y: overlay;*/
     overflow-y: auto;
+    overflow-y: overlay;
     overflow-x: hidden;
 
     font-size: .16rem;
@@ -1355,7 +1354,6 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    position: absolute;
     max-height: 82vh;
     max-width: 90%;
     border-radius: 1px;
@@ -1497,17 +1495,27 @@
 
 .main-logo {
     flex-shrink: 0;
-    margin: 30px 0 30px;
+    margin: 30px auto 30px;
     width: 54px;
     height: 54px;
-    border-radius: 50%;
-    background: #292b2f;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .main-logo img {
     display: block;
-    margin: 8px auto 0;
-    width: 36px;
+    margin: 6px auto 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    border: 1px solid #1e2124;
+    box-shadow: 0 2px 0 8px rgba(0,0,0,.045);
+    transition: box-shadow .12s ease;
+}
+
+.main-logo img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 0 14px rgba(0,0,0,.06);
 }
 
 .main-menu-ul {
@@ -1657,7 +1665,9 @@
     position: relative;
     flex: 1 1 auto;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
     height: 100vh;
     overflow: hidden;
     background-color: #36393e;
@@ -1700,16 +1710,21 @@
     background: url("../images/arrow-backward.svg") center center no-repeat;
     -webkit-background-size: 12px;
     background-size: 12px;
-    transition: opacity .15s;
+    /*transition: opacity .15s;
+    -moz-transition: opacity .15s; !* Firefox 4 *!
+    -webkit-transition: opacity .15s; !* Safari and Chrome *!
+    -o-transition: opacity .15s; !* Opera *!*/
 }
 
 .location-fb-forward div {
     background: url("../images/arrow-forward.svg") center center no-repeat;
     -webkit-background-size: 12px;
     background-size: 12px;
-    transition: opacity .15s;
+    /*transition: opacity .15s;
+    -moz-transition: opacity .15s; !* Firefox 4 *!
+    -webkit-transition: opacity .15s; !* Safari and Chrome *!
+    -o-transition: opacity .15s; !* Opera *!*/
 }
-
 
 .head-location-fb .button-svg-icon-valid div {
     opacity: .65;
@@ -1717,7 +1732,9 @@
 
 .head-location-fb .button-svg-icon-valid:hover {
     background-color: rgba(79,82,86,.8);
+
 }
+
 .head-location-fb .button-svg-icon-valid:hover div {
     opacity: 1;
 }
@@ -1725,7 +1742,6 @@
 .head-location-fb .button-svg-icon-invalid div {
     opacity: .3;
 }
-
 
 .head-location-nav {
     position: relative;
@@ -1860,6 +1876,7 @@
 
 .head-button-search-input {
     flex-grow: 1;
+    height: 100%;
     color: #ececec;
     font-size: .14rem;
     font-weight: 400;
@@ -1930,11 +1947,14 @@
 
 .main-content {
     display: flex;
+    display: -webkit-flex;
     flex-direction: row;
+    -webkit-flex: 1;
     flex: 1;
-    /*overflow-y: overlay;*/
+    /*overflow-y: overlay;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: hidden;*/
+    overflow: hidden;
     min-height: 1px;
     height: 100%;
     /*border-bottom: 1px solid hsla(0,0%,100%,.04);*/
@@ -1950,7 +1970,6 @@
     flex-direction: column;
     flex: 1 1 auto;
     min-width: 1px;
-    height: 100%;
     overflow: hidden;
 }
 
@@ -1995,7 +2014,7 @@
     border-bottom-right-radius: 4px;
     background-color: rgba(42,44,48,.95);
     box-sizing: border-box;
-    z-index: 1;
+    z-index: 10;
 
     height: 0;
     transition: height .15s ease-out;
@@ -2170,6 +2189,10 @@
 
 .main-content-search.main-content-notes {
     display: flex;
+    display: -moz-flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
     align-items: center;
     flex-direction: column;
 }
@@ -2316,10 +2339,10 @@
     box-sizing: border-box;
     padding-left: 6px;
     padding-right: 16px;
+    padding-top: 10px;
     color: #f4f4f4;
     font-size: .16rem;
     letter-spacing: 1px;
-    line-height: 36px;
     white-space: nowrap;
     overflow: hidden;
     transition: all .2s;
@@ -2381,13 +2404,21 @@
 .main-content-blank {
     display: none;
     width: 100%;
-    height: 85%;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 170px);
     margin: 40px auto 30px;
     text-align: center;
 }
 
+.main-content-blank-wrapper {
+    width: 100%;
+    height: 85%;
+}
+
 .main-content-blank p {
-    width: 370px;
+    max-width: 370px;
     height: 50px;
     line-height: .2rem;
     text-indent: .1rem;
@@ -2417,18 +2448,24 @@
 
 .few-note-decoration svg {
     width: 240px;
-    height: auto;
+    max-height: 220px;
 }
 
 
 .__no-data .main-content-bg-img {
     background: url('../images/search-no-result.svg') no-repeat center bottom;
-    background-size: 100% 100%;
+    background-size: auto 100%;
+    -webkit-background-size: auto 100%;
+    -moz-background-size: auto 100%;
+    -o-background-size: auto 100%;
 }
 
 .__get-started .main-content-bg-img {
     background: url('../images/get-started.svg') no-repeat center bottom;
-    background-size: 100% 100%;
+    background-size: auto 100%;
+    -webkit-background-size: auto 100%;
+    -moz-background-size: auto 100%;
+    -o-background-size: auto 100%;
 }
 
 @media screen and (min-width: 2286px) {
@@ -2601,11 +2638,9 @@
     bottom: -1px;
 }
 
-/* Removed by dean, the icon should be shown always 
 .content-notes-list-note:hover .content-list-note-options {
     visibility: visible;
 }
-*/
 
 /*.content-notes-list-note:active {
     background: rgba(42,44,48,.5);
@@ -2645,6 +2680,328 @@
     letter-spacing: .5px;
     word-wrap: break-word;
     word-break: normal;
+}
+
+.note-content-quote-block {
+    position: relative;
+    margin: 14px 10px 14px 40px;
+    padding: 26px 30px 16px 20px;
+    width: 80%;
+    min-height: 80px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 1px 1px transparent;
+    line-height: .2rem;
+    font-style: italic;
+
+    transition: border .12s ease;
+}
+
+.note-content-quote-block:hover, .__selected.note-content-quote-block {
+    border: 1px solid rgba(184,184,184,.3);
+}
+
+.__focus.note-content-quote-block {
+    background-color: #242629;
+    border-color: rgba(0,0,0,.06);
+}
+
+.note-content-quote-block:before {
+    position: absolute;
+    top: 0;
+    left: -17px;
+    content: '';
+    width: 16px;
+    height: 14px;
+    background: url('../images/quote-left.svg') center center no-repeat;
+    -webkit-background-size: 16px 14px;
+    background-size: 16px 14px;
+}
+.note-content-quote-block:after {
+    position: absolute;
+    bottom: 0;
+    right: -17px;
+    top: auto;
+    left: auto;
+    content: '';
+    width: 16px;
+    height: 14px;
+    background: url('../images/quote-right.svg') center center no-repeat;
+    -webkit-background-size: 16px 14px;
+    background-size: 16px 14px;
+}
+
+.note-content-block-buttons {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100px;
+    height: 20px;
+    pointer-events: none;
+    transition: visibility .12s ease, opacity .12s ease ;
+}
+
+.list-one-selected .note-content-quote-block:hover .note-content-block-buttons,
+.__selected.note-content-quote-block .note-content-block-buttons,
+.__focus.note-content-quote-block .note-content-block-buttons {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.__focus.note-content-quote-block .block-button-save {
+    display: flex;
+}
+
+.note-content-block-buttons>div {
+    display: flex;
+    align-items: center;
+    margin: 0 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.note-content-block-buttons>div:hover svg * {
+    fill: #ececec;
+}
+
+.note-content-block-buttons svg {
+    margin: 0 auto;
+    width: 13px;
+    height: 13px;
+}
+
+.note-content-block-buttons svg * {
+    transition: fill .12s ease;
+}
+
+.note-content-block-buttons .block-button-save {
+    display: none;
+}
+
+.block-button-save svg {
+    width: 15px;
+    max-height: 15px;
+}
+
+.block-button-delete svg {
+    width: 10px;
+    height: 10px;
+}
+
+.block-button-delete svg * {
+    fill: #929292;
+}
+
+
+.note-content-code-block {
+    position: relative;
+    margin: 14px 10px 0 40px;
+    padding: 40px 20px 10px 20px;
+    width: 80%;
+    min-height: 80px;
+    border-radius: 2px;
+    /*border: 1px solid rgba(0,0,0,.2);*/
+    border: 1px solid rgba(184,184,185,.15);
+    line-height: .2rem;
+
+    transition: border .12s ease, box-shadow .12s ease;
+}
+
+.code-block-main {
+    display: flex;
+    align-items: stretch;
+    padding-bottom: 10px;
+    width: 100%;
+    white-space:nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.code-block-main::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(47,49,54,1);
+}
+
+.code-block-main::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    border-top-width: 3px;
+    border-bottom-width: 2px;
+    border-left-width: 3px;
+    border-right-width: 2px;
+    border-color: rgba(47,49,54,1);
+    border-style: solid;
+    background-color: rgba(30,33,36,0.6);
+}
+
+.code-block-row-num {
+    margin-right: 10px;
+    padding-right: 10px;
+    min-width: 60px;
+    max-width: 80px;
+    width: 16%;
+    text-align: right;
+    border-right: 1px solid rgba(184,184,184,.6);
+}
+
+.code-block-row-num li {
+    line-height: .2rem;
+    font-size: .12rem;
+    font-weight: 400;
+    color: rgba(184,184,184,.6);
+}
+
+.code-block-content {
+    width: 100%;
+    font-family: Monaco;
+}
+
+.__focus.note-content-code-block {
+    background-color: #242629;
+    box-shadow: none;
+}
+
+.note-content-code-block:hover, .__selected.note-content-code-block {
+    /*border-color: rgba(0,0,0,.3);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.4);*/
+    border: 1px solid rgba(184,184,185,.3);
+}
+
+.__focus.note-content-code-block:hover, .__selected.note-content-code-block:hover {
+    border: 1px solid rgba(0,0,0,.15);
+    box-shadow: none;
+}
+
+.list-one-selected .note-content-code-block:hover .note-content-block-buttons,
+.__selected.note-content-code-block .note-content-block-buttons,
+.__focus.note-content-code-block .note-content-block-buttons {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.__focus.note-content-code-block .block-button-save {
+    display: flex;
+}
+
+.code-block-head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 26px;
+    width: 100%;
+    background-color: rgba(83,85,96,.2);
+    border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+.code-block-head svg {
+    margin-left: 14px;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    cursor: default;
+}
+
+.note-content-doc-block {
+    position: relative;
+    margin: 14px 10px 14px 40px;
+    padding: 30px 50px 16px 50px;
+    width: 80%;
+    min-height: 80px;
+    max-height: 180px;
+    line-height: .2rem;
+}
+
+.list-one-selected .note-content-doc-block:hover .note-content-block-buttons,
+.__selected.note-content-doc-block .note-content-block-buttons,
+.__focus.note-content-doc-block .note-content-block-buttons {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.note-content-doc-block:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: calc(100% - 11px);
+    border-radius: 2px;
+    border: 1px solid rgba(184,184,184,.15);
+    border-right: 0;
+}
+.note-content-doc-block:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: 0;
+    height: calc(100% - 11px);
+    width: 12px;
+    border-radius: 2px;
+    border: 1px solid rgba(184,184,184,.15);
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.note-content-doc-block:hover:before, .note-content-doc-block:hover:after {
+    border-color: rgba(184,184,184,.3);
+}
+
+.doc-block-icon {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background: url("../images/attach.svg") left center no-repeat;
+    -webkit-background-size: 12px;
+    background-size: 12px;
+}
+
+.doc-block-icon2 {
+    position: absolute;
+    top: auto;
+    bottom: 0px;
+    right: 0px;
+    left: auto;
+    width: 30px;
+    height: 30px;
+    background: url("../images/doc-block-icon2.svg") right bottom no-repeat;
+    -webkit-background-size: 12px;
+    background-size: 12px;
+}
+
+.doc-block-content {
+    position: relative;
+    max-height: 120px;
+    overflow: hidden;
+}
+
+.doc-block-content:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50px;
+    background-image: linear-gradient(to bottom, transparent, #36393e);
+}
+.list-one-selected .doc-block-content:after {
+    background-image: linear-gradient(to bottom, transparent, #2a2c30);
 }
 
 .view-card .content-list-note-detail {
@@ -2720,8 +3077,8 @@
 
 /**************hash-tag (value) setting begin****************/
 .tag-setting-dialog-wrapper, .tag-v-setting-dialog-wrapper {
-    position: absolute;
     width: 520px;
+    max-width: 520px;
     height: 80vh;
     border-radius: 3px;
     overflow: hidden;
@@ -2805,7 +3162,6 @@
     opacity: .5;
 
     transition: opacity .15s ease-in-out;
-	cursor		: pointer;
 }
 
 .tag-color-blank:hover .tag-color-blank-icon {
@@ -2824,7 +3180,6 @@
     width: 20px;
     height: 20px;
     border-radius: 2px;
-	cursor		: pointer;
 }
 
 ._color1 {
@@ -3092,7 +3447,7 @@
     top: 12px;
     display: flex;
     justify-content: flex-end;
-    /* Removed by dean  visibility: hidden;*/
+    visibility: hidden;
     transition: visibility .15s ease .05s;
     z-index: 1;
 }
@@ -3102,44 +3457,52 @@
     right: 6px;
 }
 
-.content-list-note-options div {
+.content-list-note-options>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 20px;
     height: 20px;
     border-radius: 2px;
     cursor: pointer;
 }
 
+.content-list-note-options svg * {
+    fill: #929292;
+    transition: fill .12s;
+}
+
 .content-list-note-options div:hover {
     background-color: rgba(79,82,86,.5);
 }
 
-.content-list-note-options .note-option-warning {
-    background: url("../images/note-warning-icon.svg") center center no-repeat;
-    background-size: auto 13px;
+.note-option-delete:hover svg *, .note-option-top:hover svg *,
+.note-option-copy:hover svg * {
+    fill: #ececec;
 }
 
-.content-list-note-options .note-option-top{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.content-list-note-options .note-option-top svg {
-    width: 12px;
+.content-list-note-options .note-option-warning svg,
+.content-list-note-options .note-option-copy svg {
+    width: auto;
     height: 12px;
 }
 
-.content-list-note-options .note-option-top svg * {
-    fill: rgba(73,140,243,.55);
-    transition: fill .15s;
+.content-list-note-options .note-option-warning svg * {
+    fill: #faa61a;
+}
+
+.content-list-note-options .note-option-top svg {
+    width: 12px;
+    height: 12px;
 }
 
 .content-list-note-options .note-option-top.note-at-top svg * {
     fill: rgba(73,140,243,1);
 }
 
-.content-list-note-options .note-option-delete {
-    background: url("../images/note-delete-icon.svg") center center no-repeat;
-    background-size: 11px;
+.content-list-note-options .note-option-delete svg {
+    width: auto;
+    height: 10px;
 }
 
 .content-list-note-options .note-option-edit {
@@ -3150,7 +3513,6 @@
 
 /********delete note confirm dialog begin*******/
 .delete-confirm-dialog-wrapper {
-    position: absolute;
     width: 440px;
     border-radius: 3px;
     overflow: hidden;
@@ -3697,6 +4059,8 @@
 /***************widget part style begin******************/
 
 .main-content-widget {
+    display: flex;
+    flex-direction: column;
     flex-shrink: 0;
     min-width: 310px;
     background: url("../images/bg-unit.svg") repeat, #2e3035;
@@ -3865,6 +4229,7 @@
 
 .map-zoom-original svg {
     transition: transform .3s cubic-bezier(0.22, 0.33, 0.4, 1.38) .05s;
+    -webkit-transition: transform .3s cubic-bezier(0.22, 0.33, 0.4, 1.38) .05s;
 }
 
 .map-zoom-original:hover svg {
@@ -3928,7 +4293,7 @@
 }
 
 .map-detail .map-detail-info {
-    font-size: .1rem;
+    font-size: .12rem;
     font-weight: 400;
     line-height: 16px;
 }
@@ -3957,25 +4322,27 @@
 /***************The first load-in page style begin******************/
 
 .first-load-dialog-wrapper {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 800px;
-    height: 600px;
     min-height: 1px;
     max-height: 100%;
     border-radius: 6px;
-    /*overflow-y: overlay;*/
     overflow-y: auto;
+    overflow-y: overlay;
     z-index: 10;
     font-size: .14rem;
     font-weight: 400;
     color: #7c7e83;
     border: 1px solid rgba(28,36,43,.6);
     box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
-    background: url("../images/settings-bg1.svg") no-repeat 95% 35%,url("../images/settings-bg2.svg") no-repeat 0 15%,#f6f6f6;
-    background-size: auto 480px,auto 160px;
+}
+
+.first-load-dialog-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 600px;
+    width: 100%;
+    background: url("../images/welcome.svg") no-repeat center center, #cae0f9;
 }
 
 .first-load-dialog-head {
@@ -3983,7 +4350,7 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    height: 28%;
+    height: 30%;
     min-height: 180px;
     width: 450px;
 }
@@ -3991,10 +4358,12 @@
 .first-load-dialog-head h1 {
     margin-bottom: 16px;
     text-align: center;
-    font-size: .4rem;
+    font-size: .6rem;
     font-weight: 600;
+    line-height: .42rem;
     color: #2f3136;
     letter-spacing: 1px;
+    font-family: Copperplate,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 .first-load-dialog-head h2 {
     text-align: center;
@@ -4349,6 +4718,10 @@
 
 .search-input-item-content {
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
     align-items: center;
     margin-right: 8px;
 }
@@ -4428,7 +4801,6 @@
     flex: 1 1 auto;
     width: 100%;
     height: 50px;
-    line-height: 50px;
     padding-right: 50px;
     border-radius: 6px;
     font-size: .18rem;
@@ -4874,8 +5246,8 @@
 /******search tag edit dialog style begin********/
 
 .search-tag-edit-dialog-wrapper {
-    position: absolute;
     width: 800px;
+    max-width: 800px;
     height: 420px;
     border-radius: 3px;
     overflow: hidden;
@@ -5282,7 +5654,6 @@
 .map-add-tag-form-item {
     display: flex;
     align-items: center;
-    height: 100%;
     padding-bottom: 24px;
 }
 
@@ -5303,10 +5674,6 @@
     display: flex;
     flex-direction: row;
     flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    min-height: 1px;
-    height: 100%;
 }
 
 .map-add-tag-new .dialog-buttons, .map-add-tag-exist .dialog-buttons {
@@ -5518,7 +5885,7 @@
     flex-wrap: wrap;
 
     margin: 40px 15px 20px 25px;
-    max-height: 380px;
+    height: 380px;
     letter-spacing: .5px;
 }
 
@@ -5610,7 +5977,7 @@
 
 .list-tag-head-main-related svg {
     width: 16px;
-    height: auto;
+    height: 16px;
 }
 
 .list-tag-head-main-related .tag-info {
@@ -5651,9 +6018,11 @@
 }
 
 .main-content-tags-nothing {
+    display: none;
     visibility: hidden;
     position: absolute;
-    display: flex;
+    top: 0;
+
     flex-direction: column;
     align-items: stretch;
     margin: 20px 24px;
@@ -5671,6 +6040,8 @@
 }
 
 .__open.main-content-tags-nothing {
+    display: flex;
+    top: auto;
     -webkit-animation-name: dialog-appear-from-top;
     animation-name: dialog-appear-from-top;
     -webkit-animation-duration: 0.15s;
@@ -5678,6 +6049,7 @@
     -webkit-animation-timing-function: cubic-bezier(0.18, 0.38, 0.49, 1.47);
     animation-timing-function: cubic-bezier(0.18, 0.38, 0.49, 1.47);
     pointer-events: auto;
+
 }
 
 .main-content-tags-nothing:hover {
@@ -6094,3 +6466,151 @@
     fill: #777b81;
 }
 /******************** setting page style end **********************/
+
+
+/******************* doc edit page style begin *********************/
+
+.doc-editor-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.doc-page-body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 2000px;
+    margin: 0 auto;
+    background-color: #eeeeee;
+}
+
+.doc-main-head {
+
+    height: 60px;
+    width: 100%;
+    background-color: #36393e;
+}
+
+.doc-main-head-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+    width: 85%;
+}
+
+.doc-head-title {
+    display: flex;
+    align-items: center;
+    width: 78%;
+    font-size: .2rem;
+    font-weight: 500;
+    color: #ececec;
+    letter-spacing: 1px;
+}
+
+.doc-head-title-logo {
+    margin: 0 20px 0 20px;
+    cursor: pointer;
+}
+
+.doc-head-title-logo svg {
+    width: 40px;
+    height: 40px;
+}
+
+.doc-head-title-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 30px;
+}
+
+.doc-head-buttons {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.doc-head-button-close {
+    padding: 6px 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(184,184,184,.5);
+    font-size: .14rem;
+    font-weight: 400;
+    color: #b8b8b8;
+    cursor: pointer;
+    transition: border-color .12s, color .15s ease;
+}
+
+.doc-head-button-close:hover {
+    border-color: rgba(184,184,184,1);
+    color: #ececec;
+}
+
+.doc-tool-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 46px;
+    border: 1px solid rgba(184,184,184,.7);
+    border-left: 0;
+    border-right: 0;
+    background-color: #fdfdfd;
+    user-select: none;
+    list-style-type: none;
+}
+
+.doc-tool-bar>div[class^='doc-tool'] {
+    display: -webkit-flex;
+    display: flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+}
+
+.doc-tool-bar svg {
+    display: block;
+    width: 14px;
+    max-height: 14px;
+}
+
+.doc-tool-bar .doc-tool-bold svg,
+.doc-tool-bar .doc-tool-italic svg,
+.doc-tool-bar .doc-tool-underline svg,
+.doc-tool-bar .doc-tool-undo svg,
+.doc-tool-bar .doc-tool-redo svg{
+    display: block;
+    width: 12px;
+    max-height: 12px;
+}
+
+.doc-tool-bar .doc-tool-picture svg {
+    display: block;
+    width: 15px;
+    max-height: 15px;
+}
+
+.doc-main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.doc-edit-block {
+    margin: 50px auto;
+    padding: 30px 40px;
+    width: 65%;
+    min-height: 900px;
+    border: 1px solid rgba(184,184,184,.7);
+    border-radius: 6px;
+    box-shadow: 0 0 8px 1px rgba(184,184,184,.4);
+    background-color: #fff;
+}
+
+/******************** doc edit page style end **********************/

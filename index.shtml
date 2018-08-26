@@ -465,9 +465,33 @@
                 }else if($(this).val() == 'few-content') {
                     $(".main-content-notes-list .content-notes-list-note:not(:first-child)").remove();
                     $(".few-note-decoration").show();
+                }else if ($(this).val() == 'show-quote-block') {
+                    $(".note-content-quote-block").show();
+                    $(".note-content-code-block").hide();
+                }else if ($(this).val() == 'show-code-block') {
+                    $(".note-content-quote-block").hide();
+                    $(".note-content-code-block").show();
+                }else if ($(this).val() == 'show-doc-block') {
+                    $(".note-content-quote-block").hide();
+                    $(".note-content-code-block").hide();
                 }
 
 
+            });
+
+            $(".note-content-quote-block").bind("click",function(){
+                if($(this).hasClass("__focus")){
+                    $(this).removeClass("__focus");
+                }else {
+                    $(this).addClass("__focus");
+                }
+            });
+            $(".note-content-code-block").bind("click",function(){
+                if($(this).hasClass("__focus")){
+                    $(this).removeClass("__focus");
+                }else {
+                    $(this).addClass("__focus");
+                }
             });
 
 
@@ -481,7 +505,7 @@
         <div class="main-menu main-menu-wrapper">
             <div class="main-menu-bar">
                 <div class="flex-vertical">
-                    <div class="main-logo"><img src="images/logo-test.png" alt="logo" /></div>
+                    <div class="main-logo"><a href="index.shtml"><img src="images/logo.svg" alt="logo" /></a></div>
                     <div class="main-menu-ul">
                         <div class="main-menu-separate-line"></div>
                         <div class="main-menu-li main-menu-li-selected">
@@ -645,6 +669,81 @@
                                 <div class="content-list-note-detail">
                                     I think this description is probably the most realistic description, reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
                                 </div>
+
+                                <div class="content-list-note-detail">
+                                    <div class="note-content-quote-block">
+                                        <div class="note-content-block-buttons">
+                                            <div class="note-content-block-button block-button-save">
+                                                <!--#include file='images/save-check-icon.svg' -->
+                                            </div>
+                                            <div class="note-content-block-button block-button-delete">
+                                                <!--#include file='images/cross-light-icon.svg' -->
+                                            </div>
+                                            <div class="note-content-block-button block-button-copy">
+                                                <!--#include file='images/copy-icon.svg' -->
+                                            </div>
+                                            <div class="note-content-block-button block-button-full-screen">
+                                                <!--#include file='images/full-screen-icon.svg' -->
+                                            </div>
+                                        </div>
+                                        Former UN Secretary-General and Nobel Peace Prize winner Kofi Annan (pictured) dies at the age of 80. American soul singer and songwriter Aretha Franklin dies at the age of 76. In Afghanistan, hundreds are killed as the Taliban seize most of the strategic city of Ghazni for four days.
+                                    </div>
+                                    <div class="note-content-code-block">
+                                        <div class="code-block-head">
+                                            <!--#include file='images/code-block-icon.svg' -->
+                                        </div>
+                                        <div class="note-content-block-buttons">
+                                            <div class="note-content-block-button block-button-save">
+                                                <!--#include file='images/save-check-icon.svg' -->
+                                            </div>
+                                            <div class="note-content-block-button block-button-delete">
+                                                <!--#include file='images/cross-light-icon.svg' -->
+                                            </div>
+                                            <div class="note-content-block-button block-button-copy">
+                                                <!--#include file='images/copy-icon.svg' -->
+                                            </div>
+                                            <div class="note-content-block-button block-button-full-screen">
+                                                <!--#include file='images/full-screen-icon.svg' -->
+                                            </div>
+                                        </div>
+                                        <div class="code-block-main">
+                                            <div class="code-block-row-num">
+                                                <li>8</li>
+                                                <li>9</li>
+                                                <li>10</li>
+                                                <li>11</li>
+                                                <li>12</li>
+                                                <li>236</li>
+                                            </div>
+                                            <div class="code-block-content">
+                                                <pre>$('.content-tag-dialog-setting').bind('click',function(){
+	$('.content-tag-dialog').hide();
+	var settingDialogWr = $('.tag-setting');
+	settingDialogWr.removeClass('tag-setting-close').removeClass('tag-setting-open');
+});
+test--</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="note-content-doc-block">
+                                        <div class="note-content-block-buttons">
+                                            <div class="note-content-block-button block-button-delete">
+                                                <!--#include file='images/cross-light-icon.svg' -->
+                                            </div>
+                                            <div class="note-content-block-button block-button-full-screen">
+                                                <!--#include file='images/full-screen-icon.svg' -->
+                                            </div>
+                                        </div>
+                                        <div class="doc-block-icon"></div>
+                                        <div class="doc-block-content">
+                                        Former UN Secretary-General and Nobel Peace Prize winner Kofi Annan (pictured) dies at the age of 80. American soul singer and songwriter Aretha Franklin dies at the age of 76. In Afghanistan, hundreds are killed as the Taliban seize most of the strategic city of Ghazni for four days.
+                                        Former UN Secretary-General and Nobel Peace Prize winner Kofi Annan (pictured) dies at the age of 80. American soul singer and songwriter Aretha Franklin dies at the age of 76. In Afghanistan, hundreds are killed as the Taliban seize most of the strategic city of Ghazni for four days.
+                                        Former UN Secretary-General and Nobel Peace Prize winner Kofi Annan
+                                        </div>
+                                        <div class="doc-block-icon2"></div>
+                                    </div>
+                                </div>
+
                                 <div class="content-list-note-detail">
                                     In the foreword of the “Code of Work” of the political organization of the Socialist Party
                                     <span class="tag-name with-icon" style="color: rgba(230,69,85,1);background: url('images/temp/small-avatar.png') center right no-repeat;background-size: 18px 18px;">#HitlerAscent</span>
@@ -655,9 +754,10 @@
 
                                 <div class="content-list-note-date">03/06/2018</div>
                                 <div class="content-list-note-options">
-                                    <div class="note-option-warning"></div>
+                                    <div class="note-option-warning"><!--#include file='images/note-warning-icon.svg' --></div>
                                     <div class="note-option-top note-at-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-copy with-bottom-tip" tip-message="Copy"><!--#include file='images/copy-icon.svg' --></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
@@ -674,9 +774,9 @@
                                 </div>
                                 <div class="content-list-note-date">02/18/2018</div>
                                 <div class="content-list-note-options">
-                                    <div class="note-option-warning"></div>
+                                    <div class="note-option-warning"><!--#include file='images/note-warning-icon.svg' --></div>
                                     <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
@@ -693,7 +793,7 @@
                                 <div class="content-list-note-date">02/18/2018</div>
                                 <div class="content-list-note-options">
                                     <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
@@ -708,7 +808,7 @@
                                 <div class="content-list-note-date">03/06/2018</div>
                                 <div class="content-list-note-options">
                                     <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
@@ -731,7 +831,7 @@
                                 <div class="content-list-note-date">03/06/2018</div>
                                 <div class="content-list-note-options">
                                     <div class="note-option-top with-bottom-tip" tip-message="To-top"><!--#include file='images/note-top-icon.svg' --></div>
-                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"></div>
+                                    <div class="note-option-delete with-bottom-tip" tip-message="Delete"><!--#include file='images/cross-light-icon.svg' --></div>
                                 </div>
                             </div>
 
@@ -886,6 +986,9 @@
         <option value="open-tag-value-setting">Open Tag Value Setting</option>
         <option value="close-tag-value-setting">Close Tag Value Setting</option>
         <option value="system-setting">System Setting</option>
+        <option value="show-quote-block">Show Quote Block</option>
+        <option value="show-code-block">Show Code Block</option>
+        <option value="show-doc-block">Show Doc Block</option>
     </select>
 </div>
 

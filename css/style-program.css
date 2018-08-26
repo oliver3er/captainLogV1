@@ -725,3 +725,16 @@
 .main-tag-alias {
 	position	: relative;
 }
+
+.temp-icon-gallery {
+	display		: flex;
+    flex-wrap	: wrap;
+}
+
+
+.temp-icon-gallery svg{
+	max-width	: 50px;
+	min-width	: 30px;
+	max-height	: 50px;
+	margin		: 10px;
+}
