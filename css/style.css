@@ -6476,32 +6476,21 @@
 }
 
 .doc-page-body {
-<<<<<<< HEAD
-=======
     display: flex;
     flex-direction: column;
     width: 100vw;
     max-width: 2000px;
     margin: 0 auto;
->>>>>>> b2285f84ab95104355902111e16c142fd7cb995a
     background-color: #eeeeee;
 }
 
 .doc-main-head {
-<<<<<<< HEAD
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-=======
-
->>>>>>> b2285f84ab95104355902111e16c142fd7cb995a
     height: 60px;
     width: 100%;
     background-color: #36393e;
 }
 
-<<<<<<< HEAD
-=======
+
 .doc-main-head-wrapper {
     display: flex;
     justify-content: space-between;
@@ -6511,7 +6500,6 @@
     width: 85%;
 }
 
->>>>>>> b2285f84ab95104355902111e16c142fd7cb995a
 .doc-head-title {
     display: flex;
     align-items: center;
@@ -6522,21 +6510,13 @@
     letter-spacing: 1px;
 }
 
-<<<<<<< HEAD
-.doc-head-title-log {
-    margin: 0 20px 0 40px;
-    cursor: pointer;
-}
 
-.doc-head-title-log svg {
-=======
 .doc-head-title-logo {
     margin: 0 20px 0 20px;
     cursor: pointer;
 }
 
 .doc-head-title-logo svg {
->>>>>>> b2285f84ab95104355902111e16c142fd7cb995a
     width: 40px;
     height: 40px;
 }
@@ -6549,12 +6529,8 @@
 }
 
 .doc-head-buttons {
-<<<<<<< HEAD
-    margin: 0 40px 0 40px;
-=======
     margin-left: 40px;
     margin-right: 40px;
->>>>>>> b2285f84ab95104355902111e16c142fd7cb995a
 }
 
 .doc-head-button-close {
@@ -6577,14 +6553,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-<<<<<<< HEAD
-    width: 100%;
-    height: 46px;
-=======
     flex-wrap: wrap;
     width: 100%;
     min-height: 46px;
->>>>>>> b2285f84ab95104355902111e16c142fd7cb995a
     border: 1px solid rgba(184,184,184,.7);
     border-left: 0;
     border-right: 0;
