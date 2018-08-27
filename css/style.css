@@ -3390,6 +3390,34 @@
     overflow: hidden;
 }
 
+.definition-toolbar.main-content-toolbar.__open {
+    height: 32px;
+    left: 0;
+    top: 20px;
+    border-radius: 4px;
+    border-top: 1px solid rgba(30,33,37,.95);
+}
+
+.definition-toolbar .toolbar-line {
+    heigth: 16px;
+}
+
+.definition-toolbar .toolbar-buttons {
+    margin-left: 12px;
+}
+
+.definition-toolbar .toolbar-button {
+    margin-right: 12px;
+}
+
+.definition-toolbar .toolbar-tag svg {
+    width: 16px;
+}
+
+.definition-input {
+    margin-top: 32px;
+}
+
 /**************hash-tag (value) setting end******************/
 
 /***************hash-tag style begin*****************/
