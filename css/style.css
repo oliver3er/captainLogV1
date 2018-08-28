@@ -2696,6 +2696,7 @@
     transition: border .12s ease;
 }
 
+/*
 .note-content-quote-block:hover, .__selected.note-content-quote-block {
     border: 1px solid rgba(184,184,184,.3);
 }
@@ -2703,6 +2704,11 @@
 .__focus.note-content-quote-block {
     background-color: #242629;
     border-color: rgba(0,0,0,.06);
+}
+*/
+
+.note-content-quote-block .hover {
+    border: 1px solid rgba(184,184,184,.3);
 }
 
 .note-content-quote-block:before {
