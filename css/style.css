@@ -2035,9 +2035,6 @@
 }
 
 .__open.main-content-toolbar>div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     visibility: visible;
 }
 .__close.main-content-toolbar>div {
@@ -2045,9 +2042,10 @@
 }
 
 .toolbar-buttons {
-    margin-left: 24px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-left: 24px;
     height: 100%;
 }
 
@@ -2088,6 +2086,7 @@
     align-items: center;
     margin-right: 24px;
     height: 100%;
+    width: 100%;
     box-sizing: content-box;
     overflow: hidden;
 }
