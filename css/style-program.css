@@ -739,3 +739,7 @@
 	max-height	: 50px;
 	margin		: 10px;
 }
+
+.temp-highlight-block {
+	border		: 1px solid pink;
+}
