@@ -843,13 +843,25 @@ test--</pre>
                                     I think this description is probably the most realistic description, <span class="tag-name">#Midinote</span>.reflecting the true image of Hitler. It may be true that Hitler is: sincere, extreme, passionate, ambition The British wish to oppose the Soviet Union through Germany. This is the fact before
                                 </div>
                                 <div class="content-list-note-detail note-detail-image">
-                                    <img src='images/temp/example1.jpg' alt='picture'/>
-                                    <div class="note-detail-image-hover">
-                                        <div class="note-detail-image-hover-bg"></div>
-                                        <div class="note-detail-image-delete with-bottom-tip" tip-message="Delete">
-                                            <!--#include file='images/cross-icon.svg' -->
+
+                                    <div class="note-content-block">
+                                        <div class="note-content-block-content note-img-block">
+                                            <div class="note-detail-image ">
+                                                <img src='images/temp/example1.jpg' alt='picture'/>
+                                                <div class="note-detail-image-hover">
+                                                    <div class="note-detail-image-hover-bg"></div>
+                                                    <div class="note-detail-image-delete with-bottom-tip" tip-message="Delete">
+                                                        <!--#include file='images/cross-icon.svg' -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="note-content-block-end">
+                                            <input />
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="content-list-note-date">03/06/2018</div>
                                 <div class="content-list-note-options">
