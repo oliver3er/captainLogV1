@@ -672,7 +672,7 @@
 
                                 <div class="content-list-note-detail">
                                     <div class="note-content-block">
-                                        <div class="note-content-block-content">
+                                        <div class="note-content-block-content note-quote-block">
                                             <div class="note-content-quote-block">
                                                 <div class="note-content-block-buttons">
                                                     <div class="note-content-block-button block-button-save">
@@ -695,7 +695,10 @@
                                             <input />
                                         </div>
                                     </div>
-                                    <div class="note-content-code-block">
+
+                                    <div class="note-content-block">
+                                        <div class="note-content-block-content note-code-block">
+                                            <div class="note-content-code-block">
                                         <div class="code-block-head">
                                             <!--#include file='images/code-block-icon.svg' -->
                                         </div>
@@ -732,7 +735,15 @@ test--</pre>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="note-content-doc-block">
+                                        </div>
+                                        <div class="note-content-block-end">
+                                            <input />
+                                        </div>
+                                    </div>
+
+                                    <div class="note-content-block">
+                                        <div class="note-content-block-content note-doc-block">
+                                            <div class="note-content-doc-block">
                                         <div class="note-content-block-buttons">
                                             <div class="note-content-block-button block-button-delete">
                                                 <!--#include file='images/cross-light-icon.svg' -->
@@ -748,6 +759,11 @@ test--</pre>
                                         Former UN Secretary-General and Nobel Peace Prize winner Kofi Annan
                                         </div>
                                         <div class="doc-block-icon2"></div>
+                                    </div>
+                                        </div>
+                                        <div class="note-content-block-end">
+                                            <input />
+                                        </div>
                                     </div>
                                 </div>
 
