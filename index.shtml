@@ -671,22 +671,29 @@
                                 </div>
 
                                 <div class="content-list-note-detail">
-                                    <div class="note-content-quote-block">
-                                        <div class="note-content-block-buttons">
-                                            <div class="note-content-block-button block-button-save">
-                                                <!--#include file='images/save-check-icon.svg' -->
-                                            </div>
-                                            <div class="note-content-block-button block-button-delete">
-                                                <!--#include file='images/cross-light-icon.svg' -->
-                                            </div>
-                                            <div class="note-content-block-button block-button-copy">
-                                                <!--#include file='images/copy-icon.svg' -->
-                                            </div>
-                                            <div class="note-content-block-button block-button-full-screen">
-                                                <!--#include file='images/full-screen-icon.svg' -->
+                                    <div class="note-content-block">
+                                        <div class="note-content-block-content">
+                                            <div class="note-content-quote-block">
+                                                <div class="note-content-block-buttons">
+                                                    <div class="note-content-block-button block-button-save">
+                                                        <!--#include file='images/save-check-icon.svg' -->
+                                                    </div>
+                                                    <div class="note-content-block-button block-button-delete">
+                                                        <!--#include file='images/cross-light-icon.svg' -->
+                                                    </div>
+                                                    <div class="note-content-block-button block-button-copy">
+                                                        <!--#include file='images/copy-icon.svg' -->
+                                                    </div>
+                                                    <div class="note-content-block-button block-button-full-screen">
+                                                        <!--#include file='images/full-screen-icon.svg' -->
+                                                    </div>
+                                                </div>
+                                                Former UN Secretary-General and Nobel Peace Prize winner Kofi Annan (pictured) dies at the age of 80. American soul singer and songwriter Aretha Franklin dies at the age of 76. In Afghanistan, hundreds are killed as the Taliban seize most of the strategic city of Ghazni for four days.
                                             </div>
                                         </div>
-                                        Former UN Secretary-General and Nobel Peace Prize winner Kofi Annan (pictured) dies at the age of 80. American soul singer and songwriter Aretha Franklin dies at the age of 76. In Afghanistan, hundreds are killed as the Taliban seize most of the strategic city of Ghazni for four days.
+                                        <div class="note-content-block-end">
+                                            <input />
+                                        </div>
                                     </div>
                                     <div class="note-content-code-block">
                                         <div class="code-block-head">
