@@ -2713,9 +2713,9 @@
     bottom: 0;
     top: auto;
     left: 0;
-    height: 80px;
+    height: 40px;
     width: 100%;
-    font-size: 80px;
+    font-size: 40px;
 }
 
 .note-content-quote-block {
@@ -2727,14 +2727,27 @@
     font-style: italic;
 }
 
+.note-content-quote-block pre {
+    font-family: inherit;
+    letter-spacing: .5px;
+}
+
+.note-content-quote-block textarea {
+    padding: 0;
+    font-size: .14rem;
+    line-height: .2rem;
+    font-style: italic;
+    letter-spacing: .5px;
+}
+
 .__focus.note-content-quote-block {
     background-color: #242629;
     border-color: rgba(0,0,0,.06);
 }
 
-.note-content-quote-block .hover {
+/*.note-content-quote-block .hover {
     border: 1px solid rgba(184,184,184,.3);
-}
+}*/
 
 .note-content-quote-block:before {
     position: absolute;
