@@ -6688,13 +6688,16 @@
 .doc-tool-bar .doc-tool-picture img {
     display: block;
     width: 15px;
-    max-height: 15px;
+    max-height: 16px;
 }
 
 .doc-main-content {
     /*display: flex;
     flex-direction: column;
     align-items: center;*/
+    font-size: 16px;
+    color: #36393e;
+    line-height: 24px;
 }
 
 .doc-edit-block {
