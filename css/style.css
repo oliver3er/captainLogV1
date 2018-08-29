@@ -2715,9 +2715,10 @@
     bottom: 0;
     top: auto;
     left: 0;
-    height: 100%;
+    padding-top: calc(100% - 40px);
     width: 100%;
     font-size: 40px;
+    line-height: 40px;
 }
 
 .note-content-quote-block {
