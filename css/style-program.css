@@ -743,3 +743,16 @@
 .temp-highlight-block {
 	border		: 1px solid pink;
 }
+
+.temp-story-container {
+	background		: #35393e;
+	font-size		: 14px;
+	color			: white;
+	height			: 100vh;
+	width			: 100%;
+}
+
+.doc-tool-bold img {
+	height	: 24px;
+	width	: 24px;
+}
