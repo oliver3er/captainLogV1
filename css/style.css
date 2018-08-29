@@ -2789,6 +2789,7 @@
     width: 100px;
     height: 20px;
     pointer-events: auto;
+    z-index: 1;
     transition: visibility .12s ease, opacity .12s ease ;
 }
 
@@ -2886,6 +2887,7 @@
 }
 
 .code-block-row-num {
+    margin-top: 1px;
     margin-right: 10px;
     padding-right: 10px;
     min-width: 60px;
@@ -2904,6 +2906,11 @@
 
 .code-block-content {
     width: 100%;
+    font-family: Monaco;
+}
+
+.code-block-content pre {
+    padding: 0;
     font-family: Monaco;
 }
 
@@ -6655,7 +6662,8 @@
     height: 24px;
 }
 
-.doc-tool-bar svg {
+.doc-tool-bar svg,
+.doc-tool-bar img {
     display: block;
     width: 14px;
     max-height: 14px;
@@ -6665,13 +6673,19 @@
 .doc-tool-bar .doc-tool-italic svg,
 .doc-tool-bar .doc-tool-underline svg,
 .doc-tool-bar .doc-tool-undo svg,
-.doc-tool-bar .doc-tool-redo svg{
+.doc-tool-bar .doc-tool-redo svg,
+.doc-tool-bar .doc-tool-bold img,
+.doc-tool-bar .doc-tool-italic img,
+.doc-tool-bar .doc-tool-underline img,
+.doc-tool-bar .doc-tool-undo img,
+.doc-tool-bar .doc-tool-redo img {
     display: block;
     width: 12px;
     max-height: 12px;
 }
 
-.doc-tool-bar .doc-tool-picture svg {
+.doc-tool-bar .doc-tool-picture svg,
+.doc-tool-bar .doc-tool-picture img {
     display: block;
     width: 15px;
     max-height: 15px;
