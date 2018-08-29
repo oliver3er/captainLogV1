@@ -2715,7 +2715,7 @@
     bottom: 0;
     top: auto;
     left: 0;
-    height: 40px;
+    height: 100%;
     width: 100%;
     font-size: 40px;
 }
