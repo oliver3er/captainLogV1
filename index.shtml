@@ -578,11 +578,17 @@
                             <div class="toolbar-button toolbar-check">
                                 <!--#include file='images/tool-checkbox-icon.svg' -->
                             </div>
-                            <div class="toolbar-button toolbar-command">
-                                <!--#include file='images/tool-command-icon.svg' -->
+                            <div class="toolbar-button toolbar-quote">
+                                <!--#include file='images/quote-left.svg' -->
                             </div>
+                            <!--<div class="toolbar-button toolbar-command">
+                                &lt;!&ndash;#include file='images/tool-command-icon.svg' &ndash;&gt;
+                            </div>-->
                             <div class="toolbar-button toolbar-code">
-                                <!--#include file='images/tool-code-icon.svg' -->
+                                <!--#include file='images/code-block-icon.svg' -->
+                            </div>
+                            <div class="toolbar-button toolbar-doc">
+                                <!--#include file='images/tool-doc-icon.svg' -->
                             </div>
                             <div class="toolbar-button toolbar-attach">
                                 <!--#include file='images/tool-attach-icon.svg' -->
@@ -590,9 +596,9 @@
                             <div class="toolbar-button toolbar-tag">
                                 <!--#include file='images/tool-tag-icon.svg' -->
                             </div>
-                            <div class="toolbar-button toolbar-tag2">
-                                <!--#include file='images/tool-tag2-icon.svg' -->
-                            </div>
+                            <!--<div class="toolbar-button toolbar-tag2">
+                                &lt;!&ndash;#include file='images/tool-tag2-icon.svg' &ndash;&gt;
+                            </div>-->
                             <div class="toolbar-button toolbar-line"></div>
                         </div>
                         <div class="toolbar-commend-words position-relative">

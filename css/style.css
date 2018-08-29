@@ -2059,20 +2059,39 @@
     transition: fill .2s;
 }
 
+.toolbar-button svg * {
+    fill: #76A3F7;
+}
+
 .toolbar-button:hover svg * {
     fill: #bad1f7;
 }
 
-.toolbar-pic svg, .toolbar-command svg, .toolbar-code svg, .toolbar-tag2 svg {
+.toolbar-pic svg, .toolbar-command svg,
+.toolbar-code svg, .toolbar-tag2 svg {
     width: 24px;
+    height: auto;
 }
 .toolbar-check svg {
     width: 23px;
+    height: auto;
 }
 
 .toolbar-attach svg, .toolbar-tag svg, .toolbar-delete svg {
     width: 20px;
+    height: auto;
 }
+
+.toolbar-quote svg {
+    width: 18px;
+    height: auto;
+}
+
+.toolbar-doc svg {
+    width: 18px;
+    height: auto;
+}
+
 .toolbar-line {
     width: 1px;
     height: 18px;
