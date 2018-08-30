@@ -6607,7 +6607,7 @@
     align-items: center;
     margin: 0 auto;
     height: 100%;
-    width: 85%;
+    width: 92%;
 }
 
 .doc-head-title {
@@ -6674,15 +6674,41 @@
     list-style-type: none;
 }
 
-.doc-tool-bar>div[class^='doc-tool'] {
-    display: -webkit-flex;
-    display: flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    justify-content: center;
-    align-items: center;
-    width: 24px;
+.doc-tool-bar .rdw-option-wrapper {
+    height: 22px;
+    border-color: #e8e8e8;
+}
+
+.doc-tool-bar .rdw-dropdown-wrapper {
     height: 24px;
+    line-height: 24px;
+    color: rgba(54,57,62,.7);
+    border-color: #e8e8e8;
+}
+
+.doc-tool-bar .rdw-option-wrapper:hover,
+.doc-tool-bar .rdw-dropdown-wrapper:hover {
+    box-shadow: none;
+    border: 1px solid #7da8f9;
+}
+
+.doc-tool-bar .rdw-option-wrapper:active,
+.doc-tool-bar .rdw-dropdown-wrapper:active {
+    border: 1px solid #5a7cdf;
+}
+
+.doc-tool-bar .rdw-option-disabled {
+    opacity: .4;
+    pointer-events: none;
+}
+
+.doc-tool-bar .rdw-option-active, .doc-tool-bar .rdw-dropdown-active {
+    box-shadow: none;
+    border: 1px solid #7da8f9;
+}
+
+.doc-tool-font-size.rdw-dropdown-wrapper {
+    min-width: 46px;
 }
 
 .doc-tool-bar svg,
@@ -6713,6 +6739,7 @@
     width: 15px;
     max-height: 16px;
 }
+
 
 .doc-main-content {
     /*display: flex;
