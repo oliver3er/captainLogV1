@@ -2738,7 +2738,7 @@
     bottom: 0;
     top: auto;
     left: 0;
-    height: 40px;
+    padding-top: calc(100% - 40px);
     width: 100%;
     font-size: 40px;
 }
