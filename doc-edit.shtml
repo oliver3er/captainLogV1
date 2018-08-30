@@ -68,73 +68,74 @@
         }
     </style>
 </head>
-<body class="doc-editor-body">
+<body>
     <div class="dark-style">
         <div class="doc-page-body">
-            <div class="doc-main-head">
-                <div class="doc-main-head-wrapper">
-                    <div class="doc-head-title">
-                        <div class="doc-head-title-logo">
-                            <a href="index.shtml"><!--#include file='images/logo.svg' --></a>
+            <div class="doc-head-fixed">
+                <div class="doc-main-head">
+                    <div class="doc-main-head-wrapper">
+                        <div class="doc-head-title">
+                            <div class="doc-head-title-logo">
+                                <a href="index.shtml"><!--#include file='images/logo.svg' --></a>
+                            </div>
+                            <div class="doc-head-title-value">
+                                This is a note.
+                            </div>
                         </div>
-                        <div class="doc-head-title-value">
-                            This is a note.
+                        <div class="doc-head-buttons">
+                            <div class="doc-head-button-close">Close</div>
                         </div>
                     </div>
-                    <div class="doc-head-buttons">
-                        <div class="doc-head-button-close">Close</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="doc-tool-bar">
-                <div class="doc-tool-bold"><!--#include file='images/editor/editor-bold.svg' --></div>
-                <div class="doc-tool-italic"><!--#include file='images/editor/editor-italicize.svg' --></div>
-                <div class="doc-tool-underline"><!--#include file='images/editor/editor-underline.svg' --></div>
-                <div class="doc-tool-through"><!--#include file='images/editor/editor-strikethrough.svg' --></div>
-
-                <div class="rdw-dropdown-wrapper rdw-block-dropdown" aria-expanded="false" aria-label="rdw-dropdown">
-                    <a class="rdw-dropdown-selectedtext" title="Block Type">
-                        <span>Normal</span>
-                        <div class="rdw-dropdown-carettoopen"></div>
-                    </a>
                 </div>
 
-                <div class="rdw-fontsize-wrapper" aria-label="rdw-font-size-control">
-                    <div class="rdw-dropdown-wrapper rdw-fontsize-dropdown" aria-label="rdw-dropdown" aria-expanded="false">
-                        <a class="rdw-dropdown-selectedtext" title="Font Size">
-                            <span>16</span>
+                <div class="doc-tool-bar">
+                    <div class="doc-tool-bold"><!--#include file='images/editor/editor-bold.svg' --></div>
+                    <div class="doc-tool-italic"><!--#include file='images/editor/editor-italicize.svg' --></div>
+                    <div class="doc-tool-underline"><!--#include file='images/editor/editor-underline.svg' --></div>
+                    <div class="doc-tool-through"><!--#include file='images/editor/editor-strikethrough.svg' --></div>
+
+                    <div class="rdw-dropdown-wrapper rdw-block-dropdown" aria-expanded="false" aria-label="rdw-dropdown">
+                        <a class="rdw-dropdown-selectedtext" title="Block Type">
+                            <span>Normal</span>
                             <div class="rdw-dropdown-carettoopen"></div>
                         </a>
                     </div>
-                </div>
 
-                <div class="rdw-fontfamily-wrapper" aria-label="rdw-font-family-control">
-                    <div class="rdw-dropdown-wrapper rdw-fontfamily-dropdown" aria-label="rdw-dropdown" aria-expanded="false">
-                        <a class="rdw-dropdown-selectedtext" title="Font Family">
-                            <span class="rdw-fontfamily-placeholder">Font Family</span>
-                            <div class="rdw-dropdown-carettoopen"></div>
-                        </a>
+                    <div class="rdw-fontsize-wrapper" aria-label="rdw-font-size-control">
+                        <div class="rdw-dropdown-wrapper rdw-fontsize-dropdown" aria-label="rdw-dropdown" aria-expanded="false">
+                            <a class="rdw-dropdown-selectedtext" title="Font Size">
+                                <span>16</span>
+                                <div class="rdw-dropdown-carettoopen"></div>
+                            </a>
+                        </div>
                     </div>
+
+                    <div class="rdw-fontfamily-wrapper" aria-label="rdw-font-family-control">
+                        <div class="rdw-dropdown-wrapper rdw-fontfamily-dropdown" aria-label="rdw-dropdown" aria-expanded="false">
+                            <a class="rdw-dropdown-selectedtext" title="Font Family">
+                                <span class="rdw-fontfamily-placeholder">Font Family</span>
+                                <div class="rdw-dropdown-carettoopen"></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="doc-tool-unordered"><!--#include file='images/editor/editor-unordered.svg' --></div>
+                    <div class="doc-tool-ordered"><!--#include file='images/editor/editor-ordered.svg' --></div>
+                    <div class="doc-tool-indent"><!--#include file='images/editor/editor-indent.svg' --></div>
+                    <div class="doc-tool-outdent"><!--#include file='images/editor/editor-outdent.svg' --></div>
+                    <div class="doc-tool-left"><!--#include file='images/editor/editor-left.svg' --></div>
+                    <div class="doc-tool-center"><!--#include file='images/editor/editor-center.svg' --></div>
+                    <div class="doc-tool-right"><!--#include file='images/editor/editor-right.svg' --></div>
+                    <div class="doc-tool-justify"><!--#include file='images/editor/editor-justify.svg' --></div>
+                    <div class="doc-tool-color"><!--#include file='images/editor/editor-color.svg' --></div>
+                    <div class="doc-tool-link"><!--#include file='images/editor/editor-link.svg' --></div>
+                    <div class="doc-tool-unlink"><!--#include file='images/editor/editor-unlink.svg' --></div>
+                    <div class="doc-tool-picture"><!--#include file='images/editor/editor-picture.svg' --></div>
+                    <div class="doc-tool-eraser"><!--#include file='images/editor/editor-eraser.svg' --></div>
+                    <div class="doc-tool-undo"><!--#include file='images/editor/editor-undo.svg' --></div>
+                    <div class="doc-tool-redo"><!--#include file='images/editor/editor-redo.svg' --></div>
                 </div>
-
-                <div class="doc-tool-unordered"><!--#include file='images/editor/editor-unordered.svg' --></div>
-                <div class="doc-tool-ordered"><!--#include file='images/editor/editor-ordered.svg' --></div>
-                <div class="doc-tool-indent"><!--#include file='images/editor/editor-indent.svg' --></div>
-                <div class="doc-tool-outdent"><!--#include file='images/editor/editor-outdent.svg' --></div>
-                <div class="doc-tool-left"><!--#include file='images/editor/editor-left.svg' --></div>
-                <div class="doc-tool-center"><!--#include file='images/editor/editor-center.svg' --></div>
-                <div class="doc-tool-right"><!--#include file='images/editor/editor-right.svg' --></div>
-                <div class="doc-tool-justify"><!--#include file='images/editor/editor-justify.svg' --></div>
-                <div class="doc-tool-color"><!--#include file='images/editor/editor-color.svg' --></div>
-                <div class="doc-tool-link"><!--#include file='images/editor/editor-link.svg' --></div>
-                <div class="doc-tool-unlink"><!--#include file='images/editor/editor-unlink.svg' --></div>
-                <div class="doc-tool-picture"><!--#include file='images/editor/editor-picture.svg' --></div>
-                <div class="doc-tool-eraser"><!--#include file='images/editor/editor-eraser.svg' --></div>
-                <div class="doc-tool-undo"><!--#include file='images/editor/editor-undo.svg' --></div>
-                <div class="doc-tool-redo"><!--#include file='images/editor/editor-redo.svg' --></div>
             </div>
-
             <div class="doc-main-content">
                 <div class="doc-edit-block"></div>
             </div>

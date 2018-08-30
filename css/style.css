@@ -6575,15 +6575,11 @@
 
 /******************* doc edit page style begin *********************/
 
-.doc-editor-body {
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
 .doc-page-body {
     display: flex;
     flex-direction: column;
     width: 100vw;
+    height: 100vh;
     max-width: 2000px;
     margin: 0 auto;
     background-color: #eeeeee;
@@ -6737,12 +6733,11 @@
 
 
 .doc-main-content {
-    /*display: flex;
-    flex-direction: column;
-    align-items: center;*/
     font-size: 16px;
     color: #36393e;
     line-height: 24px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .doc-edit-block {
