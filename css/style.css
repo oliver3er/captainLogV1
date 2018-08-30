@@ -2063,7 +2063,15 @@
     fill: #76A3F7;
 }
 
-.toolbar-button:hover svg * {
+.__disabled.toolbar-button {
+    cursor: default;
+}
+
+.__disabled.toolbar-button svg * {
+    fill: #3b465a;
+}
+
+.toolbar-button:not(.__disabled):hover svg * {
     fill: #bad1f7;
 }
 
@@ -2082,15 +2090,11 @@
     height: auto;
 }
 
-.toolbar-quote svg {
+.toolbar-quote svg, .toolbar-doc svg {
     width: 18px;
     height: auto;
 }
 
-.toolbar-doc svg {
-    width: 18px;
-    height: auto;
-}
 
 .toolbar-line {
     width: 1px;

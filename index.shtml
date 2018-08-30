@@ -578,7 +578,7 @@
                             <div class="toolbar-button toolbar-check">
                                 <!--#include file='images/tool-checkbox-icon.svg' -->
                             </div>
-                            <div class="toolbar-button toolbar-quote">
+                            <div class="toolbar-button toolbar-quote __disabled">
                                 <!--#include file='images/quote-left.svg' -->
                             </div>
                             <!--<div class="toolbar-button toolbar-command">
