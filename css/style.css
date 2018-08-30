@@ -1364,8 +1364,8 @@
 
 .big-image-dialog-image img {
     display: block;
-    height: 100%;
-    width: auto;
+    max-height: 78vh;
+    max-width: 90vw;
 }
 
 .big-image-dialog-link {

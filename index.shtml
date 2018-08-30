@@ -357,7 +357,7 @@
                     }
                 }else if($(this).val() == 'click-note-img') {     //点击笔记中的图片效果
                     var imgDialog = $(".big-image-dialog");
-                    $(".big-image-dialog .big-image-dialog-image img").attr("src","images/temp/example1.jpg")
+                    $(".big-image-dialog .big-image-dialog-image img").attr("src","images/temp/sbig.jpeg")
                     imgDialog.removeClass("__close").removeClass("__open");
                     imgDialog.addClass("__open");
                     backdropOpen();
@@ -853,7 +853,7 @@ test--</pre>
                                     <div class="note-content-block">
                                         <div class="note-content-block-content note-img-block">
                                             <div class="note-detail-image ">
-                                                <img src='images/temp/example1.jpg' alt='picture'/>
+                                                <img src='images/temp/sbig.jpeg' alt='picture'/>
                                                 <div class="note-detail-image-hover">
                                                     <div class="note-detail-image-hover-bg"></div>
                                                     <div class="note-detail-image-delete with-bottom-tip" tip-message="Delete">
