@@ -596,6 +596,9 @@
                             <div class="toolbar-button toolbar-tag">
                                 <!--#include file='images/tool-tag-icon.svg' -->
                             </div>
+                            <div class="toolbar-button toolbar-link">
+                                <!--#include file='images/tool-link-icon.svg' -->
+                            </div>
                             <!--<div class="toolbar-button toolbar-tag2">
                                 &lt;!&ndash;#include file='images/tool-tag2-icon.svg' &ndash;&gt;
                             </div>-->

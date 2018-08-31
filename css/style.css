@@ -2085,7 +2085,7 @@
     height: auto;
 }
 
-.toolbar-attach svg, .toolbar-tag svg, .toolbar-delete svg {
+.toolbar-attach svg, .toolbar-tag svg, .toolbar-delete svg, .toolbar-link svg {
     width: 20px;
     height: auto;
 }
