@@ -6575,17 +6575,24 @@
 
 /******************* doc edit page style begin *********************/
 
+.doc-edit-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .doc-page-body {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     max-width: 2000px;
     margin: 0 auto;
     background-color: #eeeeee;
 }
 
 .doc-main-head {
+    position: fixed;
+    top: 0;
     height: 60px;
     width: 100%;
     background-color: #36393e;
@@ -6652,6 +6659,7 @@
 
 .doc-tool-bar {
     position: fixed;
+    top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6664,6 +6672,7 @@
     background-color: #fdfdfd;
     user-select: none;
     list-style-type: none;
+    z-index: 10;
 }
 
 .doc-tool-bar .rdw-option-wrapper {
@@ -6738,8 +6747,18 @@
     overflow-x: hidden;
 }
 
+.doc-main-container {
+    margin-top: 110px;
+    order: 0;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+}
 
 .doc-main-content {
+    height: 100%;
+    min-height: 900px;
     font-size: 16px;
     color: #36393e;
     line-height: 24px;
