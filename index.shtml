@@ -125,33 +125,7 @@
 
 
             //信息提示框
-            $(".with-top-tip").hover(function(){
-                var thisObj = $(this);
-                //alert("1");
-                //插入消息内容
-                var tipMg = thisObj.attr("tip-message");
-                var theTip = $(".small-tip");
-                var theArrow = theTip.find(".small-tip-arrow");
-                theTip.find(".small-tip-main").empty().append("<span>"+tipMg+"</span>");
-                //获取目标对象位置
-                var objX = thisObj.offset().left;
-                var objY = thisObj.offset().top;
 
-                var tipWidth = theTip.width();
-                var tipX = objX+thisObj.width()/2-tipWidth/2;
-                    //alert("2");
-
-                theTip.css("left",tipX);
-                theTip.css("top",(objY-theTip.height()-8));
-                theTip.css("visibility","visible");
-
-                theArrow.css("bottom","-12px");
-                theArrow.css("top","auto");
-                theArrow.css("border-color", "#0b0b0b transparent transparent transparent");
-            }
-            , function(){
-                $(".small-tip").css("visibility","hidden");
-            });
 
 
             $(".with-bottom-tip").hover(function(){
@@ -998,8 +972,48 @@ test--</pre>
     $(document).ready(function(){
         console.log('begin load common html')
         $('#commonDiv').load('common.shtml',function(){
-            console.log('finished')
-        })
+            $(".with-top-tip").hover(function () {
+                var thisObj = $(this);
+
+                //插入消息内容
+                var tipMg = thisObj.attr("tip-message");
+                var theTip = $(".small-tip");
+
+                var theArrow = theTip.find(".small-tip-arrow");
+                theTip.find(".small-tip-main").empty().append("<span>" + tipMg + "</span>");
+                //获取目标对象位置
+                var objX = thisObj.offset().left;
+                var objY = thisObj.offset().top;
+
+                var tipWidth = theTip.width();
+                var tipX = objX + thisObj.width() / 2 - tipWidth / 2;
+                //alert("2");
+
+                theTip.css("left", tipX);
+                theTip.css("top", (objY - theTip.height() - 8));
+                theTip.css("visibility", "visible");
+
+                theArrow.css("bottom", "-12px");
+                theArrow.css("top", "auto");
+                theArrow.css("border-color", "#0b0b0b transparent transparent transparent");
+            }
+            , function () {
+                $(".small-tip").css("visibility", "hidden");
+            });
+
+
+            //选择标签图标
+            $(".tag-select-icon").bind('click',function(){
+                $(".tag-icon-selection").removeClass("__close").removeClass("__open").addClass("__open");
+                $(".tag-setting").removeClass("__close").removeClass("__back").addClass("__close");
+            });
+
+            $(".tag-icon-selection .btn-cancel").bind("click",function(){
+                $(".tag-icon-selection").removeClass("__close").removeClass("__open").addClass("__close");
+                $(".tag-setting").removeClass("__close").removeClass("__back").addClass("__back");
+            });
+
+        });
     })
 </script>
 
@@ -1038,3 +1052,4 @@ test--</pre>
 
 </body>
 </html>
+

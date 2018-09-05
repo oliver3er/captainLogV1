@@ -179,214 +179,359 @@
 
 <!--标签设置窗口-->_
 <div class="message-dialog tag-setting-dialog">
-    <div class="message-dialog-wrapper tag-setting-dialog-wrapper">
-        <div class="dialog-title">HASHTAG SETTING</div>
+    <div class="tag-setting-dialog-wrapper position-relative">
+        <div class="message-dialog-wrapper tag-setting">
+            <div class="dialog-title">HASHTAG SETTING</div>
 
-        <div class="dialog-main">
-            <div class="main-tag-name">
-                <span class="tag-name" style="color:rgb(213,71,71);">#WorldWarII</span>
-                <span class="descriptive-info">Created at 10/06/2018</span>
-            </div>
+            <div class="dialog-main">
+                <div class="main-tag-name">
+                    <span class="tag-name" style="color:rgb(213,71,71);">#WorldWarII</span>
+                    <span class="descriptive-info">Created at 10/06/2018</span>
+                </div>
 
-            <div class="main-tag-collection">
-                <div class="main-tag-collection-L">
-                    <div class="main-tag-color-selection">
-                        <div class="tag-color-blank position-relative">  <!--style="background-color: red;"-->
-                            <div class="tag-color-blank-icon"></div>
-                        </div>
-                        <div class="tag-color-supply">
-                            <div class="tag-color-supply-column">
-                                <div class="_color1"></div>
-                                <div class="_color1_"></div>
+                <div class="main-tag-collection">
+                    <div class="main-tag-collection-L">
+                        <div class="main-tag-color-selection">
+                            <div class="tag-color-blank position-relative">  <!--style="background-color: red;"-->
+                                <div class="tag-color-blank-icon"></div>
                             </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color2"></div>
-                                <div class="_color2_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color3"></div>
-                                <div class="_color3_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color4"></div>
-                                <div class="_color4_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color5"></div>
-                                <div class="_color5_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color6"></div>
-                                <div class="_color6_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color7"></div>
-                                <div class="_color7_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color8"></div>
-                                <div class="_color8_"></div>
-                            </div>
-                            <div class="tag-color-supply-column">
-                                <div class="_color9"></div>
-                                <div class="_color9_"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="main-tag-show-way-selection form-item">
-                        <div class="form-item-label">SHOW WAY</div>
-                        <div class="form-selection">
-
-                            <script type="text/javascript">
-                                $(function (){
-                                    $(".form-selection-outer .form-selection-option").bind("click",function(){
-
-                                        var selectionObj = $(this).parent();
-
-                                        if(!$(this).hasClass("__selected")){
-
-                                            selectionObj.find(".form-selection-option").removeClass("__selected");
-                                            $(this).addClass("__selected");
-                                        }
-                                        selectionObj.parent().find(".form-selection-control").removeClass("__open");
-                                        selectionObj.removeClass("__open").addClass("__close");
-                                    });
-
-                                    $(".form-selection-control").bind("click",function(){
-
-                                        if(!$(this).hasClass("__selected")) {
-                                            $(this).addClass("__selected");
-                                        }
-
-                                        if($(this).hasClass("__open")) {
-                                            $(this).removeClass("__open");
-                                            //隐藏下拉内容
-                                            $(this).parent().find(".form-selection-outer").removeClass("__open").addClass("__close");
-                                        }else {
-                                            $(this).addClass("__open");
-                                            //显示下拉内容
-                                            $(this).parent().find(".form-selection-outer").removeClass("__close").addClass("__open");
-                                        }
-                                    });
-
-                                    $(document).bind("click",function(event) {
-                                        var e = window.event || event;
-                                        //点击除此下拉框的位置，改变该下拉框显示模式
-                                        if ($(e.target).closest(".form-selection").length == 0) {
-                                            $(".form-selection-outer").removeClass("__open").addClass("__close");
-                                            $(".form-selection-control").removeClass("__open");
-                                            $(".form-selection-control").removeClass("__selected");
-                                        }
-                                    });
-                                });
-                            </script>
-
-                            <div class="form-selection-control">
-                                <div class="selected-value">
-                                    <div>words</div>
-                                    <div class="descriptive-info">e.g. #Midinote</div>
+                            <div class="tag-color-supply">
+                                <div class="tag-color-supply-column">
+                                    <div class="_color1"></div>
+                                    <div class="_color1_"></div>
                                 </div>
-                                <div class="selection-arrow"></div>
-                            </div>
-                            <div class="form-selection-outer">
-                                <div class="form-selection-option __selected">
-                                    <div>words</div>
-                                    <div class="descriptive-info">e.g. #Midinote</div>
+                                <div class="tag-color-supply-column">
+                                    <div class="_color2"></div>
+                                    <div class="_color2_"></div>
                                 </div>
-                                <div class="form-selection-option">
-                                    <div>icon</div>
-                                    <div class="descriptive-info">e.g. </div>
-                                    <div class="descriptive-icon">
-                                        <img src="images/temp/laugh-face.png" />
+                                <div class="tag-color-supply-column">
+                                    <div class="_color3"></div>
+                                    <div class="_color3_"></div>
+                                </div>
+                                <div class="tag-color-supply-column">
+                                    <div class="_color4"></div>
+                                    <div class="_color4_"></div>
+                                </div>
+                                <div class="tag-color-supply-column">
+                                    <div class="_color5"></div>
+                                    <div class="_color5_"></div>
+                                </div>
+                                <div class="tag-color-supply-column">
+                                    <div class="_color6"></div>
+                                    <div class="_color6_"></div>
+                                </div>
+                                <div class="tag-color-supply-column">
+                                    <div class="_color7"></div>
+                                    <div class="_color7_"></div>
+                                </div>
+                                <div class="tag-color-supply-column">
+                                    <div class="_color8"></div>
+                                    <div class="_color8_"></div>
+                                </div>
+                                <div class="tag-color-supply-column">
+                                    <div class="_color9"></div>
+                                    <div class="_color9_"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-tag-show-way-selection form-item">
+                            <div class="form-item-label">SHOW WAY</div>
+                            <div class="form-selection">
+
+                                <script type="text/javascript">
+                                    $(function (){
+                                        $(".form-selection-outer .form-selection-option").bind("click",function(){
+
+                                            var selectionObj = $(this).parent();
+
+                                            if(!$(this).hasClass("__selected")){
+
+                                                selectionObj.find(".form-selection-option").removeClass("__selected");
+                                                $(this).addClass("__selected");
+                                            }
+                                            selectionObj.parent().find(".form-selection-control").removeClass("__open");
+                                            selectionObj.removeClass("__open").addClass("__close");
+                                        });
+
+                                        $(".form-selection-control").bind("click",function(){
+
+                                            if(!$(this).hasClass("__selected")) {
+                                                $(this).addClass("__selected");
+                                            }
+
+                                            if($(this).hasClass("__open")) {
+                                                $(this).removeClass("__open");
+                                                //隐藏下拉内容
+                                                $(this).parent().find(".form-selection-outer").removeClass("__open").addClass("__close");
+                                            }else {
+                                                $(this).addClass("__open");
+                                                //显示下拉内容
+                                                $(this).parent().find(".form-selection-outer").removeClass("__close").addClass("__open");
+                                            }
+                                        });
+
+                                        $(document).bind("click",function(event) {
+                                            var e = window.event || event;
+                                            //点击除此下拉框的位置，改变该下拉框显示模式
+                                            if ($(e.target).closest(".form-selection").length == 0) {
+                                                $(".form-selection-outer").removeClass("__open").addClass("__close");
+                                                $(".form-selection-control").removeClass("__open");
+                                                $(".form-selection-control").removeClass("__selected");
+                                            }
+                                        });
+                                    });
+                                </script>
+
+                                <div class="form-selection-control">
+                                    <div class="selected-value">
+                                        <div>words</div>
+                                        <div class="descriptive-info">e.g. #Midinote</div>
+                                    </div>
+                                    <div class="selection-arrow"></div>
+                                </div>
+                                <div class="form-selection-outer">
+                                    <div class="form-selection-option __selected">
+                                        <div>words</div>
+                                        <div class="descriptive-info">e.g. #Midinote</div>
+                                    </div>
+                                    <div class="form-selection-option">
+                                        <div>icon</div>
+                                        <div class="descriptive-info">e.g. </div>
+                                        <div class="descriptive-icon">
+                                            <img src="images/temp/laugh-face.png" />
+                                        </div>
+                                    </div>
+                                    <div class="form-selection-option">
+                                        <div>word + icon</div>
+                                        <div class="descriptive-info">e.g. #Midinote</div>
+                                        <div class="descriptive-icon">
+                                            <img src="images/temp/laugh-face.png" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-selection-option">
-                                    <div>word + icon</div>
-                                    <div class="descriptive-info">e.g. #Midinote</div>
-                                    <div class="descriptive-icon">
-                                        <img src="images/temp/laugh-face.png" />
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-tag-collection-R">
+                        <div class="main-tag-avatar">
+                            <div class="tag-avatar-backdrop">
+                                <div class="drag-drop-icon-block">
+                                    <div>Drag&Drop</div>
+                                    <div>upload your picture.</div>
+                                </div>
+                                <div class="select-upload-icon-block">
+                                    <div class="tag-select-icon with-top-tip"  tip-message="select an icon"></div>
+                                    <div class="tag-upload-icon with-top-tip" tip-message="upload an icon"></div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="main-tag-collection-R">
-                    <div class="main-tag-avatar">
-                        <div class="tag-avatar-backdrop">
-                            <div class="drag-drop-icon-block">
-                                <div>Drag&Drop</div>
-                                <div>upload your picture.</div>
-                            </div>
-                            <div class="select-upload-icon-block">
-                                <div class="tag-select-icon with-top-tip"  tip-message="select an icon"></div>
-                                <div class="tag-upload-icon with-top-tip" tip-message="upload an icon"></div>
+                            <div class="tag-avatar-icon __picture-img-tall">   <!--__picture-img-tall\__picture-svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg" >
+                                    <defs>
+                                        <clipPath id="tag-setting-form-icon-mask" transform="matrix(1 0 0 1 0 0)">
+                                            <path d="M126.5,121.322c0,2.859-2.318,5.178-5.178,5.178H5.678c-2.86,0-5.178-2.318-5.178-5.178V5.678
+        C0.5,2.818,2.818,0.5,5.678,0.5h115.644c2.859,0,5.178,2.318,5.178,5.178V121.322z"/>
+                                        </clipPath>
+                                    </defs>
+                                    <img src="images/temp/president.jpg" x="0" y="0" clip-path="url(#tag-setting-form-icon-mask)"/>
+                                </svg>
                             </div>
                         </div>
-                        <div class="tag-avatar-icon __picture-img-tall">   <!--__picture-img-tall\__picture-svg-->
-                            <svg xmlns="http://www.w3.org/2000/svg" >
-                                <defs>
-                                    <clipPath id="tag-setting-form-icon-mask" transform="matrix(1 0 0 1 0 0)">
-                                        <path d="M126.5,121.322c0,2.859-2.318,5.178-5.178,5.178H5.678c-2.86,0-5.178-2.318-5.178-5.178V5.678
-	C0.5,2.818,2.818,0.5,5.678,0.5h115.644c2.859,0,5.178,2.318,5.178,5.178V121.322z"/>
-                                    </clipPath>
-                                </defs>
-                                <img src="images/temp/president.jpg" x="0" y="0" clip-path="url(#tag-setting-form-icon-mask)"/>
-                            </svg>
+                    </div>
+                </div>
+
+                <div class="main-tag-definition form-item position-relative">
+                    <div class="form-item-label">DEFINITION<div class="form-item-help"></div></div>
+                    <div class="form-input">
+                        <!--<input type="text" name="tag-definition-value"
+                               value="This is a complicated thing" placeholder="" maxlength="999" />-->
+                        <div class="__input" value="This is a complicated thing" placeholder="" maxlength="999" name="tag-definition-value" contenteditable="true"></div>
+                    </div>
+                    <div class="form-input-foot-right">
+                        <div class="tag-commend-words">
+                            <span class="tag-name" style="color:rgb(20,135,187);">#complicated</span>
                         </div>
+                        <div class="form-item-separate-line"></div>
+                        <div class="input-remainder-account">100</div>
+                    </div>
+                </div>
+
+                <div class="main-tag-alias form-item">
+                    <div class="form-item-label">ALIAS</div>
+                    <div class="form-input">
+                        <input type="text" name="tag-alias-value"
+                               value="" placeholder="" maxlength="999" />
+                    </div>
+                </div>
+
+                <div class="main-tag-trigger form-item">
+                    <div class="form-item-label">TRIGGER</div>
+                    <div class="form-input">
+                        <input type="text" name="tag-trigger-value"
+                               value="" placeholder="" maxlength="999" />
+                    </div>
+                </div>
+
+                <div class="main-tag-equal form-item">
+                    <div class="form-item-label">EQUAL TO<div class="form-item-help"></div></div>
+                    <div class="form-input">
+                        <input type="text" name="tag-equal-value"
+                               value="" placeholder="" maxlength="999" />
                     </div>
                 </div>
             </div>
-
-            <div class="main-tag-definition form-item position-relative">
-                <div class="form-item-label">DEFINITION<div class="form-item-help"></div></div>
-                <div class="form-input">
-                    <!--<input type="text" name="tag-definition-value"
-                           value="This is a complicated thing" placeholder="" maxlength="999" />-->
-                    <div class="__input" value="This is a complicated thing" placeholder="" maxlength="999" name="tag-definition-value" contenteditable="true"></div>
-                </div>
-                <div class="form-input-foot-right">
-                    <div class="tag-commend-words">
-                        <span class="tag-name" style="color:rgb(20,135,187);">#complicated</span>
-                    </div>
-                    <div class="form-item-separate-line"></div>
-                    <div class="input-remainder-account">100</div>
-                </div>
-            </div>
-
-            <div class="main-tag-alias form-item">
-                <div class="form-item-label">ALIAS</div>
-                <div class="form-input">
-                    <input type="text" name="tag-alias-value"
-                           value="" placeholder="" maxlength="999" />
-                </div>
-            </div>
-
-            <div class="main-tag-trigger form-item">
-                <div class="form-item-label">TRIGGER</div>
-                <div class="form-input">
-                    <input type="text" name="tag-trigger-value"
-                           value="" placeholder="" maxlength="999" />
-                </div>
-            </div>
-
-            <div class="main-tag-equal form-item">
-                <div class="form-item-label">EQUAL TO<div class="form-item-help"></div></div>
-                <div class="form-input">
-                    <input type="text" name="tag-equal-value"
-                           value="" placeholder="" maxlength="999" />
-                </div>
+            <div class="dialog-buttons">
+                <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+                <div class="dialog-button-ok btn-ok">Save</div>
             </div>
         </div>
-        <div class="dialog-buttons">
-            <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
-            <div class="dialog-button-ok btn-ok">Save</div>
+
+        <div class="message-dialog-wrapper tag-icon-selection">
+            <div class="dialog-title">HASHTAG ICON SELECTION</div>
+            <div class="dialog-main">
+                <div class="icon-selection-content">
+                    <div class="sticky-header"><div class="icon-selection-icon-type">frequently used</div></div>
+                    <div class="icon-selection-icon-type">all</div>
+                    <div class="icon-selection-icon-list">
+                        <div><img src="images/tag-icons/idea.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/test-tube.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/alien.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/spaceship.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/flower.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/suv.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/island.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/sailing.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/football.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/table-tennis.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/tennis.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/football-a.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/volleyball.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/baseball.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/basketball.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/billiards.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/suitcase.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/leaf.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/music1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/cup.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/drawing.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/plant2.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/bird.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/poker.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/game.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/plant.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/heart.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/leaf3.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/star.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/master.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/lighter.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/snow.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/balloon.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/movie1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/shopping.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/bottle.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/glasses.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/smile.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/leaf2.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/dart.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/recycle.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/bubbly.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/movie.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/bird1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/fire.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/popcorn.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/octopus.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/drink1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/glasses1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/dive.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/luggage.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/butterfly.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/ladybug.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/bird2.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/briefcase.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/study.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/typewriter.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/giraffe.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/pig.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/duck.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/chilli.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/carrot.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/apple.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/icecream.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/tomato.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/orange.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/grape.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/watermelon.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/egg.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/cook.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/pot.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/heart1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/make-up.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/atom.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/alligator.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/zebra.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/unicorn.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/shoe.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/ring.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/saving.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/hawk.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/cow.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/lion.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/penguin.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/duck1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/sun.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/dinosaur.svg" alt="tag icon"/></div>
+                    </div>
+
+
+                    <div class="icon-selection-icon-type">people</div>
+                    <div class="icon-selection-icon-list">
+                        <div><img src="images/tag-icons/p1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p2.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p3.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p4.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p5.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p6.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p7.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p8.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p9.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p10.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p11.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p12.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p13.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p14.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p15.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p16.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p17.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p18.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p19.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p20.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p21.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p22.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p23.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p24.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p25.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p26.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p27.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p28.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p29.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p30.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p31.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p32.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p33.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p34.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p35.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/p36.svg" alt="tag icon"/></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="dialog-buttons">
+                <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
+            </div>
         </div>
     </div>
 
 </div>
-
 
 
 <!--标签值设置窗口-->_
