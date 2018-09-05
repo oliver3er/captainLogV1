@@ -756,7 +756,7 @@
     color: #ececec;
     visibility: hidden;
     transition: visibility .1s;
-    z-index: 10;
+    z-index: 1001;
 }
 
 .small-tip-wrapper {
@@ -3171,6 +3171,11 @@
     max-height: 620px;
 }
 
+.tag-setting-dialog-wrapper>div {
+    height: 100%;
+    width: 100%;
+}
+
 .tag-setting-dialog .dialog-title, .tag-value-setting-dialog .dialog-title {
     padding: 0 28px;
 }
@@ -3448,6 +3453,115 @@
     max-width: 124px;
     max-height: 124px;
 }
+
+/***select tag icon dialog in setting tag index begin***/
+
+.icon-select-dialog-wrapper {
+    width: 520px;
+    max-width: 520px;
+    max-height: 80vh;
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 1000;
+    font-size: .14rem;
+    font-weight: 400;
+    color: #7c7e83;
+    border: 1px solid rgba(28,36,43,.6);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+    background-color: #36393e;
+}
+
+.tag-setting {
+    position: absolute;
+    transition: all .2s ease-in-out;
+    z-index: 1;
+}
+
+.tag-setting.__back {
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.tag-setting.__close {
+    visibility: hidden;
+    transform: translateX(-100%);
+    z-index: 0;
+}
+
+
+.tag-icon-selection {
+    position: absolute;
+    left: 520px;
+    top: 0;
+    visibility: hidden;
+    z-index: 1;
+    transition: all .2s ease-in-out;
+}
+
+.tag-icon-selection.__open {
+    visibility: visible;
+    transform: translateX(-520px);
+}
+
+.tag-icon-selection.__close {
+    visibility: hidden;
+    transform: translateX(0);
+    z-index: 0;
+}
+
+.icon-selection-content {
+    height: 100%;
+    position: relative;
+}
+
+.icon-selection-icon-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 12px 8px 0;
+    padding-top: 10px;
+    font-weight: 500;
+    color: #7c7e83;
+    font-size: .14rem;
+    text-transform : uppercase;
+}
+
+.icon-selection-content .sticky-header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-right: 45px;
+    width: 93%;
+    z-index: 1;
+}
+
+.icon-selection-icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.icon-selection-icon-list>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 6px 4px 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+}
+
+.icon-selection-icon-list>div:hover {
+    background-color: rgba(0,0,0,.08);
+}
+
+.icon-selection-icon-list img {
+    max-width: 36px;
+    max-height: 36px;
+}
+
+/***select tag icon dialog in setting tag index end***/
+
 
 
 .tag-setting-dialog .dialog-buttons, .tag-value-setting-dialog .dialog-buttons {
