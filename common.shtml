@@ -395,154 +395,155 @@
                     </div>
                     <div class="icon-selection-icon-type">All</div>-->
                     <div class="icon-selection-icon-list">
-                        <div><img src="images/tag-icons/idea.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/pencil.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/book.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/drawing2.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/chart.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/study.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/cook.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/earphone.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/music1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/sax.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/keyboard.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/guitar.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/movie1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/camera.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/shoe.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/lipstick.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/jewel.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/ring.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/heart1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/gift.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/tada.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/lips.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/tie.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/dress1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/clothes.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/glasses2.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/shopping.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/saving1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/clock.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/bottle.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/pawprint.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/car.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/suv.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/luggage1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/plane1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/house.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/money.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/money1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/eat.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/pot.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/cook1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/meat.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/egg.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/popcorn.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/icecream.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/drink1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/beer.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/wine.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/health.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/medicine.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/fix.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/smile.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/badman.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/santa.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/micon1.svg" alt="idea"/></div>
+                        <div><img src="images/tag-icons/micon2.svg" alt="pencil"/></div>
+                        <div><img src="images/tag-icons/micon3.svg" alt="book"/></div>
+                        <div><img src="images/tag-icons/micon4.svg" alt="palette"/></div>
+                        <div><img src="images/tag-icons/micon5.svg" alt="chart"/></div>
+                        <div><img src="images/tag-icons/micon6.svg" alt="notebook"/></div>
+                        <div><img src="images/tag-icons/micon7.svg" alt="briefcase"/></div>
+                        <div><img src="images/tag-icons/micon8.svg" alt="earphone"/></div>
+                        <div><img src="images/tag-icons/micon9.svg" alt="musical"/></div>
+                        <div><img src="images/tag-icons/micon10.svg" alt="saxophone"/></div>
+                        <div><img src="images/tag-icons/micon11.svg" alt="keyboard key"/></div>
+                        <div><img src="images/tag-icons/micon12.svg" alt="guitar"/></div>
+                        <div><img src="images/tag-icons/micon13.svg" alt="movie"/></div>
+                        <div><img src="images/tag-icons/micon14.svg" alt="camera"/></div>
+                        <div><img src="images/tag-icons/micon15.svg" alt="high-heeled shoe"/></div>
+                        <div><img src="images/tag-icons/micon16.svg" alt="lipstick"/></div>
+                        <div><img src="images/tag-icons/micon17.svg" alt="jewel"/></div>
+                        <div><img src="images/tag-icons/micon18.svg" alt="ring"/></div>
+                        <div><img src="images/tag-icons/micon19.svg" alt="love"/></div>
+                        <div><img src="images/tag-icons/micon20.svg" alt="gift"/></div>
+                        <div><img src="images/tag-icons/micon21.svg" alt="tada"/></div>
+                        <div><img src="images/tag-icons/micon22.svg" alt="lips"/></div>
+                        <div><img src="images/tag-icons/micon23.svg" alt="cravat"/></div>
+                        <div><img src="images/tag-icons/micon24.svg" alt="dress"/></div>
+                        <div><img src="images/tag-icons/micon25.svg" alt="shirt"/></div>
+                        <div><img src="images/tag-icons/micon26.svg" alt="glasses"/></div>
+                        <div><img src="images/tag-icons/micon27.svg" alt="shopping"/></div>
+                        <div><img src="images/tag-icons/micon28.svg" alt="saving money"/></div>
+                        <div><img src="images/tag-icons/micon29.svg" alt="clock"/></div>
+                        <div><img src="images/tag-icons/micon30.svg" alt="feeder"/></div>
+                        <div><img src="images/tag-icons/micon31.svg" alt="paw print"/></div>
+                        <div><img src="images/tag-icons/micon32.svg" alt="car"/></div>
+                        <div><img src="images/tag-icons/micon33.svg" alt="suv"/></div>
+                        <div><img src="images/tag-icons/micon34.svg" alt="trunk"/></div>
+                        <div><img src="images/tag-icons/micon35.svg" alt="airplane"/></div>
+                        <div><img src="images/tag-icons/micon36.svg" alt="house"/></div>
+                        <div><img src="images/tag-icons/micon37.svg" alt="money"/></div>
+                        <div><img src="images/tag-icons/micon38.svg" alt="bill"/></div>
+                        <div><img src="images/tag-icons/micon39.svg" alt="knife and fork"/></div>
+                        <div><img src="images/tag-icons/micon40.svg" alt="pot"/></div>
+                        <div><img src="images/tag-icons/micon41.svg" alt="soup"/></div>
+                        <div><img src="images/tag-icons/micon42.svg" alt="meat"/></div>
+                        <div><img src="images/tag-icons/micon43.svg" alt="fried egg"/></div>
+                        <div><img src="images/tag-icons/micon44.svg" alt="popcorn"/></div>
+                        <div><img src="images/tag-icons/micon45.svg" alt="ice cream"/></div>
+                        <div><img src="images/tag-icons/micon46.svg" alt="drink"/></div>
+                        <div><img src="images/tag-icons/micon47.svg" alt="beer"/></div>
+                        <div><img src="images/tag-icons/micon48.svg" alt="wine"/></div>
+                        <div><img src="images/tag-icons/micon49.svg" alt="health"/></div>
+                        <div><img src="images/tag-icons/micon50.svg" alt="medicine"/></div>
+                        <div><img src="images/tag-icons/micon51.svg" alt="tools"/></div>
+                        <div><img src="images/tag-icons/micon52.svg" alt="smile face"/></div>
+                        <div><img src="images/tag-icons/micon53.svg" alt="bad man"/></div>
+                        <div><img src="images/tag-icons/micon54.svg" alt="santa"/></div>
 
 
 
 
 
-                        <div><img src="images/tag-icons/running.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/swimming.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/fitness.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/fitness2.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/bicycle1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/basketball.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/football.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/football-a.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/tennis.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/table-tennis.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/volleyball2.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/dart.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/baseball.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/billiards.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/dive.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/sailing.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/bowling.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/game.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/poker.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/micon55.svg" alt="running"/></div>
+                        <div><img src="images/tag-icons/micon56.svg" alt="swimming"/></div>
+                        <div><img src="images/tag-icons/micon57.svg" alt="dumbbell"/></div>
+                        <div><img src="images/tag-icons/micon58.svg" alt="muscle"/></div>
+                        <div><img src="images/tag-icons/micon59.svg" alt="bicycle"/></div>
+                        <div><img src="images/tag-icons/micon60.svg" alt="basketball"/></div>
+                        <div><img src="images/tag-icons/micon61.svg" alt="football"/></div>
+                        <div><img src="images/tag-icons/micon62.svg" alt="American football"/></div>
+                        <div><img src="images/tag-icons/micon63.svg" alt="tennis"/></div>
+                        <div><img src="images/tag-icons/micon64.svg" alt="table tennis"/></div>
+                        <div><img src="images/tag-icons/micon65.svg" alt="volleyball"/></div>
+                        <div><img src="images/tag-icons/micon66.svg" alt="dart"/></div>
+                        <div><img src="images/tag-icons/micon67.svg" alt="baseball"/></div>
+                        <div><img src="images/tag-icons/micon68.svg" alt="snooker"/></div>
+                        <div><img src="images/tag-icons/micon69.svg" alt="diving"/></div>
+                        <div><img src="images/tag-icons/micon70.svg" alt="sailing"/></div>
+                        <div><img src="images/tag-icons/micon71.svg" alt="bowling"/></div>
+                        <div><img src="images/tag-icons/micon72.svg" alt="game"/></div>
+                        <div><img src="images/tag-icons/micon73.svg" alt="poker"/></div>
+                        <div><img src="images/tag-icons/micon74.svg" alt="trophy"/></div>
 
 
 
 
 
-                        <div><img src="images/tag-icons/sun.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/star.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/world.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/lighter.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/snow.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/fire.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/atom.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/test-tube.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/explode.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/micon75.svg" alt="sun"/></div>
+                        <div><img src="images/tag-icons/micon76.svg" alt="star"/></div>
+                        <div><img src="images/tag-icons/micon77.svg" alt="earth"/></div>
+                        <div><img src="images/tag-icons/micon78.svg" alt="lightning"/></div>
+                        <div><img src="images/tag-icons/micon79.svg" alt="snowflake"/></div>
+                        <div><img src="images/tag-icons/micon80.svg" alt="fire"/></div>
+                        <div><img src="images/tag-icons/micon81.svg" alt="atom"/></div>
+                        <div><img src="images/tag-icons/micon82.svg" alt="test tube"/></div>
+                        <div><img src="images/tag-icons/micon83.svg" alt="exploded"/></div>
 
 
-                        <div><img src="images/tag-icons/tree.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/tree3.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/island.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/flower.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/cactus.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/leaf.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/leaf2.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/herb.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/mountain1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/micon84.svg" alt="tree"/></div>
+                        <div><img src="images/tag-icons/micon85.svg" alt="Christmas tree"/></div>
+                        <div><img src="images/tag-icons/micon86.svg" alt="coconut tree"/></div>
+                        <div><img src="images/tag-icons/micon87.svg" alt="flower"/></div>
+                        <div><img src="images/tag-icons/micon88.svg" alt="cactus"/></div>
+                        <div><img src="images/tag-icons/micon89.svg" alt="clover"/></div>
+                        <div><img src="images/tag-icons/micon90.svg" alt="maple leaf"/></div>
+                        <div><img src="images/tag-icons/micon91.svg" alt="herb"/></div>
+                        <div><img src="images/tag-icons/micon92.svg" alt="mountain"/></div>
 
 
-                        <div><img src="images/tag-icons/chilli.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/carrot.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/tomato.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/banana.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/apple.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/orange.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/grape.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/watermelon.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/pumpkin.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/micon93.svg" alt="hot pepper"/></div>
+                        <div><img src="images/tag-icons/micon94.svg" alt="carrot"/></div>
+                        <div><img src="images/tag-icons/micon95.svg" alt="tomato"/></div>
+                        <div><img src="images/tag-icons/micon96.svg" alt="banana"/></div>
+                        <div><img src="images/tag-icons/micon97.svg" alt="apple"/></div>
+                        <div><img src="images/tag-icons/micon98.svg" alt="orange"/></div>
+                        <div><img src="images/tag-icons/micon99.svg" alt="grape"/></div>
+                        <div><img src="images/tag-icons/micon100.svg" alt="watermelon"/></div>
+                        <div><img src="images/tag-icons/micon101.svg" alt="pumpkin lamp"/></div>
 
 
-                        <div><img src="images/tag-icons/pig.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/cow.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/fox.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/octopus.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/alligator.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/rabit.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/crab.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/frog.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/chick.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/snake.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/mouse.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/bird.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/horse.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/panda.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/turtle.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/fish.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/lizard.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/deer.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/beetle.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/butterfly.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/bee.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/dinosaur1.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/master.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/alien1.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/micon102.svg" alt="pig"/></div>
+                        <div><img src="images/tag-icons/micon103.svg" alt="cow"/></div>
+                        <div><img src="images/tag-icons/micon104.svg" alt="fox"/></div>
+                        <div><img src="images/tag-icons/micon105.svg" alt="octopus"/></div>
+                        <div><img src="images/tag-icons/micon106.svg" alt="crocodile"/></div>
+                        <div><img src="images/tag-icons/micon107.svg" alt="rabbit"/></div>
+                        <div><img src="images/tag-icons/micon108.svg" alt="crab"/></div>
+                        <div><img src="images/tag-icons/micon109.svg" alt="frog"/></div>
+                        <div><img src="images/tag-icons/micon110.svg" alt="chick"/></div>
+                        <div><img src="images/tag-icons/micon111.svg" alt="snake"/></div>
+                        <div><img src="images/tag-icons/micon112.svg" alt="mouse"/></div>
+                        <div><img src="images/tag-icons/micon113.svg" alt="bird"/></div>
+                        <div><img src="images/tag-icons/micon114.svg" alt="horse"/></div>
+                        <div><img src="images/tag-icons/micon115.svg" alt="panda"/></div>
+                        <div><img src="images/tag-icons/micon116.svg" alt="tortoise"/></div>
+                        <div><img src="images/tag-icons/micon117.svg" alt="fish"/></div>
+                        <div><img src="images/tag-icons/micon118.svg" alt="lizard"/></div>
+                        <div><img src="images/tag-icons/micon119.svg" alt="reindeer"/></div>
+                        <div><img src="images/tag-icons/micon120.svg" alt="beetle"/></div>
+                        <div><img src="images/tag-icons/micon121.svg" alt="butterfly"/></div>
+                        <div><img src="images/tag-icons/micon122.svg" alt="bee"/></div>
+                        <div><img src="images/tag-icons/micon123.svg" alt="dinosaur"/></div>
+                        <div><img src="images/tag-icons/micon124.svg" alt="monster"/></div>
+                        <div><img src="images/tag-icons/micon125.svg" alt="alien"/></div>
 
 
 
-                        <div><img src="images/tag-icons/heart.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/flag.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/recycle.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/question.svg" alt="tag icon"/></div>
-                        <div><img src="images/tag-icons/point.svg" alt="tag icon"/></div>
+                        <div><img src="images/tag-icons/micon126.svg" alt="heart"/></div>
+                        <div><img src="images/tag-icons/micon127.svg" alt="flag"/></div>
+                        <div><img src="images/tag-icons/micon128.svg" alt="recycle"/></div>
+                        <div><img src="images/tag-icons/micon129.svg" alt="question mark"/></div>
+                        <div><img src="images/tag-icons/micon130.svg" alt="excalmatory mark"/></div>
 
                     </div>
 
