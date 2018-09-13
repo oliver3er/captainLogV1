@@ -144,7 +144,7 @@
     left: -22px;
     width: 80px;
     height: 80px;
-    background: url('../images/loading-bg1.svg') center center no-repeat, #498cf3;
+    background: url('../images/loading-bg.svg') center center no-repeat, #498cf3;
     background-size: 100%;
     animation: loading-logo-bg-move 6s linear infinite;
 }
