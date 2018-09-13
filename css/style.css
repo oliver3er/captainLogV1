@@ -16,6 +16,8 @@
     width: 35%;
 }
 
+/**********************1 loading***********************/
+
 .loading-logo {
     margin: 0 auto;
     display: flex;
@@ -39,21 +41,39 @@
 }
 
 .loading-bar {
+    position: relative;
     margin: 0 auto;
-    height: 10px;
+    height: 8px;
     max-width: 280px;
     width:80%;
     border-radius:1px;
-    background-color: #498cf3;
+    overflow: hidden;
+    background-color: #dfe9f4;
+}
+
+.loading-bar-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8px;
+    width: 8000px;
+    background: url("../images/loading-bar.svg") 0 0 repeat-x;
+    animation: 8s loader-bar-move linear infinite ;
 }
 
 .loading-info {
-    margin: 70px auto 20px;
+    margin: 40px auto 20px;
     text-align: center;
     font-size: .16rem;
-    color: #b8b8b8;
-    font-weight: 400;
+    font-weight: 600;
+    color: #36393e;
+    /*letter-spacing: 1px;*/
+}
 
+@keyframes loader-bar-move {
+    to {
+        transform: translateX(-1000px);
+    }
 }
 
 @keyframes loader-rotate {
@@ -71,6 +91,565 @@
     90% {transform: rotate(270deg);}
     100% {transform: rotate(270deg);}
 }
+/**********************2 loading***********************/
+
+.loading-cursor {
+    background-color: transparent;
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% { background-color: #498cf3; }
+}
+
+/**********************3 loading***********************/
+
+.loading-3-anim {
+    animation: loading-3 1s  cubic-bezier(0.06, 1.08, 1, 1) infinite;
+}
+
+@keyframes loading-3 {
+    50% {
+        -webkit-transform: scale(1.4);
+        -moz-transform: scale(1.4);
+        -ms-transform: scale(1.4);
+        -o-transform: scale(1.4);
+        transform: scale(1.4);
+    }
+}
+
+/**********************4 loading***********************/
+.loading-4 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 500px;
+    height: 240px;
+    overflow: hidden;
+}
+
+.loading-4-logo {
+    position: relative;
+    margin: 0 auto;
+    /*width: 155px;*/
+    width: 270px;
+    height: 200px;
+}
+
+.loading-word-word {
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    left: 112px;
+    width: 200px;
+    height: 200px;
+    background: url("../images/logo-word.svg") left bottom no-repeat;
+    background-size: auto 30px;
+}
+
+.loading-4-logo svg {
+    display: block;
+}
+
+.loading-word-0 {
+    box-shadow: 10px -20px 10px 0 rgba(0,0,0,1);
+    z-index: 1;
+}
+
+@keyframes loading-4-word-move {
+    0% {
+        transform: rotateZ(0deg) translateY(-30px) translateX(30px);
+    }
+    30% {
+        transform: rotateZ(80deg) translateY(10px) translateX(15px);
+    }
+    50% {
+        transform: rotateZ(120deg) translateY(-10px) translateX(0px);
+    }
+    80% {
+        transform: rotateZ(260deg) translateY(-30px) translateX(18px);
+    }
+    95% {
+        transform: rotateZ(300deg) translateY(-35px) translateX(30px);
+    }
+    100% {
+        transform: rotateZ(360deg) translateY(-30px) translateX(30px);
+    }
+}
+
+.loading-word-1 {
+    animation: loading-4-word-move 8s linear infinite;
+}
+
+/****4-2****/
+
+
+
+
+
+/**********************5 loading***********************/
+
+.loading-5-anim {
+    /*animation: shake-rotate2 3s cubic-bezier(0.02, 1.06, 0.74, 1.02) infinite;*/
+    animation: shake-rotate2 3s ease-out infinite;
+}
+
+@keyframes shake-rotate2 {
+    0% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg)  scale(1);
+    }
+    13% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(1.3);
+    }
+    25% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    37% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(1.3);
+    }
+    49% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(.7);
+    }
+    49.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    62% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(1.5);
+    }
+    74% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(1); }
+    86% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg)  scale(1.5); }
+
+    98% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(.7); }
+    98.5% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(1); }
+    100% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg) scale(1); }
+
+}
+
+
+@keyframes shake-rotate1 {
+    0% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg)  scale(1);
+    }
+    0.5% { transform: translate(0px, 0px) rotate(-8.5deg); }
+    1% { transform: translate(0px, 0px) rotate(-6.5deg); }
+    1.5% { transform: translate(0px, 0px) rotate(1.5deg); }
+    2% { transform: translate(0px, 0px) rotate(-5.5deg); }
+    2.5% { transform: translate(0px, 0px) rotate(2.5deg); }
+    3% { transform: translate(0px, 0px) rotate(8.5deg); }
+    3.5% { transform: translate(0px, 0px) rotate(-1.5deg); }
+    4% { transform: translate(0px, 0px) rotate(1.5deg); }
+    4.5% { transform: translate(0px, 0px) rotate(-6.5deg); }
+    5% { transform: translate(0px, 0px) rotate(1.5deg); }
+    5.5% { transform: translate(0px, 0px) rotate(4.5deg); }
+    6% { transform: translate(0px, 0px) rotate(-5.5deg); }
+    6.5% { transform: translate(0px, 0px) rotate(-1.5deg); }
+    7% { transform: translate(0px, 0px) rotate(5.5deg); }
+    7.5% { transform: translate(0px, 0px) rotate(-1.5deg); }
+    8% { transform: translate(0px, 0px) rotate(4.5deg); }
+    8.5% { transform: translate(0px, 0px) rotate(7.5deg); }
+    9% { transform: translate(0px, 0px) rotate(-6.5deg); }
+    9.5% { transform: translate(0px, 0px) rotate(1.5deg); }
+    10% { transform: translate(0px, 0px) rotate(8.5deg); }
+    10.5% { transform: translate(0px, 0px) rotate(-4.5deg); }
+    11% { transform: translate(0px, 0px) rotate(5.5deg); }
+    11.5% { transform: translate(0px, 0px) rotate(-7.5deg); }
+    12% { transform: translate(0px, 0px) rotate(2.5deg); }
+    12.5% { transform: translate(0px, 0px) rotate(-5.5deg); }
+    13% { transform: translate(0px, 0px) rotate(-0.5deg); }
+    13.5% { transform: translate(0px, 0px) rotate(4.5deg); }
+    14% { transform: translate(0px, 0px) rotate(-3.5deg); }
+    14.5% { transform: translate(0px, 0px) rotate(5.5deg); }
+    15% { transform: translate(0px, 0px) rotate(-8.5deg); }
+    15.5% { transform: translate(0px, 0px) rotate(-0.5deg); }
+    16% { transform: translate(0px, 0px) rotate(-7.5deg); }
+    16.5% { transform: translate(0px, 0px) rotate(3.5deg); }
+    17% { transform: translate(0px, 0px) rotate(6.5deg); }
+    17.5% { transform: translate(0px, 0px) rotate(2.5deg); }
+    18% { transform: translate(0px, 0px) rotate(-4.5deg); }
+    18.5% { transform: translate(0px, 0px) rotate(5.5deg); }
+    19% { transform: translate(0px, 0px) rotate(-1.5deg); }
+    19.5% { transform: translate(0px, 0px) rotate(-8.5deg); }
+    20% { transform: translate(0px, 0px) rotate(-4.5deg); }
+    20.5% { transform: translate(0px, 0px) rotate(2.5deg); }
+    21% { transform: translate(0px, 0px) rotate(6.5deg); }
+    21.5% { transform: translate(0px, 0px) rotate(8.5deg); }
+    22% { transform: translate(0px, 0px) rotate(-6.5deg); }
+    22.5% { transform: translate(0px, 0px) rotate(-2.5deg); }
+    23% { transform: translate(0px, 0px) rotate(8.5deg); }
+    23.5% { transform: translate(0px, 0px) rotate(-0.5deg); }
+    24% { transform: translate(0px, 0px) rotate(-7.5deg); }
+    24.5% { transform: translate(0px, 0px) rotate(3.5deg); }
+    25% { transform: translate(0px, 0px) rotate(6.5deg); }
+    25.5% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: 80px auto;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    26% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: 80px auto;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    35% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg) scale(1.5);
+    }
+    45% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg) scale(1); }
+    50% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg)  scale(1); }
+
+
+    50.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-8.5deg) scale(1); }
+    51% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-6.5deg); }
+    51.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(1.5deg); }
+    52% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-5.5deg); }
+    52.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(2.5deg); }
+    53% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(8.5deg); }
+    53.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-1.5deg); }
+    54% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(1.5deg); }
+    54.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-6.5deg); }
+    55% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(1.5deg); }
+    55.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(4.5deg); }
+    56% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-5.5deg); }
+    56.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-1.5deg); }
+    57% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(5.5deg); }
+    57.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-1.5deg); }
+    58% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(4.5deg); }
+    58.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(7.5deg); }
+    59% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-6.5deg); }
+    59.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(1.5deg); }
+    60% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(8.5deg); }
+    60.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-4.5deg); }
+    61% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(5.5deg); }
+    61.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-7.5deg); }
+    62% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(2.5deg); }
+    62.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-5.5deg); }
+    63% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-0.5deg); }
+    63.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(4.5deg); }
+    64% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-3.5deg); }
+    64.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(5.5deg); }
+    65% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-8.5deg); }
+    65.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-0.5deg); }
+    66% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-7.5deg); }
+    66.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(3.5deg); }
+    67% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(6.5deg); }
+    67.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(2.5deg); }
+    68% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-4.5deg); }
+    68.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(5.5deg); }
+    69% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-1.5deg); }
+    69.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-8.5deg); }
+    70% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-4.5deg); }
+    70.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(2.5deg); }
+    71% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(6.5deg); }
+    71.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(8.5deg); }
+    72% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-6.5deg); }
+    72.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-2.5deg); }
+    73% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(8.5deg); }
+    73.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-0.5deg); }
+    74% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(-7.5deg); }
+    74.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(3.5deg); }
+    75% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(6.5deg); }
+    75.5% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: 80px auto;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    76% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: 80px auto;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    85% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg) scale(1.3);
+    }
+    95% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg) scale(1); }
+    100% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg)  scale(1); }
+}
+
+
+@keyframes shake-rotate {
+    0% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(0deg)  scale(1);
+    }
+    1% { transform: translate(0px, 0px) rotate(-8.5deg); }
+    2% { transform: translate(0px, 0px) rotate(-6.5deg); }
+    3% { transform: translate(0px, 0px) rotate(1.5deg); }
+    4% { transform: translate(0px, 0px) rotate(-5.5deg); }
+    5% { transform: translate(0px, 0px) rotate(2.5deg); }
+    6% { transform: translate(0px, 0px) rotate(8.5deg); }
+    7% { transform: translate(0px, 0px) rotate(-1.5deg); }
+    8% { transform: translate(0px, 0px) rotate(1.5deg); }
+    9% { transform: translate(0px, 0px) rotate(-6.5deg); }
+    10% { transform: translate(0px, 0px) rotate(1.5deg); }
+    11% { transform: translate(0px, 0px) rotate(4.5deg); }
+    12% { transform: translate(0px, 0px) rotate(-5.5deg); }
+    13% { transform: translate(0px, 0px) rotate(-1.5deg); }
+    14% { transform: translate(0px, 0px) rotate(5.5deg); }
+    14% { transform: translate(0px, 0px) rotate(-1.5deg); }
+    15% { transform: translate(0px, 0px) rotate(4.5deg); }
+    16% { transform: translate(0px, 0px) rotate(7.5deg); }
+    17% { transform: translate(0px, 0px) rotate(-6.5deg); }
+    18% { transform: translate(0px, 0px) rotate(1.5deg); }
+    19% { transform: translate(0px, 0px) rotate(8.5deg); }
+    20% { transform: translate(0px, 0px) rotate(-4.5deg); }
+    21% { transform: translate(0px, 0px) rotate(5.5deg); }
+    22% { transform: translate(0px, 0px) rotate(-7.5deg); }
+    23% { transform: translate(0px, 0px) rotate(2.5deg); }
+    24% { transform: translate(0px, 0px) rotate(-5.5deg); }
+    25% { transform: translate(0px, 0px) rotate(-0.5deg); }
+    26% { transform: translate(0px, 0px) rotate(4.5deg); }
+    27% { transform: translate(0px, 0px) rotate(-3.5deg); }
+    28% { transform: translate(0px, 0px) rotate(5.5deg); }
+    29% { transform: translate(0px, 0px) rotate(-8.5deg); }
+    30% { transform: translate(0px, 0px) rotate(-0.5deg); }
+    31% { transform: translate(0px, 0px) rotate(-7.5deg); }
+    32% { transform: translate(0px, 0px) rotate(3.5deg); }
+    33% { transform: translate(0px, 0px) rotate(6.5deg); }
+    34% { transform: translate(0px, 0px) rotate(2.5deg); }
+    35% { transform: translate(0px, 0px) rotate(-4.5deg); }
+    36% { transform: translate(0px, 0px) rotate(5.5deg); }
+    37% { transform: translate(0px, 0px) rotate(-1.5deg); }
+    38% { transform: translate(0px, 0px) rotate(-8.5deg); }
+    39% { transform: translate(0px, 0px) rotate(-4.5deg); }
+    40% { transform: translate(0px, 0px) rotate(2.5deg); }
+    41% { transform: translate(0px, 0px) rotate(6.5deg); }
+    42% { transform: translate(0px, 0px) rotate(8.5deg); }
+    43% { transform: translate(0px, 0px) rotate(-6.5deg); }
+    44% { transform: translate(0px, 0px) rotate(-2.5deg); }
+    45% { transform: translate(0px, 0px) rotate(8.5deg); }
+    46% { transform: translate(0px, 0px) rotate(-0.5deg); }
+    47% { transform: translate(0px, 0px) rotate(-7.5deg); }
+    48% { transform: translate(0px, 0px) rotate(3.5deg); }
+    49% { transform: translate(0px, 0px) rotate(6.5deg); }
+    50% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: 80px auto;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    51% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: 80px auto;
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+    }
+    75% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg) scale(1.4);
+    }
+    86% {
+        background: url("../images/logo3.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg) scale(1); }
+    90% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg) scale(1); }
+    100% {
+        background: url("../images/logo.svg") center center no-repeat;
+        background-size: auto 80px;
+        transform: translate(0px, 0px) rotate(360deg)  scale(1); }
+}
+
+
 
 
 /***************loading style end  *****************/
