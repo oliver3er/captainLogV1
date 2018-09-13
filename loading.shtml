@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Midinote</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+</head>
+<body>
+<div class="dark-style">
+    <div class="loading-page">
+        <div class="loading-main position-relative">
+
+            <div class="loading-logo">
+                <div class="loading-logo-content">
+                    <div class="loading-logo-clip">
+                        <div class="loading-logo-bg"></div>
+                    </div>
+                    <div class="loading-logo-word"></div>
+                </div>
+            </div>
+            <div class="loading-info1">SUBMITTED By @OLIVERPOP</div>
+            <div class="loading-info2">Loading ...</div>
+
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="loading-word-mask" transform="matrix(1 0 0 1 0 0)">
+                        <path fill="#498CF3" d="M32.593,17.226l1.105-5.134h-6.505L29.906,0h-5.284l-2.703,12.091h-5.682L18.958,0h-5.253l-2.721,12.091
+		H4.562l-1.104,5.134h6.372l-2.121,9.426H1.104L0,31.786h6.553L3.804,44h5.251l2.75-12.214h5.709L14.782,44h5.252l2.738-12.214
+		h6.606l1.156-5.134h-6.609l2.113-9.426H32.593z M18.662,26.651H12.96l2.12-9.426h5.691L18.662,26.651z"/>
+                    </clipPath>
+                </defs>
+            </svg>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
