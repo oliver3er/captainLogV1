@@ -2850,7 +2850,7 @@
     bottom: -1px;
 }
 
-.content-notes-list-note:hover .content-list-note-options {
+.content-notes-list-note .content-list-note-options {
     visibility: visible;
 }
 

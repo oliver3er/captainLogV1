@@ -243,11 +243,9 @@
 }
 
 .content-notes-list-note.list-one-selected .rest-number {
-	position: absolute;
-	right: 5px;
-	bottom: 3px;
 	color: #8dbee8;
 	transition	: all .5s ease;
+	margin		: 0 5px;
 }
 .content-notes-list-note.list-one-selected .rest-number.warning {
 	color: #e6aa23;
@@ -257,9 +255,6 @@
 }
 
 .edit-note .rest-number {
-	position: absolute;
-	right: 5px;
-	bottom: 3px;
 	color: #8dbee8;
 	transition	: all .5s ease;
 }
