@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
+
         $(function (){
 
             //此处为了演示第一次登录后的界面  需要设置用户名、头像信息
