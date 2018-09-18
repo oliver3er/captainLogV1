@@ -6097,6 +6097,7 @@
 
 
 .__open.tag-menu-dialog{
+    display: block;
     animation-timing-function: cubic-bezier(0.41, 0.13, 0.4, 1.35);
 }
 
