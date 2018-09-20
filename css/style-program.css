@@ -751,3 +751,7 @@
 	height	: 24px;
 	width	: 24px;
 }
+
+.temp-processing {
+	position		: fixed;
+}
