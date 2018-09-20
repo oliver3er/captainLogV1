@@ -3279,6 +3279,10 @@
     width: auto;
 }
 
+.note-img-block + .note-content-block-end {
+    width: 100%;
+}
+
 .note-detail-image {
     position: relative;
     width: 100%;
