@@ -6293,9 +6293,9 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: wrap;
-
     margin: 40px 15px 20px 25px;
-    height: 380px;
+    min-height: 380px;
+    overflow: hidden;
     letter-spacing: .5px;
 }
 
