@@ -393,28 +393,25 @@
     height: 100%;
     border: 1px solid rgba(255,255,255,.01);
     border-radius: 3px;
-    transform: scale(1) translateZ(0px);
-    visibility: hidden;
+    /*transform: scale(1) translateZ(0px);
+    visibility: hidden;*/
     z-index: 1001;
-
+    -webkit-animation-name: dialog-open-animation;
+    animation-name: dialog-open-animation;
+    animation-timing-function: ease-out;
+    animation-duration: .05s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     font-size: 11px;
 }
 
-.__open.process-transition-block {
+/*.__open.process-transition-block {
     -webkit-animation-name: dialog-open-animation;
     animation-name: dialog-open-animation;
     animation-timing-function: ease-out;
     animation-duration: .05s;
     pointer-events: auto;
-}
-
-.__close.process-transition-block {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
+}*/
 
 .process-transition-info {
     margin-top: -10%;
@@ -1530,17 +1527,37 @@
     pointer-events: none;
 }
 
-.sub-backdrop {
-    background-color: rgb(0, 0, 0, .75);
+@keyframes sub-backdrop-show {
+    from {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
-.backdrop.__open, .sub-backdrop.__open {
+.sub-backdrop {
+    background-color: rgba(0, 0, 0, .65);
+    -webkit-animation-name: sub-backdrop-show;
+    animation-name: sub-backdrop-show;
+    animation-timing-function: ease-out;
+    animation-duration: .12s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+}
+
+.backdrop.__open {
     opacity: 0.85;
     visibility: visible;
     pointer-events: auto;
 }
 
-.backdrop.__close, .sub-backdrop.__close {
+.backdrop.__close {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
