@@ -838,7 +838,15 @@
 </div>
 <!--first load page end-->
 
-
+<!----------data loading div begin---------->
+<div class="data-load-block">
+    <div class="data-load-icon">
+        <div class="data-load-cut">
+            <div class="data-load-donut"></div>
+        </div>
+    </div>
+</div>
+<!----------data loading div end---------->
 
 <!----------search page begin---------->
 <!--search tag dialog (when search input something) begin-->
