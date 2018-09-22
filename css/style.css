@@ -300,6 +300,85 @@
 .__text-red {
     color: #f04747;
 }
+
+
+/*********************data loading div begin********************/
+.data-load-block {
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    /*position: absolute;
+    left: 0;
+    top: 0;*/
+    width: 100%;
+    height: 100%;
+}
+
+.__close.data-load-block {
+    display: none;
+}
+
+.__open.data-load-block {
+    display: flex;
+}
+
+.data-load-icon {
+    position: relative;
+    opacity:0.75;
+    width: 26px;
+    height: 26px;
+    -webkit-animation: clockwise .65s linear infinite;
+    animation: clockwise .65s linear infinite;
+}
+
+.data-load-cut {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.data-load-donut {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin:0;
+    width: 26px;
+    height: 100%;
+    border: 2px solid #FFF;
+    border-radius: 50%;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    box-sizing: border-box;
+    background: none;
+    -webkit-animation: donut-rotate 1.3s cubic-bezier(0.68, 0.02, 0.74, 0.99) infinite;
+    animation: donut-rotate 1.3s ease-in-out infinite;
+}
+
+
+@-webkit-keyframes clockwise {
+    0% { -webkit-transform: rotate(0deg) }
+    100% { -webkit-transform: rotate(360deg) }
+}
+@keyframes clockwise {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}
+@-webkit-keyframes donut-rotate {
+    0% { -webkit-transform: rotate(0) }
+    50% { -webkit-transform: rotate(-140deg) }
+    100% { -webkit-transform: rotate(0) }
+}
+@keyframes donut-rotate {
+    0% { transform: rotate(0) }
+    50% { transform: rotate(-140deg) }
+    100% { transform: rotate(0) }
+}
+/*********************data loading div end********************/
+
+
 /*********************form begin********************/
 .form-item {
     margin-top: 18px;
