@@ -380,6 +380,46 @@
 /*********************data loading div end********************/
 
 
+/*********************process transition div begin********************/
+.process-transition-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(255,255,255,.01);
+    border-radius: 3px;
+    transform: scale(1) translateZ(0px);
+    visibility: hidden;
+
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.__open.process-transition-block {
+    -webkit-animation-name: dialog-open-animation;
+    animation-name: dialog-open-animation;
+    animation-timing-function: ease-out;
+    animation-duration: .05s;
+    pointer-events: auto;
+}
+
+.__close.process-transition-block {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.process-transition-effect {
+    color: #fff;
+    font-size: 20px;
+}
+
+/*********************process transition div end********************/
+
 /*********************form begin********************/
 .form-item {
     margin-top: 18px;
@@ -1431,7 +1471,7 @@
 
 /*********************pop menu end***********************/
 
-.backdrop {
+.backdrop, .sub-backdrop {
     position: absolute;
     left: 0;
     right: 0;
@@ -1446,13 +1486,17 @@
     pointer-events: none;
 }
 
-.backdrop.__open{
+.sub-backdrop {
+    background-color: rgb(0, 0, 0, .75);
+}
+
+.backdrop.__open, .sub-backdrop.__open {
     opacity: 0.85;
     visibility: visible;
     pointer-events: auto;
 }
 
-.backdrop.__close{
+.backdrop.__close, .sub-backdrop.__close {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
