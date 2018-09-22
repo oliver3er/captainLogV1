@@ -1541,7 +1541,7 @@
 }
 
 .sub-backdrop {
-    background-color: rgba(0, 0, 0, .65);
+    background-color: rgba(0, 0, 0, .7);
     -webkit-animation-name: sub-backdrop-show;
     animation-name: sub-backdrop-show;
     animation-timing-function: ease-out;
