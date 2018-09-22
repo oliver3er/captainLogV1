@@ -553,12 +553,21 @@
                 <div class="dialog-button-cancel btn-cancel"><span>Cancel</span></div>
             </div>
         </div>
+
+        <!--processing effect begin-->
+        <div class="sub-backdrop"></div>
+        <div class="process-transition-block">
+            <div class="process-transition-info">Processing</div>
+            <div class="process-transition-effect"></div>
+        </div>
+        <!--processing effect end-->
+
     </div>
 
 </div>
 
 
-<!--标签值设置窗口-->_
+<!--标签值设置窗口-->
 <div class="message-dialog tag-value-setting-dialog">
     <div class="message-dialog-wrapper tag-v-setting-dialog-wrapper">
         <div class="dialog-title">HASHTAG VALUE SETTING</div>
