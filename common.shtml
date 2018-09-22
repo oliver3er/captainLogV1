@@ -555,8 +555,8 @@
         </div>
 
         <!--processing effect begin-->
-        <div class="sub-backdrop __open"></div>
-        <div class="process-transition-block __open">
+        <div class="sub-backdrop"></div>
+        <div class="process-transition-block">
             <div class="process-transition-info">Processing</div>
             <div class="process-transition-effect"></div>
         </div>
