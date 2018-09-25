@@ -6410,6 +6410,13 @@
 
 /******************** mind-map page style end **********************/
 
+/******************** mind-map container start *********************/
+/* added by dean */
+.hashtag-node text{
+	user-select		: none;
+}
+/******************** mind-map container end   *********************/
+
 /******************** hash-tag page style begin ********************/
 .main-content-tag .main-content-search-input {
     width: 600px;
