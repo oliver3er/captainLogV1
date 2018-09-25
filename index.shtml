@@ -508,7 +508,9 @@
                 </div>
             </div>
             <div class="main-menu-user">
-                <div class="main-menu-user-icon"></div>
+                <div class="main-menu-user-icon">
+                    <img src="images/portrait.png" alt="avatar"/>
+                </div>
             </div>
         </div>
         <div class="main-block">
