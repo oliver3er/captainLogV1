@@ -3611,6 +3611,7 @@
 
 .form-tag-item {
     position: relative;
+    display: inline-block;
     padding: 5px 20px 5px 7px;
     background-color: #5e6165;
     border-radius: 4px;
