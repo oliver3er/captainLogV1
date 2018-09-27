@@ -885,10 +885,12 @@
 
 .form-checkbox {
     display: flex;
-    align-items: center;
-    height: 40px;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: 40px;
     width: 100%;
-    padding: 10px;
     margin-bottom: 8px;
     border-radius: 4px;
     background-color: #32353a;
@@ -899,7 +901,6 @@
     font-weight: 400;
     letter-spacing: 1px;
     cursor: pointer;
-
 }
 
 .checkbox {
@@ -909,6 +910,9 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .checkbox .checkbox-inner {
@@ -947,6 +951,11 @@
 
 .checkbox .checkbox-inner input[type=checkbox] {
     display: none;
+}
+
+.form-checkbox-description {
+    padding-bottom: 4px;
+    line-height: .16rem;
 }
 
 .form-radio-box {

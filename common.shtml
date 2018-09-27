@@ -669,15 +669,18 @@
                                 var showValue = $(this);
                                 var checkedItem = $(this).find(".checkbox-inner [type='checkbox']");
                                 var checkedSpan = $(this).find(".checkbox-inner span");
+                                var descriptInfo = $(this).find(".form-checkbox-description");
 
                                 if(checkedItem.attr("checked")){
                                     showValue.css("background-color","#32353a");
                                     checkedItem.attr("checked", false);
                                     checkedSpan.css("background-color","#32353a");
                                     checkedSpan.find("svg").remove();
+                                    descriptInfo.css("color","#cecece");
                                 }else {
                                     showValue.css("background-color","#4682f7");
                                     checkedItem.attr("checked", true);
+                                    descriptInfo.css("color","#6d7178");
                                     checkedSpan.css("background-color","#ececec");
                                     checkedSpan.append('<svg name="Check-mark" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><polyline stroke="#4682f7" stroke-width="2" points="3.5 9.5 7 13 15 5"></polyline></g></svg>');
                                 }
@@ -692,6 +695,9 @@
                                 <span></span>
                             </div>
                             <span>option1</span>
+                        </div>
+                        <div class="form-checkbox-description descriptive-info">
+                            The name of this Miditag will be retained as the alias of the new Miditag, so the Miditag name will keep the same in the notes.
                         </div>
                     </div>
 
