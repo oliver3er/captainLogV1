@@ -1353,7 +1353,8 @@
     font-size: .14rem;
     font-weight: 400;
     overflow-y: auto;
-    z-index: 10;
+	/* bigger than toolbar */
+    z-index: 11;
     pointer-events: none;
 
     -webkit-animation-fill-mode: forwards;
