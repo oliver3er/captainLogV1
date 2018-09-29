@@ -347,6 +347,13 @@ th {
           box-sizing: border-box;
 }
 
+div, li, a, img, svg {
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
 .dark-style {
     background: #1c1c1e;
     color: #bcbcbc;
