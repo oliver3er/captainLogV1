@@ -837,17 +837,26 @@
 }
 
 .form-date-picker {
+    margin-top: 6px;
     border-radius: 4px;
     border: 0;
     color: #2e3035;
-    font-size: .14rem;
+    font-size: .13rem;
 }
 
 .form-date-picker .react-datepicker__header {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    font-size: 14px;
-    color: #2e3035;
+    font-size: 12px;
+    color: #0b0b0b;
+}
+
+.form-date-picker .react-datepicker__current-month,
+.form-date-picker .react-datepicker-time__header {
+    height: 20px;
+    line-height: 20px;
+    color: #0b0b0b;
+    font-size: .14rem;
 }
 
 .form-date-picker .react-datepicker__navigation {
@@ -874,6 +883,14 @@
     width: 24px;
     line-height: 24px;
     margin: 2px;
+}
+
+.form-date-picker .react-datepicker__day--selected,
+.form-date-picker .react-datepicker__day--in-selecting-range,
+.form-date-picker .react-datepicker__day--in-range {
+    background-color: #498cf3;
+    color: #fff;
+    border-radius: 3px;
 }
 
 .form-upload-img {
