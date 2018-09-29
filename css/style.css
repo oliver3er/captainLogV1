@@ -836,6 +836,46 @@
     outline: none;
 }
 
+.form-date-picker {
+    border-radius: 4px;
+    border: 0;
+    color: #2e3035;
+    font-size: .14rem;
+}
+
+.form-date-picker .react-datepicker__header {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-size: 14px;
+    color: #2e3035;
+}
+
+.form-date-picker .react-datepicker__navigation {
+    top: 13px;
+    border-width: 5px;
+}
+
+.form-date-picker .react-datepicker__navigation--previous {
+    border-right-color: #7d7d7d;
+}
+
+.form-date-picker .react-datepicker__navigation--next {
+    border-left-color: #7d7d7d;
+}
+
+.form-date-picker .react-datepicker__month {
+    margin: 12px;
+}
+
+.form-date-picker .react-datepicker__day-name,
+.form-date-picker .react-datepicker__day,
+.form-date-picker .react-datepicker__time-name {
+    color: #0b0b0b;
+    width: 24px;
+    line-height: 24px;
+    margin: 2px;
+}
+
 .form-upload-img {
     display: flex;
     flex-direction: row;
@@ -5885,6 +5925,7 @@
 
 .date-range-selection {
     width: 100%;
+    min-height: 258px;
 }
 
 .search-setting-value-dialog .dialog-buttons {
