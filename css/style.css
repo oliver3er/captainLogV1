@@ -7278,9 +7278,79 @@
 }
 
 .doc-head-buttons {
+    display: flex;
     margin-left: 40px;
     margin-right: 40px;
 }
+
+@keyframes doc-status-saving-animation {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes doc-status-saved1-animation {
+    from {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 126;
+    }
+    to {
+        stroke-dashoffset: 126;
+        stroke-dasharray: 126;
+    }
+}
+
+@keyframes doc-status-saved2-animation {
+    from {
+        stroke-dashoffset: 150;
+        stroke-dasharray: 126;
+    }
+    to {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 126;
+    }
+}
+
+.doc-status {
+    position: relative;
+    margin-right: 12px;
+    width: 22px;
+    height: 100%;
+}
+
+#doc-status-saving {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 22px;
+    height: 22px;
+    z-index: 1;
+}
+
+#doc-status-saving-path {
+    display: block;
+    animation: doc-status-saved1-animation 1s linear;
+    animation-delay: 1.4s;
+    animation-fill-mode: forwards;
+}
+
+#doc-status-saved {
+    display: none;
+    position: absolute;
+    left: -1px;
+    top: 4px;
+    width: 22px;
+    height: 22px;
+    z-index: 2;
+}
+
+#doc-status-saved-path {
+    display: block;
+    animation: doc-status-saved2-animation .8s linear;
+    animation-fill-mode: forwards;
+}
+
 
 .doc-head-button-close {
     padding: 6px 10px;
