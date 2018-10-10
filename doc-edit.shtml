@@ -15,15 +15,15 @@
                 var path = document.getElementsByTagNameNS(namespace, 'path')[0];
                 var pathLen = path.getTotalLength();
             //alert(pathLen+"!!");
+            var i=0;
             $(".doc-head-buttons").bind('click',function(){
                 var savingIcon = $("#doc-status-saving");
                 var savedIcon = $("#doc-status-saved");
-                if(savingIcon.length>0){
-
-                    //savingIcon.removeClass("__close").addClass("__open");
+                /*if(savingIcon.length>0){
                     savingIcon.show();
                     savingIcon.css("animation","doc-status-saving-animation 1.4s linear");
                     savingIcon.css("animation-iteration-count","10");
+
                     setTimeout(function(){
                         savedIcon.show();
                     },4000);
@@ -31,8 +31,19 @@
 
                     savingIcon.removeClass("__open").addClass("__close");
                     savedIcon.removeClass("__open").addClass("__close")
+                }*/
+                if(i==0) {
+                    savingIcon.show();
+                    savedIcon.hide();
+                    i++;
+                    return;
                 }
-
+                if(i==1){
+                    savingIcon.hide();
+                    savedIcon.show();
+                    i--;
+                    return;
+                }
 
             });
 
@@ -111,17 +122,18 @@
                         </div>
                         <div class="doc-head-buttons">
                             <div class="doc-status">
-                                <svg id="doc-status-saving" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                <!--<svg id="doc-status-saving" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      width="46px" height="46px" viewBox="0 0 46 46" enable-background="new 0 0 46 46" xml:space="preserve">
                                     <path id="doc-status-saving-path" fill="none" stroke="#20C05C" stroke-width="6" stroke-miterlimit="10" d="M3.814,17.512
 		C0.221,29.209,8.699,43.25,23.723,42.987"/>
-                                </svg>
-
-                                <svg id="doc-status-saved" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                </svg>-->
+                                <!--#include file='images/doc-saving-icon.svg' -->
+                                <!--#include file='images/doc-saved-icon.svg' -->
+                                <!--<svg id="doc-status-saved" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      width="46px" height="46px" viewBox="0 0 46 46" enable-background="new 0 0 46 46" xml:space="preserve">
                                     <path id="doc-status-saved-path" fill="none" stroke="#20C05C" stroke-width="6" stroke-linejoin="round" stroke-miterlimit="10" d="
 	M7.733,20.861L20.271,31.8L41.579,9.92"/>
-                                </svg>
+                                </svg>-->
                             </div>
 
                             <div class="doc-head-button-close">Close</div>

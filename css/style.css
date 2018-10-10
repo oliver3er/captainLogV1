@@ -7325,14 +7325,15 @@
     top: 4px;
     width: 22px;
     height: 22px;
+    animation: doc-status-saving-animation 1.4s linear infinite;
     z-index: 1;
 }
 
 #doc-status-saving-path {
     display: block;
-    animation: doc-status-saved1-animation 1.2s linear;
+    /*animation: doc-status-saved1-animation 1.2s linear;
     animation-delay: 2.8s;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards;*/
 }
 
 #doc-status-saved {
