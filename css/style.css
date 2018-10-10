@@ -7330,8 +7330,8 @@
 
 #doc-status-saving-path {
     display: block;
-    animation: doc-status-saved1-animation 1s linear;
-    animation-delay: 1.4s;
+    animation: doc-status-saved1-animation 1.2s linear;
+    animation-delay: 2.8s;
     animation-fill-mode: forwards;
 }
 
